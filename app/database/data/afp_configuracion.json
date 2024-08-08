@@ -1,0 +1,26 @@
+[
+    {
+      "id_escala_afp": "1",
+      "aplica_certificado": true,
+      "aplica_edad_limite": null,
+      "activo": 1
+    },   
+    {
+        "id_escala_afp": "2",
+        "aplica_certificado": null,
+        "aplica_edad_limite": true,
+        "activo": 1
+    },
+    {
+        "id_escala_afp": "3",
+        "aplica_certificado": null,
+        "aplica_edad_limite": null,
+        "activo": 1
+    },
+    {
+        "id_escala_afp": "4",
+        "aplica_certificado": null,
+        "aplica_edad_limite": null,
+        "activo": 1
+    }
+]

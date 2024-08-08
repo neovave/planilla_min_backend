@@ -1,0 +1,47 @@
+[
+    {
+      "codigo": "LP",
+      "descripcion": "La Paz",
+      "activo": 1
+    },
+    {
+        "codigo": "CO",
+        "descripcion": "Cochabamba",
+        "activo": 1
+    },
+    {
+        "codigo": "SC",
+        "descripcion": "Santa Cruz",
+        "activo": 1
+    },
+    {
+        "codigo": "OR",
+        "descripcion": "Oruro",
+        "activo": 1
+    },
+    {
+        "codigo": "PO",
+        "descripcion": "Potosi",
+        "activo": 1
+    },
+    {
+        "codigo": "CH",
+        "descripcion": "Chuquisaca",
+        "activo": 1
+    },
+    {
+        "codigo": "TA",
+        "descripcion": "Tarija",
+        "activo": 1
+    },
+    {
+        "codigo": "BE",
+        "descripcion": "Beni",
+        "activo": 1
+    },
+    {
+        "codigo": "PA",
+        "descripcion": "Pando",
+        "activo": 1
+    }
+]

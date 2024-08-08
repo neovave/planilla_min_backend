@@ -1,0 +1,30 @@
+[
+    {
+      "nombre": "Cotización Mensual",
+      "porcentaje": "10",
+      "descripcion": "Mensual",
+      "afp_codigo": "{\"G\": \"401\", \"I\": \"301\", \"P\": \"302\"}",
+      "activo": 1
+    },
+    {
+        "nombre": "Prima por Riesgo Común",
+        "porcentaje": "1.71",
+        "descripcion": "Riesgo",
+        "afp_codigo": "{\"G\": \"402\", \"I\": \"303\", \"P\": \"304\"}",
+        "activo": 1
+    },
+    {
+        "nombre": "Comisión AFP",
+        "porcentaje": "0.5",
+        "descripcion": "Comisión",
+        "afp_codigo": "{\"G\": \"403\", \"I\": \"305\", \"P\": \"306\"}",
+        "activo": 1
+    },
+    {
+        "nombre": "Aporte Solidario del Asegurado",
+        "porcentaje": "0.5",
+        "descripcion": "Ap. Solid.",
+        "afp_codigo": "{\"G\": \"A SOLID GEST\", \"I\": \"A SOLID FUT\", \"P\": \"A SOLID PREV\"}",
+        "activo": 1
+    }   
+]

@@ -1,0 +1,38 @@
+[
+    {
+      "nombre": "Prima por Riesgo Profesional",
+      "porcentaje": "1.71",
+      "descripcion": "R.Prof",
+      "aplica_certificacion_afp":null,
+      "aplica_edad_limite":true,
+      "apat_codigo": "{\"G\": \"13120\", \"I\": \"13120\", \"P\": \"13120\"}",
+      "activo": 1
+    },
+    {
+        "nombre": "Aporte Patronal Solidario",
+        "porcentaje": "3",
+        "descripcion": "A.SOLID",
+        "aplica_certificacion_afp":null,
+        "aplica_edad_limite":null,
+        "apat_codigo": "{\"G\": \"13131\", \"I\": \"13131\", \"P\": \"13131\"}",
+        "activo": 1
+    },
+    {
+        "nombre": "Aporte Patronal para Vivienda",
+        "porcentaje": "2",
+        "descripcion": "VIVIENDA",
+        "aplica_certificacion_afp":null,
+        "aplica_edad_limite":null,
+        "apat_codigo": "{\"G\": \"132\", \"I\": \"132\", \"P\": \"132\"}",
+        "activo": 1
+    },
+    {
+        "nombre": "Aporte de salud a corto plazo",
+        "porcentaje": "10",
+        "descripcion": "SALUD",
+        "aplica_certificacion_afp":null,
+        "aplica_edad_limite":null,
+        "apat_codigo": "{\"CNS\": \"13110\"}",
+        "activo": 1
+    }   
+]
