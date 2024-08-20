@@ -1,6 +1,6 @@
 const { validatedResponse } = require('../validated-response');
 const { checkSchema } = require('express-validator');
-const { idExistPlanFecha, idExistMes, idExistEmpleado, idExistCargo, idExistTipoMov } = require('./database');
+const { idExistPlanFecha, idExistMes } = require('./database');
 
 const validationSchema =  {
     id_mes: {
@@ -13,10 +13,9 @@ const validationSchema =  {
         isEmpty: {
             negated: true, errorMessage: "La fecha limite es obligatorio",
         },
-        isLength: {
-            errorMessage: 'El valor debe tener mínimo a 10 caracteres y máximo 10 caracteres',
-            options: { min: 10, max: 10},
-        },
+        isDate: {
+            negated: true, errorMessage: "La fecha tiene que ser tipo Fecha",
+        }, 
     },
     tipo: {
         isEmpty: {
@@ -27,11 +26,11 @@ const validationSchema =  {
             options: { min: 4, max: 255},
         },
     },
-    activo: {
-        isBoolean: {
-            errorMessage: "El estado debe ser de tipo bigint [0,1]",
-        }
-    },
+    // activo: {
+    //     isBoolean: {
+    //         errorMessage: "El estado debe ser de tipo bigint [0,1]",
+    //     }
+    // },
     
 };
 

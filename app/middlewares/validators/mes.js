@@ -56,7 +56,17 @@ const getValidateUpdate= [
             in: ["params"],
             custom: { options: idExistMes},
         },
-        ...validationSchema
+        estado: {
+            isEmpty: {
+                negated: true, errorMessage: "El campo estado es obligatorio",
+            },
+            isLength: {
+                errorMessage: 'El campo mes debe tener mínimo y máximo 2 caracteres',
+                options: { min: 2, max: 2},
+            },        
+            //custom: { options: nameExistGestion },
+        },
+        //...validationSchema
     }),
     validatedResponse
 ];

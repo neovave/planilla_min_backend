@@ -1,19 +1,18 @@
 const { validatedResponse } = require('../validated-response');
 const { checkSchema } = require('express-validator');
-const { idExistCatCargo, nameExistCatCargo } = require('./database');
+const {  nameExistTipoMovimiento, idExistTipoMovimiento } = require('./database');
 
 const validationSchema =  {
     nombre: {
         isEmpty: {
-            negated: true, errorMessage: "El campo nombre es obligatorio",
+            negated: true, errorMessage: "El nombre es obligatorio",
         },
         isLength: {
-            errorMessage: 'El nombre debe tener mínimo a 1 caracteres y máximo 50 caracteres',
-            options: { min: 1, max: 50},
-        },        
-        custom: { options: nameExistCatCargo },
+            errorMessage: 'El nombre debe tener mínimo a 4 caracteres y máximo 120 caracteres',
+            options: { min: 4, max: 120},
+        },
+        custom: { options: nameExistTipoMovimiento },
     },
-    
     /*activo: {
         isBoolean: {
             errorMessage: "El estado debe ser de tipo boolean [false, true]",
@@ -30,7 +29,7 @@ const getValidateUpdate= [
     checkSchema({
         id: {
             in: ["params"],
-            custom: { options: idExistCatCargo},
+            custom: { options: idExistTipoMovimiento},
         },
         ...validationSchema
     }),
@@ -39,10 +38,10 @@ const getValidateUpdate= [
 
 const validateDelete = [
     checkSchema({
-        id: { in: ["params"], custom: { options: idExistCatCargo} },
+        id: { in: ["params"], custom: { options: idExistTipoMovimiento} },
         activo: {
-            isInt: {
-                errorMessage: "El estado debe ser entero",
+            isString: {
+                errorMessage: "El estado debe ser de tipo bigint - id",
             }
         }
     }),

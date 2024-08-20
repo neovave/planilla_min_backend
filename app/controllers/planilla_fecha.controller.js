@@ -1,24 +1,45 @@
 
 const { response, request } = require('express');
 const { Op } = require('sequelize');
-const {Planilla_fecha, sequelize} = require('../database/config');
+const {Planilla_fecha, Sequelize} = require('../database/config');
 const paginate = require('../helpers/paginate');
+const db = require('../database/config');
 
 const getPlanillaFechaPaginate = async (req = request, res = response) => {
     try {
-        let {query, page, limit, type, activo,filter, id_mes,id } = req.query;
+        let {query, page, limit, type, activo,filter, id_mes,id, tipo } = req.query;
         const optionsDb = {
-            attributes: { exclude: ['createdAt'] },
+            attributes: { exclude: ['createdAt'],
+                // include: [
+                //     'fecha_limite',
+                //     [
+                //     Sequelize.literal(`(SELECT u.valor FROM ufvs u WHERE u.fecha = Planilla_fecha.fecha_limite)`),
+                //     'valor_ufv'
+                //     ]
+                // ]
+             },
             order: [['id', 'ASC']],
             where: { 
                 [Op.and]: [
-                    { activo }, id_mes? {id_mes} : {}, id? {id} : {}, 
+                    { activo }, id_mes? {id_mes} : {}, id? {id} : {}, tipo?{tipo}:{}
                 ],
                 
             },
             include: [
-                { association: 'planillafecha_mes',  attributes: {exclude: ['createdAt']},  
+                { association: 'planillafecha_mes',  attributes: {exclude: ['createdAt']},                      
+                    // include : [
+                    //     { association: 'mes_ufv',  attributes: {exclude: ['createdAt']},
+                    //         where: {
+                    //             fecha:{
+                    //                 [Op.eq]: sequelize.col('Planilla_fecha.fecha_limite')
+                    //             }
+                            
+                    //         }
+                    //     }
+                    // ],
+
                 }, 
+                
               //  { association: 'asignacioncargoemp_cargo',  attributes: {exclude: ['createdAt','status','updatedAt']},}, 
             ],
         };
@@ -38,11 +59,34 @@ const getPlanillaFechaPaginate = async (req = request, res = response) => {
         });
     }
 }
+const getPlanillaFechaRciva = async (req = request, res = response) => {
+    try {
+        let {query, page, limit, type, activo,filter, id_mes,id, tipo } = req.query;
+        
+        const planillaFechasRciva = await db.sequelize.query("select pf.id, pf.id_mes, pf.fecha_limite, m.mes_literal, (select u.valor from ufvs u where u.fecha= pf.fecha_limite) as valor_ufv, pf.activo, pf.tipo from planilla_fechas pf inner join  meses m on m.id= pf.id_mes where pf.tipo = :tipo ", {
+            type: Sequelize.QueryTypes.SELECT,
+            replacements: { tipo: tipo},
+          });
+        
+        return res.status(200).json({
+            ok: true,
+            planillaFechasRciva
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            ok: false,
+            errors: [{ msg: `Ocurrió un imprevisto interno | hable con soporte`}],
+        });
+    }
+}
 
 const newPlanillaFecha = async (req = request, res = response ) => {
     
     try {
-        const { body } = req.body;
+        const body = req.body;
+        body.activo = 1;
+        console.log(body);
         const planillaFecha = await Planilla_fecha.create(body);
         
         return res.status(201).json({
@@ -99,7 +143,8 @@ const activeInactivePlanillaFecha = async (req = request, res = response) => {
 
 module.exports = {
     getPlanillaFechaPaginate,
+    getPlanillaFechaRciva,
     newPlanillaFecha,
     updatePlanillaFecha,
-    activeInactivePlanillaFecha
+    activeInactivePlanillaFecha,
 };

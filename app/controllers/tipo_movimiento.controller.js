@@ -1,18 +1,18 @@
 
 const { response, request } = require('express');
 const { Op } = require("sequelize");
-const { Gestion,Mes } = require('../database/config');
+const { Tipo_movimiento } = require('../database/config');
 const paginate = require('../helpers/paginate');
 
-const getMesPaginate = async (req = request, res = response) => {
+const getTipoMovimientoPaginate = async (req = request, res = response) => {
     try {
-        const {query, page, limit, type, status, activo, id, id_gestion, estado} = req.query;
+        const {query, page, limit, type, status, activo, id} = req.query;
         const optionsDb = {
             attributes: { exclude: ['createdAt'] },
             order: [['id', 'ASC']],
             where: { 
                 [Op.and]: [ 
-                    { activo },id_gestion?{id_gestion}:{},estado?{estado}:{}, id?{id}:{} 
+                    { activo}, id? {id} : {}                    
                 ],
                 
             },
@@ -20,10 +20,10 @@ const getMesPaginate = async (req = request, res = response) => {
                 
             ],
         };
-        let meses = await paginate(Mes, page, limit, type, query, optionsDb); 
+        let tipoMovimientos = await paginate(Tipo_movimiento, page, limit, type, query, optionsDb); 
         return res.status(200).json({
             ok: true,
-            meses
+            tipoMovimientos
         });
     } catch (error) {
         console.log(error);
@@ -34,14 +34,14 @@ const getMesPaginate = async (req = request, res = response) => {
     }
 }
 
-const newMes = async (req = request, res = response ) => {
+const newTipoMovimiento = async (req = request, res = response ) => {
     try {
         const body = req.body;
         body.activo = 1;
-        const mesNew = await Mes.create(body);
+        const tipoMovimientoNew = await Tipo_movimiento.create(body);
         return res.status(201).json({
             ok: true,
-            mesNew
+            tipoMovimientoNew
         });
     } catch (error) {
         console.log(error);
@@ -52,16 +52,16 @@ const newMes = async (req = request, res = response ) => {
     }
 }
 
-const updateMes = async (req = request, res = response) => {
+const updateTipoMovimiento = async (req = request, res = response) => {
     try {
         const { id } = req.params;
         const body = req.body;
         //const cursos = await Curso.findByPk( uuid);
-        const meses = await Mes.findOne({where: {id}} );
-        await meses.update(body);
+        const tipoMovimiento = await Tipo_movimiento.findOne({where: {id}} );
+        await tipoMovimiento.update(body);
         return res.status(201).json({
             ok: true,
-            msg: 'Mes modificada exitosamente'
+            msg: 'Tipo Descuento y sanciones  modificada exitosamente'
         });   
     } catch (error) {
         console.log(error);
@@ -72,15 +72,15 @@ const updateMes = async (req = request, res = response) => {
     }
 }
 
-const activeInactiveMes = async (req = request, res = response) => {
+const activeInactiveTipoMovimiento = async (req = request, res = response) => {
     try {
         const { id } = req.params;
         const { activo } = req.body;
-        const meses = await Mes.findByPk(id);
-        await meses.update({activo});
+        const tipoMovimiento = await Tipo_movimiento.findByPk(id);
+        await tipoMovimiento.update({activo});
         res.status(201).json({
             ok: true,
-            msg: activo ? 'Mes activada exitosamente' : 'Mes inactiva exitosamente'
+            msg: activo ? 'Tipo descuento y sanción activada exitosamente' : 'Tipo descuento y sanción inactiva exitosamente'
         });   
     } catch (error) {
         console.log(error);
@@ -92,8 +92,8 @@ const activeInactiveMes = async (req = request, res = response) => {
 }
 
 module.exports = {
-    getMesPaginate,
-    newMes,
-    updateMes,
-    activeInactiveMes
+    getTipoMovimientoPaginate,
+    newTipoMovimiento,
+    updateTipoMovimiento,
+    activeInactiveTipoMovimiento
 };

@@ -40,6 +40,9 @@ module.exports = {
       monto_mensual: {
         type: Sequelize.DECIMAL(8,2)
       },
+      codigo_escala: {
+        type: Sequelize.INTEGER
+      },
       estado: {
         type: Sequelize.STRING(2)
       },

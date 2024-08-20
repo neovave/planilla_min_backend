@@ -55,6 +55,7 @@ const newGestion = async (req = request, res = response ) => {
         
         let gestion = { gestiones: gestiones };
         //console-log ("gestiones------------------:",gestion);
+        gestion.estado = 'PE';
         gestion.activo = '1';
         // Crear la fecha de inicio de la gestión
         const fecha_inicio = moment(`${gestion.gestiones}-01-01`, 'YYYY-MM-DD');
@@ -109,7 +110,9 @@ function generarMesesConFechas(year, id) {
                 mes_literal: meses_literal[mes], //moment({ month: mes }).format('MMMM'),
                 id_gestion: id,
                 fecha_inicio: inicioMes,
-                fecha_limite: finMes
+                fecha_limite: finMes,
+                estado:'PE',
+                activo:1
             });
         }
         return meses;
@@ -138,9 +141,9 @@ const updateGestion = async (req = request, res = response) => {
 const activeInactiveGestion = async (req = request, res = response) => {
     try {
         const { id } = req.params;
-        const { activo, motivo_cierre } = req.body;
+        const { motivo_cierre,estado } = req.body;
         const gestiones = await Gestion.findByPk(id);
-        await gestiones.update({motivo_cierre,activo});
+        await gestiones.update({motivo_cierre,estado});
         res.status(201).json({
             ok: true,
             msg: activo ? 'Gestion activada exitosamente' : 'Gestion inactiva exitosamente'

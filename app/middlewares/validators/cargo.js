@@ -59,6 +59,11 @@ const validationSchema =  {
         }
       
     },
+    codigo_escala: {
+        isInt: {
+            errorMessage: 'El nivel debe ser un número entero válido.'
+        }
+    },
     /*activo: {
         isBoolean: {
             errorCargosage: "El estado debe ser de tipo boolean [false, true]",

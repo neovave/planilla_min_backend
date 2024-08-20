@@ -31,6 +31,9 @@ module.exports = {
       id_user_cierre: {
         type: Sequelize.INTEGER
       },
+      estado: {
+        type: Sequelize.STRING(2)
+      },
       activo: {
         type: Sequelize.BIGINT
       },

@@ -26,6 +26,8 @@ const {
     Rciva_certificacion,
     Rciva_descargo_salario,
     Rciva_planilla,
+    Categoria_cargo,
+    Cargo
 
     
   } = require("../../database/config");
@@ -77,6 +79,18 @@ const {
       throw new Error(`La ufv con id: ${id}, no existe`);
     }
   };
+  const verificarDecimal= async( valor = "") =>{
+    const decimalPart = valor.toString().split('.')[1];
+    if(decimalPart.length > 4){    
+      throw new Error(`Los decimales debe ser menor 4 carecteres`);
+    }
+  };
+  const fechaExistUfv = async (fecha = "",{req}) => {
+    const fechaExist = await Ufv.findOne({ where: { fecha } });
+    if(fechaExist) {
+      throw new Error(`La ufv con fecha: ${fecha}, ya existe`);
+    }
+  };
   // const uuidExistCurso= async (uuid = "") => {
   //   const idExist = await Curso.findOne( { where: {uuid} });
   //   if (!idExist) {
@@ -91,14 +105,7 @@ const {
   //     throw new Error(`El curso con código: ${codigo}, ya existe`);
   //   }
   // };
-  // const nameExistCurso = async (nombre = "",{req}) => {
-  //   const { uuid } = req.params;
-  //   const nameExist = await Curso.findOne({ where: { nombre } });
-  //   if(!nameExist) return;
-  //   if (nameExist.uuid != uuid) {
-  //     throw new Error(`El curso con nombre: ${nombre}, ya existe`);
-  //   }
-  // };
+  // 
   // =================================================================
   // ===================== GESTION ============================
   const idExistGestion = async (id = "") => {
@@ -123,6 +130,7 @@ const {
       throw new Error(`El mes con id: ${id}, no existe`);
     }
   };
+
   
   // =================================================================
   // ===================== TIPO PLANILLA ============================
@@ -275,11 +283,13 @@ const {
     }
   };
   const nameExistCatCargo = async (nombre = "",{req}) => {
+    
     const { id } = req.params;
     const nombreExist = await Categoria_cargo.findOne({ where: { nombre } });
     if(!nombreExist) return;
+    
     if (nombreExist.id != id) {
-      throw new Error(`La categoria cargo con nombre: ${nombre}, ya existe`);
+      throw new Error(`La categoria con nombre: ${nombre}, ya existe`);
     }
   };
   // =================================================================
@@ -370,8 +380,25 @@ const {
       throw new Error(`El rciva planilla con id: ${id}, no existe`);
     }
   };
-  
-  
+
+  // =================================================================
+  // ========================= Tipo Movimiento =======================
+  const idExistTipoMovimiento = async (id = "") => {
+    const idExist = await Tipo_movimiento.findByPk(id);
+    if (!idExist) {
+      throw new Error(`Tipo movimiento con id: ${id}, no existe`);
+    }
+  };
+
+  const nameExistTipoMovimiento = async (nombre = "",{req}) => {
+    const { id } = req.params;
+    const nameExist = await Tipo_movimiento.findOne({ where: { nombre } });
+    if(!nameExist) return;
+    if (nameExist.id != id) {
+      throw new Error(`El tipo movimiento con nombre: ${nombre}, ya existe`);
+    }
+  };
+
   // =================================================================
   // ========================= Criterio Evaluacion =======================
   const idExistCriterioEva = async (id = "") => {
@@ -594,6 +621,8 @@ const {
     idExistEmpleado,
     ciExistEmpleado,
     idExistUfv,
+    verificarDecimal,
+    fechaExistUfv,
     idExistGestion,
     nameExistGestion,
     idExistMes,
@@ -627,6 +656,8 @@ const {
     idExistRcivaCert,
     idExistRcivaDescargo,
     idExistRcivaPlanilla,
+    idExistTipoMovimiento,
+    nameExistTipoMovimiento,
 
     idExistCriterioEva,
     nameExistCriterioEva,

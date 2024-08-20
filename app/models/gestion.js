@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     fecha_limite: DataTypes.DATE,
     motivo_cierre: DataTypes.STRING(200),
     id_user_cierre: DataTypes.INTEGER,
+    estado: DataTypes.STRING(2),
     activo: DataTypes.BIGINT
   }, {
     sequelize,

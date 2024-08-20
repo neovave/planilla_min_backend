@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     fecha_inicio: DataTypes.DATE,
     fecha_limite: DataTypes.DATE,
     id_user_cierre: DataTypes.INTEGER,
+    estado: DataTypes.STRING(2),
     activo: DataTypes.BIGINT
   }, {
     sequelize,

@@ -35,13 +35,8 @@ const validationSchema =  {
     //         options: { min: 10, max: 10},
     //     },
     // },
-    motivo_cierre: {
-        optional: { options: { checkFalsy: true } },
-        isLength: {
-            errorMessage: 'El valor debe tener mínimo a 10 caracteres y máximo 10 caracteres',
-            options: { min: 1, max: 200},
-        },
-    }
+    
+    
 
     /*activo: {
         isBoolean: {
@@ -78,11 +73,20 @@ const validateDelete = [
                 options: { min: 1, max: 200},
             },
         },
-        activo: {
-            isInt: {
-                errorMessage: "El estado debe ser entero",
-            }
-        }
+        estado: {
+            isEmpty: {
+                         negated: true, errorMessage: "El estado es obligatorio",
+                    },
+            isLength: {
+                errorMessage: 'El valor debe tener 2 caracteres',
+                options: { min: 2, max: 2},
+            },
+        },
+        // activo: {
+        //     isInt: {
+        //         errorMessage: "El estado debe ser entero",
+        //     }
+        // }
     }),
     validatedResponse
 ]

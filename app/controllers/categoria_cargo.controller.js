@@ -36,7 +36,8 @@ const getCatCargoPaginate = async (req = request, res = response) => {
 const newCatCargo = async (req = request, res = response ) => {
 
     try {
-        const { body } = req.body;
+        const body = req.body;
+        body.activo = 1;
         
         const catCargoNew = await Categoria_cargo.create(body);
         

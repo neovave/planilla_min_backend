@@ -1,6 +1,7 @@
 'use strict';
 const {
-  Model
+  Model,
+  INTEGER
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Cargo extends Model {
@@ -23,8 +24,9 @@ module.exports = (sequelize, DataTypes) => {
     monto: DataTypes.DECIMAL(8,2),
     nivel: DataTypes.INTEGER,
     cantidad_item: DataTypes.INTEGER,
-    tipo: DataTypes.STRING(20),
+    tipo: DataTypes.STRING(100),
     monto_mensual: DataTypes.DECIMAL(8,2),
+    codigo_escala: INTEGER,
     estado: DataTypes.STRING(2),
     activo: DataTypes.BIGINT,
     id_user_create: DataTypes.INTEGER,

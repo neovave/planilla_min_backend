@@ -20,9 +20,8 @@ const getCargoPaginate = async (req = request, res = response) => {
             },
             include: [
                 { association: 'cargo_categoriacargo',  attributes: {exclude: ['createdAt']},  
-                    
                 }, 
-                { association: 'cargo_asignacioncargoemp',  attributes: {exclude: ['createdAt','status','updatedAt']},}, 
+                { association: 'cargo_asignacioncargoemp',  attributes: {exclude: ['createdAt','status','updatedAt']}, }, 
             ],
         };
         if(type?.includes('.')){
@@ -45,8 +44,8 @@ const getCargoPaginate = async (req = request, res = response) => {
 const newCargo = async (req = request, res = response ) => {
     
     try {
-        const { body } = req.body;
-        
+        const body  = req.body;
+        body.activo = 1;
         const cargoNew = await Cargo.create(body);
         return res.status(201).json({
             ok: true,

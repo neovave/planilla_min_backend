@@ -1,6 +1,7 @@
 const { validatedResponse } = require('../validated-response');
 const { checkSchema } = require('express-validator');
-const { idExistMes, idExistUfv} = require('./database');
+const { idExistMes, idExistUfv, verificarDecimal, fechaExistUfv} = require('./database');
+const { options } = require('../../routes/auth');
 
 const validationSchema =  {
     id_mes: {
@@ -13,19 +14,55 @@ const validationSchema =  {
         isEmpty: {
             negated: true, errorMessage: "Fecha ufv es obligatorio",
         },
-        isLength: {
-            errorMessage: 'El valor debe tener mínimo a 10 caracteres y máximo 10 caracteres',
-            options: { min: 10, max: 10},
+        isDate: {
+            negated: true, errorMessage: "La fecha inicio es obligatorio",
         },
+        custom: {options: fechaExistUfv },
     },
     valor: {
         isEmpty: {
             negated: true, errorMessage: "El valor dirigido es obligatorio",
         },
-        isLength: {
-            errorMessage: 'El valor dirigido debe tener mínimo a 1 caracter entero y 4 caracteres decimales(ej. 1,2345)',
-            options: { min: 6, max: 6},
+        isNumeric:{
+            errorMessage:"El valor debe ser númerico"
+        },        
+        isfloat:{
+
         },
+        custom:{ options: verificarDecimal },
+    }
+    /*activo: {
+        isBoolean: {
+            errorMessage: "El estado debe ser de tipo boolean [false, true]",
+        }
+    }*/
+};
+const validationUpdateSchema =  {
+    id_mes: {
+        isEmpty: {
+            negated: true, errorMessage: "Id mes es obligatorio",
+        },
+        custom: { options: idExistMes},
+    },
+    fecha: {
+        isEmpty: {
+            negated: true, errorMessage: "Fecha ufv es obligatorio",
+        },
+        isDate: {
+            negated: true, errorMessage: "La fecha inicio es obligatorio",
+        },        
+    },
+    valor: {
+        isEmpty: {
+            negated: true, errorMessage: "El valor dirigido es obligatorio",
+        },
+        isNumeric:{
+            errorMessage:"El valor debe ser númerico"
+        },        
+        isfloat:{
+
+        },
+        custom:{ options: verificarDecimal },
     }
     /*activo: {
         isBoolean: {
@@ -45,7 +82,7 @@ const getValidateUpdate= [
             in: ["params"],
             custom: { options: idExistUfv},
         },
-        ...validationSchema
+        ...validationUpdateSchema
     }),
     validatedResponse
 ];
