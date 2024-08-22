@@ -1,6 +1,6 @@
 const { validatedResponse } = require('../validated-response');
 const { checkSchema } = require('express-validator');
-const { idExistAsigCargoEmp, idExistGestion, idExistEmpleado, idExistCargo, idExistTipoMov } = require('./database');
+const { idExistAsigCargoEmp, idExistGestion, idExistEmpleado, idExistCargo, idExistTipoMov, idExistReparticion, idExistDestino } = require('./database');
 
 const validationSchema =  {
     id_gestion: {
@@ -27,57 +27,76 @@ const validationSchema =  {
         },
         custom: { options: idExistTipoMov}, //verificamos si existe uuid
     },
+    id_reparticion: {
+        isEmpty: {
+            negated: true, errorMessage: "Id repartición es obligatorio",
+        },
+        custom: { options: idExistReparticion}, //verificamos si existe uuid
+    },
+    id_destino: {
+        isEmpty: {
+            negated: true, errorMessage: "Id destino es obligatorio",
+        },
+        custom: { options: idExistDestino}, //verificamos si existe uuid
+    },
     fecha_inicio: {
         isEmpty: {
             negated: true, errorMessage: "La fecha inicio es obligatorio",
         },
-        isLength: {
-            errorMessage: 'El valor debe tener mínimo a 10 caracteres y máximo 10 caracteres',
-            options: { min: 10, max: 10},
-        },
+        isDate: {
+            negated: true, errorMessage: "La fecha inicio es obligatorio",
+        },        
     },
     fecha_limite: {
-        isEmpty: {
-            negated: true, errorMessage: "La fecha fin es obligatorio",
-        },
-        isLength: {
-            errorMessage: 'El valor debe tener mínimo a 10 caracteres y máximo 10 caracteres',
-            options: { min: 10, max: 10},
-        },
+        optional: { options: { checkFalsy: true } },        
+        isDate: {
+            negated: true, errorMessage: "La fecha limite es obligatorio",
+        },        
+        
     },
     motivo: {
         isEmpty: {
             negated: true, errorMessage: "El motivo es obligatorio",
         },
         isLength: {
-            errorMessage: 'El valor debe tener mínimo a 4 caracteres y máximo 300 caracteres',
+            errorMessage: 'El motivo debe tener mínimo a 4 caracteres y máximo 300 caracteres',
             options: { min: 4, max: 300},
         },
     },
     nro_item: {
-        isEmpty: {
-            negated: true, errorMessage: "El motivo es obligatorio",
-        },
+        optional: { options: { checkFalsy: true } },
         isLength: {
-            errorMessage: 'El valor debe tener mínimo a 4 caracteres y máximo 300 caracteres',
+            errorMessage: 'El nro item debe tener mínimo a 4 caracteres y máximo 300 caracteres',
             options: { min: 4, max: 300},
         },
     },
     ingreso: {
+        optional: { options: { checkFalsy: true } },
         isBoolean: {
             errorMessage: 'El ingreso debe ser tipo boolean válido.'
         }      
     },
     retiro: {
+        optional: { options: { checkFalsy: true } },
         isBoolean: {
             errorMessage: 'El ingreso debe ser tipo boolean válido.'
         }      
     },
-    activo: {
-        isBoolean: {
-            errorMessage: "El estado debe ser de tipo bigint [0,1]",
-        }
+    estado: {
+        isEmpty: {
+            negated: true, errorMessage: "El estado es obligatorio",
+        },
+        isLength: {
+            errorMessage: 'El estado debe tener mínimo a 2 caracteres y máximo 2 caracteres',
+            options: { min: 2, max: 2},
+        },
     },
+    
+    // activo: {
+    //     isBoolean: {
+    //         errorMessage: "El estado debe ser de tipo bigint [0,1]",
+    //     }
+    // },
     
 };
 

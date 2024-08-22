@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Empleado.hasMany(models.Users,{as:'user_emplado' ,foreignKey: 'id_empleado' });
       Empleado.belongsTo(models.Lugar_expedido,{as:'empleado_ci_expedido', foreignKey:'id_expedido'});
+      Empleado.belongsTo(models.Grado_academico,{as:'empleado_gradoacademico', foreignKey:'id_grado_academico'});
       Empleado.hasMany(models.Asignacion_descuento,{as:'empleado_asignaciondescuento', foreignKey:'id_empleado'});
       Empleado.hasMany(models.Asignacion_sancion,{as:'empleado_asignacionsancion', foreignKey:'id_empleado'});
       //Empleado.hasMany(models.Seguro_empleado,{as:'empleado_seguroempleado', foreignKey:'id_empleado'});

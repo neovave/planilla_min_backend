@@ -16,6 +16,8 @@ module.exports = (sequelize, DataTypes) => {
       Asignacion_cargo_empleado.belongsTo(models.Cargo,{as:'asignacioncargoemp_cargo', foreignKey:'id_cargo'});
       Asignacion_cargo_empleado.belongsTo(models.Tipo_movimiento,{as:'asignacioncargoemp_tipomovimiento', foreignKey:'id_tipo_movimiento'});
       Asignacion_cargo_empleado.hasMany(models.Asistencia,{as:'asignacioncargoemp_asistencia', foreignKey:'id_asig_cargo'});
+      Asignacion_cargo_empleado.belongsTo(models.Reparticion,{as:'asignacioncargoemp_reparticion', foreignKey:'id_reparticion'});
+      Asignacion_cargo_empleado.belongsTo(models.Destino,{as:'asignacioncargoemp_destino', foreignKey:'id_destino'});
     }
   }
   Asignacion_cargo_empleado.init({
@@ -29,7 +31,8 @@ module.exports = (sequelize, DataTypes) => {
     activo: DataTypes.BIGINT,
     id_user_create: DataTypes.INTEGER,
     id_user_mod: DataTypes.INTEGER,
-    id_user_delete: DataTypes.INTEGER
+    id_user_delete: DataTypes.INTEGER,
+    estado: DataTypes.STRING(2)
   }, {
     sequelize,
     modelName: 'Asignacion_cargo_empleado',

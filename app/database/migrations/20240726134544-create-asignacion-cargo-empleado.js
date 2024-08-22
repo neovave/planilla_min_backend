@@ -49,6 +49,27 @@ module.exports = {
           key: "id",
         },
       },
+      id_reparticion: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'reparticiones',
+            schema: 'public'
+          },
+          key: "id",
+        },
+      },
+      
+      id_destino: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'destinos',
+            schema: 'public'
+          },
+          key: "id",
+        },
+      },
       ci_empleado: {
         type: Sequelize.STRING(15)
       },
@@ -69,6 +90,9 @@ module.exports = {
       },
       retiro: {
         type: Sequelize.BOOLEAN
+      },
+      estado: {
+        type: Sequelize.STRING(2)
       },
       activo: {
         type: Sequelize.BIGINT

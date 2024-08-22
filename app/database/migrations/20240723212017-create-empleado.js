@@ -29,6 +29,16 @@ module.exports = {
           key: "id",
         },
       },
+      id_grado_academico: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'grado_academicos',
+            schema: 'public'
+          },
+          key: "id",
+        },
+      },
       numero_documento: {
         type: Sequelize.STRING(10)
       },

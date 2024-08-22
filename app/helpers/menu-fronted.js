@@ -20,6 +20,9 @@ const getMenuFrontend = (role = 'OPERADOR') => {
             label: 'Empleado', icon: 'pi pi-fw pi-shopping-bag',
             items: [
               {
+                label: 'Asignacion Cargo', icon: 'pi pi-fw pi-user',routerLink: ['/salarios/empleado/asignacionCargoEmp']
+              },
+              {
                 label: 'Empleado', icon: 'pi pi-fw pi-user',routerLink: ['/salarios/empleado/empleado']
               },
               {

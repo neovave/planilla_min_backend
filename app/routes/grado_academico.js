@@ -2,8 +2,8 @@ const { Router } = require('express');
 const { validarJWT } = require('../middlewares/validators/validar-jwt');
 const { validarIsAdmin } = require('../middlewares/validators/validar-is-admin');
 const toUpperCaseConvert = require('../middlewares/touppercase-convert');
-const { getEmpleadoPaginate, getEmpleado, newEmpleado, updateEmpleado /*activeInactiveEmpleado*/ } = require('../controllers/empleado.controller');
-const { getValidateCreate, getValidateUpdate, validateDelete } = require('../middlewares/validators/empledo');
+const { getGradoAcademicoPaginate, newGradoAcademico, updateGradoAcademico, activeInactiveGradoAcademico } = require('../controllers/grado_academico.controller');
+const { getValidateCreate, getValidateUpdate, validateDelete } = require('../middlewares/validators/grado_academico');
 
 const router = Router();
 
@@ -11,32 +11,27 @@ const router = Router();
 router.get('/',[
     validarJWT,
     validarIsAdmin,
-],getEmpleadoPaginate );
-
-router.get('/user/',[
-    validarJWT,
-    //validarIsAdmin,
-],getEmpleado );
+],getGradoAcademicoPaginate );
 
 router.post('/', [
     validarJWT,
     validarIsAdmin,
     toUpperCaseConvert,
     getValidateCreate
-],newEmpleado );
+],newGradoAcademico );
 
 router.put('/:id', [
     validarJWT,
     validarIsAdmin,
     toUpperCaseConvert,
     getValidateUpdate
-],updateEmpleado);
+],updateGradoAcademico);
 
-// router.put('/destroyAndActive/:id', [
-//     validarJWT,
-//     validarIsAdmin,
-//     //validateDelete
-// ],activeInactiveEmpleado );
+router.put('/destroyAndActive/:id', [
+    validarJWT,
+    validarIsAdmin,
+    validateDelete
+],activeInactiveGradoAcademico );
 
 
 module.exports = router;

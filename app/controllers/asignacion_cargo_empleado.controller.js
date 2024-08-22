@@ -20,6 +20,8 @@ const getAsigCargoEmpPaginate = async (req = request, res = response) => {
                 { association: 'asignacioncargoemp_empleado',  attributes: {exclude: ['createdAt']},  
                 }, 
                 { association: 'asignacioncargoemp_cargo',  attributes: {exclude: ['createdAt','status','updatedAt']},}, 
+                { association: 'asignacioncargoemp_reparticion',  attributes: {exclude: ['createdAt','status','updatedAt']},}, 
+                { association: 'asignacioncargoemp_destino',  attributes: {exclude: ['createdAt','status','updatedAt']},}, 
             ],
         };
         if(type?.includes('.')){
@@ -42,7 +44,8 @@ const getAsigCargoEmpPaginate = async (req = request, res = response) => {
 const newAsigCargoEmp = async (req = request, res = response ) => {
     
     try {
-        const { body } = req.body;
+        const  body  = req.body;
+        
         const asigCargoEmpew = await Asignacion_cargo_empleado.create(body);
         
         return res.status(201).json({

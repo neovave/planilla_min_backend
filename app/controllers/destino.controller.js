@@ -1,10 +1,10 @@
 
 const { response, request } = require('express');
 const { Op } = require("sequelize");
-const { Grado_academico } = require('../database/config');
+const { Destino } = require('../database/config');
 const paginate = require('../helpers/paginate');
 
-const getGradoAcademicoPaginate = async (req = request, res = response) => {
+const getDestinoPaginate = async (req = request, res = response) => {
     try {
         const {query, page, limit, type, status, activo, id} = req.query;
         const optionsDb = {
@@ -17,15 +17,15 @@ const getGradoAcademicoPaginate = async (req = request, res = response) => {
                 
             },
             include: [
-                //{ association: 'ufv_mes',  attributes: {exclude: ['createdAt']},},
+                { association: 'destino_organismo',  attributes: {exclude: ['createdAt']},},
                 
             ],
             
         };
-        let gradoAcademicos = await paginate(Grado_academico, page, limit, type, query, optionsDb); 
+        let destinos = await paginate(Destino, page, limit, type, query, optionsDb); 
         return res.status(200).json({
             ok: true,
-            gradoAcademicos
+            destinos
         });
     } catch (error) {
         console.log(error);
@@ -36,14 +36,14 @@ const getGradoAcademicoPaginate = async (req = request, res = response) => {
     }
 }
 
-const newGradoAcademico = async (req = request, res = response ) => {
+const newDestino = async (req = request, res = response ) => {
     try {
         const body = req.body;
         body.activo = 1;
-        const gradoAcademicoNew = await Grado_academico.create(body);
+        const destinoNew = await Destino.create(body);
         return res.status(201).json({
             ok: true,
-            gradoAcademicoNew
+            destinoNew
         });
     } catch (error) {
         console.log(error);
@@ -54,16 +54,16 @@ const newGradoAcademico = async (req = request, res = response ) => {
     }
 }
 
-const updateGradoAcademico = async (req = request, res = response) => {
+const updateDestino = async (req = request, res = response) => {
     try {
         const { id } = req.params;
         const body = req.body;
         //const cursos = await Curso.findByPk( uuid);
-        const gradoAcademico = await Grado_academico.findOne({where: {id}} );
-        await gradoAcademico.update(body);
+        const destinos = await Destino.findOne({where: {id}} );
+        await destinos.update(body);
         return res.status(201).json({
             ok: true,
-            msg: 'Grado Academico modificada exitosamente'
+            msg: 'Destino modificada exitosamente'
         });   
     } catch (error) {
         console.log(error);
@@ -74,15 +74,15 @@ const updateGradoAcademico = async (req = request, res = response) => {
     }
 }
 
-const activeInactiveGradoAcademico = async (req = request, res = response) => {
+const activeInactiveDestino = async (req = request, res = response) => {
     try {
         const { id } = req.params;
         const { activo } = req.body;
-        const gradoAca = await Grado_academico.findByPk(id);
-        await gradoAca.update({activo});
+        const destinos = await Destino.findByPk(id);
+        await destinos.update({activo});
         res.status(201).json({
             ok: true,
-            msg: activo ? 'Grado académico activada exitosamente' : 'Grado académico inactiva exitosamente'
+            msg: activo ? 'Destino activada exitosamente' : 'Destino inactiva exitosamente'
         });   
     } catch (error) {
         console.log(error);
@@ -94,8 +94,8 @@ const activeInactiveGradoAcademico = async (req = request, res = response) => {
 }
 
 module.exports = {
-    getGradoAcademicoPaginate,
-    newGradoAcademico,
-    updateGradoAcademico,
-    activeInactiveGradoAcademico
+    getDestinoPaginate,
+    newDestino,
+    updateDestino,
+    activeInactiveDestino
 };

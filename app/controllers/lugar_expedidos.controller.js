@@ -1,10 +1,10 @@
 
 const { response, request } = require('express');
 const { Op } = require("sequelize");
-const { Grado_academico } = require('../database/config');
+const { Lugar_expedido } = require('../database/config');
 const paginate = require('../helpers/paginate');
 
-const getGradoAcademicoPaginate = async (req = request, res = response) => {
+const getLugarExpedidoPaginate = async (req = request, res = response) => {
     try {
         const {query, page, limit, type, status, activo, id} = req.query;
         const optionsDb = {
@@ -22,10 +22,10 @@ const getGradoAcademicoPaginate = async (req = request, res = response) => {
             ],
             
         };
-        let gradoAcademicos = await paginate(Grado_academico, page, limit, type, query, optionsDb); 
+        let lugarExpedidos = await paginate(Lugar_expedido, page, limit, type, query, optionsDb); 
         return res.status(200).json({
             ok: true,
-            gradoAcademicos
+            lugarExpedidos
         });
     } catch (error) {
         console.log(error);
@@ -36,14 +36,14 @@ const getGradoAcademicoPaginate = async (req = request, res = response) => {
     }
 }
 
-const newGradoAcademico = async (req = request, res = response ) => {
+const newLugarExpedido = async (req = request, res = response ) => {
     try {
         const body = req.body;
         body.activo = 1;
-        const gradoAcademicoNew = await Grado_academico.create(body);
+        const lugarExpedidoNew = await Lugar_expedido.create(body);
         return res.status(201).json({
             ok: true,
-            gradoAcademicoNew
+            lugarExpedidoNew
         });
     } catch (error) {
         console.log(error);
@@ -54,13 +54,13 @@ const newGradoAcademico = async (req = request, res = response ) => {
     }
 }
 
-const updateGradoAcademico = async (req = request, res = response) => {
+const updateLugarExpedido = async (req = request, res = response) => {
     try {
         const { id } = req.params;
         const body = req.body;
         //const cursos = await Curso.findByPk( uuid);
-        const gradoAcademico = await Grado_academico.findOne({where: {id}} );
-        await gradoAcademico.update(body);
+        const lugarExpedido = await Lugar_expedido.findOne({where: {id}} );
+        await lugarExpedido.update(body);
         return res.status(201).json({
             ok: true,
             msg: 'Grado Academico modificada exitosamente'
@@ -74,15 +74,15 @@ const updateGradoAcademico = async (req = request, res = response) => {
     }
 }
 
-const activeInactiveGradoAcademico = async (req = request, res = response) => {
+const activeInactiveLugarExpedido = async (req = request, res = response) => {
     try {
         const { id } = req.params;
         const { activo } = req.body;
-        const gradoAca = await Grado_academico.findByPk(id);
-        await gradoAca.update({activo});
+        const lugarExpedido = await Lugar_expedido.findByPk(id);
+        await lugarExpedido.update({activo});
         res.status(201).json({
             ok: true,
-            msg: activo ? 'Grado académico activada exitosamente' : 'Grado académico inactiva exitosamente'
+            msg: activo ? 'Lugar Expedido activada exitosamente' : 'Lugar expedido inactiva exitosamente'
         });   
     } catch (error) {
         console.log(error);
@@ -94,8 +94,8 @@ const activeInactiveGradoAcademico = async (req = request, res = response) => {
 }
 
 module.exports = {
-    getGradoAcademicoPaginate,
-    newGradoAcademico,
-    updateGradoAcademico,
-    activeInactiveGradoAcademico
+    getLugarExpedidoPaginate,
+    newLugarExpedido,
+    updateLugarExpedido,
+    activeInactiveLugarExpedido
 };

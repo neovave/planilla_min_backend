@@ -2,8 +2,8 @@ const { Router } = require('express');
 const { validarJWT } = require('../middlewares/validators/validar-jwt');
 const { validarIsAdmin } = require('../middlewares/validators/validar-is-admin');
 const toUpperCaseConvert = require('../middlewares/touppercase-convert');
-const { getEmpleadoPaginate, getEmpleado, newEmpleado, updateEmpleado /*activeInactiveEmpleado*/ } = require('../controllers/empleado.controller');
-const { getValidateCreate, getValidateUpdate, validateDelete } = require('../middlewares/validators/empledo');
+const { getLugarExpedidoPaginate, newLugarExpedido, updateLugarExpedido, activeInactiveLugarExpedido } = require('../controllers/lugar_expedidos.controller');
+const { getValidateCreate, getValidateUpdate, validateDelete } = require('../middlewares/validators/lugar_expedido');
 
 const router = Router();
 
@@ -11,32 +11,27 @@ const router = Router();
 router.get('/',[
     validarJWT,
     validarIsAdmin,
-],getEmpleadoPaginate );
-
-router.get('/user/',[
-    validarJWT,
-    //validarIsAdmin,
-],getEmpleado );
+],getLugarExpedidoPaginate );
 
 router.post('/', [
     validarJWT,
     validarIsAdmin,
     toUpperCaseConvert,
     getValidateCreate
-],newEmpleado );
+],newLugarExpedido );
 
 router.put('/:id', [
     validarJWT,
     validarIsAdmin,
     toUpperCaseConvert,
     getValidateUpdate
-],updateEmpleado);
+],updateLugarExpedido);
 
-// router.put('/destroyAndActive/:id', [
-//     validarJWT,
-//     validarIsAdmin,
-//     //validateDelete
-// ],activeInactiveEmpleado );
+router.put('/destroyAndActive/:id', [
+    validarJWT,
+    validarIsAdmin,
+    validateDelete
+],activeInactiveLugarExpedido );
 
 
 module.exports = router;

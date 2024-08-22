@@ -27,7 +27,12 @@ const {
     Rciva_descargo_salario,
     Rciva_planilla,
     Categoria_cargo,
-    Cargo
+    Cargo,
+    Grado_academico,
+    Lugar_expedido,
+    Organismo,
+    Reparticion,
+    Destino
 
     
   } = require("../../database/config");
@@ -63,14 +68,24 @@ const {
       throw new Error(`El empleado con id: ${id}, no existe`);
     }
   };
-  const ciExistEmpleado = async (ci = "",{req}) => {
+  const ciExistEmpleado = async (numero_documento = "",{req}) => {
     const { id } = req.params;
-    const existDB = await Empleado.findOne({ where: { ci } });
+    const existDB = await Empleado.findOne({ where: { numero_documento } });
     if(!existDB) return;
     if (existDB.id != id) {
-      throw new Error(`El usuario con ci: ${ci}, ya existe`);
+      throw new Error(`El empleado con ci: ${numero_documento}, ya existe`);
     }
   };
+  const codigoExistEmpleado = async (cod_empleado = "",{req}) => {
+    const { id } = req.params;
+    const existDB = await Empleado.findOne({ where: { cod_empleado } });
+    if(!existDB) return;
+    if (existDB.id != id) {
+      throw new Error(`El código del empleado: ${cod_empleado}, ya existe`);
+    }
+  };
+  
+
   // =================================================================
   // ========================= UFV ===================================
   const idExistUfv= async (id = "") => {
@@ -400,6 +415,144 @@ const {
   };
 
   // =================================================================
+  // ========================= Grado Academico =======================
+  const idExistGradoAcademico = async (id = "") => {
+    const idExist = await Grado_academico.findByPk(id);
+    if (!idExist) {
+      throw new Error(`Grado académico con id: ${id}, no existe`);
+    }
+  };
+
+  const nameExistDescripcion = async (descripcion = "",{req}) => {
+    const { id } = req.params;
+    const nameExist = await Grado_academico.findOne({ where: { descripcion } });
+    if(!nameExist) return;
+    if (nameExist.id != id) {
+      throw new Error(`El descripción descripción con nombre: ${descripcion}, ya existe`);
+    }
+  };
+
+  const nameExistCodigo = async (codigo = "",{req}) => {
+    const { id } = req.params;
+    const nameExist = await Grado_academico.findOne({ where: { codigo } });
+    if(!nameExist) return;
+    if (nameExist.id != id) {
+      throw new Error(`El código descripción con nombre: ${codigo}, ya existe`);
+    }
+  };
+
+  // =================================================================
+  // ========================= Lugar expedido =======================
+  const idExistLugarExpedido = async (id = "") => {
+    const idExist = await Lugar_expedido.findByPk(id);
+    if (!idExist) {
+      throw new Error(`Lugar expedido con id: ${id}, no existe`);
+    }
+  };
+
+  const descripcionExistLugarExp = async (descripcion = "",{req}) => {
+    const { id } = req.params;
+    const nameExist = await Lugar_expedido.findOne({ where: { descripcion } });
+    if(!nameExist) return;
+    if (nameExist.id != id) {
+      throw new Error(`El descripción con nombre: ${descripcion}, ya existe`);
+    }
+  };
+
+  const codigoExistLugarExp = async (codigo = "",{req}) => {
+    const { id } = req.params;
+    const nameExist = await Lugar_expedido.findOne({ where: { codigo } });
+    if(!nameExist) return;
+    if (nameExist.id != id) {
+      throw new Error(`El código con nombre: ${codigo}, ya existe`);
+    }
+  };
+
+  // =================================================================
+  // ========================= Organimos =======================
+  const idExistOrganismo = async (id = "") => {
+    const idExist = await Organismo.findByPk(id);
+    if (!idExist) {
+      throw new Error(`Organismo con id: ${id}, no existe`);
+    }
+  };
+
+  const nombreExistOrganismo = async (nombre = "",{req}) => {
+    const { id } = req.params;
+    const nameExist = await Organismo.findOne({ where: { nombre } });
+    if(!nameExist) return;
+    if (nameExist.id != id) {
+      throw new Error(`El campo de nombre: ${nombre}, ya existe`);
+    }
+  };
+
+  const codigoExistOrganismo = async (codigo = "",{req}) => {
+    const { id } = req.params;
+    const nameExist = await Organismo.findOne({ where: { codigo } });
+    if(!nameExist) return;
+    if (nameExist.id != id) {
+      throw new Error(`El código organismo con nombre: ${codigo}, ya existe`);
+    }
+  };
+
+  // =================================================================
+  // ========================= Reparticiòn =======================
+  const idExistReparticion = async (id = "") => {
+    const idExist = await Reparticion.findByPk(id);
+    if (!idExist) {
+      throw new Error(`Reparticiòn con id: ${id}, no existe`);
+    }
+  };
+
+  const nameExistReparticion = async (nombre = "",{req}) => {
+    const { id } = req.params;
+    const nameExist = await Reparticion.findOne({ where: { nombre } });
+    if(!nameExist) return;
+    if (nameExist.id != id) {
+      throw new Error(`La raparticiòn de nombre: ${nombre}, ya existe`);
+    }
+  };
+
+  const codigoExistReparticion = async (codigo = "",{req}) => {
+    const { id } = req.params;
+    const nameExist = await Reparticion.findOne({ where: { codigo } });
+    if(!nameExist) return;
+    if (nameExist.id != id) {
+      throw new Error(`El código reparticiòn con nombre: ${codigo}, ya existe`);
+    }
+  };
+
+  // =================================================================
+  // ========================= Destino =======================
+  const idExistDestino = async (id = "") => {
+    const idExist = await Destino.findByPk(id);
+    if (!idExist) {
+      throw new Error(`El id destino con id: ${id}, no existe`);
+    }
+  };
+
+  const nameExistDestino = async (nombre = "",{req}) => {
+    const { id } = req.params;
+    const nameExist = await Destino.findOne({ where: { nombre } });
+    if(!nameExist) return;
+    if (nameExist.id != id) {
+      throw new Error(`El nombre de destino de nombre: ${nombre}, ya existe`);
+    }
+  };
+
+  const codigoExistDestino = async (codigo = "",{req}) => {
+    const { id } = req.params;
+    const nameExist = await Destino.findOne({ where: { codigo } });
+    if(!nameExist) return;
+    if (nameExist.id != id) {
+      throw new Error(`El código Destino con nombre: ${codigo}, ya existe`);
+    }
+  };
+
+
+
+
+  // =================================================================
   // ========================= Criterio Evaluacion =======================
   const idExistCriterioEva = async (id = "") => {
     const idExist = await CriterioEvaluacion.findByPk(id);
@@ -658,6 +811,23 @@ const {
     idExistRcivaPlanilla,
     idExistTipoMovimiento,
     nameExistTipoMovimiento,
+    idExistGradoAcademico,
+    nameExistCodigo,
+    nameExistDescripcion,
+    idExistLugarExpedido,
+    descripcionExistLugarExp,
+    codigoExistLugarExp,
+    codigoExistEmpleado,
+    idExistOrganismo,
+    nombreExistOrganismo,
+    codigoExistOrganismo,
+    idExistReparticion,
+    codigoExistReparticion,
+    nameExistReparticion,
+    idExistDestino,
+    codigoExistDestino,
+    nameExistDestino,
+    
 
     idExistCriterioEva,
     nameExistCriterioEva,
