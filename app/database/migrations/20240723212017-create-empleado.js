@@ -39,6 +39,16 @@ module.exports = {
           key: "id",
         },
       },
+      id_tipo_movimiento: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'tipo_movimientos',
+            schema: 'public'
+          },
+          key: "id",
+        },
+      },
       numero_documento: {
         type: Sequelize.STRING(10)
       },

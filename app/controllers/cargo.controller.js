@@ -8,7 +8,22 @@ const getCargoPaginate = async (req = request, res = response) => {
     try {
         let {query, page, limit, type, activo,filter, id_categoria,id} = req.query;
         const optionsDb = {
-            attributes: { exclude: ['createdAt'] },
+            attributes:[
+                    'id',
+                    'id_categoria',
+                    'codigo',
+                    'descripcion',
+                    'monto',
+                    'nivel',
+                    'cantidad_item',
+                    'tipo',
+                    'monto_mensual',
+                    'codigo_escala',
+                    'estado',
+                    'activo',
+                    [sequelize.fn('CONCAT', sequelize.col('tipo'), ' - ', sequelize.col('descripcion')), 'tipo_descripcion'],
+                ],
+             
             order: [['id', 'ASC']],
             where: { 
                 [Op.and]: [

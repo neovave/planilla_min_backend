@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const generarJWT = require('../helpers/jwt');
 const { response, request } = require('express');
-const { Empleado, Sequelize, Inscripcion } = require('../database/config');
+const { Empleado, Sequelize,sequelize, Inscripcion } = require('../database/config');
 const paginate = require('../helpers/paginate');
 const { Op } = require("sequelize");
 const axios = require('axios');
@@ -84,20 +84,68 @@ const newEmpleado = async (req = request, res = response ) => {
 
 const getEmpleadoPaginate = async (req = request, res = response) => {
     try {
-        const {query, page, limit, type, activo, uuid, tipo, gestion, id} = req.query;
+        const {query, page, limit, type, activo, uuid, tipo, gestion, id, nombre} = req.query;
         const optionsDb = {
-            attributes: { exclude: ['createdAt'] },
+            attributes: [
+                    'id',
+                    'uuid',
+                    'cod_empleado',
+                    'id_expedido',
+                    'id_grado_academico',
+                    'id_tipo_movimiento',
+                    'numero_documento',
+                    'complemento',
+                    'nombre',
+                    'otro_nombre',
+                    'paterno',
+                    'materno',
+                    'ap_esposo',
+                    'fecha_nacimiento',
+                    'nacionalidad',
+                    'sexo',
+                    'nua',
+                    'cuenta_bancaria',
+                    'tipo_documento',
+                    'cod_rciva',
+                    'cod_rentista',
+                    'correo',
+                    'telefono',
+                    'celular',
+                    'activo',
+                    [sequelize.fn('CONCAT', sequelize.col('numero_documento'), ' - ', sequelize.col('Empleado.nombre'), '  ', sequelize.col('paterno'), '  ', sequelize.col('materno')), 'numdocumento_nombre'],
+                    [sequelize.fn('CONCAT', sequelize.col('Empleado.nombre'), '  ', sequelize.col('paterno'), '  ', sequelize.col('materno')), 'nombre_completo'],
+                    [sequelize.fn('CONCAT', sequelize.col('numero_documento'), '  ', sequelize.col('complemento')), 'numdocumento_completo'],
+
+            ],
+
             order: [['id', 'ASC']],
-            where: { 
-                [Op.and]: [
-                    { activo }, uuid? {uuid} : {}, id? {id} : {}
-                ],
-            },
+            
+            
+             
             include: [
                 { association: 'empleado_ci_expedido',  attributes: {exclude: ['createdAt']},  
                 }, 
                 { association: 'empleado_gradoacademico',  attributes: {exclude: ['createdAt','status','updatedAt']}, }, 
+                { association: 'empleado_tipomovimiento', 
+                    where:{
+                        [Op.or]:[
+                            nombre?{nombre: { [Op.eq]: 'RETIRO' }}:{},
+                        ],
+                    },
+                    required: false,
+                attributes: {exclude: ['createdAt','status','updatedAt']}, }, 
             ],
+            where: { 
+                [Op.and]: [
+                  { activo }, uuid? {uuid} : {}, id? {id} : {},
+                ],
+                [Op.or]: [
+                    { '$empleado_tipomovimiento.nombre$': { [Op.eq]: 'RETIRO' } },
+                    { id_tipo_movimiento: { [Op.is]: null } }
+                ]
+                
+                
+            },
         };
         // const optionsDb = {
 

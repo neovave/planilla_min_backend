@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Incremento',
-    tablelName: 'incrementos',
+    tablelName: 'increments',
   });
   return Incremento;
 };

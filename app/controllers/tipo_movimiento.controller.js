@@ -6,13 +6,13 @@ const paginate = require('../helpers/paginate');
 
 const getTipoMovimientoPaginate = async (req = request, res = response) => {
     try {
-        const {query, page, limit, type, status, activo, id} = req.query;
+        const {query, page, limit, type, status, activo, id, nombre} = req.query;
         const optionsDb = {
             attributes: { exclude: ['createdAt'] },
             order: [['id', 'ASC']],
             where: { 
                 [Op.and]: [ 
-                    { activo}, id? {id} : {}                    
+                    { activo}, id? {id} : {}, nombre?{nombre}:{}
                 ],
                 
             },

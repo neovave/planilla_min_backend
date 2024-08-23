@@ -1,7 +1,7 @@
 
 const { response, request } = require('express');
 const { Op } = require('sequelize');
-const {Asignacion_cargo_empleado, sequelize} = require('../database/config');
+const {Asignacion_cargo_empleado, Empleado, sequelize} = require('../database/config');
 const paginate = require('../helpers/paginate');
 
 const getAsigCargoEmpPaginate = async (req = request, res = response) => {
@@ -42,12 +42,21 @@ const getAsigCargoEmpPaginate = async (req = request, res = response) => {
 }
 
 const newAsigCargoEmp = async (req = request, res = response ) => {
-    
+    const t = await sequelize.transaction();
     try {
         const  body  = req.body;
         
-        const asigCargoEmpew = await Asignacion_cargo_empleado.create(body);
-        
+        // const tipoMovDB = await Empleado.findOne({ where: {   [Op.and]:[
+        //     nombre?{nombre: { [Op.eq]: 'INGRESO' }}:{} 
+        // ],  } });
+        body.activo = 1;
+        const asigCargoEmpew = await Asignacion_cargo_empleado.create(body, { transaction : t});
+        let id = body.id_empleado;
+        const bodyEmp = { id_tipo_movimiento: body.id_tipo_movimiento};
+        const updateEmp = await Empleado.findOne({ where: { id } });
+        await updateEmp.update(bodyEmp, {transaction: t});
+        //actulizar empleado
+        await t.commit();
         return res.status(201).json({
             ok: true,
             asigCargoEmpew
