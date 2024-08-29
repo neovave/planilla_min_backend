@@ -17,19 +17,32 @@ const getMenuFrontend = (role = 'OPERADOR') => {
       {
         items: [          
           {
-            label: 'Empleado', icon: 'pi pi-fw pi-shopping-bag',
+            label: 'Planilla', icon: 'pi pi-fw pi pi-copy',
             items: [
               {
-                label: 'Asignacion Cargo', icon: 'pi pi-fw pi-user',routerLink: ['/salarios/empleado/asignacionCargoEmp']
+                label: 'Planilla Items', icon: 'pi pi-fw pi-play',routerLink: ['/salarios/planilla/planillaMeses/tipo/planilla']
+              },
+              
+            ]
+          },            
+        ]
+      },
+      {
+        items: [          
+          {
+            label: 'Empleado', icon: 'pi pi-users',
+            items: [
+              {
+                label: 'Asignacion Cargo', icon: 'pi pi-user-edit',routerLink: ['/salarios/empleado/asignacionCargoEmp']
               },
               {
-                label: 'Empleado', icon: 'pi pi-fw pi-user',routerLink: ['/salarios/empleado/empleado']
+                label: 'Empleado', icon: 'pi pi-user-plus',routerLink: ['/salarios/empleado/empleado']
               },
               {
-                label: 'Grado', icon: 'pi pi-fw pi-calendar',routerLink: ['/salarios/empleado/grado']
+                label: 'Grado', icon: 'pi pi-pause',routerLink: ['/salarios/empleado/grado']
               },
               {
-                label: 'Lugar Expedido', icon: 'pi pi-fw pi-calendar',routerLink: ['/salarios/empleado/lugar_exp']
+                label: 'Lugar Expedido', icon: 'pi pi-globe',routerLink: ['/salarios/empleado/lugar_exp']
               },
             ]
           },            
@@ -38,7 +51,7 @@ const getMenuFrontend = (role = 'OPERADOR') => {
       {
         items: [          
           {
-            label: 'Descuentos', icon: 'pi pi-fw pi-shopping-bag',
+            label: 'Descuentos', icon: 'pi pi-fw pi-wallet',
             items: [
               {
                 label: 'Descuento Emp.', icon: 'pi pi-fw pi-user',routerLink: ['/salarios/descuento/empleado']
@@ -54,7 +67,7 @@ const getMenuFrontend = (role = 'OPERADOR') => {
       {
         items: [          
           {
-            label: 'Sanciones', icon: 'pi pi-fw pi-shopping-bag',
+            label: 'Sanciones', icon: 'pi pi-fw pi-credit-card',
             items: [
               {
                 label: 'Sancion Emp.', icon: 'pi pi-fw pi-user',routerLink: ['/salarios/sancion/empleado']
@@ -70,7 +83,7 @@ const getMenuFrontend = (role = 'OPERADOR') => {
       {
         items: [          
           {
-            label: 'AFPs  y Aporte Nacional', icon: 'pi pi-fw pi-shopping-bag',
+            label: 'AFPs  y Aporte Nacional', icon: 'pi pi-fw pi-percentage',
             items: [
               {
                 label: 'Calificacion Emp.', icon: 'pi pi-fw pi-user',routerLink: ['/salarios/afp/empleado']
@@ -87,7 +100,7 @@ const getMenuFrontend = (role = 'OPERADOR') => {
       {
         items: [          
           {
-            label: 'RC-IVA', icon: 'pi pi-fw pi-shopping-bag',
+            label: 'RC-IVA', icon: 'pi pi-fw pi-dollar',
             items: [
               {
                 label: 'Empleado', icon: 'pi pi-fw pi-user',routerLink: ['/salarios/rciva/empleado']
@@ -96,7 +109,7 @@ const getMenuFrontend = (role = 'OPERADOR') => {
                 label: 'Fecha', icon: 'pi pi-fw pi-calendar',routerLink: ['/salarios/rciva/fechas/RC-IVA'] //TIPO =RC-IVA
               },
               {
-                label: 'Ufv', icon: 'pi pi-fw pi-dollar',routerLink: ['/salarios/rciva/ufvs']
+                label: 'Ufv', icon: 'pi pi-fw pi-vimeo',routerLink: ['/salarios/rciva/ufvs']
               },
           ]
           },            
@@ -111,10 +124,10 @@ const getMenuFrontend = (role = 'OPERADOR') => {
                 label: 'Incremento', icon: 'pi pi-fw pi-user',routerLink: ['/salarios/salario/incremento']
               },
               {
-                label: 'Cargo', icon: 'pi pi-fw pi-calendar',routerLink: ['/salarios/salario/cargo']
+                label: 'Cargo', icon: 'pi pi-fw pi-eject',routerLink: ['/salarios/salario/cargo']
               },
               {
-                label: 'Tipo Movimiento', icon: 'pi pi-fw pi-dollar',routerLink: ['/salarios/salario/tipomov']
+                label: 'Tipo Movimiento', icon: 'pi pi-fw pi-arrows-h',routerLink: ['/salarios/salario/tipomov']
               },
               {
                 label: 'Categoria', icon: 'pi pi-fw pi-dollar',routerLink: ['/salarios/salario/categoria']

@@ -1,0 +1,17 @@
+[
+    {
+      "total_min_salario": "2",
+      "descripcion": "RC-IVA",
+      "tipo": "RC-IVA",
+      "estado": "AC",
+      "activo": 1
+    },
+    {
+      "total_min_salario": "3",
+      "descripcion": "BONO ANTIGUEDAD SEGUN DS 21060 ART. 60",
+      "tipo": "ANTIGUEDAD",
+      "estado": "AC",
+      "activo": 1
+    }
+           
+]

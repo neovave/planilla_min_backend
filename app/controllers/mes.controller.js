@@ -1,6 +1,6 @@
 
 const { response, request } = require('express');
-const { Op } = require("sequelize");
+const { Op, Association } = require("sequelize");
 const { Gestion,Mes } = require('../database/config');
 const paginate = require('../helpers/paginate');
 
@@ -17,6 +17,7 @@ const getMesPaginate = async (req = request, res = response) => {
                 
             },
             include: [
+                { association: 'mes_gestion',  attributes: {exclude: ['createdAt']},}, 
                 
             ],
         };

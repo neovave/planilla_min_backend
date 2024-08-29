@@ -84,7 +84,7 @@ const newEmpleado = async (req = request, res = response ) => {
 
 const getEmpleadoPaginate = async (req = request, res = response) => {
     try {
-        const {query, page, limit, type, activo, uuid, tipo, gestion, id, nombre} = req.query;
+        const {query, page, limit, type, activo, uuid, tipo, gestion, id, primer_nombre, segundo_nombre} = req.query;
         const optionsDb = {
             attributes: [
                     'id',
@@ -128,25 +128,35 @@ const getEmpleadoPaginate = async (req = request, res = response) => {
                 { association: 'empleado_gradoacademico',  attributes: {exclude: ['createdAt','status','updatedAt']}, }, 
                 { association: 'empleado_tipomovimiento', 
                     where:{
-                        [Op.or]:[
-                            nombre?{nombre: { [Op.eq]: 'RETIRO' }}:{},
-                        ],
+                        [Op.and]:[
+                            primer_nombre?{
+                            [Op.or]:[
+                                primer_nombre?{tipo: { [Op.eq]: primer_nombre }}:{},segundo_nombre?{tipo: { [Op.eq]: segundo_nombre }}:{}
+                            ]}:{},
+                        ]
                     },
                     required: false,
-                attributes: {exclude: ['createdAt','status','updatedAt']}, }, 
+                    attributes: {exclude: ['createdAt','status','updatedAt']}, }, 
             ],
             where: { 
                 [Op.and]: [
                   { activo }, uuid? {uuid} : {}, id? {id} : {},
                 ],
-                [Op.or]: [
-                    { '$empleado_tipomovimiento.nombre$': { [Op.eq]: 'RETIRO' } },
-                    { id_tipo_movimiento: { [Op.is]: null } }
+                [Op.and]:[
+                    primer_nombre?{
+                
+                    [Op.or]: [
+                        primer_nombre?{ '$empleado_tipomovimiento.tipo$': { [Op.eq]: primer_nombre } }:{}, segundo_nombre?{'$empleado_tipomovimiento.tipo$': { [Op.eq]: segundo_nombre }}:{},
+                        primer_nombre && !segundo_nombre?{ id_tipo_movimiento: { [Op.is]: null } }:{}
+                    ]}:{}
                 ]
+
                 
                 
             },
         };
+
+        
         // const optionsDb = {
 
         //     attributes: ['id','uuid', 'cod_empleado', 'ci', 'nombre', 'otro_nombre', 'paterno', 'materno', 'item', 'cargo', 'unidad', 'tipo_contrato', 'activo',

@@ -1,0 +1,43 @@
+[
+    {
+      "monto_bs": "2122",
+      "descripcion": "Decreto Supremo 3889",
+      "fecha_inicio": "2019-05-01 00:00:000 -04:00",
+      "fecha_limite": "2021-04-30 00:00:000 -04:00",
+      "estado": "CE",
+      "activo": 1
+    },
+    {
+      "monto_bs": "2164",
+      "descripcion": "Decreto Supremo 4501 tendrá efecto reatroactivo al 1 de enero de 2021. 2% al salario minimo nacional.",
+      "fecha_inicio": "2021-05-01 00:00:00.000 -04:00",
+      "fecha_limite": "2022-04-30 00:00:00.000 -04:00",
+      "estado": "CE",
+      "activo": 1
+    },
+    {
+      "monto_bs": "2250",
+      "descripcion": "Decreto Supremo 4711 tendrá efecto reatroactivo al 1 de enero de 2022. 4% al salario minimo nacional.",
+      "fecha_inicio": "2022-05-01 00:00:00.000 -04:00",
+      "fecha_limite": "2022-04-30 00:00:00.000 -04:00",
+      "estado": "CE",
+      "activo": 1
+    },
+    {
+      "monto_bs" : "2362",
+      "descripcion" : "DECRETO SUPREMO Nº 4928 TENDRA EFECTO reatroactivo al 1 de enero de 2022. 5% al salario minimo nacional.",
+      "fecha_inicio": "2023-05-01",
+      "fecha_limite": "2023-04-30",
+      "estado": "CE",
+      "activo": 1
+    },
+    {
+      "monto_bs": "2500",
+      "descripcion": "Decreto Supremo No. 5154 de 1 de mayo de 2024, determinó el aumento salarial anual para los trabajadores de la actividad privada",
+      "fecha_inicio": "2024-05-01 00:00:00.000 -04:00",
+      "fecha_limite": null,
+      "estado": "AC",
+      "activo": 1
+    }
+           
+]

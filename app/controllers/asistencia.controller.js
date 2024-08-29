@@ -16,11 +16,19 @@ const getAsistenciaPaginate = async (req = request, res = response) => {
                 ],
                 
             },
-            // include: [
-            //     { association: 'asignacioncargoemp_empleado',  attributes: {exclude: ['createdAt']},  
-            //     }, 
-            //     { association: 'asignacioncargoemp_cargo',  attributes: {exclude: ['createdAt','status','updatedAt']},}, 
-            // ],
+            include: [
+                {  association: 'asistencia_empleado',  attributes: [
+                    'uuid', 
+                    [sequelize.fn('CONCAT', sequelize.col('nombre'), '  ', sequelize.col('paterno'), '  ', sequelize.col('materno')), 'nombre_completo'],
+                    [sequelize.fn('CONCAT', sequelize.col('numero_documento'), '  ', sequelize.col('complemento')), 'numdocumento_completo'],
+                
+                ],}, 
+                { association: 'asistencia_asignacioncargoemp',  attributes: [
+                    'id', 'fecha_inicio', 'fecha_limite', 'ingreso', 'retiro', 'id_reparticion', 'id_destino'
+                ],},
+                { association: 'asistencia_cargo',  attributes: ['descripcion'],}, 
+                { association: 'asistencia_mes',  attributes: ['mes_literal'],}, 
+            ],
         };
         if(type?.includes('.')){
             type = null;
@@ -42,7 +50,7 @@ const getAsistenciaPaginate = async (req = request, res = response) => {
 const newAsistencia = async (req = request, res = response ) => {
     
     try {
-        const { body } = req.body;
+        const  body  = req.body;
         const asistencias = await Asistencia.create(body);
         
         return res.status(201).json({
