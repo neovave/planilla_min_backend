@@ -37,13 +37,23 @@ const validationSchema =  {
             errorMessage: 'Los dias sancionados debe ser un número entero válido.'
         }
     },
-    activo: {
-        isBoolean: {
-            errorMessage: "El estado debe ser de tipo bigint [0,1]",
-        }
+    // activo: {
+    //     isBoolean: {
+    //         errorMessage: "El estado debe ser de tipo bigint [0,1]",
+    //     }
+    // },
+    
+};
+const validationGenerarSchema =  {
+    id_mes: {
+        isEmpty: {
+            negated: true, errorMessage: "Id mes es obligatorio",
+        },
+        custom: { options: idExistMes}, //verificamos si existe uuid
     },
     
 };
+
 
 const getValidateCreate = [
     checkSchema(validationSchema),
@@ -72,12 +82,17 @@ const validateDelete = [
         // }
     }),
     validatedResponse
-]
+];
+const getValidateGenerarAsis = [
+    checkSchema(validationGenerarSchema),
+    validatedResponse
+];
 
 
 module.exports = {
     getValidateCreate,
     getValidateUpdate,
-    validateDelete
+    validateDelete,
+    getValidateGenerarAsis
 }
 

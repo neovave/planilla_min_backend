@@ -2,8 +2,8 @@ const { Router } = require('express');
 const { validarJWT } = require('../middlewares/validators/validar-jwt');
 const { validarIsAdmin } = require('../middlewares/validators/validar-is-admin');
 const toUpperCaseConvert = require('../middlewares/touppercase-convert');
-const { getAsistenciaPaginate, newAsistencia, generarAsistenciaAll, updateAsistencia, activeInactiveAsistencia } = require('../controllers/asistencia.controller');
-const { validateDelete, getValidateUpdate, getValidateCreate, getValidateGenerarAsis } = require('../middlewares/validators/asistencia');
+const { getSalarioPlanillaPaginate, newSalarioPlanilla, generarSalarioPlanillaAll, updateSalarioPlanilla, activeInactiveSalarioPlanilla } = require('../controllers/salario_planillas.controller');
+const { validateDelete, getValidateUpdate, getValidateCreate, getValidateGenerarAsis } = require('../middlewares/validators/salario_planilla');
 
 const router = Router();
 
@@ -11,33 +11,33 @@ const router = Router();
 router.get('/',[
     validarJWT,
     validarIsAdmin
-],getAsistenciaPaginate );
+],getSalarioPlanillaPaginate );
 
 router.post('/', [
     validarJWT,
     validarIsAdmin,
     toUpperCaseConvert,
     getValidateCreate
-],newAsistencia );
+],newSalarioPlanilla );
 router.post('/generar', [
     validarJWT,
     validarIsAdmin,
     toUpperCaseConvert,
     getValidateGenerarAsis
-],generarAsistenciaAll );
+],generarSalarioPlanillaAll );
 
 router.put('/:id', [
     validarJWT,
     validarIsAdmin,
     toUpperCaseConvert,
     getValidateUpdate
-],updateAsistencia);
+],updateSalarioPlanilla);
 
 router.put('/destroyAndActive/:id', [
     validarJWT,
     validarIsAdmin,
     validateDelete
-],activeInactiveAsistencia );
+],activeInactiveSalarioPlanilla );
 
 
 module.exports = router;

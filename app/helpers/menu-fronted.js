@@ -83,6 +83,18 @@ const getMenuFrontend = (role = 'OPERADOR') => {
       {
         items: [          
           {
+            label: 'Antiguedad', icon: 'pi pi-fw pi-ticket',
+            items: [
+              {
+                label: 'Fecha Limite Años antiguedad', icon: 'pi pi-fw pi-calendar',routerLink: ['/salarios/afp/fechas/ANTIGUEDAD'] //TIPO = antiguedad
+              },
+            ]
+          },            
+        ]
+      },
+      {
+        items: [          
+          {
             label: 'AFPs  y Aporte Nacional', icon: 'pi pi-fw pi-percentage',
             items: [
               {

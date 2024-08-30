@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   Asistencia.init({
     dias_trabajados: DataTypes.INTEGER,
     dias_sancionados: DataTypes.INTEGER,
+    cant_cargo: DataTypes.INTEGER,
     activo: DataTypes.BIGINT,
     id_user_create: DataTypes.INTEGER,
     id_user_mod: DataTypes.INTEGER,

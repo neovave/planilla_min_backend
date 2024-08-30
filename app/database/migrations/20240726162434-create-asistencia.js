@@ -55,6 +55,9 @@ module.exports = {
       dias_sancionados: {
         type: Sequelize.INTEGER
       },
+      cant_cargo: {
+        type: Sequelize.INTEGER
+      },
       activo: {
         type: Sequelize.BIGINT
       },

@@ -3,10 +3,14 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.sequelize.query(`
-      CREATE OR REPLACE FUNCTION public.fun_parametros_iniciales( idMes integer, OUT total_empleados integer, OUT edad_afp integer, OUT fecha_corte_edad timestamp with time zone, OUT total_aporte_solidario numeric, OUT salario_minimo numeric, OUT rciva_obligatorio numeric, out total_salmin_rciva integer, OUT fecha_rciva_ant timestamp with time zone, out fecha_rciva_act timestamp with time zone, OUT ufv_ant numeric, OUT ufv_act numeric, OUT total_salmin_anioservicio numeric, out periodo_literal character varying )
- RETURNS SETOF record
- LANGUAGE plpgsql
-AS $function$
+      CREATE OR REPLACE FUNCTION public.fun_parametros_iniciales(IN idmes integer,OUT total_empleados integer,OUT edad_afp integer,OUT fecha_corte_edad timestamp with time zone,OUT total_aporte_solidario numeric,OUT salario_minimo numeric,OUT rciva_obligatorio numeric,OUT total_salmin_rciva integer,OUT fecha_rciva_ant timestamp with time zone,OUT fecha_rciva_act timestamp with time zone,OUT ufv_ant numeric,OUT ufv_act numeric,OUT total_salmin_anioservicio numeric,OUT periodo_literal character varying,OUT fecha_corte_antiguedad timestamp with time zone)
+    RETURNS SETOF record
+    LANGUAGE 'plpgsql'
+    VOLATILE
+    PARALLEL UNSAFE
+    COST 100    ROWS 1000 
+    
+AS $BODY$
 /**************************************************************************
  SISTEMA:		Sistema de Planillas
  FUNCION: 		public.fun_salario_empleados_item_activo
@@ -33,6 +37,8 @@ declare
 	ufvAct numeric:=0;
 	totalSalMinAnioServicio numeric:=0;
 	periodoLiteral character varying;
+	fechaCorteAntiguedad timestamp with time zone;
+	
 begin
    	
 select meses.fecha_inicio, CONCAT(meses.mes_literal ,' ', gestiones.gestiones) into periodo, periodoLiteral from meses inner join gestiones on gestiones.id = meses.id_gestion where meses.id= idMes;
@@ -86,17 +92,15 @@ select valor into ufvAnt from ufvs where fecha = fechaRcivaAnt;
 select valor into ufvAct from ufvs where fecha = fechaRcivaAct;
 -- total salario min antiguedad
 select total_min_salario into totalSalMinAnioServicio from configuracion_minimo_nacionales where activo= 1 and estado= 'AC' and tipo= 'ANTIGUEDAD';
+--fecha corte antiguedad
+select fecha_limite into fechaCorteAntiguedad from planilla_fechas where activo=1 and tipo='ANTIGUEDAD' and id_mes= idMes;
 
 RETURN query select totalEmpleados,edadAfp ,fechaCorteEdad ,totalAporteSolidario ,salarioMinimo ,rcivaObligatorio ,totalSalMinRciva ,fechaRcivaAnt,fechaRcivaAct,
-	ufvAnt ,ufvAct ,totalSalMinAnioServicio, periodoLiteral;
+	ufvAnt ,ufvAct ,totalSalMinAnioServicio, periodoLiteral, fechaCorteAntiguedad;
 
 end;
 
-
-$function$
-;
-
-
+$BODY$;
     `);
   },
   async down(queryInterface, Sequelize) {

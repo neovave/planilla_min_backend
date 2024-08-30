@@ -42,6 +42,7 @@ const getAsigCargoEmpPaginate = async (req = request, res = response) => {
     }
 }
 
+
 const newAsigCargoEmp = async (req = request, res = response ) => {
     const t = await sequelize.transaction();
     try {

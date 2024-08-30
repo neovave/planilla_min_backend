@@ -32,8 +32,8 @@ const {
     Lugar_expedido,
     Organismo,
     Reparticion,
-    Destino
-
+    Destino,
+    Salario_planilla
     
   } = require("../../database/config");
   
@@ -388,7 +388,7 @@ const {
     }
   };
   // =================================================================
-  // ===================== PLANILLA SALARIO ======================
+  // ===================== PLANILLA Rciva SALARIO ======================
   const idExistRcivaPlanilla = async (id = "") => {
     const idExist = await Rciva_planilla.findByPk(id);
     if (!idExist) {
@@ -548,7 +548,15 @@ const {
       throw new Error(`El código Destino con nombre: ${codigo}, ya existe`);
     }
   };
-
+  // =================================================================
+  // ===================== INCREMENTO ============================
+  const idExistSalarioPlanilla = async (id = "") => {
+    const idExist = await Salario_planilla.findByPk(id);
+    if (!idExist) {
+      throw new Error(`El salario planilla con id: ${id}, no existe`);
+    }
+  };
+  
 
 
 
@@ -827,7 +835,9 @@ const {
     idExistDestino,
     codigoExistDestino,
     nameExistDestino,
-    
+    idExistSalarioPlanilla,
+    idExistIncremento,
+
 
     idExistCriterioEva,
     nameExistCriterioEva,
