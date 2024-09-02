@@ -1,7 +1,7 @@
 
 const { response, request } = require('express');
 const { Op, QueryTypes } = require('sequelize');
-const {Salario_planilla, Asignacion_cargo_empleado ,Mes, sequelize, Users} = require('../database/config');
+const {Salario_planilla, Asignacion_cargo_empleado, Asistencia, Mes, sequelize, Users} = require('../database/config');
 const paginate = require('../helpers/paginate');
 const moment = require('moment');
 
@@ -81,43 +81,53 @@ const generarSalarioPlanillaAll = async (req = request, res = response ) => {
           `,{
             type: QueryTypes.SELECT  // Esto especifica que esperas un resultado tipo SELECT
         });
-        //lista asignacion cargo
-        const asignacionCargo = await Asignacion_cargo_empleado.findOne(
-            {   order: [['id', 'DESC']], 
-                where: { id_empleado:parametros.id_empleado, ingreso:true },
-                include: [
-                    { association: 'asignacioncargoemp_empleado',  attributes: {exclude: ['createdAt']},}, 
-                    { association: 'asignacioncargoemp_cargo',  attributes: {exclude: ['createdAt','status','updatedAt']},}, 
-                    { association: 'asignacioncargoemp_reparticion',  attributes: {exclude: ['createdAt','status','updatedAt']},}, 
-                    { association: 'asignacioncargoemp_destino',  attributes: {exclude: ['createdAt','status','updatedAt']},}, 
-                ],
-            });
         
+        //lista de asistencias
+        const asistencia = await Asistencia.findAll(
+            {   order: [['id', 'DESC']], 
+                include: [
+                    { association: 'asistencia_planillasalario',  attributes: {exclude: ['createdAt']},},
+                ],
+                where: { activo:1, id_mes:body.id_mes, 
+                    [Op.and]:[
+                            { '$asistencia_planillasalario.id_asistencia$': { [Op.is]: null } } 
+                    ]
+                 },
+                
+            });
 
-        const asignacion = await sequelize.query(`
-            SELECT  id, id_empleado, id_cargo, id_tipo_movimiento, id_reparticion, id_destino, fecha_inicio,
-    fecha_limite, ingreso, retiro, estado, COUNT(*) OVER (PARTITION BY id_empleado) AS num_registros_empleado
-        FROM 
-            asignacion_cargo_empleados
-        WHERE 
-            activo = 1 
-            AND DATE_TRUNC('month', '`+periodo+`'::DATE) BETWEEN DATE_TRUNC('month', fecha_inicio) 
-            AND COALESCE(DATE_TRUNC('month', fecha_limite), DATE_TRUNC('month', '`+periodo+`'::DATE))
-        ;
-              `,{
-                type: QueryTypes.SELECT  // Esto especifica que esperas un resultado tipo SELECT
-        });
+        
+        for (const row of asistencia) {
+ 
+            //lista asignacion cargo
+            const asignacionCargo = await Asignacion_cargo_empleado.findOne(
+                {   order: [['id', 'DESC']], 
+                    where: { id_empleado:row.id_empleado, ingreso:true, activo:1 },
+                    include: [
+                        { association: 'asignacioncargoemp_empleado',  attributes: {exclude: ['createdAt']},}, 
+                        { association: 'asignacioncargoemp_cargo',  attributes: {exclude: ['createdAt','status','updatedAt']},}, 
+                        { association: 'asignacioncargoemp_reparticion',  attributes: {exclude: ['createdAt','status','updatedAt']},}, 
+                        { association: 'asignacioncargoemp_destino',  attributes: {exclude: ['createdAt','status','updatedAt']},}, 
+                    ],
+                });
+            //calculo de antiguedad
+            let anioTrabajado = parametros.fecha_corte_antiguedad - asignacionCargo.fecha_inicio;
+            let totalAntiguedad;
+            if(anioTrabajado >= 25){
+                totalAntiguedad = asignacionCargo.asignacioncargoemp_cargo.monto ;
+            }else{
+                totalAntiguedad = (asignacionCargo.asignacioncargoemp_cargo.monto * anioTrabajado) * parametros.total_salmin_anioservici/100;
+            }
 
-        for (const row of asignacion) {
             // Consulta para verificar si el id existe en la otra tabla
             const existingRecord = await Salario_planilla.findOne({ where: { id_mes:body.id_mes, id_empleado:row.id_empleado, id_asig_cargo : row.id , activo:1 } });
         
-            if (!existingRecord) {
               // Si no existe, realiza la inserción
               salariosPlanillasDatas.push({
                     id_mes: body.id_mes, //moment({ month: mes }).format('MMMM'),
                     id_empleado: row.id_empleado,
-                    id_asig_cargo: row.id,
+                    id_asistencia: row.id,
+                    id_asig_emp: row.id_,
                     id_cargo: row.id_cargo,
                     dias_trabajados: 0,
                     dias_sancionados: 0,
@@ -125,7 +135,7 @@ const generarSalarioPlanillaAll = async (req = request, res = response ) => {
                     activo:1,
                     id_user_create: Users.id,
                 });    
-            }
+            
         }
         
         const asistenciaNew = await Salario_planilla.bulkCreate(salariosPlanillasDatas, { transaction: t });

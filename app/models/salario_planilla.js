@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       Salario_planilla.belongsTo(models.Mes,{as:'salarioplanilla_mes', foreignKey:'id_mes'});
       Salario_planilla.belongsTo(models.Empleado,{as:'salarioplanilla_empleado', foreignKey:'id_empleado'});
       Salario_planilla.hasMany(models.Rciva_planilla,{as:'salarioplanilla_rcivaplanilla', foreignKey:'id_salario_planilla'});
+      Salario_planilla.belongsTo(models.Asistencia,{as:'salarioplanilla_asistencia', foreignKey:'id_asistencia'});
     }
   }
   Salario_planilla.init({

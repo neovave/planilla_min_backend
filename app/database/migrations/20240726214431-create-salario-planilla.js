@@ -33,7 +33,14 @@ module.exports = {
         type: Sequelize.STRING
       },
       id_asistencia: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'asistencias',
+            schema: 'public'
+          },
+          key: "id",
+        },
       },
       id_asig_emp: {
         type: Sequelize.STRING
