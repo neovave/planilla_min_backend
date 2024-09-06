@@ -26,9 +26,9 @@ const validationSchema =  {
         isNumeric:{
             errorMessage:"El valor debe ser númerico"
         },        
-        isfloat:{
+        // isfloat:{
 
-        },
+        // },
         custom:{ options: verificarDecimal },
     }
     /*activo: {
@@ -59,9 +59,9 @@ const validationUpdateSchema =  {
         isNumeric:{
             errorMessage:"El valor debe ser númerico"
         },        
-        isfloat:{
+        // isfloat:{
 
-        },
+        // },
         custom:{ options: verificarDecimal },
     }
     /*activo: {

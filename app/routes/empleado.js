@@ -2,7 +2,7 @@ const { Router } = require('express');
 const { validarJWT } = require('../middlewares/validators/validar-jwt');
 const { validarIsAdmin } = require('../middlewares/validators/validar-is-admin');
 const toUpperCaseConvert = require('../middlewares/touppercase-convert');
-const { getEmpleadoPaginate, getEmpleado, newEmpleado, updateEmpleado /*activeInactiveEmpleado*/ } = require('../controllers/empleado.controller');
+const { getEmpleadoPaginate, getEmpleado, newEmpleado, updateEmpleado, getEmpNoAportantePaginate /*activeInactiveEmpleado*/ } = require('../controllers/empleado.controller');
 const { getValidateCreate, getValidateUpdate, validateDelete } = require('../middlewares/validators/empledo');
 
 const router = Router();
@@ -12,6 +12,11 @@ router.get('/',[
     validarJWT,
     validarIsAdmin,
 ],getEmpleadoPaginate );
+
+router.get('/noaportante',[
+    validarJWT,
+    validarIsAdmin,
+],getEmpNoAportantePaginate );
 
 router.get('/user/',[
     validarJWT,

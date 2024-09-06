@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Lugar_expedido extends Model {
+  class Bono extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,17 +11,22 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Lugar_expedido.hasMany(models.Empleado,{as:'expedido_empleado' ,foreignKey: 'id_expedido' });
+      Bono.hasMany(models.Asignacion_bono,{as:'bono_asignacionbono', foreignKey:'id_bono'});
     }
   }
-  Lugar_expedido.init({
-    codigo: DataTypes.STRING(10),
-    descripcion: DataTypes.STRING(50),
+  Bono.init({
+    
+    nombre_abreviado: DataTypes.STRING(20),
+    descripcion: DataTypes.STRING(200),
+    porcentaje: DataTypes.DECIMAL(8,2),
+    requisitos: DataTypes.STRING(300),
+    tipo: DataTypes.STRING(20),
     activo: DataTypes.BIGINT
+
   }, {
     sequelize,
-    modelName: 'Lugar_expedido',
-    tableName: 'lugar_expedidos',
+    modelName: 'Bono',
+    tableName: 'bonos',
   });
-  return Lugar_expedido;
+  return Bono;
 };

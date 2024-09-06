@@ -1,29 +1,36 @@
 
 const { response, request } = require('express');
 const { Op } = require("sequelize");
-const { Tipo_descuento_sancion } = require('../database/config');
+const { Empleado_no_aportante } = require('../database/config');
 const paginate = require('../helpers/paginate');
 
-const getTipoDescuentoPaginate = async (req = request, res = response) => {
+const getEmpNoAportantePaginate = async (req = request, res = response) => {
     try {
-        const {query, page, limit, type, status, activo, id, tipo, grupo} = req.query;
+        const {query, page, limit, type, status, activo, id, id_empleado, id_aporte } = req.query;
         const optionsDb = {
             attributes: { exclude: ['createdAt'] },
             order: [['id', 'ASC']],
             where: { 
                 [Op.and]: [ 
-                    { activo}, id? {id} : {}, tipo? {tipo}:{}, grupo?{grupo}:{}          
+                    { activo },  id? {id}:{}, id_empleado?{id_empleado}:{},         
                 ],
                 
             },
             include: [
-                
+                { association: 'empnoaportante_empleado',  attributes: {exclude: ['createdAt']},  
+                    // where: {
+                    //     [Op.and]:[
+                    //         { activo } ,
+                            
+                    //     ]
+                    // }
+                },
             ],
         };
-        let tipoDescuento = await paginate(Tipo_descuento_sancion, page, limit, type, query, optionsDb); 
+        let empNoAportantes = await paginate(Empleado_no_aportante, page, limit, type, query, optionsDb); 
         return res.status(200).json({
             ok: true,
-            tipoDescuento
+            empNoAportantes
         });
     } catch (error) {
         console.log(error);
@@ -34,14 +41,14 @@ const getTipoDescuentoPaginate = async (req = request, res = response) => {
     }
 }
 
-const newTipoDescuento = async (req = request, res = response ) => {
+const newEmpNoAportante = async (req = request, res = response ) => {
     try {
         const body = req.body;
         body.activo = 1;
-        const tipoDescuentoNew = await Tipo_descuento_sancion.create(body);
+        const empNoAportanteNew = await Empleado_no_aportante.create(body);
         return res.status(201).json({
             ok: true,
-            tipoDescuentoNew
+            empNoAportanteNew
         });
     } catch (error) {
         console.log(error);
@@ -52,16 +59,16 @@ const newTipoDescuento = async (req = request, res = response ) => {
     }
 }
 
-const updateTipoDescuento = async (req = request, res = response) => {
+const updateEmpNoAportante = async (req = request, res = response) => {
     try {
         const { id } = req.params;
         const body = req.body;
         //const cursos = await Curso.findByPk( uuid);
-        const tipoDescuento = await Tipo_descuento_sancion.findOne({where: {id}} );
-        await tipoDescuento.update(body);
+        const empNoAportantes = await Empleado_no_aportante.findOne({where: {id}} );
+        await empNoAportantes.update(body);
         return res.status(201).json({
             ok: true,
-            msg: 'Tipo Descuento y sanciones  modificada exitosamente'
+            msg: 'Empleado no aportante fue modificada exitosamente'
         });   
     } catch (error) {
         console.log(error);
@@ -72,15 +79,15 @@ const updateTipoDescuento = async (req = request, res = response) => {
     }
 }
 
-const activeInactiveTipoDescuento = async (req = request, res = response) => {
+const activeInactiveEmpNoAportante = async (req = request, res = response) => {
     try {
         const { id } = req.params;
         const { activo } = req.body;
-        const tipoDescuento = await Tipo_descuento_sancion.findByPk(uuid);
-        await tipoDescuento.update({activo});
+        const empNoAportantes = await Empleado_no_aportante.findByPk(id);
+        await empNoAportantes.update({activo});
         res.status(201).json({
             ok: true,
-            msg: activo ? 'Tipo descuento y sanción activada exitosamente' : 'Tipo descuento y sanción inactiva exitosamente'
+            msg: activo ? 'Empleado no aportante activada exitosamente' : 'Empleado no aportante inactiva exitosamente'
         });   
     } catch (error) {
         console.log(error);
@@ -92,8 +99,8 @@ const activeInactiveTipoDescuento = async (req = request, res = response) => {
 }
 
 module.exports = {
-    getTipoDescuentoPaginate,
-    newTipoDescuento,
-    updateTipoDescuento,
-    activeInactiveTipoDescuento
+    getEmpNoAportantePaginate,
+    newEmpNoAportante,
+    updateEmpNoAportante,
+    activeInactiveEmpNoAportante
 };

@@ -33,7 +33,10 @@ const {
     Organismo,
     Reparticion,
     Destino,
-    Salario_planilla
+    Salario_planilla,
+    Bono,
+    Asignacion_bono,
+    Empleado_no_aportante
     
   } = require("../../database/config");
   
@@ -556,7 +559,42 @@ const {
       throw new Error(`El salario planilla con id: ${id}, no existe`);
     }
   };
-  
+  // =================================================================
+  // ========================= Bono =======================
+  const idExistBono = async (id = "") => {
+    const idExist = await Bono.findByPk(id);
+    if (!idExist) {
+      throw new Error(`El id bono con id: ${id}, no existe`);
+    }
+  };
+
+  const nameExistBono = async (nombre_abreviado = "",{req}) => {
+    const { id } = req.params;
+    const nameExist = await Bono.findOne({ where: { nombre_abreviado } });
+    if(!nameExist) return;
+    if (nameExist.id != id) {
+      throw new Error(`El Bono de nombre: ${nombre_abreviado}, ya existe`);
+    }
+  };
+  // =================================================================
+  // ========================= Asignacion Bono =======================
+  const idExistAsigBono = async (id = "") => {
+    const idExist = await Asignacion_bono.findByPk(id);
+    if (!idExist) {
+      throw new Error(`El id bono con id: ${id}, no existe`);
+    }
+  };
+
+// =================================================================
+  // ========================= Asignacion Bono =======================
+  const idExistEmpNoAportante = async (id = "") => {
+    const idExist = await Empleado_no_aportante.findByPk(id);
+    if (!idExist) {
+      throw new Error(`El id empleado no aportante con id: ${id}, no existe`);
+    }
+  };
+
+
 
 
 
@@ -837,7 +875,10 @@ const {
     nameExistDestino,
     idExistSalarioPlanilla,
     idExistIncremento,
-
+    idExistBono,
+    nameExistBono,
+    idExistAsigBono,
+    idExistEmpNoAportante,
 
     idExistCriterioEva,
     nameExistCriterioEva,

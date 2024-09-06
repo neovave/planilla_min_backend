@@ -16,7 +16,7 @@ const getBenefAcreedorPaginate = async (req = request, res = response) => {
                 ],
             },
             include: [
-                { association: 'Asignacion_descuento',  attributes: {exclude: ['createdAt']},                  
+                { association: 'beneficiarioacreedor_asigdescuento',  attributes: {exclude: ['createdAt']},                  
                 }, 
             ],
         };

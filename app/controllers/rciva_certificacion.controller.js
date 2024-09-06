@@ -42,7 +42,7 @@ const getRcivaCertPaginate = async (req = request, res = response) => {
 const newRcivaCert = async (req = request, res = response ) => {
     
     try {
-        const { body } = req.body;
+        const body  = req.body;
         const rcivaCert = await Rciva_certificacion.create(body);
         
         return res.status(201).json({
@@ -81,9 +81,9 @@ const updateRcivaCert = async (req = request, res = response) => {
 const activeInactiveRcivaCert = async (req = request, res = response) => {
     try {
         const { id } = req.params;
-        const { activo } = req.body;
+        const { activo, id_user_delete } = req.body;
         const rcivaCert = await Rciva_certificacion.findByPk(id);
-        await rcivaCert.update({activo});
+        await rcivaCert.update({activo, id_user_delete});
         res.status(201).json({
             ok: true,
             msg: activo ? 'Certificación rciva se activado exitosamente' : 'Certificación rciva se inactivo exitosamente'

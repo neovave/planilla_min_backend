@@ -47,6 +47,9 @@ module.exports = {
       fecha_limite: {
         type: Sequelize.DATE
       },
+      monto_cargo_ant: {
+        type: Sequelize.DECIMAL(8,2)
+      },
       activo: {
         type: Sequelize.BIGINT
       },

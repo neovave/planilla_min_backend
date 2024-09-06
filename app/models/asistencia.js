@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       Asistencia.belongsTo(models.Empleado,{as:'asistencia_empleado', foreignKey:'id_empleado'});
       Asistencia.belongsTo(models.Asignacion_cargo_empleado,{as:'asistencia_asignacioncargoemp', foreignKey:'id_asig_cargo'});
       Asistencia.belongsTo(models.Cargo,{as:'asistencia_cargo', foreignKey:'id_cargo'});
-      Asistencia.belongsTo(models.Salario_planilla,{as:'asistencia_salarioplanilla', foreignKey:'id_asistencia'});
+      
     }
   }
   Asistencia.init({

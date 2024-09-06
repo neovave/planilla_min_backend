@@ -2,36 +2,36 @@ const { Router } = require('express');
 const { validarJWT } = require('../middlewares/validators/validar-jwt');
 const { validarIsAdmin } = require('../middlewares/validators/validar-is-admin');
 const toUpperCaseConvert = require('../middlewares/touppercase-convert');
-const { getAsigDescuentoPaginate, newAsigDescuento, updateAsigDescuento, activeInactiveAsigDescuento } = require('../controllers/asignacion_descuento.controller');
-const { validateDelete, getValidateUpdate, getValidateCreate } = require('../middlewares/validators/asignacion_descuento');
+const { getTipoBonoPaginate, newTipoBono, updateTipoBono, activeInactiveTipoBono } = require('../controllers/bono.controller');
+const { getValidateCreate, getValidateUpdate, validateDelete } = require('../middlewares/validators/bono');
 
 const router = Router();
 
 
 router.get('/',[
     validarJWT,
-    validarIsAdmin
-],getAsigDescuentoPaginate );
+    validarIsAdmin,
+],getTipoBonoPaginate );
 
 router.post('/', [
     validarJWT,
     validarIsAdmin,
     toUpperCaseConvert,
     getValidateCreate
-],newAsigDescuento );
+],newTipoBono );
 
-router.put('/:id/:id_beneficiario', [
+router.put('/:id', [
     validarJWT,
     validarIsAdmin,
     toUpperCaseConvert,
     getValidateUpdate
-],updateAsigDescuento);
+],updateTipoBono);
 
 router.put('/destroyAndActive/:id', [
     validarJWT,
     validarIsAdmin,
     validateDelete
-],activeInactiveAsigDescuento );
+],activeInactiveTipoBono );
 
 
 module.exports = router;

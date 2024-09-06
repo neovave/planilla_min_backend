@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const generarJWT = require('../helpers/jwt');
 const { response, request } = require('express');
-const { Empleado, Sequelize,sequelize, Inscripcion } = require('../database/config');
+const { Empleado, Sequelize,sequelize } = require('../database/config');
 const paginate = require('../helpers/paginate');
 const { Op } = require("sequelize");
 const axios = require('axios');
@@ -146,7 +146,7 @@ const getEmpleadoPaginate = async (req = request, res = response) => {
                     primer_nombre?{
                 
                     [Op.or]: [
-                        primer_nombre?{ '$empleado_tipomovimiento.tipo$': { [Op.eq]: primer_nombre } }:{}, segundo_nombre?{'$empleado_tipomovimiento.tipo$': { [Op.eq]: segundo_nombre }}:{},
+                        primer_nombre? { '$empleado_tipomovimiento.tipo$': { [Op.eq]: primer_nombre } }:{}, segundo_nombre?{'$empleado_tipomovimiento.tipo$': { [Op.eq]: segundo_nombre }}:{},
                         primer_nombre && !segundo_nombre?{ id_tipo_movimiento: { [Op.is]: null } }:{}
                     ]}:{}
                 ]
@@ -196,6 +196,75 @@ const getEmpleadoPaginate = async (req = request, res = response) => {
         
         //     });
         
+        if(type?.includes('.')){
+            type = null;
+        }
+        let empleados = await paginate(Empleado, page, limit, type, query, optionsDb); 
+
+        return res.status(200).json({
+            ok: true,
+            empleados
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            ok: false,
+            errors: [{ msg: `Ocurrió un imprevisto interno | hable con soporte`}],
+        });
+    }
+}
+
+const getEmpNoAportantePaginate = async (req = request, res = response) => {
+    try {
+        const {query, page, limit, type, activo, uuid, tipo, gestion, id, primer_nombre, segundo_nombre} = req.query;
+        const optionsDb = {
+            attributes: [
+                    'id',
+                    'uuid',
+                    'cod_empleado',
+                    'numero_documento',
+                    'complemento',
+                    'nombre',
+                    'otro_nombre',
+                    'paterno',
+                    'materno',
+                    'ap_esposo',
+                    'fecha_nacimiento',
+                    'nacionalidad',
+                    'sexo',
+                    'nua',
+                    'cod_rciva',
+                    'cod_rentista',
+                    [sequelize.fn('CONCAT', sequelize.col('numero_documento'), ' - ', sequelize.col('Empleado.nombre'), '  ', sequelize.col('paterno'), '  ', sequelize.col('materno')), 'numdocumento_nombre'],
+                    [sequelize.fn('CONCAT', sequelize.col('Empleado.nombre'), '  ', sequelize.col('paterno'), '  ', sequelize.col('materno')), 'nombre_completo'],
+                    [sequelize.fn('CONCAT', sequelize.col('numero_documento'), '  ', sequelize.col('complemento')), 'numdocumento_completo'],
+
+            ],
+
+            order: [['id', 'ASC']],
+            
+            
+             
+            include: [
+                { association: 'empleado_empnoaportante', 
+                    // where:{
+                    //     [Op.and]:[
+                    //         primer_nombre?{
+                    //         [Op.or]:[
+                    //             primer_nombre?{tipo: { [Op.eq]: primer_nombre }}:{},segundo_nombre?{tipo: { [Op.eq]: segundo_nombre }}:{}
+                    //         ]}:{},
+                    //     ]
+                    // },
+                    required: false,
+                    attributes: {exclude: ['createdAt','status','updatedAt']}, },  
+            ],
+            where: { 
+                [Op.and]: [
+                  { activo }, uuid? {uuid} : {}, id? {id} : {}, { '$empleado_empnoaportante.id_empleado$': { [Op.is]: null } }
+                ],
+            },
+        };
+
         if(type?.includes('.')){
             type = null;
         }
@@ -264,6 +333,4 @@ const updateEmpleado = async (req = request, res = response) => {
 }
 
 
-module.exports = {    infoEmpledo, getEmpleadoPaginate, getEmpleado, newEmpleado, updateEmpleado
-    
-};
+module.exports = {    infoEmpledo, getEmpleadoPaginate, getEmpleado, newEmpleado, updateEmpleado, getEmpNoAportantePaginate };

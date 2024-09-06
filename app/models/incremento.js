@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Incremento.belongsTo(models.Gestion,{as:'incremento_gestion', foreignKey:'id_gestion'});
       Incremento.belongsTo(models.Cargo,{as:'incremento_cargo', foreignKey:'id_cargo'});
+      
     }
   }
   Incremento.init({
@@ -22,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     descripcion: DataTypes.STRING(200),
     fecha_habilitacion: DataTypes.DATE,
     fecha_limite: DataTypes.DATE,
+    monto_cargo_ant: DataTypes.DECIMAL(8,2),
     activo: DataTypes.BIGINT,
     id_user_create: DataTypes.INTEGER,
     id_user_mod: DataTypes.INTEGER,

@@ -50,23 +50,95 @@ const validationSchema =  {
     },*/
     fecha_inicio: {
         isEmpty: {
-            negated: true, errorMessage: "La fecha inicio capacitación es obligatorio",
+            negated: true, errorMessage: "La fecha inicio es obligatorio",
         },
-        isLength: {
-            errorMessage: 'El valor debe tener mínimo a 10 caracteres y máximo 10 caracteres',
-            options: { min: 10, max: 10},
+        isDate: {
+            negated: true, errorMessage: "La fecha inicio es obligatorio",
         },
     },
     fecha_limite: {
-        isEmpty: {
-            negated: true, errorMessage: "La fecha fin de capacitación es obligatorio",
-        },
-        isLength: {
-            errorMessage: 'El valor debe tener mínimo a 10 caracteres y máximo 10 caracteres',
-            options: { min: 10, max: 10},
+        optional: { options: { nullable: true } },
+        isDate: {
+            negated: true, errorMessage: "La fecha inicio es obligatorio",
         },
     },
-    
+
+    con_beneficiario:{
+        optional: { options: { nullable: true } },
+        isBoolean: {
+            errorMessage: 'El campo beneficio debe ser verdadero o falso.'
+        },
+        toBoolean: true
+    },
+    ci_ruc:{
+        optional: { options: { nullable: true } },
+        isLength: {
+            errorMessage: 'El ci y ruc debe tener mínimo a 1 caracteres y máximo 20 caracteres',
+            options: { min: 1, max: 20},
+        },
+        custom: {
+            options: (value, { req }) => {
+                // Validar solo si el beneficio es verdadero
+                if (req.body.con_beneficiario && !value) {
+                    throw new Error('Debe proporcionar ci o ruc de beneficiario si el tipo descuento es con beneficiario.');
+                }
+                return true;
+            }
+        },
+        
+    },
+    detalle_ruc:{
+        optional: { options: { nullable: true } },
+        isLength: {
+            errorMessage: 'El detalle ruc  debe tener mínimo a 1 caracteres y máximo 100 caracteres',
+            options: { min: 1, max: 100},
+        },
+        custom: {
+            options: (value, { req }) => {
+                // Validar solo si el beneficio es verdadero
+                if (req.body.con_beneficiario && !value) {
+                    throw new Error('Debe proporcionar detalle ruc de beneficiario si el tipo descuento es con beneficiario.');
+                }
+                return true;
+            }
+        },
+        
+    },
+    tipo:{
+        optional: { options: { nullable: true } },
+        isLength: {
+            errorMessage: 'El tipo debe tener mínimo a 1 caracteres y máximo 20 caracteres',
+            options: { min: 1, max: 30},
+        },
+        custom: {
+            options: (value, { req }) => {
+                // Validar solo si el beneficio es verdadero
+                if (req.body.con_beneficiario && !value) {
+                    throw new Error('Debe proporcionar tipo de beneficiario si el tipo descuento es con beneficiario.');
+                }
+                return true;
+            }
+        },
+        
+    },
+    descripcion:{
+        optional: { options: { nullable: true } },
+        isLength: {
+            errorMessage: 'La descripción debe tener mínimo a 1 caracteres y máximo 200 caracteres',
+            options: { min: 1, max: 200},
+        },
+        custom: {
+            options: (value, { req }) => {
+                // Validar solo si el beneficio es verdadero
+                if (req.body.con_beneficiario && !value) {
+                    throw new Error('Debe proporcionar descripción del beneficiario si el tipo descuento es con beneficiario.');
+                }
+                return true;
+            }
+        },
+        
+    },
+
     activo: {
         isBoolean: {
             errorMessage: "El estado debe ser de tipo bigint [0,1]",
@@ -82,6 +154,7 @@ const validationSchema =  {
         },
     }
 };
+
 
 const getValidateCreate = [
     checkSchema(validationSchema),

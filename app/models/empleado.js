@@ -24,6 +24,8 @@ module.exports = (sequelize, DataTypes) => {
       Empleado.hasMany(models.Rciva_certificacion,{as:'empleado_rcivacertificacion', foreignKey:'id_empleado'});
       Empleado.hasMany(models.Rciva_descargo_salario,{as:'empleado_rcivadescargosalario', foreignKey:'id_empleado'});
       Empleado.hasMany(models.Salario_planilla,{as:'empleado_salarioplanilla', foreignKey:'id_empleado'});
+      Empleado.hasMany(models.Bono,{as:'empleado_bono', foreignKey:'id_empleado'});
+      Empleado.hasMany(models.Empleado_no_aportante,{as:'empleado_empnoaportante', foreignKey:'id_empleado'});
     }
   }
   Empleado.init({

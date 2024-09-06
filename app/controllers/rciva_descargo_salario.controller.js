@@ -42,7 +42,7 @@ const getRcivaDescargoPaginate = async (req = request, res = response) => {
 const newRcivaDescargo = async (req = request, res = response ) => {
     
     try {
-        const { body } = req.body;
+        const  body  = req.body;
         const rcivaDescargo = await Rciva_descargo_salario.create(body);
         
         return res.status(201).json({

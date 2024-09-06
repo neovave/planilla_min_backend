@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   Beneficiario_acreedor.init({
     detalle_ruc: DataTypes.STRING(100),
     ci_ruc: DataTypes.STRING(20),
-    tipo: DataTypes.STRING(10),
+    tipo: DataTypes.STRING(30),
     descripcion: DataTypes.STRING(200),
     id_user_create: DataTypes.INTEGER,
     id_user_mod: DataTypes.INTEGER,

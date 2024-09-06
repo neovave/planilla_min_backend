@@ -36,7 +36,7 @@ const getMenuFrontend = (role = 'OPERADOR') => {
                 label: 'Asignacion Cargo', icon: 'pi pi-user-edit',routerLink: ['/salarios/empleado/asignacionCargoEmp']
               },
               {
-                label: 'Empleado', icon: 'pi pi-user-plus',routerLink: ['/salarios/empleado/empleado']
+                label: 'Empleado', icon: 'pi pi-user-plus',routerLink: ['/salarios/empleado/empleado/tipo/EMPLEADO']
               },
               {
                 label: 'Grado', icon: 'pi pi-pause',routerLink: ['/salarios/empleado/grado']
@@ -54,7 +54,7 @@ const getMenuFrontend = (role = 'OPERADOR') => {
             label: 'Descuentos', icon: 'pi pi-fw pi-wallet',
             items: [
               {
-                label: 'Descuento Emp.', icon: 'pi pi-fw pi-user',routerLink: ['/salarios/descuento/empleado']
+                label: 'Descuento Emp.', icon: 'pi pi-fw pi-user',routerLink: ['/salarios/asignacion_descuento/tipo/descuento'],routerLinkActiveOptions:{ exact: false },routerLinkActive:"active"
               },
               {
                 label: 'Tipo desc.', icon: 'pi pi-fw pi-calendar',routerLink: ['/salarios/descuento/tipo/DESCUENTOS'] //TIPO = AFPS-EDAD
@@ -70,7 +70,7 @@ const getMenuFrontend = (role = 'OPERADOR') => {
             label: 'Sanciones', icon: 'pi pi-fw pi-credit-card',
             items: [
               {
-                label: 'Sancion Emp.', icon: 'pi pi-fw pi-user',routerLink: ['/salarios/sancion/empleado']
+                label: 'Sancion Emp.', icon: 'pi pi-fw pi-user',routerLink: ['/salarios/asignacion_sancion/tipo/sancion'],routerLinkActiveOptions:{ exact: false },routerLinkActive:"active"
               },
               {
                 label: 'Tipo San.', icon: 'pi pi-fw pi-calendar',routerLink: ['/salarios/sancion/tipo/SANCIONES'] //TIPO = AFPS-EDAD
@@ -83,8 +83,14 @@ const getMenuFrontend = (role = 'OPERADOR') => {
       {
         items: [          
           {
-            label: 'Antiguedad', icon: 'pi pi-fw pi-ticket',
+            label: 'Antiguedad Y bono', icon: 'pi pi-fw pi-ticket',
             items: [
+              {
+                label: 'Asignacion Emp', icon: 'pi pi-fw pi-calendar',routerLink: ['/salarios/asignacion_bono/tipo','bono-empleado'], routerLinkActiveOptions:{ exact: false },routerLinkActive:"active" //TIPO = antiguedad
+              },
+              {
+                label: 'Tipo de Bono', icon: 'pi pi-fw pi-calendar',routerLink: ['/salarios/bono/tipo'] //TIPO = antiguedad
+              },
               {
                 label: 'Fecha Limite Años antiguedad', icon: 'pi pi-fw pi-calendar',routerLink: ['/salarios/afp/fechas/ANTIGUEDAD'] //TIPO = antiguedad
               },
@@ -115,7 +121,7 @@ const getMenuFrontend = (role = 'OPERADOR') => {
             label: 'RC-IVA', icon: 'pi pi-fw pi-dollar',
             items: [
               {
-                label: 'Empleado', icon: 'pi pi-fw pi-user',routerLink: ['/salarios/rciva/empleado']
+                label: 'Empleado', icon: 'pi pi-fw pi-user',routerLink: ['/salarios/rc_iva/tipo', 'rciva']
               },
               {
                 label: 'Fecha', icon: 'pi pi-fw pi-calendar',routerLink: ['/salarios/rciva/fechas/RC-IVA'] //TIPO =RC-IVA

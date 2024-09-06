@@ -1,18 +1,18 @@
 
 const { response, request } = require('express');
 const { Op } = require("sequelize");
-const { Tipo_descuento_sancion } = require('../database/config');
+const { Bono } = require('../database/config');
 const paginate = require('../helpers/paginate');
 
-const getTipoDescuentoPaginate = async (req = request, res = response) => {
+const getTipoBonoPaginate = async (req = request, res = response) => {
     try {
-        const {query, page, limit, type, status, activo, id, tipo, grupo} = req.query;
+        const {query, page, limit, type, status, activo, id, tipo} = req.query;
         const optionsDb = {
             attributes: { exclude: ['createdAt'] },
             order: [['id', 'ASC']],
             where: { 
                 [Op.and]: [ 
-                    { activo}, id? {id} : {}, tipo? {tipo}:{}, grupo?{grupo}:{}          
+                    { activo}, id? {id} : {}, tipo?tipo:{}                    
                 ],
                 
             },
@@ -20,10 +20,10 @@ const getTipoDescuentoPaginate = async (req = request, res = response) => {
                 
             ],
         };
-        let tipoDescuento = await paginate(Tipo_descuento_sancion, page, limit, type, query, optionsDb); 
+        let bonos = await paginate(Bono, page, limit, type, query, optionsDb); 
         return res.status(200).json({
             ok: true,
-            tipoDescuento
+            bonos
         });
     } catch (error) {
         console.log(error);
@@ -34,14 +34,14 @@ const getTipoDescuentoPaginate = async (req = request, res = response) => {
     }
 }
 
-const newTipoDescuento = async (req = request, res = response ) => {
+const newTipoBono = async (req = request, res = response ) => {
     try {
         const body = req.body;
         body.activo = 1;
-        const tipoDescuentoNew = await Tipo_descuento_sancion.create(body);
+        const bonoNew = await Bono.create(body);
         return res.status(201).json({
             ok: true,
-            tipoDescuentoNew
+            bonoNew
         });
     } catch (error) {
         console.log(error);
@@ -52,16 +52,16 @@ const newTipoDescuento = async (req = request, res = response ) => {
     }
 }
 
-const updateTipoDescuento = async (req = request, res = response) => {
+const updateTipoBono = async (req = request, res = response) => {
     try {
         const { id } = req.params;
         const body = req.body;
         //const cursos = await Curso.findByPk( uuid);
-        const tipoDescuento = await Tipo_descuento_sancion.findOne({where: {id}} );
-        await tipoDescuento.update(body);
+        const bonos = await Bono.findOne({where: {id}} );
+        await bonos.update(body);
         return res.status(201).json({
             ok: true,
-            msg: 'Tipo Descuento y sanciones  modificada exitosamente'
+            msg: 'Tipo Bono modificada exitosamente'
         });   
     } catch (error) {
         console.log(error);
@@ -72,15 +72,15 @@ const updateTipoDescuento = async (req = request, res = response) => {
     }
 }
 
-const activeInactiveTipoDescuento = async (req = request, res = response) => {
+const activeInactiveTipoBono = async (req = request, res = response) => {
     try {
         const { id } = req.params;
         const { activo } = req.body;
-        const tipoDescuento = await Tipo_descuento_sancion.findByPk(uuid);
-        await tipoDescuento.update({activo});
+        const bonos = await Bono.findByPk(uuid);
+        await bonos.update({activo});
         res.status(201).json({
             ok: true,
-            msg: activo ? 'Tipo descuento y sanción activada exitosamente' : 'Tipo descuento y sanción inactiva exitosamente'
+            msg: activo ? 'Tipo bono activada exitosamente' : 'Tipo bono inactiva exitosamente'
         });   
     } catch (error) {
         console.log(error);
@@ -92,8 +92,8 @@ const activeInactiveTipoDescuento = async (req = request, res = response) => {
 }
 
 module.exports = {
-    getTipoDescuentoPaginate,
-    newTipoDescuento,
-    updateTipoDescuento,
-    activeInactiveTipoDescuento
+    getTipoBonoPaginate,
+    newTipoBono,
+    updateTipoBono,
+    activeInactiveTipoBono
 };

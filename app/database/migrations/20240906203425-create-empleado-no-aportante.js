@@ -2,43 +2,31 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('beneficiario_acreedores', {
+    await queryInterface.createTable('empleado_no_aportantes', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id_asig_descuento: {
+      id_empleado: {
         type: Sequelize.INTEGER,
         references: {
           model: {
-            tableName: 'asignacion_descuentos',
+            tableName: 'empleados',
             schema: 'public'
           },
           key: "id",
         },
       },
-      detalle_ruc: {
-        type: Sequelize.STRING(100)
+      descripcion: {
+        type: Sequelize.STRING(300)
       },
-      ci_ruc: {
-        type: Sequelize.STRING(20)
+      fecha_inicio: {
+        type: Sequelize.DATE
       },
       tipo: {
         type: Sequelize.STRING(30)
-      },
-      descripcion: {
-        type: Sequelize.STRING(200)
-      },
-      id_user_create: {
-        type: Sequelize.INTEGER
-      },
-      id_user_mod: {
-        type: Sequelize.INTEGER
-      },
-      id_user_delete: {
-        type: Sequelize.INTEGER
       },
       activo: {
         type: Sequelize.BIGINT
@@ -58,6 +46,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('beneficiario_acreedores');
+    await queryInterface.dropTable('empleado_no_aportantes');
   }
 };

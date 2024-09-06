@@ -29,21 +29,18 @@ module.exports = {
           key: "id",
         },
       },
-      id_incremento: {
-        type: Sequelize.STRING
-      },
-      id_asistencia: {
+      id_asig_cargo: {
         type: Sequelize.INTEGER,
         references: {
           model: {
-            tableName: 'asistencias',
+            tableName: 'asignacion_cargo_empleados',
             schema: 'public'
           },
           key: "id",
         },
       },
-      id_asig_emp: {
-        type: Sequelize.STRING
+      asistencia: {
+        type: Sequelize.JSONB,
       },
       edad_empleado: {
         type: Sequelize.INTEGER
