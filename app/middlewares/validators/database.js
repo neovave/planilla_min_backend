@@ -36,7 +36,8 @@ const {
     Salario_planilla,
     Bono,
     Asignacion_bono,
-    Empleado_no_aportante
+    Empleado_no_aportante,
+    Viatico
     
   } = require("../../database/config");
   
@@ -594,6 +595,14 @@ const {
     }
   };
 
+  // =================================================================
+  // ========================= Asignacion Bono =======================
+  const idExistViatico = async (id = "") => {
+    const idExist = await Viatico.findByPk(id);
+    if (!idExist) {
+      throw new Error(`El id del viatico con id: ${id}, no existe`);
+    }
+  };
 
 
 
@@ -879,6 +888,7 @@ const {
     nameExistBono,
     idExistAsigBono,
     idExistEmpNoAportante,
+    idExistViatico,
 
     idExistCriterioEva,
     nameExistCriterioEva,

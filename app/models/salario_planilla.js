@@ -13,7 +13,6 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Salario_planilla.belongsTo(models.Mes,{as:'salarioplanilla_mes', foreignKey:'id_mes'});
       Salario_planilla.belongsTo(models.Empleado,{as:'salarioplanilla_empleado', foreignKey:'id_empleado'});
-      Salario_planilla.hasMany(models.Rciva_planilla,{as:'salarioplanilla_rcivaplanilla', foreignKey:'id_salario_planilla'});
       Salario_planilla.belongsTo(models.Asignacion_cargo_empleado,{as:'salarioplanilla_asignacioncargoemp', foreignKey:'id_asig_cargo'});
     }
   }
@@ -24,13 +23,14 @@ module.exports = (sequelize, DataTypes) => {
     haber_basico_dia: DataTypes.DECIMAL(8,2),
     antiguedad: DataTypes.DECIMAL(8,2),
     total_ganado: DataTypes.DECIMAL(8,2),
-    total_iva: DataTypes.DECIMAL(8,2),
-    aporte_laboral_afp: DataTypes.JSONB,
-    total_afp: DataTypes.DECIMAL(8,2),
-    aporte_patronal: DataTypes.JSONB,
-    total_patronal: DataTypes.DECIMAL(8,2),
     aporte_solidario: DataTypes.JSONB,
     total_ap_solidario: DataTypes.DECIMAL(8,2),
+    aporte_laboral_afp: DataTypes.JSONB,
+    total_afp: DataTypes.DECIMAL(8,2),
+    
+    total_iva: DataTypes.DECIMAL(8,2),
+    aporte_patronal: DataTypes.JSONB,
+    total_patronal: DataTypes.DECIMAL(8,2),
     descuento_adm: DataTypes.JSONB,
     total_descuento: DataTypes.DECIMAL(8,2),
     sanciones_adm: DataTypes.JSONB,

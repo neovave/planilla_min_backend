@@ -104,7 +104,7 @@ const getMenuFrontend = (role = 'OPERADOR') => {
             label: 'AFPs  y Aporte Nacional', icon: 'pi pi-fw pi-percentage',
             items: [
               {
-                label: 'Calificacion Emp.', icon: 'pi pi-fw pi-user',routerLink: ['/salarios/afp/empleado']
+                label: 'Calificacion Emp.', icon: 'pi pi-fw pi-user',routerLink: ['/salarios/afp/calificacion']
               },
               {
                 label: 'Fecha Limite c/ edad', icon: 'pi pi-fw pi-calendar',routerLink: ['/salarios/afp/fechas/AFPS-EDAD'] //TIPO = AFPS-EDAD

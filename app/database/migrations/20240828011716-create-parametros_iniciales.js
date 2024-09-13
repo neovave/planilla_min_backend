@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.sequelize.query(`
-      CREATE OR REPLACE FUNCTION public.fun_parametros_iniciales(IN idmes integer,OUT total_empleados integer,OUT edad_afp integer,OUT fecha_corte_edad timestamp with time zone,OUT total_aporte_solidario numeric,OUT salario_minimo numeric,OUT rciva_obligatorio numeric,OUT total_salmin_rciva integer,OUT fecha_rciva_ant timestamp with time zone,OUT fecha_rciva_act timestamp with time zone,OUT ufv_ant numeric,OUT ufv_act numeric,OUT total_salmin_anioservicio numeric,OUT periodo_literal character varying,OUT fecha_corte_antiguedad timestamp with time zone)
+      CREATE OR REPLACE FUNCTION public.fun_parametros_iniciales(IN idmes integer,OUT total_empleados integer,OUT edad_afp integer,OUT fecha_corte_edad timestamp with time zone,OUT total_aporte_solidario numeric,OUT salario_minimo numeric,OUT rciva_obligatorio numeric,OUT total_salmin_rciva integer,OUT fecha_rciva_ant timestamp with time zone,OUT fecha_rciva_act timestamp with time zone,OUT ufv_ant numeric,OUT ufv_act numeric,OUT total_salmin_anioservicio numeric,OUT periodo_literal character varying,OUT fecha_corte_antiguedad timestamp with time zone, OUT cod_edad_afp integer, OUT cod_fecha_afp_edad integer)
     RETURNS SETOF record
     LANGUAGE 'plpgsql'
     VOLATILE
@@ -38,6 +38,8 @@ declare
 	totalSalMinAnioServicio numeric:=0;
 	periodoLiteral character varying;
 	fechaCorteAntiguedad timestamp with time zone;
+  id_edad_afp integer;
+  id_fecha_afp_edad integer;
 	
 begin
    	
@@ -71,9 +73,9 @@ WITH cte AS (
 )    
 SELECT count(id) into totalEmpleados FROM asignacion_cargo_empleados INNER JOIN cte ON cte.idasignacion = asignacion_cargo_empleados.id WHERE activo = 1 ;
 --edad afp
-select edad into edadAfp from afp_edades where activo = 1;
+select edad, id into edadAfp, id_edad_afp from afp_edades where activo = 1;
 --fecha corte edad
-select fecha_limite into fechaCorteEdad from planilla_fechas where activo=1 and tipo='AFPS-EDAD' and id_mes= idMes;
+select fecha_limite, id into fechaCorteEdad, id_fecha_afp_edad from planilla_fechas where activo=1 and tipo='AFPS-EDAD' and id_mes= idMes;
 -- total aporte solidario JSON
 --salario minimo
 select monto_bs into salarioMinimo from minimo_nacional_salarios where activo = 1 AND DATE_TRUNC('month', periodo) BETWEEN DATE_TRUNC('month', fecha_inicio) 
@@ -96,7 +98,7 @@ select total_min_salario into totalSalMinAnioServicio from configuracion_minimo_
 select fecha_limite into fechaCorteAntiguedad from planilla_fechas where activo=1 and tipo='ANTIGUEDAD' and id_mes= idMes;
 
 RETURN query select totalEmpleados,edadAfp ,fechaCorteEdad ,totalAporteSolidario ,salarioMinimo ,rcivaObligatorio ,totalSalMinRciva ,fechaRcivaAnt,fechaRcivaAct,
-	ufvAnt ,ufvAct ,totalSalMinAnioServicio, periodoLiteral, fechaCorteAntiguedad;
+	ufvAnt ,ufvAct ,totalSalMinAnioServicio, periodoLiteral, fechaCorteAntiguedad, id_edad_afp, id_fecha_afp_edad ;
 
 end;
 

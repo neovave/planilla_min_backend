@@ -216,7 +216,7 @@ const getEmpleadoPaginate = async (req = request, res = response) => {
 
 const getEmpNoAportantePaginate = async (req = request, res = response) => {
     try {
-        const {query, page, limit, type, activo, uuid, tipo, gestion, id, primer_nombre, segundo_nombre} = req.query;
+        const {query, page, limit, type, activo, uuid, tipo, gestion, id} = req.query;
         const optionsDb = {
             attributes: [
                     'id',
@@ -247,20 +247,19 @@ const getEmpNoAportantePaginate = async (req = request, res = response) => {
              
             include: [
                 { association: 'empleado_empnoaportante', 
-                    // where:{
-                    //     [Op.and]:[
-                    //         primer_nombre?{
-                    //         [Op.or]:[
-                    //             primer_nombre?{tipo: { [Op.eq]: primer_nombre }}:{},segundo_nombre?{tipo: { [Op.eq]: segundo_nombre }}:{}
-                    //         ]}:{},
-                    //     ]
-                    // },
-                    required: false,
+                    where:{
+                        [Op.or]: [
+                              { id_empleado: { [Op.is]: null } },{
+                                activo: '0'
+                              }
+                          ],
+                    },
+                    //required: false,
                     attributes: {exclude: ['createdAt','status','updatedAt']}, },  
             ],
             where: { 
                 [Op.and]: [
-                  { activo }, uuid? {uuid} : {}, id? {id} : {}, { '$empleado_empnoaportante.id_empleado$': { [Op.is]: null } }
+                  { activo }, uuid? {uuid} : {},
                 ],
             },
         };

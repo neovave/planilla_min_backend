@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       Rciva_planilla.belongsTo(models.Mes,{as:'rcivaplanilla_mes', foreignKey:'id_mes'});
       Rciva_planilla.belongsTo(models.Minimo_nacional_salario,{as:'rcivaplanilla_minimonacsal', foreignKey:'id_minimo_nacional'});
       Rciva_planilla.belongsTo(models.Escala_rciva_salario,{as:'rcivaplanilla_escalarciva', foreignKey:'id_escala_rciva'});
-      Rciva_planilla.belongsTo(models.Salario_planilla,{as:'rcivaplanilla_salarioplanilla', foreignKey:'id_salario_planilla'});
+      Rciva_planilla.belongsTo(models.Empleado,{as:'rcivaplanilla_empleado', foreignKey:'id_empleado'});
       Rciva_planilla.belongsTo(models.Rciva_certificacion,{as:'rcivaplanilla_rcivacetificacion', foreignKey:'id_rciva_certificado'});
       Rciva_planilla.belongsTo(models.Rciva_descargo_salario,{as:'rcivaplanilla_rcivadescargosal', foreignKey:'id_rciva_descargo'});
       Rciva_planilla.belongsTo(models.Planilla_fecha,{as:'rcivaplanilla_planillafecha', foreignKey:'id_rciva_planilla_fecha'});      

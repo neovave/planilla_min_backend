@@ -1,7 +1,7 @@
 
 const { response, request } = require('express');
 const { Op } = require("sequelize");
-const { Empleado_no_aportante } = require('../database/config');
+const { Empleado_no_aportante, sequelize } = require('../database/config');
 const paginate = require('../helpers/paginate');
 
 const getEmpNoAportantePaginate = async (req = request, res = response) => {
@@ -17,13 +17,30 @@ const getEmpNoAportantePaginate = async (req = request, res = response) => {
                 
             },
             include: [
-                { association: 'empnoaportante_empleado',  attributes: {exclude: ['createdAt']},  
-                    // where: {
-                    //     [Op.and]:[
-                    //         { activo } ,
-                            
-                    //     ]
-                    // }
+                { association: 'empnoaportante_empleado',  
+                    
+                    attributes: [
+                        'id',
+                        'uuid',
+                        'cod_empleado',
+                        'numero_documento',
+                        'complemento',
+                        'nombre',
+                        'otro_nombre',
+                        'paterno',
+                        'materno',
+                        'ap_esposo',
+                        'fecha_nacimiento',
+                        'nacionalidad',
+                        'sexo',
+                        'nua',
+                        'cod_rciva',
+                        'cod_rentista',
+                        [sequelize.fn('CONCAT', sequelize.col('numero_documento'), ' - ', sequelize.col('nombre'), '  ', sequelize.col('paterno'), '  ', sequelize.col('materno')), 'numdocumento_nombre'],
+                        [sequelize.fn('CONCAT', sequelize.col('nombre'), '  ', sequelize.col('paterno'), '  ', sequelize.col('materno')), 'nombre_completo'],
+                        [sequelize.fn('CONCAT', sequelize.col('numero_documento'), '  ', sequelize.col('complemento')), 'numdocumento_completo'],
+    
+                ], 
                 },
             ],
         };

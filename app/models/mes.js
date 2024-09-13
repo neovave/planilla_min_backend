@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       Mes.hasMany(models.Rciva_descargo_salario,{as:'mes_rcivadescargosalario', foreignKey:'id_mes'});
       Mes.hasMany(models.Rciva_planilla,{as:'mes_rcivaplanilla', foreignKey:'id_mes'});
       Mes.hasMany(models.Salario_planilla,{as:'mes_salarioplanilla', foreignKey:'id_mes'});
+      Mes.hasMany(models.Viatico,{as:'mes_viatico', foreignKey:'id_mes'});
     }
   }
   Mes.init({

@@ -39,11 +39,11 @@ module.exports = {
           key: "id",
         },
       },
-      id_salario_planilla: {
+      id_empleado: {
         type: Sequelize.INTEGER,
         references: {
           model: {
-            tableName: 'salario_planillas',
+            tableName: 'empleados',
             schema: 'public'
           },
           key: "id",
