@@ -25,7 +25,13 @@ module.exports = (sequelize, DataTypes) => {
     activo: DataTypes.BIGINT,
     id_user_create: DataTypes.INTEGER,
     id_user_mod: DataTypes.INTEGER,
-    id_user_delete: DataTypes.INTEGER
+    id_user_delete: DataTypes.INTEGER,
+    // nombre_completo: {
+    //   type: DataTypes.VIRTUAL,
+    //   get() {
+    //     return `${this.get('asistencia_empleado.nombre')} ${this.get('paterno')} ${this.get('materno')}`;
+    //   }
+    // }
   }, {
     sequelize,
     modelName: 'Asistencia',

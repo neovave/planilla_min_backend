@@ -1,0 +1,24 @@
+[
+    {
+      "codigo": "001",
+      "nombre": "COMANDO EN JEFE",
+      "activo": 1
+    },
+    {
+      "codigo": "002",
+      "nombre": "EJERCITO",
+      "activo": 1
+    },
+    {
+      "codigo": "003",
+      "nombre": "FUERZA AEREA",
+      "activo": 1
+    },
+    {
+      "codigo": "004",
+      "nombre": "ARMADA BOLIVIANA",
+      "activo": 1
+    }
+    
+
+]

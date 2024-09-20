@@ -1,0 +1,24 @@
+[
+  {
+    "codigo": "1",
+    "descripcion": "CAJA NACIONA DE SALUD",
+    "abreviado": "C.N.S.",
+    "numero_patronal": "120125027",
+    "activo": 1
+  },
+  {
+      "codigo": "2",
+    "descripcion": "COORPORACION DE SEGURO SOCIAL MILITAR",
+    "abreviado": "COSSMIL",
+    "numero_patronal": "1019635023",
+    "activo": 1
+  },
+  {
+      "codigo": "3",
+    "descripcion": "SEGURO SOCIAL UNIVERSITARIO LA PAZ",
+    "abreviado": "S.S.U. LPZ",
+    "numero_patronal": "120609020",
+    "activo": 1
+  }
+    
+]

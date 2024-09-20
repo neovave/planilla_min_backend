@@ -21,7 +21,9 @@ module.exports = (sequelize, DataTypes) => {
   Cargo.init({
     codigo: DataTypes.STRING(10),
     descripcion: DataTypes.STRING(200),
+    abreviatura: DataTypes.STRING(20),
     monto: DataTypes.DECIMAL(8,2),
+    clase: DataTypes.INTEGER,
     nivel: DataTypes.INTEGER,
     cantidad_item: DataTypes.INTEGER,
     tipo: DataTypes.STRING(100),

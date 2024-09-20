@@ -1,0 +1,15 @@
+[
+    {
+      "nombre": "SUPERIOR",
+      "activo": 1
+    },
+    {
+      "nombre": "EJECUTIVO",
+      "activo": 1
+    },
+    {
+      "nombre": "OPERADOR",
+      "activo": 1
+    }
+    
+]

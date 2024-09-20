@@ -25,8 +25,14 @@ module.exports = {
       descripcion: {
         type: Sequelize.STRING(200)
       },
+      abreviatura: {
+        type: Sequelize.STRING(20)
+      },
       monto: {
         type: Sequelize.DECIMAL(8,2)
+      },
+      clase: {
+        type: Sequelize.INTEGER
       },
       nivel: {
         type: Sequelize.INTEGER

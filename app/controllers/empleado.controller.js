@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const generarJWT = require('../helpers/jwt');
 const { response, request } = require('express');
-const { Empleado, Sequelize,sequelize } = require('../database/config');
+const { Empleado, Sequelize,sequelize, Lugar_expedido, Cargo, Reparticion, Destino, Aporte_empleado, Seguro, Seguro_empleado } = require('../database/config');
 const paginate = require('../helpers/paginate');
 const { Op } = require("sequelize");
 const axios = require('axios');
@@ -331,5 +331,192 @@ const updateEmpleado = async (req = request, res = response) => {
     }
 }
 
+const migrarEmpleado = async (req = request, res = response ) => {
+    const t = await sequelize.transaction();
+    try {
+        let {id_mes }= req.query;
+        const excelBuffer = req.files['file'][0].buffer;
+        await processExcel(excelBuffer, t, id_mes);
 
-module.exports = {    infoEmpledo, getEmpleadoPaginate, getEmpleado, newEmpleado, updateEmpleado, getEmpNoAportantePaginate };
+        body.activo = 1;
+        const empleadoNew = await Empleado.create(body);
+        res.status(201).json({
+            ok: true,
+            empleadoNew            
+        });
+        
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            ok: false,
+            errors: [{
+                msg: `Ocurrió un imprevisto interno | hable con soporte`
+            }],
+        });
+    }
+}
+function processExcel(excelBuffer, t, id_mes) {
+
+    const workbook = xlsx.read(excelBuffer, { type: 'buffer' });
+    const sheetName = workbook.SheetNames[0];
+    const worksheet = workbook.Sheets[sheetName];
+    const options = {
+        header: 1,
+        // raw: false, 
+        // dateNF: 'yyyy-mm-dd', // Specify the date format string here
+        
+      };
+    const excelData = xlsx.utils.sheet_to_json(worksheet, options );
+  
+    insertExcelIntoDatabase(excelData, t, id_mes);
+}
+
+async function insertExcelIntoDatabase(data, t, id_mes) {
+const columns = data[0];
+    
+    for (let i = 1; i < data.length; i++) {
+        const row = data[i];
+        //console.log("------------>", row);
+        //datos
+        let id_empleado = 0;
+        let existeEmpleado = false;
+        if(Number( row[0] )){
+
+            
+            //verificar y registrar extencion
+            const extension = await Lugar_expedido.findOne({where: { codigo:row[7] }} );
+
+            //verificar y registrar empleado
+            const partes = row[11].split(' ');
+            const apellidoPaterno = partes[0];
+            const apellidoMaterno = partes[1];
+            const nombre = partes[2]?partes[2]:"";
+            const otro_nombre = partes.length() == 4? partes[3]: (partes.length() ==5 ? partes[3] +' '+ partes[4]: '' );
+            const empleado = {
+                cod_empleado: Number( row[4] ),
+                numero_documento: Number( row[6] ),
+                complemento: null,
+                nombre: nombre,
+                otro_nombre: otro_nombre,
+                paterno: apellidoPaterno,
+                materno: apellidoMaterno,
+                ap_esposo: null,
+                fecha_nacimiento: Date( row[8] ),
+                nacionalidad: 'BOLIVIANA',
+                sexo: null,
+                nua: Number( row[9]),
+                cuenta_bancaria: Number(row[10]),
+                tipo_documento: 'ci',
+                cod_rciva: null,//DataTypes.STRING(20),
+                cod_rentista: null,
+                correo: null,
+                telefono: null,
+                celular: null,
+                id_expedido: extension.id,
+                id_grado_academico:null,
+                id_tipo_movimiento:1,
+                id_user_create: 0,
+            };
+            const existEmp = await Empleado.findOne({where: { numero_documento:row[7] } } );
+            
+            if(!existEmp){
+                const empleadoNew = await Empleado.create(empleado , { transaction: t });
+                id_empleado = empleadoNew.id;
+            }else{
+                id_empleado = existEmp.id;
+                existeEmpleado = true;
+            }
+            
+            //asisgnacion de cargo empleado
+            const cargo = await Cargo.findOne({where: { abreviatura:row[18] } } );
+            const meses = await Mes.findOne({where: { id:id_mes }} );
+            const reparticion = await Reparticion.findOne({where: { nombre: row[2] }} );
+            const destino = await Destino.findOne({where: { nombre: row[3] }} );
+            const esBaja = row[17]? true:false;
+            const dataAsignacion = {
+                id_gestion:meses.id_gestion,
+                id_empleado:id_empleado,
+                id_cargo:cargo.id,
+                id_tipo_movimiento: 1,
+                id_reparticion: reparticion.id,
+                id_destino: destino.id,
+                ci_empleado: empleado.numero_documento,
+                fecha_inicio: Date(row[16]),
+                fecha_limite: esBaja? Date(row[17]):null,
+                motivo: esBaja? 'Baja':null,
+                nro_item: Number(row[5]),
+                ingreso: true,
+                retiro: esBaja?true:null,
+                activo: 1,
+                id_user_create: 0,
+                estado: 'AC',
+            };
+            if(!existeEmpleado){
+                const asigCargoNew = await Asignacion_cargo_empleado.create(dataAsignacion , { transaction: t });
+            }
+
+            //registro de aporte afp empleado 
+            const aporteEmpleados = {
+                id_empleado:id_empleado,
+                id_aporte:3,
+                motivo: "",
+                id_user_create: 0,
+                activo: 1
+            };
+            if(!existeEmpleado){
+                const aporteEmpleadosNew = await Aporte_empleado.create(aporteEmpleados , { transaction: t });
+            }
+            //registro de seguro empleado 
+            const seguro = await Seguro.findOne({where: { nombre: row[15] }} );
+            const seguroEmpleado = {
+                id_empleado:id_empleado,
+                id_seguro:seguro.id,
+                motivo: "",
+                id_user_create: 0,
+                activo: 1
+            };
+            if(!existeEmpleado){
+                const seguroEmpleadosNew = await Seguro_empleado.create(seguroEmpleado , { transaction: t });
+            }
+            //registro de 
+
+            const boletaDetalle = {
+                id_mes: id_mes,
+                entidad: Number( row[0] ),
+                nombre: row[3],
+                ci: row[4],
+                //fecha_nacimiento: moment(row[7], 'DD/MM/YYYY', true).isValid()? moment(row[7], 'DD/MM/YYYY', true):"",
+                cuenta: row[9],
+                item: Number( row[10] ),
+                dias_trabajo: Number( row[11] ),
+                puesto: row[12],
+                haber_basico: Number(row[14]), //ataBoleta[i].replace(",","")
+                bono_antiguedad: Number(row[15]),
+                otros_ingresos: Number(row[16]),
+                total_ingresos: Number(row[17]),
+                rc_iva: Number(row[18]),
+                afp: Number(row[19]),
+                otro_descuentos: Number(row[20]),
+                total_descuento: Number(row[22]),
+                liquido_pagable: Number(row[25]),
+                estado: row[28],
+                activo: '1',
+            };
+            //console.log("boleta detalle:", boletaDetalle)
+            //const newBoleta = await Boletadetalle.create(boletaDetalle , { transaction: t });
+        }
+        //console.log("new boleta:",newBoleta)
+        // const insertQuery = `INSERT INTO excel_data (${columns.join(',')}) VALUES (${row.map(value => `'${value}'`).join(',')})`;
+        // console.log("---:", insertQuery);
+        // db.query(insertQuery, (err, result) => {
+        // if (err) {
+        //     console.error('Error inserting Excel data into MySQL:', err);
+        //     throw err;
+        // }
+        // console.log('Excel data inserted into MySQL:', result);
+        // });
+    }
+}
+
+
+module.exports = { infoEmpledo, migrarEmpleado, getEmpleadoPaginate, getEmpleado, newEmpleado, updateEmpleado, getEmpNoAportantePaginate };

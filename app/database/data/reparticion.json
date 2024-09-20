@@ -1,0 +1,1251 @@
+[
+  {
+    "id_organismo":1,
+    "codigo": "1",
+    "nombre": "CMDO.EN JEFE FA",
+    "activo": 1
+  },
+  {
+    "id_organismo":1,
+    "codigo": "2",
+    "nombre": "LETRA 'A'",
+    "activo": 1
+  },
+  {
+    "id_organismo":1,
+    "codigo": "3",
+    "nombre": "E.A.E.N. LP.",
+    "activo": 1
+  },    
+  {
+    "id_organismo": 2,
+    "codigo": "4",
+    "nombre": "CASA MIL.S/E",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "5",
+    "nombre": "MINDEFENSA",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "6",
+    "nombre": "RESERVA ACTIVA",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "7",
+    "nombre": "TRIB.SUP.JUS.M",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "8",
+    "nombre": "TRIB.PER.JUS.M",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "9",
+    "nombre": "REG.MIL.#1 LP",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "10",
+    "nombre": "REG.MIL.#2 OR",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "11",
+    "nombre": "REG.MIL.#3 TJ",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "12",
+    "nombre": "REG.MIL.#4 SU",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "13",
+    "nombre": "REG.MIL.#6 TR",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "14",
+    "nombre": "REG.MIL#8 SC",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "15",
+    "nombre": "REG.MIL.#10 PT",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "16",
+    "nombre": "COSSMIL. LPZ",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "17",
+    "nombre": "ART.114 LOFA.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "18",
+    "nombre": "COFADENA LP",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "19",
+    "nombre": "LET E D.JUS.MI",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "20",
+    "nombre": "CMDTE.EN JEFE",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "21",
+    "nombre": "CMDO.EN JEFE FA",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "22",
+    "nombre": "\"LETRA \"\"A\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "23",
+    "nombre": "LET E D.JUS.OR",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "24",
+    "nombre": "E.M.I. LA PAZ",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "25",
+    "nombre": "COMANEJTO. LP.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "26",
+    "nombre": "\"LETRA \"\"B\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "27",
+    "nombre": "LET C CO.S.GOB",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "28",
+    "nombre": "LET D TRAT.MED",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "29",
+    "nombre": "(+) ART.87",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "30",
+    "nombre": "P.P.E.  LA PAZ",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "31",
+    "nombre": "CTRO.G.-MANTTO",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "32",
+    "nombre": "I.G.M.  LA PAZ",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "33",
+    "nombre": "ESC.MIL.TOP.EJ",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "34",
+    "nombre": "RI-1 COLORADOS",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "35",
+    "nombre": "\"RCB-4 \"\"INGAVI\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "36",
+    "nombre": "ART.118 LOFA",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "37",
+    "nombre": "BPM.B-1 SAAVEDR",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "38",
+    "nombre": "BAT.C-1 VIDAURR",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "39",
+    "nombre": "\"RCB-2 \"\"TARAPACA\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "40",
+    "nombre": "\"RCB-1 \"\"CALAMA\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "41",
+    "nombre": "RAA-6 B.RIOJA",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "42",
+    "nombre": "COMP.AV.EJTO.1",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "43",
+    "nombre": "CMDO.1RA.DIV.BL",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "44",
+    "nombre": "1RA.BRIG.MECAN",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "45",
+    "nombre": "\"RIB-8\"\"AYACUCHO\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "46",
+    "nombre": "RIB-23 M.TOLEDO",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "47",
+    "nombre": "\"RCB-5 \"\"LANZA\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "48",
+    "nombre": "\"RA-2 \"\"BOLIVAR\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "49",
+    "nombre": "B.ING-II ROMAN",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "50",
+    "nombre": "CMDO.2DA.DIV.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "51",
+    "nombre": "RAD.BAT.TOPAT.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "52",
+    "nombre": "RI-21 ILLIMANI",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "53",
+    "nombre": "RI-22 MEJILLONE",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "54",
+    "nombre": "REG.E.24 M.ARCO",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "55",
+    "nombre": "REG.25 TOCOPILL",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "56",
+    "nombre": "\"RC-8 \"\"BRAUN\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "57",
+    "nombre": "\"RA-1 \"\"CAMACHO\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "58",
+    "nombre": "BI-VII SAJAMA",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "59",
+    "nombre": "CMDO.3RA.DIV.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "60",
+    "nombre": "\"RI-5 \"\"CAMPERO\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "61",
+    "nombre": "\"RI-20 \"\"PADILLA\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "62",
+    "nombre": "\"RC-3 \"\"AROMA\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "63",
+    "nombre": "\"RA-3 \"\"PISAGUA\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "64",
+    "nombre": "BAT.ING.-I CHO",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "65",
+    "nombre": "CMDO.4TA.DIV.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "66",
+    "nombre": "\"RI-6 \"\"CAMPOS\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "67",
+    "nombre": "RI-11 BOQUERON",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "68",
+    "nombre": "\"RC-1 \"\"AVAROA\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "69",
+    "nombre": "\"RA-4 \"\"BULLAIN\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "70",
+    "nombre": "CMDO.5TA.DIV.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "71",
+    "nombre": "RI-13 I.MONTES",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "72",
+    "nombre": "\"RI-14 \"\"FLORIDA\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "73",
+    "nombre": "\"RI-15 \"\"JUNIN\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "74",
+    "nombre": "\"RC-6 \"\"CASTRILO\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "75",
+    "nombre": "\"RA-5 \"\"VERGARA\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "76",
+    "nombre": "CMDO.6TA.DIV.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "77",
+    "nombre": "RI-29 L.ECHEVER",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "78",
+    "nombre": "RI-35 B.RACUA",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "79",
+    "nombre": "REG.E.16 JORDAN",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "80",
+    "nombre": "RI-17 INDEPEND.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "81",
+    "nombre": "\"RC-2 \"\"BALLIVIAN\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "82",
+    "nombre": "CMDO.7MA.DIV.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "83",
+    "nombre": "BAT.TRANSP.III",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "84",
+    "nombre": "BAT.PM-3 E.ARCE",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "85",
+    "nombre": "\"RI-2 \"\"SUCRE\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "86",
+    "nombre": "REG.18 VICTORIA",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "87",
+    "nombre": "RI-26 BARRIENTO",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "88",
+    "nombre": "RI-31 CNL.RIOS",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "89",
+    "nombre": "\"RA-7 \"\"TUMUSLA\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "90",
+    "nombre": "B.ING.V OVANDO",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "91",
+    "nombre": "FZA.TAREA CONJ.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "92",
+    "nombre": "GCA-I GRAL.A.S",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "93",
+    "nombre": "CMDO.9NA.DIV.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "94",
+    "nombre": "RI-32 I.MURGUI",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "95",
+    "nombre": "RI-33 L.CABRER",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "96",
+    "nombre": "CMDO.8VA.DIV.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "97",
+    "nombre": "BAT.TRANSP.II",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "98",
+    "nombre": "BAT.PM-2 AMEZAG",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "99",
+    "nombre": "\"RI-7 \"\"MARZANA\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "100",
+    "nombre": "\"RI-10 \"\"WARNES\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "101",
+    "nombre": "REG.12 MANCHEGO",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "102",
+    "nombre": "BAT.ING-III PN",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "103",
+    "nombre": "B.PROD.ECOL.III",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "104",
+    "nombre": "\"RA.8 \"\"STA.CRUZ\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "105",
+    "nombre": "RC.10 J.MERCADO",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "106",
+    "nombre": "B.PROD.ECOLO.II",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "107",
+    "nombre": "\"RI-30 \"\"MURILLO\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "108",
+    "nombre": "B.ING.VI RIOSI",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "109",
+    "nombre": "BAT.POL.MIL-IV",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "110",
+    "nombre": "CMDO.10MA.DIV.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "111",
+    "nombre": "\"RI-3 \"\"PEREZ\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "112",
+    "nombre": "\"RI-4 \"\"LOA\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "113",
+    "nombre": "RI-27 ANTOFAGAS",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "114",
+    "nombre": "\"RC-7 \"\"CHICHAS\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "115",
+    "nombre": "ECEM.MCAL.S.C.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "116",
+    "nombre": "ESC.APLIC.ARMAS",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "117",
+    "nombre": "E.A.A. C.A.CBB",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "118",
+    "nombre": "ESC.MIL.INTEL.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "119",
+    "nombre": "COL.MIL.EJTO.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "120",
+    "nombre": "EMSE. M.PAREDE",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "121",
+    "nombre": "ESCONBOL.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "122",
+    "nombre": "LICEO MILITAR",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "123",
+    "nombre": "ESC.MIL.MUSICA",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "124",
+    "nombre": "ESC.ESP.PRO.AE",
+    "activo": 1
+  },
+  {
+    "id_organismo": 2,
+    "codigo": "125",
+    "nombre": "ESC.CON.BOL.",
+    "activo": 1
+  },
+
+  {
+    "id_organismo": 3,
+    "codigo": "126",
+    "nombre": "TRIB.SUP.JUS.M",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "127",
+    "nombre": "TRIB.PER.JUS.M",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "128",
+    "nombre": "CMDO.EN JEFE FA",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "129",
+    "nombre": "SUB.STRIA.AER.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "130",
+    "nombre": "\"LETRA \"\"A\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "131",
+    "nombre": "\"LETRA \"\"B\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "132",
+    "nombre": "LET E D.JUS.OR",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "133",
+    "nombre": "E.M.I. LA PAZ",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "134",
+    "nombre": "ESC.MIL.INTEL.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "135",
+    "nombre": "G.A.EXP.REC.83",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "136",
+    "nombre": "LET E D.JUS.MI",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "137",
+    "nombre": "DIR.GRAL.B.SOC",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "138",
+    "nombre": "III-BRIG.AEREA",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "139",
+    "nombre": "CTRO.AGROP.#1",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "140",
+    "nombre": "CMDO.GRAL.FAB.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "141",
+    "nombre": "I-BRIG.AEREA",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "142",
+    "nombre": "G.ART.DEF.A.91",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "143",
+    "nombre": "DPTO.III SAN.AE",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "144",
+    "nombre": "II-BRIG.AEREA",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "145",
+    "nombre": "RESERVA ACTIVA",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "146",
+    "nombre": "ART.114 LOFA.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "147",
+    "nombre": "ART.118 LOFA",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "148",
+    "nombre": "(+) ART.87",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "149",
+    "nombre": "E.GUER.AE.BARRI",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "150",
+    "nombre": "SERV.NAL.AEROFO",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "151",
+    "nombre": "S.A.AEREO 11",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "152",
+    "nombre": "ESC.ESP.PRO.AE",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "153",
+    "nombre": "G.A. CAZA 31",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "154",
+    "nombre": "G.A.TRANS. 71",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "155",
+    "nombre": "AG.TAM.TAB.LOC",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "156",
+    "nombre": "AG.TAM.TAB.FRO",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "157",
+    "nombre": "SERV.INFR.AER.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "158",
+    "nombre": "LET D TRAT.MED",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "159",
+    "nombre": "G.A.ENTR. 21",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "160",
+    "nombre": "G.ART.DEF.A.93",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "161",
+    "nombre": "FZA.DE TAREA",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "162",
+    "nombre": "COL.MIL.AV.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "163",
+    "nombre": "G.ART.DEF.A.92",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "164",
+    "nombre": "G.A. CAZA 34",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "165",
+    "nombre": "G.A.B.SALV. 51",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "166",
+    "nombre": "S.M.AEREO CBBA",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "167",
+    "nombre": "POL.MIL.AER.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "168",
+    "nombre": "IV-BRIG.AEREA",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "169",
+    "nombre": "G.ART.DEF.A.94",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "170",
+    "nombre": "G.A.TACTICO 63",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "171",
+    "nombre": "G.A.TACTICO 61",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "172",
+    "nombre": "G.A. TRANS. 72",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "173",
+    "nombre": "G.A.TACTICO 62",
+    "activo": 1
+  },
+  {
+    "id_organismo": 3,
+    "codigo": "174",
+    "nombre": "G.A.TACTICO 64",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "175",
+    "nombre": "MINDEFENSA",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "176",
+    "nombre": "\"LETRA \"\"B\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "177",
+    "nombre": "LET E D.JUS.MI",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "178",
+    "nombre": "LET E D.JUS.OR",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "179",
+    "nombre": "TRIB.SUP.JUS.M",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "180",
+    "nombre": "\"LETRA \"\"A\"\"\"",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "181",
+    "nombre": "TRIB.PER.JUS.M",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "182",
+    "nombre": "CMDO.EN JEFE FA",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "183",
+    "nombre": "RESERVA ACTIVA",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "184",
+    "nombre": "E.M.I. LA PAZ",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "185",
+    "nombre": "ESC.MIL.INTEL.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "186",
+    "nombre": "CMDO.ARM.BOL",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "187",
+    "nombre": "LET C CO.S.GOB",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "188",
+    "nombre": "LET D TRAT.MED",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "189",
+    "nombre": "ART.114 LOFA.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "190",
+    "nombre": "ADSCRITO",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "191",
+    "nombre": "ART.118 LOFA",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "192",
+    "nombre": "(+) ART.87",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "193",
+    "nombre": "HIDROG.NAVAL",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "194",
+    "nombre": "I-DIST.BENI",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "195",
+    "nombre": "BASE NAV.BALL.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "196",
+    "nombre": "II-DIST.MAMORE",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "197",
+    "nombre": "BN.PTO.VILLARR",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "198",
+    "nombre": "AREA NAV.1 CBB",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "199",
+    "nombre": "AREA NAV.2 S.C",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "200",
+    "nombre": "B.NAV.D.GUTIER",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "201",
+    "nombre": "AREA NAV.3 BER",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "202",
+    "nombre": "III-DIST.MADER",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "203",
+    "nombre": "IV-DIST.TITICA",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "204",
+    "nombre": "V-DIS.NAV.PLAT",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "205",
+    "nombre": "VI-DIS.NAV.ACR",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "206",
+    "nombre": "ESC.GUER.NAV.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "207",
+    "nombre": "ESC.NAV.MIL.",
+    "activo": 1
+  },
+  {
+    "id_organismo": 4,
+    "codigo": "208",
+    "nombre": "ESC.SGTO.ZEBAL",
+    "activo": 1
+  }
+]
