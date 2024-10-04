@@ -1,6 +1,6 @@
 [
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 1,
     "clase": 2,
     "nivel": 1,
@@ -13,7 +13,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 1,
     "clase": 2,
     "nivel": 2,
@@ -26,7 +26,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 1,
     "clase": 2,
     "nivel": 3,
@@ -39,7 +39,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 2,
     "clase": 2,
     "nivel": 4,
@@ -52,20 +52,20 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 2,
     "clase": 3,
     "nivel": 5,
     "descripcion": "Coronel",
     "abreviatura": "CNL.",
     "monto": "6724.00",
-    "cantidad_item": "1020",
+    "cantidad_item": 1020,
     "monto_mensual": "6858480.00",
     "tipo": "ARMAS",
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 2,
     "clase": 4,
     "nivel": 6,
@@ -78,7 +78,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 5,
     "nivel": 7,
@@ -91,7 +91,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 5,
     "nivel": 8,
@@ -104,7 +104,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 5,
     "nivel": 9,
@@ -117,7 +117,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 5,
     "nivel": 10,
@@ -130,7 +130,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 6,
     "nivel": 11,
@@ -143,7 +143,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 6,
     "nivel": 12,
@@ -156,7 +156,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 6,
     "nivel": 13,
@@ -169,7 +169,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 6,
     "nivel": 14,
@@ -182,7 +182,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 6,
     "nivel": 15,
@@ -195,7 +195,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 6,
     "nivel": 16,
@@ -208,7 +208,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 6,
     "nivel": 17,
@@ -221,7 +221,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 6,
     "nivel": 18,
@@ -234,7 +234,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 5,
     "nivel": 19,
@@ -242,12 +242,12 @@
     "abreviatura": "",
     "monto": "5831.00",
     "cantidad_item": 0,
-    "monto_mensual": "0",
+    "monto_mensual": null,
     "tipo": "ARMAS",
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 5,
     "nivel": 20,
@@ -260,7 +260,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 5,
     "nivel": 21,
@@ -273,7 +273,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 5,
     "nivel": 22,
@@ -286,7 +286,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 5,
     "nivel": 23,
@@ -299,7 +299,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 5,
     "nivel": 24,
@@ -312,7 +312,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 6,
     "nivel": 25,
@@ -325,7 +325,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 6,
     "nivel": 26,
@@ -338,20 +338,20 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 6,
     "nivel": 27,
     "descripcion": "Capitán Serv.",
     "abreviatura": "",
     "monto": "5191.00",
-    "cantidad_item": "",
-    "monto_mensual": "",
+    "cantidad_item": 0,
+    "monto_mensual": null,
     "tipo": "ARMAS",
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 6,
     "nivel": 28,
@@ -364,7 +364,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 6,
     "nivel": 29,
@@ -377,7 +377,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 5,
     "nivel": 30,
@@ -385,12 +385,12 @@
     "abreviatura": "",
     "monto": "2806.00",
     "cantidad_item": 0,
-    "monto_mensual": "0",
+    "monto_mensual": null,
     "tipo": "SERVICIO",
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 5,
     "nivel": 31,
@@ -403,7 +403,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 5,
     "nivel": 32,
@@ -416,7 +416,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 5,
     "nivel": 33,
@@ -429,7 +429,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 5,
     "nivel": 34,
@@ -442,7 +442,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 5,
     "nivel": 35,
@@ -455,7 +455,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 5,
     "nivel": 36,
@@ -468,7 +468,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 6,
     "nivel": 37,
@@ -481,7 +481,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 6,
     "nivel": 38,
@@ -494,7 +494,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 6,
     "nivel": 39,
@@ -507,7 +507,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 6,
     "nivel": 40,
@@ -520,7 +520,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 6,
     "nivel": 41,
@@ -533,7 +533,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 5,
     "nivel": 42,
@@ -546,7 +546,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 5,
     "nivel": 43,
@@ -559,7 +559,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 5,
     "nivel": 44,
@@ -572,7 +572,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 5,
     "nivel": 45,
@@ -585,7 +585,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 5,
     "nivel": 46,
@@ -598,7 +598,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 6,
     "nivel": 47,
@@ -611,7 +611,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 6,
     "nivel": 48,
@@ -624,7 +624,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 6,
     "nivel": 49,
@@ -637,7 +637,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 6,
     "nivel": 50,
@@ -650,7 +650,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 6,
     "nivel": 51,
@@ -663,7 +663,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 7,
     "nivel": 52,
@@ -676,7 +676,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 7,
     "nivel": 53,
@@ -689,7 +689,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 7,
     "nivel": 54,
@@ -702,7 +702,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 7,
     "nivel": 55,
@@ -715,7 +715,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 7,
     "nivel": 56,
@@ -728,7 +728,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 8,
     "nivel": 57,
@@ -741,7 +741,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 8,
     "nivel": 58,
@@ -754,7 +754,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 8,
     "nivel": 59,
@@ -767,7 +767,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 8,
     "nivel": 60,
@@ -780,7 +780,7 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 8,
     "nivel": 61,
@@ -793,33 +793,33 @@
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 1,
     "clase": 2,
     "nivel": 2,
     "descripcion": "ALMIRANTE",
-    "abreviatura": "ALMTE",
+    "abreviatura": "ALMTE.",
     "monto": "6920.00",
     "cantidad_item": 0,
-    "monto_mensual": "",
+    "monto_mensual": null,
     "tipo": "ARMADA",
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 1,
     "clase": 2,
     "nivel": 3,
     "descripcion": "VICEALMIRANTE",
-    "abreviatura": "V.ALMTE",
+    "abreviatura": "V.ALMTE.",
     "monto": "6801.00",
     "cantidad_item": 0,
-    "monto_mensual": "",
+    "monto_mensual": null,
     "tipo": "ARMADA",
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 2,
     "clase": 2,
     "nivel": 4,
@@ -827,12 +827,12 @@
     "abreviatura": "C.ALMTE.",
     "monto": "6745.00",
     "cantidad_item": 0,
-    "monto_mensual": "",
+    "monto_mensual": null,
     "tipo": "ARMADA",
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 2,
     "clase": 3,
     "nivel": 5,
@@ -840,12 +840,12 @@
     "abreviatura": "C.N.",
     "monto": "6724.00",
     "cantidad_item": 0,
-    "monto_mensual": "",
+    "monto_mensual": null,
     "tipo": "ARMADA",
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 2,
     "clase": 4,
     "nivel": 6,
@@ -853,12 +853,12 @@
     "abreviatura": "C.F.",
     "monto": "6702.00",
     "cantidad_item": 0,
-    "monto_mensual": "",
+    "monto_mensual": null,
     "tipo": "ARMADA",
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 5,
     "nivel": 7,
@@ -866,12 +866,12 @@
     "abreviatura": "C.C.",
     "monto": "6560.00",
     "cantidad_item": 0,
-    "monto_mensual": "",
+    "monto_mensual": null,
     "tipo": "ARMADA",
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 5,
     "nivel": 8,
@@ -879,12 +879,12 @@
     "abreviatura": "T.N.",
     "monto": "6315.00",
     "cantidad_item": 0,
-    "monto_mensual": "",
+    "monto_mensual": null,
     "tipo": "ARMADA",
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 5,
     "nivel": 9,
@@ -892,12 +892,12 @@
     "abreviatura": "T.F.",
     "monto": "6255.00",
     "cantidad_item": 0,
-    "monto_mensual": "",
+    "monto_mensual": null,
     "tipo": "ARMADA",
     "activo": 1
   },
   {
-    "CODIGO": "",
+    "codigo": "",
     "id_categoria": 3,
     "clase": 5,
     "nivel": 10,
@@ -905,7 +905,7 @@
     "abreviatura": "ALF.",
     "monto": "6139",
     "cantidad_item": 0,
-    "monto_mensual": "",
+    "monto_mensual": null,
     "tipo": "ARMADA",
     "activo": 1
   }

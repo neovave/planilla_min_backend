@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Asignacion_descuento.belongsTo(models.Tipo_descuento_sancion,{as:'asiganciondescuento_tipodes',foreignKey:'id_tipo_descuento'} );
       Asignacion_descuento.belongsTo(models.Empleado,{as:'asignaciondescuento_empleado',foreignKey:'id_empleado'});
-      Asignacion_descuento.hasMany(models.Beneficiario_acreedor,{as:'asignaciondescuento_beneficiario', foreignKey:'id_asig_descuento'});      
+      Asignacion_descuento.belongsTo(models.Municipio,{as:'asignaciondescuento_municipio',foreignKey:'id_municipio'});
+      Asignacion_descuento.hasMany(models.Beneficiario_acreedor,{as:'asignaciondescuento_beneficiario', foreignKey:'id_asig_descuento'});
     }
   }
   Asignacion_descuento.init({

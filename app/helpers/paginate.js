@@ -2,7 +2,7 @@ const { Op } = require("sequelize");
 
 const paginate = async (model, pageSize, pageLimit, type, query, optionsDb = {}) => {
     try {
-        const limit = parseInt(pageLimit, 10) || 100;
+        const limit = parseInt(pageLimit, 10) || 20000;
         const page = parseInt(pageSize, 10) || 1;
         // search obj
         let search = {};

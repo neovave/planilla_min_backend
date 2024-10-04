@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const bcrypt = require('bcrypt');
 const salt = bcrypt.genSaltSync();
-const userDataPath = path.join(__dirname, '../data/aporte.json');
+const userDataPath = path.join(__dirname, '../data/tipo_movimientos.json');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -22,9 +22,9 @@ module.exports = {
     usersData.forEach(resp => {
         resp.createdAt = new Date(),
         resp.updatedAt = new Date()
-        //resp.deletedAt = new Date()        
+        //resp.deletedAt = new Date()
       });
-    await queryInterface.bulkInsert('aportes', usersData);
+    await queryInterface.bulkInsert('tipo_movimientos', usersData);
   },
 
   async down (queryInterface, Sequelize) {
@@ -34,6 +34,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('aportes', null, {});
+    await queryInterface.bulkDelete('tipo_movimientos', null, {});
   }
 };

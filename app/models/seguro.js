@@ -19,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     codigo: DataTypes.STRING(10),
     descripcion: DataTypes.STRING(200),
     abreviado: DataTypes.STRING(20),
+    numero_patronal: DataTypes.STRING(20),
     id_user_create: DataTypes.INTEGER,
     id_user_mod: DataTypes.INTEGER,
     id_user_delete: DataTypes.INTEGER,

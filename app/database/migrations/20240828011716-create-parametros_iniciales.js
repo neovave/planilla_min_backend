@@ -125,6 +125,6 @@ $BODY$;
     `);
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.sequelize.query('DROP FUNCTION fun_parametros_iniciales(date)');
+    await queryInterface.sequelize.query('DROP FUNCTION fun_parametros_iniciales(integer)');
   }
 };

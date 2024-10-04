@@ -16,8 +16,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Tipo_descuento_sancion.init({
+    codigo: DataTypes.INTEGER,
     nombre: DataTypes.STRING(120),
-    nombre_abreviado: DataTypes.STRING(8),
+    nombre_abreviado: DataTypes.STRING(20),
     grupo: DataTypes.STRING(10),
     tipo: DataTypes.STRING(100),
     descripcion: DataTypes.STRING(200),

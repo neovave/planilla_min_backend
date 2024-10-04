@@ -1,6 +1,6 @@
 const { validatedResponse } = require('../validated-response');
 const { checkSchema } = require('express-validator');
-const { idExistAsigDescuento, idExistTipoDescuento, idExistEmpleado } = require('./database');
+const { idExistAsigDescuento, idExistTipoDescuento, idExistEmpleado, idExistMunicipio } = require('./database');
 
 const validationSchema =  {
     id_tipo_descuento: {
@@ -15,6 +15,7 @@ const validationSchema =  {
         },
         custom: { options: idExistEmpleado}, //verificamos si existe uuid
     },
+    
     cod_empleado: {
         optional: { options: { checkFalsy: true } },
         isLength: {
@@ -137,6 +138,17 @@ const validationSchema =  {
             }
         },
         
+    },
+    id_municipio: {
+        optional: { options: { checkFalsy: true } },
+        custom: { options:  (value, { req }) => {
+            // Validar solo si el beneficio es verdadero
+            if (req.body.con_beneficiario && !value) {
+                throw new Error('Debe proporcionar municipio si el tipo descuento es con beneficiario.');
+            }
+            return true;
+        }
+        }, //verificamos si existe uuid
     },
 
     activo: {

@@ -1,0 +1,1923 @@
+[
+  {
+    "codigo": "21007",
+    "nombre": "Nazacara",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21008",
+    "nombre": "Santiago De Callapa",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21101",
+    "nombre": "Puerto Acosta",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21102",
+    "nombre": "Mocomoco",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21103",
+    "nombre": "Carabuco",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21201",
+    "nombre": "Apolo",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21202",
+    "nombre": "Pelechuco",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21301",
+    "nombre": "Luribay",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21302",
+    "nombre": "Sapahaqui",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21303",
+    "nombre": "Yaco",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21304",
+    "nombre": "Malla",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21305",
+    "nombre": "Cairoma",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21401",
+    "nombre": "Chulumani",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21402",
+    "nombre": "Irupana",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21403",
+    "nombre": "Yanacachi",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21404",
+    "nombre": "Palos Blancos",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21405",
+    "nombre": "La Asunta",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21501",
+    "nombre": "Pucarani",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21502",
+    "nombre": "Laja",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21503",
+    "nombre": "Batallas",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21504",
+    "nombre": "Puerto Perez",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21601",
+    "nombre": "Coroico",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21602",
+    "nombre": "Coripata",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21701",
+    "nombre": "Ixiamas",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21702",
+    "nombre": "San Buenaventura",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21801",
+    "nombre": "Charazani",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21802",
+    "nombre": "Curva",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21901",
+    "nombre": "San Pedro",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21902",
+    "nombre": "Papel Pampa",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21903",
+    "nombre": "Chacarilla",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "22001",
+    "nombre": "Santiago De Machaca",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "22002",
+    "nombre": "Catacora",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "30101",
+    "nombre": "Cochabamba",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "30201",
+    "nombre": "Quillacollo",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "30202",
+    "nombre": "Sipe Sipe",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "30203",
+    "nombre": "Tiquipaya",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "30204",
+    "nombre": "Vinto",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "30205",
+    "nombre": "Colcapirhua",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "30301",
+    "nombre": "Aiquile",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "30302",
+    "nombre": "Pasorapa",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "30303",
+    "nombre": "Omereque",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "30401",
+    "nombre": "Ayopaya",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "30402",
+    "nombre": "Morochata",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "30501",
+    "nombre": "Sacaba",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "30502",
+    "nombre": "Colomi",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "30503",
+    "nombre": "Villa Tunari",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "30601",
+    "nombre": "Punata",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "30602",
+    "nombre": "Villa Rivero",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "30603",
+    "nombre": "San Benito",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "30604",
+    "nombre": "Tacachi",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "30605",
+    "nombre": "Cuchumuela",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "30701",
+    "nombre": "Tarata",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "30702",
+    "nombre": "Anzaldo",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "30703",
+    "nombre": "Arbieto",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "30704",
+    "nombre": "Sacabamba",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "30801",
+    "nombre": "Cliza",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "30802",
+    "nombre": "Toco",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "30803",
+    "nombre": "Tolata",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "30901",
+    "nombre": "Capinota",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "30902",
+    "nombre": "Santiva-Ez",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "30903",
+    "nombre": "Sicaya",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "31001",
+    "nombre": "Tacapari",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "31101",
+    "nombre": "Totora",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "31102",
+    "nombre": "Pojo",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "31103",
+    "nombre": "Pocona",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "31104",
+    "nombre": "Chimore",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "31105",
+    "nombre": "Puerto Villarroel",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "31201",
+    "nombre": "Arani",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "31202",
+    "nombre": "Vacas",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "31301",
+    "nombre": "Arque",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "31302",
+    "nombre": "Tacopaya",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "31401",
+    "nombre": "Bolivar",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "31501",
+    "nombre": "Tiraque",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "31601",
+    "nombre": "Mizque",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "31602",
+    "nombre": "Vila Vila",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "31603",
+    "nombre": "Alalay",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "40101",
+    "nombre": "Oruro",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "40102",
+    "nombre": "Caracollo",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "40103",
+    "nombre": "El Choro",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "40201",
+    "nombre": "Challapata",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "40202",
+    "nombre": "Santuario De Quillacas",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "40301",
+    "nombre": "Huanuni",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "40302",
+    "nombre": "Machacamarca",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "40401",
+    "nombre": "Poopo",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "40402",
+    "nombre": "Paz-A",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "40403",
+    "nombre": "Antequera",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "40501",
+    "nombre": "Eucaliptus",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "40601",
+    "nombre": "Santiago",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "40701",
+    "nombre": "Totora",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "40801",
+    "nombre": "Corque",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "40802",
+    "nombre": "Choque Cota",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "40901",
+    "nombre": "Curahuara",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "40902",
+    "nombre": "Turco",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "41001",
+    "nombre": "Huachacalla",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "41002",
+    "nombre": "Escara",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "41003",
+    "nombre": "Cruz De Machacamarca",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "41004",
+    "nombre": "Yunguto",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "41005",
+    "nombre": "Esmeralda",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "41101",
+    "nombre": "Toledo",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "41201",
+    "nombre": "Andamarca",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "41202",
+    "nombre": "Belen",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "41301",
+    "nombre": "Salinas",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "41302",
+    "nombre": "Pampa Aullagas",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "41401",
+    "nombre": "La Rivera",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "41402",
+    "nombre": "Todos Santos",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "41403",
+    "nombre": "Carangas",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "41501",
+    "nombre": "Sabaya",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "41502",
+    "nombre": "Coipasa",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "41503",
+    "nombre": "Chipaya",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "41601",
+    "nombre": "Huayllamarca",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "50101",
+    "nombre": "Potosi",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "50102",
+    "nombre": "Tinguipaya",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "50103",
+    "nombre": "Yocalla",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "50104",
+    "nombre": "Urmire",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "50201",
+    "nombre": "Uncia",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "50202",
+    "nombre": "Chayanta",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "50203",
+    "nombre": "Llallagua",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "50301",
+    "nombre": "Betanzos",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "50302",
+    "nombre": "Chaqui",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "50303",
+    "nombre": "Tacobamba",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "50401",
+    "nombre": "Colquechaca",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "50402",
+    "nombre": "Ravelo",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "50403",
+    "nombre": "Pocoata",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "50404",
+    "nombre": "Ocuri",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "50501",
+    "nombre": "San Pedro",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "50502",
+    "nombre": "Toro Toro",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "50601",
+    "nombre": "Cotagaita",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "50602",
+    "nombre": "Vitichi",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "50701",
+    "nombre": "Tupiza",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "50702",
+    "nombre": "Atocha",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "50801",
+    "nombre": "Colcha K",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "50802",
+    "nombre": "San Pedro",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "50901",
+    "nombre": "San Pablo",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "50902",
+    "nombre": "Mojinete",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "50903",
+    "nombre": "Sanantonio",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "51001",
+    "nombre": "Sacaca",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "51002",
+    "nombre": "Caripuyo",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "51101",
+    "nombre": "Puna",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "51102",
+    "nombre": "Caiza D",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "51201",
+    "nombre": "Uyuni",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "51202",
+    "nombre": "Tomave",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "51203",
+    "nombre": "Porco",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "31106",
+    "nombre": "Entre Rios",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "51301",
+    "nombre": "Arampampa",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "51302",
+    "nombre": "Acasio",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "51401",
+    "nombre": "Llica",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "51402",
+    "nombre": "Tahua",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "51501",
+    "nombre": "Villazon",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "51601",
+    "nombre": "San Agustin",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "60101",
+    "nombre": "Tarija",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "60201",
+    "nombre": "Padcaya",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "60202",
+    "nombre": "Bermejo",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "60301",
+    "nombre": "Yacuiba",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "60302",
+    "nombre": "Carapari",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "60303",
+    "nombre": "Villamontes",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "60401",
+    "nombre": "Uriondo",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "60402",
+    "nombre": "Yunchara",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "60501",
+    "nombre": "San Lorenzo",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "60502",
+    "nombre": "El Puente",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "60601",
+    "nombre": "Entre Rios",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70101",
+    "nombre": "Santa Cruz",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70102",
+    "nombre": "Cotoca",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70103",
+    "nombre": "Ayacucho",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70104",
+    "nombre": "La Guardia",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70105",
+    "nombre": "El Torno",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70201",
+    "nombre": "Warnes",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70301",
+    "nombre": "San Ignacio",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70302",
+    "nombre": "San Miguel",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70303",
+    "nombre": "San Rafael",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70401",
+    "nombre": "Buena Vista",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70402",
+    "nombre": "San Carlos",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70403",
+    "nombre": "Yapacani",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70501",
+    "nombre": "San Jose",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70502",
+    "nombre": "Pailon",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70503",
+    "nombre": "Robore",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70601",
+    "nombre": "Portachuelo",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70602",
+    "nombre": "Santa Rosa",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70701",
+    "nombre": "Lagunillas",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70702",
+    "nombre": "Charagua",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70703",
+    "nombre": "Cabezas",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70704",
+    "nombre": "Cuevo",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70705",
+    "nombre": "Gutierrez",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70706",
+    "nombre": "Camiri",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70707",
+    "nombre": "Boyuibe",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70801",
+    "nombre": "Vallegrande",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70802",
+    "nombre": "Trigal",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70803",
+    "nombre": "Moro Moro",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70804",
+    "nombre": "Postrer Valle",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70805",
+    "nombre": "Pucara",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70901",
+    "nombre": "Samaipata",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70902",
+    "nombre": "Pampa Grande",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70903",
+    "nombre": "Mairana",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70904",
+    "nombre": "Quirusillas",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "71001",
+    "nombre": "Montero",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "71002",
+    "nombre": "Generl Agustin S.",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "71003",
+    "nombre": "Mineros",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "71101",
+    "nombre": "Concepcion",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "71102",
+    "nombre": "San Javier",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "71103",
+    "nombre": "San Julian",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "71201",
+    "nombre": "San Matias",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "71301",
+    "nombre": "Comarapa",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "71302",
+    "nombre": "Saipina",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "71401",
+    "nombre": "Puerto Suarez",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "71402",
+    "nombre": "Puerto Quijarro",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "71501",
+    "nombre": "Ascencion De Guarayos",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "71502",
+    "nombre": "Urubicha",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "71503",
+    "nombre": "El Puente",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "80101",
+    "nombre": "Trinidad",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "80102",
+    "nombre": "San Javier",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "80201",
+    "nombre": "Riberalta",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "80203",
+    "nombre": "Puerto Guayaramerin",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "80301",
+    "nombre": "Reyes",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "80302",
+    "nombre": "Puerto Rurrenabaque",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "80303",
+    "nombre": "San Borja",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "80304",
+    "nombre": "Santa Rosa",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "80401",
+    "nombre": "Santa Ana",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "80402",
+    "nombre": "Exaltacion",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "80501",
+    "nombre": "San Ignacio",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "80601",
+    "nombre": "Loreto",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "80602",
+    "nombre": "San Andres",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "80701",
+    "nombre": "San Joaquin",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "80702",
+    "nombre": "San Ramon",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "80703",
+    "nombre": "Puerto Siles",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "80801",
+    "nombre": "Magdalena",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "80802",
+    "nombre": "Baures",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "80803",
+    "nombre": "Huacaraje",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "90101",
+    "nombre": "Cobija",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "90102",
+    "nombre": "Porvenir",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "90103",
+    "nombre": "Bolpebra",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "90104",
+    "nombre": "Bella Flor",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "90201",
+    "nombre": "Puerto Rico",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "90202",
+    "nombre": "San Pedro",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "90203",
+    "nombre": "Filadelfia",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "90301",
+    "nombre": "Puerto Gonzalo",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "90302",
+    "nombre": "San Lorenzo",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "90303",
+    "nombre": "Sena",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "90401",
+    "nombre": "Santa Rosa",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "90402",
+    "nombre": "Ingavi",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "90501",
+    "nombre": "Nueva Esperanza",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "90502",
+    "nombre": "Villa Nueva",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "90503",
+    "nombre": "Santos Mercado",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20206",
+    "nombre": "Jesus de Machaca",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20708",
+    "nombre": "Teoponte",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20707",
+    "nombre": "Mapiri",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70202",
+    "nombre": "Okinawa uno",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "71104",
+    "nombre": "San Antonio de Lomerio",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "70404",
+    "nombre": "San Juan",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "10101",
+    "nombre": "Sucre",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "10102",
+    "nombre": "Yotala",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "10103",
+    "nombre": "Poroma",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "10201",
+    "nombre": "Azurduy",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "10202",
+    "nombre": "Tarvita",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "10301",
+    "nombre": "Zudanez",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "10302",
+    "nombre": "Presto",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "10303",
+    "nombre": "Mojocoya",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "10304",
+    "nombre": "Icla",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "10401",
+    "nombre": "Padilla",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "10402",
+    "nombre": "Tomina",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "10403",
+    "nombre": "Sopachuy",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "10404",
+    "nombre": "Villa Alcala",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "10405",
+    "nombre": "El Villar",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "10501",
+    "nombre": "Monteagudo",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "10502",
+    "nombre": "Huacareta(C.San Pablo De H.)",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "10601",
+    "nombre": "Tarabuco",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "10602",
+    "nombre": "Yamparaez",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "10701",
+    "nombre": "Camargo",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "10702",
+    "nombre": "San Lucas",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "10703",
+    "nombre": "Incahuasi",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "10801",
+    "nombre": "Serrano",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "10901",
+    "nombre": "Camataqui",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "10902",
+    "nombre": "Culpina",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "10903",
+    "nombre": "Las Carreras",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "11001",
+    "nombre": "Villa Vaca Guzman",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "11002",
+    "nombre": "Huacaya",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "11003",
+    "nombre": "Machareti",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20101",
+    "nombre": "La Paz",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20102",
+    "nombre": "Palca",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20103",
+    "nombre": "Mecapaca",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20104",
+    "nombre": "Achocalla",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20105",
+    "nombre": "El Alto",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20201",
+    "nombre": "Viacha",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20202",
+    "nombre": "Guaqui",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20203",
+    "nombre": "Tihuanacu",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20204",
+    "nombre": "Desaguadero",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20301",
+    "nombre": "Caranavi",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20401",
+    "nombre": "Sica Sica",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20402",
+    "nombre": "Umala",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20403",
+    "nombre": "Ayo Ayo",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20404",
+    "nombre": "Calamarca",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20405",
+    "nombre": "Patacamaya",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20406",
+    "nombre": "Colquencha",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20407",
+    "nombre": "Collana",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20501",
+    "nombre": "Inquisivi",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20502",
+    "nombre": "Quime",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20503",
+    "nombre": "Cajuata",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20504",
+    "nombre": "Colquiri",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20505",
+    "nombre": "Ichoca",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20506",
+    "nombre": "Licoma",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20601",
+    "nombre": "Achacachi",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20602",
+    "nombre": "Ancoraimes",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20701",
+    "nombre": "Sorata",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20702",
+    "nombre": "Guanay",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20703",
+    "nombre": "Tacacoma",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20704",
+    "nombre": "Tipuani",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20705",
+    "nombre": "Quiabaya",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20706",
+    "nombre": "Combaya",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20801",
+    "nombre": "Copacabana",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20802",
+    "nombre": "San Pedro",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20803",
+    "nombre": "Tito Yupanqui",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20901",
+    "nombre": "Chuma",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20902",
+    "nombre": "Ayata",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20903",
+    "nombre": "Aucapata",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21001",
+    "nombre": "Corocoro",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21002",
+    "nombre": "Caquiaviri",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21003",
+    "nombre": "Calacoto",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21004",
+    "nombre": "Comanche",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21005",
+    "nombre": "Chara-A",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "21006",
+    "nombre": "Waldo Ballivian",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "20205",
+    "nombre": "San Andres de Machaca",
+    "nombre_abreviado": "Abrev",
+    "activo": 1
+  },
+  {
+    "codigo": "80202",
+    "nombre": "Puerto Guayaramerin",
+    "nombre_abreviado": "Guayara",
+    "activo": 1
+  }
+  
+]

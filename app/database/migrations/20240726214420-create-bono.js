@@ -18,8 +18,11 @@ module.exports = {
       porcentaje: {
         type: Sequelize.DECIMAL(8,2)
       },
+      porcen_cargo: {
+        type: Sequelize.JSONB
+      },
       requisitos: {
-        type: Sequelize.STRING(300)
+        type: Sequelize.STRING(1000)
       },
       tipo: {
         type: Sequelize.STRING(20)

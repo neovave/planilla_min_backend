@@ -1,9 +1,10 @@
 'use strict';
 const {
-  Model
+  Model,
+  DataTypes
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Reparticion extends Model {
+  class Municipio extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,19 +12,19 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Reparticion.belongsTo(models.Organismo,{as:'reparticion_organismo', foreignKey:'id_organismo'});
-      Reparticion.belongsTo(models.Municipio,{as:'reparticion_municipio', foreignKey:'id_municipio'});
-      Reparticion.hasMany(models.Asignacion_cargo_empleado,{as:'reparticion_asigCarEmp', foreignKey:'id_reparticion'});
+      Municipio.hasMany(models.Reparticion ,{as:'municipio_reparticion', foreignKey:'id_municipio'});
+      Municipio.hasMany(models.Asignacion_descuento ,{as:'municipio_asigdescuento', foreignKey:'id_municipio'});
     }
   }
-  Reparticion.init({
+  Municipio.init({
     codigo: DataTypes.STRING(10),
     nombre: DataTypes.STRING(100),
+    nombre_abreviado: DataTypes.STRING(10),
     activo: DataTypes.BIGINT
   }, {
     sequelize,
-    modelName: 'Reparticion',
-    tableName: 'reparticiones',
+    modelName: 'Municipio',
+    tableName: 'municipios',
   });
-  return Reparticion;
+  return Municipio;
 };

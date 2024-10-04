@@ -1,7 +1,7 @@
 
 const { response, request, raw } = require('express');
 const { Op, fn, col, QueryTypes, where, literal  } = require('sequelize');
-const {Salario_planilla, Asignacion_cargo_empleado, Asistencia, Incremento, Mes, Escala_aporte_solidario, sequelize, Users,Asignacion_bono, Empleado_no_aportante, Rciva_certificacion, Rciva_descargo_salario, Viatico, Rciva_planilla, Ufv, Escala_rciva_salario, Asignacion_descuento, Escala_patronal } = require('../database/config');
+const {Salario_planilla, Asignacion_cargo_empleado, Asistencia, Incremento, Mes, Escala_aporte_solidario, sequelize, Users,Asignacion_bono, Empleado_no_aportante, Rciva_certificacion, Rciva_descargo_salario, Viatico, Rciva_planilla, Ufv, Escala_rciva_salario, Asignacion_descuento, Escala_patronal, Asignacion_subsidio } = require('../database/config');
 const paginate = require('../helpers/paginate');
 const moment = require('moment');
 
@@ -18,23 +18,29 @@ const getSalarioPlanillaPaginate = async (req = request, res = response) => {
                 
             },
             include: [
-                // {  association: 'asistencia_empleado',  attributes: [
-                //     'uuid', 
-                //     [sequelize.fn('CONCAT', sequelize.col('nombre'), '  ', sequelize.col('paterno'), '  ', sequelize.col('materno')), 'nombre_completo'],
-                //     [sequelize.fn('CONCAT', sequelize.col('numero_documento'), '  ', sequelize.col('complemento')), 'numdocumento_completo'],
+                {  association: 'salarioplanilla_empleado',  attributes: [
+                    'uuid', 
+                    [sequelize.fn('CONCAT', sequelize.col('salarioplanilla_empleado.nombre'), '  ', sequelize.col('paterno'), '  ', sequelize.col('materno')), 'nombre_completo'],
+                    [sequelize.fn('CONCAT', sequelize.col('numero_documento'), '  ', sequelize.col('complemento')), 'numdocumento_completo'],
                 
-                // ],}, 
-                // { association: 'asistencia_asignacioncargoemp',  attributes: [
-                //     'id', 'fecha_inicio', 'fecha_limite', 'ingreso', 'retiro', 'id_reparticion', 'id_destino'
-                // ],},
+                ],}, 
+                { association: 'salarioplanilla_asignacioncargoemp',  attributes: [
+                    'id', 'fecha_inicio', 'fecha_limite', 'ingreso', 'retiro', 'id_reparticion', 'id_destino'],
+                    include:[
+                        { association: 'asignacioncargoemp_cargo' },
+                    //    { association: 'asignacioncargoemp_reparticion', attributes:['nombre'] },
+                    //    { association: 'asignacioncargoemp_destino', attributes:['nombre'] },
+                    ],
+                },
+
                 // { association: 'asistencia_cargo',  attributes: ['descripcion'],}, 
-                // { association: 'asistencia_mes',  attributes: ['mes_literal', 'fecha_inicio', 'fecha_limite'],}, 
+                { association: 'salarioplanilla_mes',  attributes: ['mes_literal', 'fecha_inicio', 'fecha_limite'],}, 
             ],
         };
         if(type?.includes('.')){
             type = null;
         }
-        let salariosPlanillas = await paginate(Asistencia, page, limit, type, query, optionsDb); 
+        let salariosPlanillas = await paginate(Salario_planilla, page, limit, type, query, optionsDb); 
         return res.status(200).json({
             ok: true,
             salariosPlanillas
@@ -96,7 +102,7 @@ const generarSalarioPlanillaAll = async (req = request, res = response ) => {
             type: QueryTypes.SELECT  // Esto especifica que esperas un resultado tipo SELECT
         });
         const parametro = parametros[0];
-        
+        console.log("--------------------------------------------------------------------parametro iniciales:",parametro);
         //lista asistencia general
         const asistenciaEmpleado = await Asistencia.findAll(
             {   attributes: ['id_empleado', 'id_mes',
@@ -121,213 +127,14 @@ const generarSalarioPlanillaAll = async (req = request, res = response ) => {
                 
                 raw: true
             });
-        for( const fila of asistenciaEmpleado){
-            //lista de asistencias por empleado
-            const asistencia = await Asistencia.findAll(
-            {   order: [['id', 'DESC']], 
-                // include: [
-                //     { association: 'asistencia_salarioplanilla',  attributes: {exclude: ['createdAt']},},
-                // ],
-                where: { activo:1, id_mes:body.id_mes, id_empleado:fila.id_empleado
-                    // [Op.and]:[
-                    //         { '$asistencia_salarioplanilla.id_asistencia$': { [Op.is]: null } } 
-                    // ]
-                },
-            });
-            // fecha de ingreso
-            const asigCargoEmpleado = await Asignacion_cargo_empleado.findOne(
-                {   //attributes:['fecha_inicio', 'fecha_limite'],
-                    order: [['id', 'DESC']],
-                    where: { activo:1, ingreso:true, id_empleado:fila.id_empleado
-                    },
-                });
-            //console.log("asignacio cargo empleado-------------------------------------:", asigCargoEmpleado);
-            const empleadoNoAportantes = await Empleado_no_aportante.findOne(
-                {   //attributes:['fecha_inicio', 'fecha_limite'],
-                    order: [['id', 'DESC']],
-                    where: { activo:1, id_empleado:fila.id_empleado, 
-                         fecha_inicio:{ [Op.lte]: new Date( meses.fecha_limite ) }
-                    },
-                });
-
-            let totalGanado =0, totalHaberBasico=0, totalAntiguedad=0, totalBono=0, totalDiasTrabajados=0, montoTotalDiasSancionados=0, idAsigCargo, edadEmpleado=0;
-            let asistenciaJson = [];
-            let novedad = 'V';
-            for (const row of asistencia) {
-                //lista asignacion cargo
-                const asignacionCargo = await Asignacion_cargo_empleado.findOne(
-                    {   order: [['id', 'DESC']], 
-                        where: { id_empleado:row.id_empleado, id: row.id_asig_cargo, activo:1 },
-                        include: [
-                            { association: 'asignacioncargoemp_empleado',  attributes: {exclude: ['createdAt']},}, 
-                            { association: 'asignacioncargoemp_cargo',  attributes: {exclude: ['createdAt','status','updatedAt']},}, 
-                            { association: 'asignacioncargoemp_reparticion',  attributes: {exclude: ['createdAt','status','updatedAt']},}, 
-                            { association: 'asignacioncargoemp_destino',  attributes: {exclude: ['createdAt','status','updatedAt']},}, 
-                        ],
-                        
-                    });
-                //console.log("asignacion cargo:", asignacionCargo);
-                idAsigCargo = idAsigCargo? idAsigCargo: asignacionCargo.id;
-                //optener el haber basico sea el correcto segun el periodo - El monto_incremnto es para planilla retroactivo
-                const incrementoModel = await Incremento.findOne( {where: { id_gestion:meses.id_gestion, id_cargo: asignacionCargo.asignacioncargoemp_cargo.id }} );
-                
-                const {haber_basico, id_incremento, monto_incremento} = getHaberBasicoIncremento(meses, asignacionCargo, incrementoModel);
-                //calcular el haber basico empleado
-                
-                const  {total_haber_basico, monto_total_dias_sancionados} = calcularHaberBasico(row.dias_trabajados, row.dias_sancionados, haber_basico);
-                
-                //calculo de antiguedad
-                const total_antiguedad = calcularAnioAntiguedad(asigCargoEmpleado.fecha_inicio,parametro.fecha_corte_antiguedad, total_haber_basico, parametro.total_salmin_anioservicio );
-                
-                //calculo de bonos
-                
-                const listaBonos = await Asignacion_bono.findAll( 
-                    {   where: { id_empleado:row.id_empleado, estado: 'AC', //fecha_inicio:{[Op.lte]: new Date (meses.fecha_limite) }  
-                        [Op.and]: [
-                            literal(`DATE_TRUNC('month', '`+periodo+`'::DATE ) BETWEEN DATE_TRUNC('month', fecha_inicio) AND COALESCE(DATE_TRUNC('month', fecha_limite), DATE_TRUNC('month', '`+periodo+`'::DATE))` )
-                          ]
-                        
-                               }, 
-                        include:[
-                            { association: 'asignacionbono_bono',  attributes: {exclude:['createdAt','status','updatedAt']}},
-                            //{ association: 'asignacionbono_empleado',  attributes: {exclude: ['createdAt','status','updatedAt']},}
-                        ]
-                    } );
-                const { total_bonos, lista_json_bono } = calcularBono(total_haber_basico, total_antiguedad, listaBonos);
-
-                //calculo de total ganado, 
-                const total_ganado = totalGandoBs(total_haber_basico, total_antiguedad, total_bonos);
-                //edad del empleado
-                edadEmpleado = edadEmpleado? edadEmpleado: calcularEdadEmpleado(asignacionCargo.asignacioncargoemp_empleado.fecha_nacimiento, parametro.fecha_corte_edad);
-
-                console.log("edad del empleado????????????????:", edadEmpleado);
-                //verificar tipo novedad para rciva
-                novedad = asignacionCargo.asignacioncargoemp_empleado.ingreso? "I": (asignacionCargo.asignacioncargoemp_empleado.retiro? "R": "V" ) ;
-                novedad = asignacionCargo.asignacioncargoemp_empleado.ingreso && asignacionCargo.asignacioncargoemp_empleado.retiro ? "R": novedad;
-
-                asistenciaJson.push({
-                    id_asistencia: row.id, //moment({ month: mes }).format('MMMM'),
-                    haber_basico: total_haber_basico,
-                    total_bono: total_bonos,
-                    total_antiguedad: total_antiguedad,
-                    total_ganado: total_ganado,
-                    monto_total_dias_sancionados: monto_total_dias_sancionados,
-                    dias_trabajados: row.dias_trabajados,
-
-                });
-                //console.log("asistencia json:",asistenciaJson);
-
-                totalGanado = totalGanado +  total_ganado;
-                totalHaberBasico = totalHaberBasico + total_haber_basico;
-                totalBono = totalBono + total_bonos;
-                totalAntiguedad = totalAntiguedad + total_antiguedad;
-                montoTotalDiasSancionados = montoTotalDiasSancionados + monto_total_dias_sancionados;
-                totalDiasTrabajados = totalDiasTrabajados + row.dias_trabajados;
-                //console.log("asis:", asistenciaJson);
-            }
             
-            //cálculo aporte nacional silidario
-            const escalaApSol = await Escala_aporte_solidario.findAll( {where: { estado:'AC', activo: 1 }} );
-            const {total_aporte_solidario , aporte_sol_json} = calcularAporteSolidario( totalGanado, escalaApSol );
-            
-            //calculo de afps
-            const listaAfpVigente = await sequelize.query(`
+        const escalaApSol = await Escala_aporte_solidario.findAll( {where: { estado:'AC', activo: 1 }} );
+        const listaAfpVigente = await sequelize.query(`
                 SELECT cod_config_afp, nombre_afp, abreviatura_afp, porcentaje, aplica_certificacion, aplica_edad_limite, codigo_afp from aporte_afps_vigentes();
               `,{
                 type: QueryTypes.SELECT  
             });
-            const {total_aporte_afp , aporte_afp_json} = calcularAporteAfp( totalGanado, listaAfpVigente, parametro.cod_edad_afp, parametro.edad_afp, parametro.cod_fecha_afp_edad, edadEmpleado, empleadoNoAportantes );
-            //console.log("total aporte afp:", total_aporte_afp);
-            
-            //calculo de rciva
-            const rcivaSaldoCertificado = await Rciva_certificacion.findOne( {where: { activo: 1, id_empleado:fila.id_empleado, id_mes:body.id_mes }} );
-            const filaDescargo = await Rciva_descargo_salario.findOne( {where: { activo: 1, id_empleado:fila.id_empleado, id_mes:body.id_mes }} );
-            const rciva_saldo_dependiente = await Rciva_planilla.findOne({
-                include:[
-                    //{ association: 'rcivaplanilla_salarioplanilla',  attributes: {exclude:['createdAt','status','updatedAt']}},
-                    { association: 'rcivaplanilla_planillafecha',  attributes: {exclude: ['createdAt','status','updatedAt']},}
-                ],
-                required: false,
-                where:{
-                    activo:1,  id_empleado: fila.id_empleado, id_mes: parametro.id_mes_ant, novedad:{ [Op.ne]: 'D'}
-                },
-                
-
-            });
-            const viaticos = await Viatico.findOne( {
-                attributes: [
-                    [sequelize.fn('sum', sequelize.col('importe')), 'importe'],
-                    
-                ],
-                where: { activo: 1, id_empleado:fila.id_empleado, id_mes:body.id_mes },
-                
-                    } );
-            const escalaRciva = await Escala_rciva_salario.findOne( {where: { activo: 1 }, order: [['id', 'DESC']], } );
-            
-            const calculo_rciva =  calcularRciva( parametro, fila.id_empleado, body.id_mes, totalGanado, rcivaSaldoCertificado, filaDescargo, rciva_saldo_dependiente, total_aporte_solidario, total_aporte_afp, viaticos, escalaRciva );
-            //agregar parametros posteriores
-            calculo_rciva.novedad = novedad;
-            //calculo_rciva.id_salario_planilla= 
-            ///calculo descuentos
-            const listDescuento = await Asignacion_descuento.findAll( {
-                attributes: [
-                    'id', 
-                    'id_tipo_descuento', 
-                    'id_empleado', 
-                    'monto',
-                    'unidad', 
-                    'fecha_inicio', 
-                    'fecha_limite',
-                    // Usamos sequelize.literal para manejar el CASE
-                    // [literal(`CASE WHEN "Asignacion_descuento"."unidad" = '%' AND "asiganciondescuento_tipodes"."con_beneficiario" IS TRUE THEN `+totalGanado+` * (monto/100) ELSE monto END`), 'monto_descuento']
-                ],
-                include:[
-                    { association: 'asiganciondescuento_tipodes',  attributes: [],}
-                ],
-                required: false,
-                where: { activo: 1, id_empleado:fila.id_empleado,
-                        '$asiganciondescuento_tipodes.grupo$': { [Op.eq]: 'DESCUENTOS' },
-                        [Op.and]: [
-                            literal(`DATE_TRUNC('month', '`+periodo+`'::DATE ) BETWEEN DATE_TRUNC('month', fecha_inicio) AND COALESCE(DATE_TRUNC('month', fecha_limite), DATE_TRUNC('month', '`+periodo+`'::DATE))` )
-                          ]
-                        }
-                    } );
-
-            //console.log("lista descuentos:", listDescuento );
-            const calculo_descuentos = calculoDescuento(listDescuento, totalDiasTrabajados, totalGanado);
-
-            
-            //calculo sanciones
-            const listSanciones = await Asignacion_descuento.findAll( {
-                attributes: [
-                    'id', 
-                    'id_tipo_descuento', 
-                    'id_empleado', 
-                    'monto',
-                    'unidad', 
-                    'fecha_inicio', 
-                    'fecha_limite',
-                    // Usamos sequelize.literal para manejar el CASE
-                    // [literal(`CASE WHEN "Asignacion_descuento"."unidad" = '%' AND "asiganciondescuento_tipodes"."con_beneficiario" IS TRUE THEN `+totalGanado+` * (monto/100) ELSE monto END`), 'monto_descuento']
-                ],
-                include:[
-                    { association: 'asiganciondescuento_tipodes',  attributes: [],}
-                ],
-                required: false,
-                where: { activo: 1, id_empleado:fila.id_empleado,
-                        '$asiganciondescuento_tipodes.grupo$': { [Op.eq]: 'SANCIONES' },
-                        [Op.and]: [
-                            literal(`DATE_TRUNC('month', '`+periodo+`'::DATE ) BETWEEN DATE_TRUNC('month', fecha_inicio) AND COALESCE(DATE_TRUNC('month', fecha_limite), DATE_TRUNC('month', '`+periodo+`'::DATE))` )
-                          ]
-                        }
-                    } );
-
-            //console.log("lista sanciones:", listSanciones );
-            const calculo_sanciones = calculoDescuento(listSanciones, totalDiasTrabajados, totalGanado);
-//            console.log("calculo descuentos:", calculo_sanciones);
-            //calculo aporte patronal
-            //calculo de afps
-            const listaPatronalVigente = await Escala_patronal.findAll( {
+        const listaPatronalVigente = await Escala_patronal.findAll( {
                 order: [['id', 'DESC']], 
                 attributes: [
                     'id', 
@@ -341,62 +148,310 @@ const generarSalarioPlanillaAll = async (req = request, res = response ) => {
                 where: { activo: 1 }
                 } );
             
-            const { total_aporte_patronal , aporte_patronal_json } = calcularAportePatronal( totalGanado, listaPatronalVigente, parametro, edadEmpleado );
-//          console.log("total aporte patronal:", total_aporte_patronal,"total gando:",totalGanado, "json......:", aporte_patronal_json);
 
-            //calculo de liquido pagable
-            
-            let liquidoPagable =0;
-            if (totalGanado > 0 && edadEmpleado > 0) {
-                let rcIva = calculo_rciva.rciva_retenido;
-                let afps = total_aporte_afp;
-                let afp_solid_nacional = total_aporte_solidario;
-                let totalDescuentos = calculo_descuentos.calculo_descuentos;
-                let totalSanciones = calculo_sanciones.calculo_sanciones ;
-                let totalAuxiliar = rcIva + afps + afp_solid_nacional + totalDescuentos + totalSanciones;
-                let liquidoPagableAux = totalGanado - totalAuxiliar;
-                liquidoPagable = liquidoPagableAux >= 0 ? liquidoPagableAux : 0;
-            
-                salariosPlanillasDatas.push({
-                    id_mes: body.id_mes, //moment({ month: mes }).format('MMMM'),
-                    id_empleado: fila.id_empleado,
-                    id_asig_emp: idAsigCargo,
-                    asistencia: asistenciaJson,
-                    edad_empleado: edadEmpleado,
-                    haber_basico_dia: totalHaberBasico/30,
-                    antiguedad: totalAntiguedad,
-                    total_ganado: totalGanado,
-                    aporte_solidario: aporte_sol_json,
-                    total_ap_solidario: total_aporte_solidario,
-                    aporte_laboral_afp: aporte_afp_json,
-                    total_afp: total_aporte_afp,
-                    total_iva: calculo_rciva.rciva_retenido,
-                    aporte_patronal: aporte_patronal_json,
-                    total_patronal: total_aporte_patronal,
-                    descuento_adm: calculo_descuentos.descuento_json,
-                    total_descuento: calculo_descuentos.total_monto_descuento,
-                    sanciones_adm: calculo_sanciones.descuento_json,
-                    total_sanciones: calculo_sanciones.total_monto_descuento,
-                    sancion_asistencia: montoTotalDiasSancionados,
-                    liquido_pagable: liquidoPagable,
-                    activo:1,
-                    id_user_create: Users.id,
+        for( const fila of asistenciaEmpleado){
+
+            //verificar si existe registro
+            const existeSalarioPlanilla = await Salario_planilla.findOne({ where: { activo:1, id_mes:body.id_mes, id_empleado:fila.id_empleado } });
+            if(!existeSalarioPlanilla){
+                //lista de asistencias por empleado
+                const asistencia = await Asistencia.findAll(
+                {   order: [['id', 'DESC']], 
+                    // include: [
+                    //     { association: 'asistencia_salarioplanilla',  attributes: {exclude: ['createdAt']},},
+                    // ],
+                    where: { activo:1, id_mes:body.id_mes, id_empleado:fila.id_empleado
+                        // [Op.and]:[
+                        //         { '$asistencia_salarioplanilla.id_asistencia$': { [Op.is]: null } } 
+                        // ]
+                    },
                 });
-                //console.log( "planilla salarios****************", salariosPlanillasDatas );
-                rcivaPlanillasDatas.push( calculo_rciva );
+                // fecha de ingreso
+                const asigCargoEmpleado = await Asignacion_cargo_empleado.findOne(
+                    {   //attributes:['fecha_inicio', 'fecha_limite'],
+                        order: [['id', 'DESC']],
+                        where: { activo:1, ingreso:true, id_empleado:fila.id_empleado
+                        },
+                    });
+                //console.log("asignacio cargo empleado-------------------------------------:", asigCargoEmpleado);
+                const empleadoNoAportantes = await Empleado_no_aportante.findOne(
+                    {   //attributes:['fecha_inicio', 'fecha_limite'],
+                        order: [['id', 'DESC']],
+                        where: { activo:1, id_empleado:fila.id_empleado, 
+                            fecha_inicio:{ [Op.lte]: new Date( meses.fecha_limite ) }
+                        },
+                    });
 
-            } else {
+                let totalGanado =0, totalHaberBasico=0, totalAntiguedad=0, totalBono=0, totalDiasTrabajados=0, totalDiasSancionados =0, montoTotalDiasSancionados=0, idAsigCargo, edadEmpleado=0;
+                let asistenciaJson = [], bonosJson =[];
+                let novedad = 'V';
+                for (const row of asistencia) {
+                    //lista asignacion cargo
+                    const asignacionCargo = await Asignacion_cargo_empleado.findOne(
+                        {   order: [['id', 'DESC']], 
+                            where: { id_empleado:row.id_empleado, id: row.id_asig_cargo, activo:1 },
+                            include: [
+                                { association: 'asignacioncargoemp_empleado',  attributes: {exclude: ['createdAt']},}, 
+                                { association: 'asignacioncargoemp_cargo',  attributes: {exclude: ['createdAt','status','updatedAt']},}, 
+                                { association: 'asignacioncargoemp_reparticion',  attributes: {exclude: ['createdAt','status','updatedAt']},}, 
+                                { association: 'asignacioncargoemp_destino',  attributes: {exclude: ['createdAt','status','updatedAt']},}, 
+                            ],
+                            
+                        });
+                    //console.log("asignacion cargo:", asignacionCargo);
+                    idAsigCargo = idAsigCargo? idAsigCargo: asignacionCargo.id;
+                    //optener el haber basico sea el correcto segun el periodo - El monto_incremnto es para planilla retroactivo
+                    const incrementoModel = await Incremento.findOne( {where: { id_gestion:meses.id_gestion, id_cargo: asignacionCargo.asignacioncargoemp_cargo.id }} );
+                    
+                    const {haber_basico, id_incremento, monto_incremento} = getHaberBasicoIncremento(meses, asignacionCargo, incrementoModel);
+                    //calcular el haber basico empleado
+                    
+                    const  {total_haber_basico, monto_total_dias_sancionados} = calcularHaberBasico(row.dias_trabajados, row.dias_sancionados, haber_basico);
+                    
+                    //calculo de antiguedad
+                    const total_antiguedad = calcularAnioAntiguedad(asigCargoEmpleado.fecha_inicio,parametro.fecha_corte_antiguedad, total_haber_basico, parametro.total_salmin_anioservicio );
+                    
+                    //calculo de bonos
+                    
+                    const listaAsigBonos = await Asignacion_bono.findAll( 
+                        {   where: { id_empleado:row.id_empleado, estado: 'AC', //fecha_inicio:{[Op.lte]: new Date (meses.fecha_limite) }  
+                            [Op.and]: [
+                                literal(`DATE_TRUNC('month', '`+periodo+`'::DATE ) BETWEEN DATE_TRUNC('month', fecha_inicio) AND COALESCE(DATE_TRUNC('month', fecha_limite), DATE_TRUNC('month', '`+periodo+`'::DATE))` )
+                            ]
+                            
+                                }, 
+                            include:[
+                                { association: 'asignacionbono_bono',  attributes: {exclude:['createdAt','status','updatedAt']}},
+                                //{ association: 'asignacionbono_empleado',  attributes: {exclude: ['createdAt','status','updatedAt']},}
+                            ]
+                        } );
+                    const { total_bonos, lista_json_bono } = calcularBono(total_haber_basico, total_antiguedad, listaAsigBonos, row.id_cargo );
+                    
 
-                // console.log( "Asistencias del empleado .............:", fila, "nombre completo:", fila.numdocumento_completo, "total dias trabajados:", fila.total_dias_trabajados, "id_mes:", fila.id_mes );
+                    //calculo de total ganado, 
+                    const total_ganado = totalGandoBs(total_haber_basico, total_antiguedad, total_bonos);
+                    //edad del empleado
+                    edadEmpleado = edadEmpleado? edadEmpleado: calcularEdadEmpleado(asignacionCargo.asignacioncargoemp_empleado.fecha_nacimiento, parametro.fecha_corte_edad);
+
+                    //console.log("edad del empleado????????????????:", edadEmpleado);
+                    
+                    //verificar tipo novedad para rciva
+                    novedad = asignacionCargo.asignacioncargoemp_empleado.ingreso? "I": (asignacionCargo.asignacioncargoemp_empleado.retiro? "D": "V" ) ;
+                    novedad = asignacionCargo.asignacioncargoemp_empleado.ingreso && asignacionCargo.asignacioncargoemp_empleado.retiro ? "D": novedad;
+
+                    asistenciaJson.push({
+                        id_asistencia: row.id, //moment({ month: mes }).format('MMMM'),
+                        haber_basico: total_haber_basico,
+                        total_bono: total_bonos,
+                        total_antiguedad: total_antiguedad,
+                        total_ganado: total_ganado,
+                        monto_total_dias_sancionados: monto_total_dias_sancionados,
+                        dias_trabajados: row.dias_trabajados,
+
+                    });
+                    bonosJson.push({
+                        total_bono: total_bonos,
+                        bonos: lista_json_bono,
+                    });
+                    //console.log("asistencia json:",asistenciaJson);
+                    console.log("total ganado");
+                    totalGanado = totalGanado +  total_ganado;
+                    totalHaberBasico = totalHaberBasico + total_haber_basico;
+                    totalBono = totalBono + total_bonos;
+                    totalAntiguedad = totalAntiguedad + total_antiguedad;
+                    montoTotalDiasSancionados = montoTotalDiasSancionados + monto_total_dias_sancionados;
+                    totalDiasTrabajados = totalDiasTrabajados + row.dias_trabajados;
+                    totalDiasSancionados =totalDiasSancionados + row.dias_sancionados;
+                    //console.log("asis:", asistenciaJson);
+                }
                 
-                listaSinRegistro.push({
-                    id_empleado:fila.id_empleado,
-                    nombre_completo: fila.nombre_completo,
-                    ci_empleado:fila.numdocumento_completo,
+                
+                //cálculo aporte nacional silidario
+                
+                const {total_aporte_solidario , aporte_sol_json} = calcularAporteSolidario( totalGanado, escalaApSol );
+                
+                //calculo de afps
+                
+                const {total_aporte_afp , aporte_afp_json} = calcularAporteAfp( totalGanado, listaAfpVigente, parametro.cod_edad_afp, parametro.edad_afp, parametro.cod_fecha_afp_edad, edadEmpleado, empleadoNoAportantes );
+                //console.log("total aporte afp:", total_aporte_afp);
+                
+                //calculo de rciva
+                const rcivaSaldoCertificado = await Rciva_certificacion.findOne( {where: { activo: 1, id_empleado:fila.id_empleado, id_mes:body.id_mes }} );
+                const filaDescargo = await Rciva_descargo_salario.findOne( {where: { activo: 1, id_empleado:fila.id_empleado, id_mes:body.id_mes }} );
+                const rciva_saldo_dependiente = await Rciva_planilla.findOne({
+                    include:[
+                        //{ association: 'rcivaplanilla_salarioplanilla',  attributes: {exclude:['createdAt','status','updatedAt']}},
+                        { association: 'rcivaplanilla_planillafecha',  attributes: {exclude: ['createdAt','status','updatedAt']}, 
+                        order: [['fecha', 'DESC']], // Ordena las asistencias por fecha descendente
+                        }
+                    ],
+                    required: false,
+                    where:{
+                        activo:1,  id_empleado: fila.id_empleado, id_mes: parametro.id_mes_ant, novedad:{ [Op.ne]: 'D'}
+                    },
+                    
+
                 });
+                const viaticos = await Viatico.findOne( {
+                    attributes: [
+                        [sequelize.fn('sum', sequelize.col('importe')), 'importe'],
+                        
+                    ],
+                    where: { activo: 1, id_empleado:fila.id_empleado, id_mes:body.id_mes },
+                    
+                        } );
+                const escalaRciva = await Escala_rciva_salario.findOne( {where: { activo: 1 }, order: [['id', 'DESC']], } );
                 
+                const calculo_rciva = await calcularRciva( parametro, fila.id_empleado, body.id_mes, totalGanado, rcivaSaldoCertificado, filaDescargo, rciva_saldo_dependiente, total_aporte_solidario, total_aporte_afp, viaticos, escalaRciva, novedad );
+                //agregar parametros posteriores
+                //calculo_rciva.novedad = novedad;
+                //calculo_rciva.id_salario_planilla= 
+                ///calculo descuentos
+                const listDescuento = await Asignacion_descuento.findAll( {
+                    attributes: [
+                        'id', 
+                        'id_tipo_descuento', 
+                        'id_empleado', 
+                        'monto',
+                        'unidad', 
+                        'fecha_inicio', 
+                        'fecha_limite',
+                        // Usamos sequelize.literal para manejar el CASE
+                        // [literal(`CASE WHEN "Asignacion_descuento"."unidad" = '%' AND "asiganciondescuento_tipodes"."con_beneficiario" IS TRUE THEN `+totalGanado+` * (monto/100) ELSE monto END`), 'monto_descuento']
+                    ],
+                    include:[
+                        { association: 'asiganciondescuento_tipodes',  attributes: [],}
+                    ],
+                    required: false,
+                    where: { activo: 1, id_empleado:fila.id_empleado,
+                            '$asiganciondescuento_tipodes.grupo$': { [Op.eq]: 'DESCUENTOS' },
+                            [Op.and]: [
+                                literal(`DATE_TRUNC('month', '`+periodo+`'::DATE ) BETWEEN DATE_TRUNC('month', fecha_inicio) AND COALESCE(DATE_TRUNC('month', fecha_limite), DATE_TRUNC('month', '`+periodo+`'::DATE))` )
+                            ]
+                            }
+                        } );
+
+                //console.log("lista descuentos:", listDescuento );
+                const calculo_descuentos = calculoDescuento(listDescuento, totalDiasTrabajados, totalGanado);
+
+                
+                //calculo sanciones
+                const listSanciones = await Asignacion_descuento.findAll( {
+                    attributes: [
+                        'id', 
+                        'id_tipo_descuento', 
+                        'id_empleado', 
+                        'monto',
+                        'unidad', 
+                        'fecha_inicio', 
+                        'fecha_limite',
+                        // Usamos sequelize.literal para manejar el CASE
+                        // [literal(`CASE WHEN "Asignacion_descuento"."unidad" = '%' AND "asiganciondescuento_tipodes"."con_beneficiario" IS TRUE THEN `+totalGanado+` * (monto/100) ELSE monto END`), 'monto_descuento']
+                    ],
+                    include:[
+                        { association: 'asiganciondescuento_tipodes',  attributes: [],}
+                    ],
+                    required: false,
+                    where: { activo: 1, id_empleado:fila.id_empleado,
+                            '$asiganciondescuento_tipodes.grupo$': { [Op.eq]: 'SANCIONES' },
+                            [Op.and]: [
+                                literal(`DATE_TRUNC('month', '`+periodo+`'::DATE ) BETWEEN DATE_TRUNC('month', fecha_inicio) AND COALESCE(DATE_TRUNC('month', fecha_limite), DATE_TRUNC('month', '`+periodo+`'::DATE))` )
+                            ]
+                            }
+                        } );
+
+                //console.log("lista sanciones:", listSanciones );
+                const calculo_sanciones = calculoDescuento(listSanciones, totalDiasTrabajados, totalGanado);
+                //console.log("calculo descuentos:", calculo_sanciones);
+                //calculo aporte patronal
+                //calculo de afps
+
+                
+                //console.log("total aporte patronal:", total_aporte_patronal,"total gando:",totalGanado, "json......:", aporte_patronal_json);
+
+                //calculo de liquido pagable
+                
+                let liquidoPagable =0;
+                console.log("total ganado-----------------:", totalGanado, "edad empleado ---------------:", edadEmpleado);
+                if (totalGanado > 0 && edadEmpleado > 0) {
+
+                    // calculo de subsidio
+                const listaAsigSubsidio = await Asignacion_subsidio.findAll( 
+                    {   where: { id_empleado:fila.id_empleado, estado: 'AC', //fecha_inicio:{[Op.lte]: new Date (meses.fecha_limite) }  
+                        [Op.and]: [
+                            literal(`DATE_TRUNC('month', '`+periodo+`'::DATE ) BETWEEN DATE_TRUNC('month', fecha_inicio) AND COALESCE(DATE_TRUNC('month', fecha_limite), DATE_TRUNC('month', '`+periodo+`'::DATE))` )
+                        ]
+                        
+                            }, 
+                        include:[
+                            { association: 'asigancionsubsidio_tipodes',  attributes: {exclude:['createdAt','status','updatedAt']}},
+                            //{ association: 'asignacionbono_empleado',  attributes: {exclude: ['createdAt','status','updatedAt']},}
+                        ]
+                    } );
+                const { total_subsidio, lista_json_subsidio } = calcularSubsidio( listaAsigSubsidio );
+                totalGanado = totalGanado + total_subsidio;
+                
+                
+                const { total_aporte_patronal , aporte_patronal_json } = calcularAportePatronal( totalGanado, listaPatronalVigente, parametro, edadEmpleado );
+
+
+
+                    let rcIva = calculo_rciva?calculo_rciva.rciva_retenido:0;
+                    let afps = total_aporte_afp;
+                    let afp_solid_nacional = total_aporte_solidario;
+                    let totalDescuentos = calculo_descuentos.total_monto_descuento? calculo_descuentos.total_monto_descuento:0;
+                    let totalSanciones = calculo_sanciones.total_monto_descuento? calculo_sanciones.total_monto_descuento:0 ;
+                    let totalSubsidio = total_subsidio;
+                    let totalAuxiliar = rcIva + afps + afp_solid_nacional + totalDescuentos + totalSanciones + totalSubsidio;
+                    let liquidoPagableAux = totalGanado - totalAuxiliar;
+                    liquidoPagable = liquidoPagableAux >= 0 ? liquidoPagableAux : 0;
+                    console.log("-----rciva:",rcIva," afps:",afps, " afp_solidario nacional:",afp_solid_nacional, " total descuentos:",totalDescuentos, " total sanciones:", totalSanciones, " total auxiliar:", totalAuxiliar, " liquido pagable Aux:", liquidoPagableAux, " liquido pagable:", liquidoPagable );
+                    salariosPlanillasDatas.push({
+                        id_mes: body.id_mes, //moment({ month: mes }).format('MMMM'),
+                        id_empleado: fila.id_empleado,
+                        id_asig_cargo: idAsigCargo,
+                        asistencia: asistenciaJson,
+                        edad_empleado: edadEmpleado,
+                        haber_basico_dia: totalHaberBasico/30,
+                        antiguedad: totalAntiguedad,
+                        bonos: bonosJson,
+                        total_bonos: totalBono,
+                        subsidio: lista_json_subsidio,
+                        total_subsidio: totalSubsidio,
+                        total_ganado: totalGanado,
+                        aporte_solidario: aporte_sol_json,
+                        total_ap_solidario: total_aporte_solidario,
+                        aporte_laboral_afp: aporte_afp_json,
+                        total_afp: total_aporte_afp,
+                        total_iva: calculo_rciva.rciva_retenido,
+                        aporte_patronal: aporte_patronal_json,
+                        total_patronal: total_aporte_patronal,
+                        descuento_adm: calculo_descuentos.descuento_json,
+                        total_descuento: calculo_descuentos.total_monto_descuento,
+                        sanciones_adm: calculo_sanciones.descuento_json,
+                        total_sanciones: calculo_sanciones.total_monto_descuento,
+                        sancion_asistencia: montoTotalDiasSancionados,
+                        liquido_pagable: liquidoPagable,
+                        dias_trabajados: totalDiasTrabajados,
+                        dias_sancionados: totalDiasSancionados,
+                        activo:1,
+                        id_user_create: Users.id
+                    });
+                    console.log( "planilla salarios****************", salariosPlanillasDatas );
+                    rcivaPlanillasDatas.push( calculo_rciva );
+
+                } else {
+
+                    // console.log( "Asistencias del empleado .............:", fila, "nombre completo:", fila.numdocumento_completo, "total dias trabajados:", fila.total_dias_trabajados, "id_mes:", fila.id_mes );
+                    
+                    listaSinRegistro.push({
+                        id_empleado:fila.id_empleado,
+                        nombre_completo: fila.nombre_completo,
+                        ci_empleado:fila.numdocumento_completo,
+                    });
+                    
+                }
             }
-
 
             // Consulta para verificar si el id existe en la otra tabla
             //const existingRecord = await Salario_planilla.findOne({ where: { id_mes:body.id_mes, id_empleado:row.id_empleado, id_asig_cargo : row.id , activo:1 } });
@@ -457,25 +512,25 @@ function calcularHaberBasico(diasTrabajados, diasSancionados, haberBasico ) {
 function calcularAnioAntiguedad(fechaIngreso, fechaCorte, haberBasico, parametroAntigueda ) {
     const fechaIngresoMoment = moment(fechaIngreso);
     const fechaActual = moment(fechaCorte);
-    
+    let LimiteAntiguedad = parseFloat(parametroAntigueda);
     // Calculamos la diferencia en años entre ambas fechas
-    const anioTrabajado = fechaActual.diff(fechaIngresoMoment, 'years');
+    const anioTrabajado =  fechaActual.diff(fechaIngresoMoment, 'years') ;
     let totalMontoAntiguedad;
-    if(anioTrabajado >= parametroAntigueda){
+    if(  anioTrabajado >=  LimiteAntiguedad ){
         totalMontoAntiguedad =  haberBasico;
     }else{
-        totalMontoAntiguedad = haberBasico * ( anioTrabajado / parametroAntigueda);
+        totalMontoAntiguedad = haberBasico * ( anioTrabajado / LimiteAntiguedad );
     }
-    
+    console.log("Fecha ingreso:",fechaIngresoMoment, "fecha_actual:", fechaActual,"años trabajados", anioTrabajado, " limite antiguedad:",LimiteAntiguedad, "total monto antiguedad:", totalMontoAntiguedad);
     return totalMontoAntiguedad;
 }
 function totalGandoBs(totalHaberBasico, totalAntiguedad, totalBono) {
     let totalGanado = 0;
-    if(totalHaberBasico > 0  &&  totalAntiguedad >=0 && totalBono >= 0 && totalBono && totalAntiguedad && totalHaberBasico){ 
+    if(totalHaberBasico > 0  &&  totalAntiguedad >=0 && totalBono >= 0  ){ 
         totalGanado = parseFloat(totalHaberBasico) + parseFloat(totalAntiguedad) + parseFloat(totalBono); //por tema de decimales o redondeo
         
     }
-    console.log("total haber basico..............................:", totalHaberBasico, "total antiguedad:", totalAntiguedad, "total bono:", totalBono, "total ganado:", totalGanado);
+    console.log("total haber basico..............................:", totalHaberBasico, "total antiguedad:", totalAntiguedad, "total bono:", totalBono,  "total ganado:", totalGanado);
     
     return totalGanado;
   }
@@ -517,29 +572,42 @@ function calculoMontoAporteNalSolidario(monto_escala, porcentaje_escala, totalGa
     return resultado;
 }
 
-function calcularBono( haberBasico, antiguedad, listaBonos ) {
+function calcularBono( haberBasico, antiguedad, listaAsigBonos, id_cargo ) {
     let totalBono = 0;
     let bonosPerYEve = [];
     //console.log("lista bonos:", listaBonos);
-    for(const row of listaBonos){
+    for(const row of listaAsigBonos){
         //console.log("fila escala cumplidos:", row );
-        const resultado = montoPorcentajeBono(haberBasico, antiguedad, row.asignacionbono_bono.porcentaje);
+        const {resultado, porcentaje} = montoPorcentajeBono(haberBasico, antiguedad, row.asignacionbono_bono, id_cargo);
         bonosPerYEve.push({
             id_asig_bono: row.id,
             id_bono: row.id_bono, //moment({ month: mes }).format('MMMM'),
+            id_cargo: id_cargo,
             monto_bs: resultado,
             suma: haberBasico + antiguedad,
-            porcentaje: row.asignacionbono_bono,
+            porcentaje: porcentaje,
+            //nombre: row.asignacionbono_bono,nombre_abreviado
+
         });
-        //console.log("Total bonos:", bonosPerYEve);
+        console.log("Total bonos:", bonosPerYEve);
         totalBono = parseFloat(totalBono) + parseFloat(resultado);
     }
-    
+    console.log("---------haber basico:",haberBasico, "antiguedad:", antiguedad,"Total bono antiguedad:",totalBono, "lista bonos:",listaAsigBonos );
     return {total_bonos: totalBono, lista_json_bono:bonosPerYEve};
 }
-
-function montoPorcentajeBono(haberBasico, antiguedad, porcentaje_escala) {
+function montoPorcentajeBono(haberBasico, antiguedad, listaBono, id_cargo) {
     let resultado = 0;
+    let porcentaje_escala = 0;
+    if(listaBono.nombre_abreviado === 'B.Jerarquico'){
+        //buscar en json el cargo y porcentaje
+        for(const fila of listaBono.porcen_cargo){
+            if(id_cargo === fila.id_cargo){
+                porcentaje_escala = fila.porcentaje;
+            }
+        }
+    }else{
+        porcentaje_escala = listaBono.porcentaje;
+    }
     //console.log("cal bono, haber basico:", haberBasico, "antiguedad:",antiguedad, "porcentaje:",porcentaje_escala);
     if (haberBasico > 0 && porcentaje_escala >= 0 && antiguedad >= 0) {
         suma_bs = parseFloat( haberBasico)  + parseFloat(antiguedad );
@@ -547,9 +615,25 @@ function montoPorcentajeBono(haberBasico, antiguedad, porcentaje_escala) {
         //console.log("resultado cal bono:", resultado, "suma:", suma_bs);
     }
     
-    return resultado;
+    return {resultado:resultado, porcentaje:porcentaje_escala };
 }
-
+function calcularSubsidio( listaAsigSubsidio ) {
+    let totalSubsidio = 0;
+    let subsudios = [];
+    //console.log("lista bonos:", listaBonos);
+    for(const row of listaAsigSubsidio){
+        //console.log("fila escala cumplidos:", row );
+        subsudios.push({
+            id_asig_subsidio: row.id,
+            monto: row.monto,
+            nombre_subsidio: row.asigancionsubsidio_tipodes.nombre
+        });
+        console.log("Total subsidio:", subsudios );
+        totalSubsidio = totalSubsidio + parseFloat(row.monto);
+    }
+    console.log("total subsidio:",totalSubsidio, "lista subsidios:",subsudios );
+    return { total_subsidio: totalSubsidio, lista_json_subsidio:subsudios };
+}
 function calcularAporteAfp( totalGanado, listaAfpVigente, cod_edad_afp, edadLimiteAfp, idFechaPlanillaAfpActiva, edad_empleado, empleadoNoAportantes){
     let totalAporte = 0;
     let aporte_afp_json = [];
@@ -608,7 +692,7 @@ function calculoMontoAporteAFP(totalGanado, porcentaje, certificado, aplicaEdadA
     return { calculo:resultado, id_noaportante:id_noaporta };
 }
 
-function calcularRciva( parametro, idEmpleado, id_mes, totalGanado, rcivaSaldoCertificado, filaDescargo, rcivaSaldoDependiente, totalAporteNacionalSolidario, totalAFPS, viaticos, escalaRciva ){
+async function calcularRciva( parametro, idEmpleado, id_mes, totalGanado, rcivaSaldoCertificado, filaDescargo, rcivaSaldoDependiente, totalAporteNacionalSolidario, totalAFPS, viaticos, escalaRciva, novedad ){
     const porcentajeRciva = 13;
     const totalGanadoActivo = 0.1;
     const numSalMinRciva = parametro.total_salmin_rciva;
@@ -621,9 +705,14 @@ function calcularRciva( parametro, idEmpleado, id_mes, totalGanado, rcivaSaldoCe
     const idFechaPlanillaRcivaActual = parametro.id_fecha_rcivaact;
     const fechaPlanillaRcivaAnt = new Date(parametro.fecha_rciva_ant);
     const idFechaPlanillaRcivaAnt = parametro.id_fecha_rcivaant;
-    const idMesAnterior = parametro.id_mes_anterior;
+    const idMesAnterior = parametro.id_mes_ant;
     const totalViaticos = viaticos.importe? parceFloat( viaticos.importe ):0;
-    if(rcivaSaldoDependiente || typeof filaDescargo.monto_rc_iva !== 'undefined' || (rcivaSaldoCertificado ) || (totalGanado >= totalGanadoActivo)){            
+    const ufvActual = parametro.ufv_act;
+    const idUfvActual = parametro.id_ufv_act;
+    const ufvAnt = parametro.ufv_ant;
+    const idUfvAnt = parametro.id_ufv_ant;
+
+    if(rcivaSaldoDependiente ||  (rcivaSaldoCertificado ) || (totalGanado >= totalGanadoActivo)){            
             // codificacion RCIVA
             //$idCodigoRCIVA = RcivaCodificacio::getIdCodificacionRCIVA($idEmpleado);
             
@@ -642,33 +731,43 @@ function calcularRciva( parametro, idEmpleado, id_mes, totalGanado, rcivaSaldoCe
 
             let impuestoNetoRCIVA = totalSMNPorcentaje > impuestoRCIVA ? 0 : (impuestoRCIVA - totalSMNPorcentaje);
             // descargo FORM-110 (id - monto)            
-            let porcentajeForm110 = typeof filaDescargo.monto_rc_iva !== 'undefined' ? filaDescargo.monto_rc_iva : 0;
-            let idDescargoRCIVA = typeof filaDescargo.monto_rc_iva !== 'undefined' ? filaDescargo.cod_descargo_rciva : null;
+            let porcentajeForm110 =  filaDescargo ? filaDescargo.importe_rciva : 0;
+            let idDescargoRCIVA = filaDescargo ? filaDescargo.id : null;
             let saldoFavorFisco = impuestoNetoRCIVA > porcentajeForm110 ? impuestoNetoRCIVA - porcentajeForm110 : 0;
             let saldoFavorDependiente = porcentajeForm110 > impuestoNetoRCIVA ? porcentajeForm110 - impuestoNetoRCIVA : 0;
 
-            // certificado solo para el caso de que el empleado sea nuevo            
-            let idCertificadoSaldoRCIVA = (rcivaSaldoCertificado )? rcivaSaldoCertificado.id:null;
-            let codigoSaldo = (rcivaSaldoCertificado )?  rcivaSaldoCertificado.impuesto_numero:null;
-            let montoSaldo = (rcivaSaldoCertificado )?  rcivaSaldoCertificado.impuesto_saldo:null;
-            let fechaSaldo = (rcivaSaldoCertificado )?  rcivaSaldoCertificado.impuesto_fecha_saldo:null;
-            let ufvActual;
-            let idUfvActual;
-            valorUfv(fechaPlanillaRcivaActual)
-            .then(resultado => {
-                ufvActual = resultado.valor;
-                idUfvActual = resultado.id;
-                //console.log('Resultado del cálculo RC-IVA:', resultado);
-            })
-            .catch(error => {
-                console.error('Error en el proceso:', error);
-            });
+            // certificado solo para el caso de que el empleado sea nuevo  
+            let idCertificadoSaldoRCIVA = null;
+            let codigoSaldo = null;
+            let montoSaldo = null;
+            let fechaSaldo = null;
+            let listaSaldoMantenimiento = null;
+            if(rcivaSaldoCertificado){
+                idCertificadoSaldoRCIVA = rcivaSaldoCertificado.id;
+                codigoSaldo = rcivaSaldoCertificado.impuesto_numero;
+                montoSaldo = rcivaSaldoCertificado.impuesto_saldo;
+                fechaSaldo = rcivaSaldoCertificado.impuesto_fecha_saldo;
+                listaSaldoMantenimiento =   await actualizacionCertificadoRciva(id_mes, idEmpleado, ufvActual, montoSaldo, fechaSaldo );
+            }  
 
-            let listaSaldoMantenimiento = actualizacionCertificadoRciva(id_mes, idEmpleado, ufvActual, montoSaldo, fechaSaldo );
             
-            let existeObservacion = listaSaldoMantenimiento.observado;                       
+            
+            // const dataUfvActual = await processExcel(fechaPlanillaRcivaActual);
+            // valorUfv(fechaPlanillaRcivaActual)
+            // .then(resultado => {
+            //     ufvActual = resultado.dataValues.valor;
+            //     idUfvActual = resultado.dataValues.id;
+            //     //console.log('Resultado del cálculo RC-IVA:', resultado);
+            // })
+            // .catch(error => {
+            //     console.error('Error en el proceso:', error);
+            // });
+
+            
+            
+            let existeObservacion = listaSaldoMantenimiento? listaSaldoMantenimiento.observado:true;                       
             // saldo del periodo anterior del empleado  --- saldo, fecha_saldo, mantenimiento,actualizado
-            let filaSaldoRCIVA = saldoRcIvaMesAnteriorConActualizacionOneItem( ufvActual, idUfvActual,idMesAnterior, rcivaSaldoDependiente);
+            let filaSaldoRCIVA = saldoRcIvaMesAnteriorConActualizacionOneItem( ufvActual, idUfvActual,idMesAnterior, rcivaSaldoDependiente, idUfvAnt, ufvAnt);
             let saldoPeriodoAnterior = filaSaldoRCIVA.saldo? parseFloat( filaSaldoRCIVA.saldo ):0;
             let valorMantenimiento = filaSaldoRCIVA.mantenimiento? parseFloat( filaSaldoRCIVA.mantenimiento ):0;
             let saldoActualizado = filaSaldoRCIVA.actualizado? parseFloat(filaSaldoRCIVA.actualizado):0;
@@ -691,9 +790,10 @@ function calcularRciva( parametro, idEmpleado, id_mes, totalGanado, rcivaSaldoCe
                 id_minimo_nacional : idMinNacionalActivo,
                 id_escala_rciva : escalaRciva.id,
                 //id_salario_planilla : null,
+                id_empleado: idEmpleado,
                 id_rciva_certificado : idCertificadoSaldoRCIVA,
                 id_rciva_planilla_fecha : idFechaPlanillaRcivaActual,
-                //novedad : ,
+                novedad : novedad,
                 ingreso_neto_bs : montoIngresoNeto,
                 minimo_imponible : totalSMN,
                 importe_sujeto_impuesto : baseImponible,
@@ -716,42 +816,43 @@ function calcularRciva( parametro, idEmpleado, id_mes, totalGanado, rcivaSaldoCe
     }
 }
 // saldo mes anterior RCIVA planilla
-function saldoRcIvaMesAnteriorConActualizacionOneItem(  ufvActual, idUfvActual, idMesAnterior, filaSaldoAnterior) {
+function saldoRcIvaMesAnteriorConActualizacionOneItem(  ufvActual, idUfvActual, idMesAnterior, filaSaldoAnterior, idUfvAnterior, ufvAnterior) {
     let valorMantenimiento = 0;
     let saldoActualizado = 0;
     let saldoRciva = 0;
     let fechaSaldoRciva = null;
-    let ufvAnterior;
-    let idUfvAnterior;
-    if (idMesAnterior > 0){
+    // let ufvAnterior;
+    // let idUfvAnterior;
+    if (idMesAnterior > 0 && filaSaldoAnterior ){
         //$saldoRciva = isset($filaSaldoAnterior['saldo_rciva_dependiente']) ? $filaSaldoAnterior['saldo_rciva_dependiente'] : 0;
-        if( typeof filaSaldoAnterior.saldo_rciva_dependiente_dos !== 'undefined' ){
+        if( filaSaldoAnterior.saldo_rciva_dependiente_dos  ){
             saldoRciva = filaSaldoAnterior.saldo_rciva_dependiente_dos;
-        }else if( typeof filaSaldoAnterior.saldo_rciva_dependiente !== 'undefined' ){
+        }else if( filaSaldoAnterior.saldo_rciva_dependiente ){
             saldoRciva = filaSaldoAnterior.saldo_rciva_dependiente;
         }else{
             saldoRciva = 0;
         }
-        fechaSaldoRciva = typeof filaSaldoAnterior.fecha_rciva_planilla !== 'undefined'? filaSaldoAnterior.fecha_rciva_planilla : NULL;
+        fechaSaldoRciva = filaSaldoAnterior ? filaSaldoAnterior.rcivaplanilla_planillafecha.dataValues.fecha_limite : null;
         //si tyiene saldo
         if (saldoRciva > 0) {
             // ufv actual
             //ufv anterior
             
-            valorUfv(fechaSaldoRciva)
-            .then(resultado => {
-                ufvAnterior = resultado.valor;
-                idUfvAnterior = resultado.id;
-                //console.log('Resultado del cálculo RC-IVA:', resultado);
-            })
-            .catch(error => {
-                console.error('Error en el proceso:', error);
-            });
+            // valorUfv(fechaSaldoRciva)
+            // .then(resultado => {
+            //     ufvAnterior = resultado.dataValues.valor;
+            //     idUfvAnterior = resultado.dataValues.id;
+            //     //console.log('Resultado del cálculo RC-IVA:', resultado);
+            // })
+            // .catch(error => {
+            //     console.error('Error en el proceso:', error);
+            // });
             // valor del mantenimiento del saldo
             valorMantenimiento = valorMantenimientoActualizacionUFV(ufvActual, ufvAnterior, saldoRciva);
             saldoActualizado = saldoRciva + valorMantenimiento;
         }
     }
+    //console.log("?????????? fila Saldo anterior:",filaSaldoAnterior.rcivaplanilla_planillafecha.dataValues.fecha_limite,"fecha saldo anterior:",fechaSaldoRciva, " id mes anterior:", idMesAnterior,"ufv anterior:", ufvAnterior, "id ufv anterior:",idUfvAnterior, "ufv acutal:",ufvActual, "id ufv actual:",idUfvActual, "saldo actualizado:",saldoActualizado,"mantenimiento:", valorMantenimiento  );
     
 
     let lista = {
@@ -765,7 +866,7 @@ function saldoRcIvaMesAnteriorConActualizacionOneItem(  ufvActual, idUfvActual, 
 
     return lista;
 }
-function actualizacionCertificadoRciva(idMes, idEmpleado, ufvActual, montoSaldo, fecha) {
+async function actualizacionCertificadoRciva(idMes, idEmpleado, ufvActual, montoSaldo, fecha) {
     let valorMantenimiento = 0;
     let saldoActualizado = 0;
     let saldoRciva = montoSaldo != null ? montoSaldo : 0;
@@ -807,7 +908,7 @@ async function valorUfv(fechaCalculo) {
       const ufvData = await Ufv.findOne({
         where: { fecha: fechaCalculo }
       });
-  
+      console.log("############################### ufv:",ufvData);
       if (!ufvData) {
         throw new Error('No se encontró el valor UFV para la fecha especificada.');
       }
@@ -856,7 +957,7 @@ function calculoDescuento( listDescuento, totalDiasTrabajados, totalGanado){
             monto: monto,            
         });
     }
-
+    console.log("--------- Lista descuento:", totalMontoDescuento, "calculo descuento:", descuento_json);
     return { descuento_json: descuento_json, total_monto_descuento: totalMontoDescuento }
     
         

@@ -37,7 +37,9 @@ const {
     Bono,
     Asignacion_bono,
     Empleado_no_aportante,
-    Viatico
+    Viatico,
+    Asingacion_subsidio,
+    Municipio,
     
   } = require("../../database/config");
   
@@ -100,7 +102,7 @@ const {
   };
   const verificarDecimal= async( valor = "") =>{
     const decimalPart = valor.toString().split('.')[1];
-    if(decimalPart.length > 4){    
+    if(decimalPart.length > 5){    
       throw new Error(`Los decimales debe ser menor 4 carecteres`);
     }
   };
@@ -604,6 +606,23 @@ const {
     }
   };
 
+  // =================================================================
+  // ========================= Asignacion Sub sidio =======================
+  const idExistAsigSubsidio = async (id = "") => {
+    const idExist = await Asingacion_subsidio.findByPk(id);
+    if (!idExist) {
+      throw new Error(`El id del Subsidio con id: ${id}, no existe`);
+    }
+  };
+  // =================================================================
+  // ========================= Asignacion Sub sidio =======================
+  const idExistMunicipio = async (id = "") => {
+    const idExist = await Municipio.findByPk(id);
+    if (!idExist) {
+      throw new Error(`El id del Municipio con id: ${id}, no existe`);
+    }
+  };
+
 
 
 
@@ -889,6 +908,8 @@ const {
     idExistAsigBono,
     idExistEmpNoAportante,
     idExistViatico,
+    idExistAsigSubsidio,
+    idExistMunicipio,
 
     idExistCriterioEva,
     nameExistCriterioEva,

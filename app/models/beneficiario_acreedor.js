@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Beneficiario_acreedor.belongsTo(models.Asignacion_descuento,{as:'beneficiarioacreedor_asigdescuento',foreignKey:'id_asig_descuento'});
+      Beneficiario_acreedor.belongsTo(models.Asignacion_subsidio,{as:'beneficiarioacreedor_asigsubsidio',foreignKey:'id_asig_subsidio'});
     }
   }
   Beneficiario_acreedor.init({

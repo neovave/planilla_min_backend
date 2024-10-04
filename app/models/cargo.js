@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     nivel: DataTypes.INTEGER,
     cantidad_item: DataTypes.INTEGER,
     tipo: DataTypes.STRING(100),
-    monto_mensual: DataTypes.DECIMAL(8,2),
+    monto_mensual: DataTypes.DECIMAL(10,2),
     codigo_escala: INTEGER,
     estado: DataTypes.STRING(2),
     activo: DataTypes.BIGINT,

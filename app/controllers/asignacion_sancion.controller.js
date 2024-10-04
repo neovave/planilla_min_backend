@@ -43,7 +43,7 @@ const newAsigSancion = async (req = request, res = response ) => {
     const t = await sequelize.transaction();
     try {
         const { body } = req.body;
-        const asigSancioNew = await Asignacion_sancion.create(body);
+        const asigSancioNew = await Asignacion_sancion.create(body, { transaction : t});
         
         await t.commit();
         return res.status(201).json({

@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Incremento',
-    tablelName: 'increments',
+    tableName: 'increments',
   });
   return Incremento;
 };

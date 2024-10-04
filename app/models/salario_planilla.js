@@ -18,10 +18,16 @@ module.exports = (sequelize, DataTypes) => {
   }
   Salario_planilla.init({
     asistencia: DataTypes.JSONB,
-    id_asig_emp: DataTypes.STRING,
     edad_empleado: DataTypes.INTEGER,
+    dias_trabajados: DataTypes.DECIMAL(8,1),
+    dias_sancionados: DataTypes.DECIMAL(8,1),
     haber_basico_dia: DataTypes.DECIMAL(8,2),
     antiguedad: DataTypes.DECIMAL(8,2),
+    bonos: DataTypes.JSONB,
+    total_bonos: DataTypes.DECIMAL(8,2),
+    subsidio: DataTypes.JSONB,
+    total_subsidio: DataTypes.DECIMAL(8,2),
+    
     total_ganado: DataTypes.DECIMAL(8,2),
     aporte_solidario: DataTypes.JSONB,
     total_ap_solidario: DataTypes.DECIMAL(8,2),

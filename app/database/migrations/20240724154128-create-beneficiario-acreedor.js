@@ -19,6 +19,16 @@ module.exports = {
           key: "id",
         },
       },
+      id_asig_subsidio: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'asignacion_subsidios',
+            schema: 'public'
+          },
+          key: "id",
+        },
+      },
       detalle_ruc: {
         type: Sequelize.STRING(100)
       },

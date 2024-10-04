@@ -2,52 +2,53 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('cargos', {
+    await queryInterface.createTable('asignacion_subsidios', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id_categoria: {
+      id_tipo_descuento: {
         type: Sequelize.INTEGER,
         references: {
           model: {
-            tableName: 'categoria_cargos',
+            tableName: 'tipo_descuento_sanciones',
             schema: 'public'
           },
           key: "id",
         },
       },
-      codigo: {
-        type: Sequelize.STRING(10)
-      },
-      descripcion: {
-        type: Sequelize.STRING(200)
-      },
-      abreviatura: {
-        type: Sequelize.STRING(20)
+      id_empleado: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'empleados',
+            schema: 'public'
+          },
+          key: "id",
+        },
       },
       monto: {
         type: Sequelize.DECIMAL(8,2)
       },
-      clase: {
-        type: Sequelize.INTEGER
+      unidad: {
+        type: Sequelize.STRING(2)
       },
-      nivel: {
-        type: Sequelize.INTEGER
-      },
-      cantidad_item: {
-        type: Sequelize.INTEGER
-      },
-      tipo: {
+      tipo_pago:{
         type: Sequelize.STRING(20)
       },
-      monto_mensual: {
-        type: Sequelize.DECIMAL(10,2)
+      fecha_inicio: {
+        type: Sequelize.DATE
       },
-      codigo_escala: {
-        type: Sequelize.INTEGER
+      fecha_limite: {
+        type: Sequelize.DATE
+      },
+      memo_nro: {
+        type: Sequelize.STRING(10)
+      },
+      memo_detalle: {
+        type: Sequelize.STRING(200)
       },
       estado: {
         type: Sequelize.STRING(2)
@@ -69,16 +70,14 @@ module.exports = {
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
         type: Sequelize.DATE
       },
       deletedAt: {
-        //allowNull: false,
         type: Sequelize.DATE
       }
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('cargos');
+    await queryInterface.dropTable('asignacion_subsidios');
   }
 };

@@ -45,10 +45,28 @@ module.exports = {
       edad_empleado: {
         type: Sequelize.INTEGER
       },
+      dias_trabajados: {
+        type: Sequelize.DECIMAL(8,1)
+      },
+      dias_sancionados: {
+        type: Sequelize.DECIMAL(8,1)
+      },
       haber_basico_dia: {
         type: Sequelize.DECIMAL(8,2)
       },
       antiguedad: {
+        type: Sequelize.DECIMAL(8,2)
+      },
+      bonos: {
+        type: Sequelize.JSONB
+      },
+      total_bonos: {
+        type: Sequelize.DECIMAL(8,2)
+      },
+      subsidio: {
+        type: Sequelize.JSONB
+      },
+      total_subsidio: {
         type: Sequelize.DECIMAL(8,2)
       },
       total_ganado: {

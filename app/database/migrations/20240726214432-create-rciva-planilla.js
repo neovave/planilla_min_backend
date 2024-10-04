@@ -59,7 +59,7 @@ module.exports = {
           key: "id",
         },
       },
-      id_rciva_decargo: {
+      id_rciva_descargo: {
         type: Sequelize.INTEGER,
         references: {
           model: {

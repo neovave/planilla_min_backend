@@ -21,16 +21,16 @@ module.exports = {
     begin
       return query 
         SELECT
-          configuraciones_afps.id,			
+          configuracion_afps.id,			
           escala_afps.nombre,
           escala_afps.descripcion,
           escala_afps.porcentaje,
-          configuraciones_afps.aplica_certificado,
-          configuraciones_afps.aplica_edad_limite, 
+          configuracion_afps.aplica_certificado,
+          configuracion_afps.aplica_edad_limite, 
           escala_afps.afp_codigo
-        FROM configuraciones_afps
-        INNER JOIN escala_afps ON configuraciones_afps.id_escala_afp = escala_afps.id
-        WHERE configuraciones_afps.activo = 1 ;	
+        FROM configuracion_afps
+        INNER JOIN escala_afps ON configuracion_afps.id_escala_afp = escala_afps.id
+        WHERE configuracion_afps.activo = 1 ;	
     end;
     $BODY$;
     `);

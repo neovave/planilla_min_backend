@@ -1,0 +1,17 @@
+[
+  {
+    "nombre": "INGRESO",
+    "tipo": "",
+    "activo": 1
+  },
+  {
+    "nombre": "RETIRO",
+    "tipo": "",
+    "activo": 1
+  },
+  {
+    "nombre": "MOVIMIENTO",
+    "tipo": "",
+    "activo": 1
+  }
+]

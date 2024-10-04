@@ -1,11 +1,11 @@
 const { validatedResponse } = require('../validated-response');
 const { checkSchema } = require('express-validator');
-const { idExistAsigSancion, idExistTipoDescuento, idExistEmpleado } = require('./database');
+const { idExistAsigSubsidio, idExistTipoDescuento, idExistEmpleado } = require('./database');
 
 const validationSchema =  {
-    id_tipo_sancion: {
+    id_tipo_descuento: {
         isEmpty: {
-            negated: true, errorMessage: "Id tipo descuento y sancion es obligatorio",
+            negated: true, errorMessage: "Id tipo subsidio es obligatorio",
         },
         custom: { options: idExistTipoDescuento}, //verificamos si existe uuid
     },
@@ -15,14 +15,14 @@ const validationSchema =  {
         },
         custom: { options: idExistEmpleado}, //verificamos si existe uuid
     },
-    cod_empleado: {
-        optional: { options: { checkFalsy: true } },
-        isLength: {
-            errorMessage: 'El nombre debe tener mínimo a 1 caracteres y máximo 15 caracteres',
-            options: { min: 1, max: 15},
-        },
-        //custom: { options: codigoExistCapacitacion },
-    },
+    // cod_empleado: {
+    //     optional: { options: { checkFalsy: true } },
+    //     isLength: {
+    //         errorMessage: 'El nombre debe tener mínimo a 1 caracteres y máximo 15 caracteres',
+    //         options: { min: 1, max: 15},
+    //     },
+    //     //custom: { options: codigoExistCapacitacion },
+    // },
     monto: {
         isDecimal: {
             errorMessage: 'El precio debe ser un número decimal válido.'
@@ -42,6 +42,15 @@ const validationSchema =  {
             options: { min: 1, max: 2},
         },
     },
+    tipo_pago: {
+        isEmpty: {
+            negated: true, errorMessage: "El campo tipo de pago es obligatorio",
+        },
+        isLength: {
+            errorMessage: 'El valor debe tener mínimo a 1 caracteres y máximo 2 caracteres',
+            options: { min: 1, max: 2},
+        },
+    },
     /*id_user_charge: {
         isEmpty: {
             negated: true, errorMessage: "Id usuario es obligatorio",
@@ -50,39 +59,23 @@ const validationSchema =  {
     },*/
     fecha_inicio: {
         isEmpty: {
-            negated: true, errorMessage: "La fecha inicio capacitación es obligatorio",
+            negated: true, errorMessage: "La fecha inicio es obligatorio",
         },
-        isLength: {
-            errorMessage: 'El valor debe tener mínimo a 10 caracteres y máximo 10 caracteres',
-            options: { min: 10, max: 10},
+        isDate: {
+            negated: true, errorMessage: "La fecha inicio es obligatorio",
         },
     },
     fecha_limite: {
-        isEmpty: {
-            negated: true, errorMessage: "La fecha fin de capacitación es obligatorio",
-        },
-        isLength: {
-            errorMessage: 'El valor debe tener mínimo a 10 caracteres y máximo 10 caracteres',
-            options: { min: 10, max: 10},
+        optional: { options: { nullable: true } },
+        isDate: {
+            negated: true, errorMessage: "La fecha inicio es obligatorio",
         },
     },
-    memo_nro: {
-        isEmpty: {
-            negated: true, errorMessage: "El campo nro es obligatorio",
-        },
-        isLength: {
-            errorMessage: 'El valor debe tener mínimo a 1 caracteres y máximo 2 caracteres',
-            options: { min: 1, max: 10},
-        },
-    },
-    memo_detalle: {
-        isEmpty: {
-            negated: true, errorMessage: "El campo detalle es obligatorio",
-        },
-        isLength: {
-            errorMessage: 'El valor debe tener mínimo a 1 caracteres y máximo 2 caracteres',
-            options: { min: 1, max: 300},
-        },
+
+    activo: {
+        isBoolean: {
+            errorMessage: "El estado debe ser de tipo bigint [0,1]",
+        }
     },
     estado: {
         isEmpty: {
@@ -92,13 +85,9 @@ const validationSchema =  {
             errorMessage: 'El valor debe tener mínimo a 1 caracteres y máximo 2 caracteres',
             options: { min: 1, max: 2},
         },
-    },
-    activo: {
-        isBoolean: {
-            errorMessage: "El estado debe ser de tipo bigint [0,1]",
-        }
-    },
+    }
 };
+
 
 const getValidateCreate = [
     checkSchema(validationSchema),
@@ -109,7 +98,7 @@ const getValidateUpdate= [
     checkSchema({
         id: {
             in: ["params"],
-            custom: { options: idExistAsigSancion },
+            custom: { options: idExistAsigSubsidio },
         },
         ...validationSchema
     }),
@@ -118,8 +107,16 @@ const getValidateUpdate= [
 
 const validateDelete = [
     checkSchema({
-        id: { in: ["params"], custom: { options: idExistAsigSancion} },
-        
+        id: { in: ["params"], custom: { options: idExistAsigSubsidio} },
+        estado: {
+            isEmpty: {
+                negated: true, errorMessage: "El campo estado es obligatorio",
+            },
+            isLength: {
+                errorMessage: 'El valor debe tener mínimo a 1 caracteres y máximo 2 caracteres',
+                options: { min: 1, max: 2},
+            },
+        }
         // activo: {
         //     isBoolean: {
         //         errorMessage: "El estado debe ser de tipo boolean [0, 1]",

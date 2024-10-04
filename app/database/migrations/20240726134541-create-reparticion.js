@@ -19,7 +19,16 @@ module.exports = {
           key: "id",
         },
       },
-      
+      id_municipio: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'municipios',
+            schema: 'public'
+          },
+          key: "id",
+        },
+      },
       codigo: {
         type: Sequelize.STRING
       },

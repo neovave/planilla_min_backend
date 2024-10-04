@@ -3,7 +3,7 @@
     "nombre_abreviado": "B.DEM-DIM",
     "descripcion": "",
     "porcentaje": "27",
-    "porcen_cargo": "",
+    "porcen_cargo": null,
     "requisitos": "",
     "tipo": "PERMANENTES",
     "activo": 1
@@ -12,8 +12,8 @@
     "nombre_abreviado": "B.DAEN",
     "descripcion": "Bono de Diplomado de Altos Estudios Nacionales",
     "porcentaje": "10",
-    "porcen_cargo": "",
-    "requisitos": "El Bono de Diplomado de Altos Estudios Nacionales consistente en el diez por ciento (10%) de los emolumentos básicos se otorgará única y exclusivamente al personal de Oficiales Superiores del Escalafón de Armas que se encuentren en Situación Activa (servicio activo reserva activa y disponibilidad) que participen en el curso mediante convocatoria previa autorización de sus Fuerzas y cumplan con los siguientes requisitos:",
+    "porcen_cargo": null,
+    "requisitos":  "El Bono de Diplomado de Altos Estudios Nacionales consistente en el diez por ciento (10%) de los emolumentos básicos se otorgará única y exclusivamente al personal de Oficiales Superiores del Escalafón de Armas que se encuentren en Situación Activa (servicio activo reserva activa y disponibilidad) que participen en el curso mediante convocatoria previa autorización de sus Fuerzas y cumplan con los siguientes requisitos:",
     "tipo": "PERMANENTES",
     "activo": 1
   },
@@ -21,7 +21,7 @@
     "nombre_abreviado": "B.Jerarquico",
     "descripcion": "Bono Jerárquico Militar",
     "porcentaje": "0",
-    "porcen_cargo": "[{id_cargo:2, porcentaje:18},{id_cargo:3, porcentaje:18},{id_cargo:4, porcentaje:18}, {id_cargo:62, porcentaje:18},{id_cargo:5, porcentaje:11}, {id_cargo:65, porcentaje:11},{id_cargo:6, porcentaje:10},{id_cargo:66, porcentaje:10},{id_cargo:7, porcentaje:6},{id_cargo:67, porcentaje:6},{id_cargo:11, porcentaje:10},{id_cargo:12, porcentaje:6}]",
+    "porcen_cargo": "[{\"id_cargo\":2, \"porcentaje\":18},{\"id_cargo\":3, \"porcentaje\":18},{\"id_cargo\":4, \"porcentaje\":18}, {\"id_cargo\":62, \"porcentaje\":18},{\"id_cargo\":5, \"porcentaje\":14}, {\"id_cargo\":65, \"porcentaje\":14},{\"id_cargo\":6, \"porcentaje\":10},{\"id_cargo\":66, \"porcentaje\":10},{\"id_cargo\":7, \"porcentaje\":6},{\"id_cargo\":67, \"porcentaje\":6},{\"id_cargo\":11, \"porcentaje\":10},{\"id_cargo\":12, \"porcentaje\":6}, {\"id_cargo\":15, \"porcentaje\":0.5}]",
     "requisitos": "Se otorgará al escalafón de Armas en mérito a su Antigüedad",
     "tipo": "PERMANENTES",
     "activo": 1
@@ -29,9 +29,9 @@
   {
     "nombre_abreviado": "B.Magister",
     "descripcion": "Bono Magister en Seguridad",
-    "porcentaje": "Defensa y Desarrollo",
-    "porcen_cargo": "3",
-    "requisitos": "1. Diploma de Estado Mayor o Diploma de Ingeniería Militar.",
+    "porcentaje": "3",
+    "porcen_cargo": null,
+    "requisitos": "se otorgará única y exclusivamente al personal de Oficiales Generales y Almirantes, así como a Oficiales Superiores del Escalafón de Armas que se encuentren en Situación Activa (servicio activo, reserva activa y disponibilidad), y que cumplan con la presentación del Diploma de Magíster en Seguridad, Defensa y Desarrollo",
     "tipo": "PERMANENTES",
     "activo": 1
   },
@@ -39,8 +39,8 @@
     "nombre_abreviado": "B.DEPSS",
     "descripcion": "Bono de Diplomado de las Escuelas de Perfeccionamiento",
     "porcentaje": "20",
-    "porcen_cargo": "",
-    "requisitos": "Diploma de Altos Estudios Nacionales",
+    "porcen_cargo": null,
+    "requisitos": "se otorgará única y exclusivamente al personal de Suboficiales del Escalafón de Armas, egresados y diplomados en el curso avanzado de las siguientes Unidades Académicas de Postgrado",
     "tipo": "PERMANENTES",
     "activo": 1
   },
@@ -48,7 +48,7 @@
     "nombre_abreviado": "B.Pro_Libro",
     "descripcion": "Bono Pro-Libro",
     "porcentaje": "20",
-    "porcen_cargo": "",
+    "porcen_cargo": null,
     "requisitos": "El Bono Pro-Libro se otorgará desde su inicio hasta la finalización del año académico en el porcentaje del veinte por ciento (20%) de los emolumentos básicos al personal del Escalafón de Armas que sea designado por Orden del Comando de su Fuerza (Orden General de destinos Memorándum o Radiograma) como cursante de las siguientes Unidades Académicas de Posgrado",
     "tipo": "EVENTUAL",
     "activo": 1
@@ -57,16 +57,16 @@
     "nombre_abreviado": "B.Profesional",
     "descripcion": "Bono profesional",
     "porcentaje": "10",
-    "porcen_cargo": "",
+    "porcen_cargo": null,
     "requisitos": "\"EI Bono profesional (BP) se otorgará al personal del Escalafón Civil que cuenta con el Título Provisión Nacional a nivel Licenciatura expedido por el CEUB y Universidad del exterior debidamente homologado por Autoridad Competente corresponde el (10%) del (HB) y (BA) NOTA 4TA.- Es requisito indispensable para percibir el Bono Profesional que el funcionario o profesional preste sus servicios en la institución a tiempo completo en la especialidad académica respectiva. Los Bonos permanentes se continuarán percibiendo en la Reserva Activa y en la Letra \"\"A\"\"\"",
     "tipo": "PERMANENTES",
     "activo": 1
   },
   {
     "nombre_abreviado": "B.Frontera",
-    "descripcion": "Bono de Frontera – Subsidio de Frontera",
+    "descripcion": "Bono de Frontera - Subsidio de Frontera",
     "porcentaje": "20",
-    "porcen_cargo": "",
+    "porcen_cargo": null,
     "requisitos": "",
     "tipo": "EVENTUAL",
     "activo": 1
@@ -75,7 +75,7 @@
     "nombre_abreviado": "B.SAEM",
     "descripcion": "Servicio Auxiliar de Estado Mayor (SAEM)",
     "porcentaje": "15",
-    "porcen_cargo": "",
+    "porcen_cargo": null,
     "requisitos": "",
     "tipo": "PERMANENTES",
     "activo": 1
@@ -84,7 +84,7 @@
     "nombre_abreviado": "B.DIM",
     "descripcion": "Bono de Diplomado en Ingeniería Militar",
     "porcentaje": "27",
-    "porcen_cargo": "",
+    "porcen_cargo": null,
     "requisitos": "",
     "tipo": "PERMANENTES",
     "activo": 1
@@ -93,7 +93,7 @@
     "nombre_abreviado": "B.DEM",
     "descripcion": "Bono de Diplomado de Estado Mayor",
     "porcentaje": "27",
-    "porcen_cargo": "",
+    "porcen_cargo": null,
     "requisitos": "",
     "tipo": "PERMANENTES",
     "activo": 1
@@ -102,7 +102,7 @@
     "nombre_abreviado": "B.DEMA",
     "descripcion": "Escuela de Comando y Estado Mayor Aéreo",
     "porcentaje": "27",
-    "porcen_cargo": "",
+    "porcen_cargo": null,
     "requisitos": "",
     "tipo": "PERMANENTES",
     "activo": 1
@@ -111,7 +111,7 @@
     "nombre_abreviado": "B.DEMN",
     "descripcion": "Escuela de Comando y Estado Mayor Naval",
     "porcentaje": "27",
-    "porcen_cargo": "",
+    "porcen_cargo": null,
     "requisitos": "",
     "tipo": "PERMANENTES",
     "activo": 1
@@ -120,7 +120,7 @@
     "nombre_abreviado": "B.DEPSS",
     "descripcion": "Bono de Diplomado de las Escuelas de Perfeccionamiento",
     "porcentaje": "20",
-    "porcen_cargo": "",
+    "porcen_cargo": null,
     "requisitos": "",
     "tipo": "PERMANENTES",
     "activo": 1
@@ -129,7 +129,7 @@
     "nombre_abreviado": "B.DESA",
     "descripcion": "Bono de Diplomado de las Escuelas de Perfeccionamiento",
     "porcentaje": "20",
-    "porcen_cargo": "",
+    "porcen_cargo": null,
     "requisitos": "",
     "tipo": "PERMANENTES",
     "activo": 1
@@ -138,25 +138,34 @@
     "nombre_abreviado": "B.DESN",
     "descripcion": "Bono de Diplomado de las Escuelas de Perfeccionamiento",
     "porcentaje": "20",
-    "porcen_cargo": "",
+    "porcen_cargo": null,
     "requisitos": "",
     "tipo": "PERMANENTES",
     "activo": 1
   },
   {
     "nombre_abreviado": "B.Frontera-zona",
-    "descripcion": "Bono de Frontera – Subsidio de Zona",
+    "descripcion": "Bono de Frontera - Subsidio de Zona",
     "porcentaje": "20",
-    "porcen_cargo": "",
+    "porcen_cargo": null,
     "requisitos": "Consiste en el veinte por ciento (20%) de los emolumentos básicos y se otorgará al personal de los Escalafones de Armas Servicios y Civil",
     "tipo": "EVENTUAL",
     "activo": 1
   },
   {
     "nombre_abreviado": "Rei.Frontera",
-    "descripcion": "Reintegro Frontera – Subsidio de Zona",
+    "descripcion": "Reintegro Frontera - Subsidio de Zona",
     "porcentaje": "20",
-    "porcen_cargo": "",
+    "porcen_cargo": null,
+    "requisitos": "Consiste en el veinte por ciento (20%) de los emolumentos básicos y se otorgará al personal de los Escalafones de Armas Servicios y Civil",
+    "tipo": "EVENTUAL",
+    "activo": 1
+  },
+  {
+    "nombre_abreviado": "Rei.O.Bonific",
+    "descripcion": "Reintegro O. Bonific",
+    "porcentaje": "0",
+    "porcen_cargo": null,
     "requisitos": "Consiste en el veinte por ciento (20%) de los emolumentos básicos y se otorgará al personal de los Escalafones de Armas Servicios y Civil",
     "tipo": "EVENTUAL",
     "activo": 1

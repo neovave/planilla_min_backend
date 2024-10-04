@@ -9,11 +9,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      codigo:{
+        type: Sequelize.INTEGER
+      },
       nombre: {
         type: Sequelize.STRING(120)
       },
       nombre_abreviado: {
-        type: Sequelize.STRING(8)
+        type: Sequelize.STRING(20)
       },
       grupo: {
         type: Sequelize.STRING(10)

@@ -8,7 +8,7 @@
   {
     "id_organismo":1,
     "codigo": "2",
-    "nombre": "E.A.E.N. LP.   ",
+    "nombre": "E.A.E.N. LP.",
     "activo": 1
   },
   {
@@ -146,7 +146,7 @@
   {
     "id_organismo": 2,
     "codigo": "25",
-    "nombre": "\"RCB-4 \"\"INGAVI\"\" \"",
+    "nombre": "RCB-4 \"INGAVI\"",
     "activo": 1
   },
   {
@@ -164,13 +164,13 @@
   {
     "id_organismo": 2,
     "codigo": "28",
-    "nombre": "\"RCB-2 \"\"TARAPACA\"",
+    "nombre": "RCB-2 \"TARAPACA\"",
     "activo": 1
   },
   {
     "id_organismo": 2,
     "codigo": "29",
-    "nombre": "\"RCB-1 \"\"CALAMA\"\" \"",
+    "nombre": "RCB-1 \"CALAMA\"",
     "activo": 1
   },
   {
@@ -200,7 +200,7 @@
   {
     "id_organismo": 2,
     "codigo": "34",
-    "nombre": "\"RIB-8\"\"AYACUCHO\"\"\"",
+    "nombre": "RIB-8\"AYACUCHO\"",
     "activo": 1
   },
   {
@@ -212,13 +212,13 @@
   {
     "id_organismo": 2,
     "codigo": "36",
-    "nombre": "\"RCB-5 \"\"LANZA\"\"  \"",
+    "nombre": "RCB-5 \"LANZA\"",
     "activo": 1
   },
   {
     "id_organismo": 2,
     "codigo": "37",
-    "nombre": "\"RA-2 \"\"BOLIVAR\"\" \"",
+    "nombre": "RA-2 \"BOLIVAR\"",
     "activo": 1
   },
   {
@@ -266,13 +266,13 @@
   {
     "id_organismo": 2,
     "codigo": "45",
-    "nombre": "\"RC-8 \"\"BRAUN\"\"   \"",
+    "nombre": "RC-8 \"BRAUN\"",
     "activo": 1
   },
   {
     "id_organismo": 2,
     "codigo": "46",
-    "nombre": "\"RA-1 \"\"CAMACHO\"\" \"",
+    "nombre": "RA-1 \"CAMACHO\"",
     "activo": 1
   },
   {
@@ -290,25 +290,25 @@
   {
     "id_organismo": 2,
     "codigo": "49",
-    "nombre": "\"RI-5 \"\"CAMPERO\"\" \"",
+    "nombre": "RI-5 \"CAMPERO\"",
     "activo": 1
   },
   {
     "id_organismo": 2,
     "codigo": "50",
-    "nombre": "\"RI-20 \"\"PADILLA\"\"\"",
+    "nombre": "RI-20 \"PADILLA\"",
     "activo": 1
   },
   {
     "id_organismo": 2,
     "codigo": "51",
-    "nombre": "\"RC-3 \"\"AROMA\"\"   \"",
+    "nombre": "RC-3 \"AROMA\"",
     "activo": 1
   },
   {
     "id_organismo": 2,
     "codigo": "52",
-    "nombre": "\"RA-3 \"\"PISAGUA\"\" \"",
+    "nombre": "RA-3 \"PISAGUA\"",
     "activo": 1
   },
   {
@@ -326,7 +326,7 @@
   {
     "id_organismo": 2,
     "codigo": "55",
-    "nombre": "\"RI-6 \"\"CAMPOS\"\"  \"",
+    "nombre": "RI-6 \"CAMPOS\"",
     "activo": 1
   },
   {
@@ -338,13 +338,13 @@
   {
     "id_organismo": 2,
     "codigo": "57",
-    "nombre": "\"RC-1 \"\"AVAROA\"\"  \"",
+    "nombre": "RC-1 \"AVAROA\"",
     "activo": 1
   },
   {
     "id_organismo": 2,
     "codigo": "58",
-    "nombre": "\"RA-4 \"\"BULLAIN\"\" \"",
+    "nombre": "RA-4 \"BULLAIN\"",
     "activo": 1
   },
   {
@@ -362,25 +362,25 @@
   {
     "id_organismo": 2,
     "codigo": "61",
-    "nombre": "\"RI-14 \"\"FLORIDA\"\"\"",
+    "nombre": "RI-14 \"FLORIDA\"",
     "activo": 1
   },
   {
     "id_organismo": 2,
     "codigo": "62",
-    "nombre": "\"RI-15 \"\"JUNIN\"\"  \"",
+    "nombre": "RI-15 \"JUNIN\"",
     "activo": 1
   },
   {
     "id_organismo": 2,
     "codigo": "63",
-    "nombre": "\"RC-6 \"\"CASTRILO\"\"\"",
+    "nombre": "RC-6 \"CASTRILO\"",
     "activo": 1
   },
   {
     "id_organismo": 2,
     "codigo": "64",
-    "nombre": "\"RA-5 \"\"VERGARA\"\" \"",
+    "nombre": "RA-5 \"VERGARA\"",
     "activo": 1
   },
   {
@@ -416,7 +416,7 @@
   {
     "id_organismo": 2,
     "codigo": "70",
-    "nombre": "\"RC-2 \"\"BALLIVIAN\"",
+    "nombre": "RC-2 \"BALLIVIAN\"",
     "activo": 1
   },
   {
@@ -440,7 +440,7 @@
   {
     "id_organismo": 2,
     "codigo": "74",
-    "nombre": "\"RI-2 \"\"SUCRE\"\"   \"",
+    "nombre": "RI-2 \"SUCRE\"",
     "activo": 1
   },
   {
@@ -464,7 +464,7 @@
   {
     "id_organismo": 2,
     "codigo": "78",
-    "nombre": "\"RA-7 \"\"TUMUSLA\"\" \"",
+    "nombre": "RA-7 \"TUMUSLA\"",
     "activo": 1
   },
   {
@@ -524,13 +524,13 @@
   {
     "id_organismo": 2,
     "codigo": "88",
-    "nombre": "\"RI-7 \"\"MARZANA\"\" \"",
+    "nombre": "RI-7 \"MARZANA\"",
     "activo": 1
   },
   {
     "id_organismo": 2,
     "codigo": "89",
-    "nombre": "\"RI-10 \"\"WARNES\"\" \"",
+    "nombre": "RI-10 \"WARNES\"",
     "activo": 1
   },
   {
@@ -554,7 +554,7 @@
   {
     "id_organismo": 2,
     "codigo": "93",
-    "nombre": "\"RA.8 \"\"STA.CRUZ\"\"\"",
+    "nombre": "RA.8 \"STA.CRUZ\"",
     "activo": 1
   },
   {
@@ -572,7 +572,7 @@
   {
     "id_organismo": 2,
     "codigo": "96",
-    "nombre": "\"RI-30 \"\"MURILLO\"\"\"",
+    "nombre": "RI-30 \"MURILLO\"",
     "activo": 1
   },
   {
@@ -596,13 +596,13 @@
   {
     "id_organismo": 2,
     "codigo": "100",
-    "nombre": "\"RI-3 \"\"PEREZ\"\"   \"",
+    "nombre": "RI-3 \"PEREZ\"",
     "activo": 1
   },
   {
     "id_organismo": 2,
     "codigo": "101",
-    "nombre": "\"RI-4 \"\"LOA\"\"     \"",
+    "nombre": "RI-4 \"LOA\"",
     "activo": 1
   },
   {
@@ -614,7 +614,7 @@
   {
     "id_organismo": 2,
     "codigo": "103",
-    "nombre": "\"RC-7 \"\"CHICHAS\"\" \"",
+    "nombre": "RC-7 \"CHICHAS\"",
     "activo": 1
   },
   {

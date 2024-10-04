@@ -19,7 +19,8 @@ module.exports = (sequelize, DataTypes) => {
     nombre_abreviado: DataTypes.STRING(20),
     descripcion: DataTypes.STRING(200),
     porcentaje: DataTypes.DECIMAL(8,2),
-    requisitos: DataTypes.STRING(300),
+    porcen_cargo: DataTypes.JSONB,
+    requisitos: DataTypes.STRING(1000),
     tipo: DataTypes.STRING(20),
     activo: DataTypes.BIGINT
 
