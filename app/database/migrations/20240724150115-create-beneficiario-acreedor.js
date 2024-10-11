@@ -29,11 +29,14 @@ module.exports = {
           key: "id",
         },
       },
-      detalle_ruc: {
-        type: Sequelize.STRING(100)
+      codigo: {
+        type: Sequelize.STRING(20)
       },
       ci_ruc: {
         type: Sequelize.STRING(20)
+      },
+      detalle_ruc: {
+        type: Sequelize.STRING(100)
       },
       tipo: {
         type: Sequelize.STRING(30)

@@ -26,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     fecha_limite: DataTypes.DATE,
     memo_nro: DataTypes.STRING(10),
     memo_detalle: DataTypes.STRING(200),
+    referencia: DataTypes.STRING(200),
     estado: DataTypes.STRING(2),
     id_user_create: DataTypes.INTEGER,
     id_user_mod: DataTypes.INTEGER,

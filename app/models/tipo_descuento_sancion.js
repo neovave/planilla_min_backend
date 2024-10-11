@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Tipo_descuento_sancion.hasMany(models.Asignacion_descuento,{as:'tipodescuentosancion_asigdescuento', foreignKey:'id_tipo_descuento'});
       Tipo_descuento_sancion.hasMany(models.Asignacion_sancion,{as:'tipodescuentosancion_asigsancion', foreignKey:'id_tipo_sancion'});
+      //Tipo_descuento_sancion.belongsTo(models.Beneficiario_acreedor,{as:'tipodescuentosancion_acreedor', foreignKey:'id_acreedor'});
     }
   }
   Tipo_descuento_sancion.init({
@@ -26,6 +27,8 @@ module.exports = (sequelize, DataTypes) => {
     con_beneficiario: DataTypes.BOOLEAN,
     servicio: DataTypes.STRING(20),
     grupo_suma: DataTypes.INTEGER,
+    grupo_nombre: DataTypes.STRING(200),
+    id_acreedor: DataTypes.INTEGER,
     id_user_create: DataTypes.INTEGER,
     id_user_mod: DataTypes.INTEGER,
     activo: DataTypes.BIGINT

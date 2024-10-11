@@ -303,6 +303,7 @@ const generarSalarioPlanillaAll = async (req = request, res = response ) => {
                 const escalaRciva = await Escala_rciva_salario.findOne( {where: { activo: 1 }, order: [['id', 'DESC']], } );
                 
                 const calculo_rciva = await calcularRciva( parametro, fila.id_empleado, body.id_mes, totalGanado, rcivaSaldoCertificado, filaDescargo, rciva_saldo_dependiente, total_aporte_solidario, total_aporte_afp, viaticos, escalaRciva, novedad );
+                console.log("calculo rciva:,,,,,,,,,,,,,,,,,:", calculo_rciva );
                 //agregar parametros posteriores
                 //calculo_rciva.novedad = novedad;
                 //calculo_rciva.id_salario_planilla= 
@@ -711,7 +712,7 @@ async function calcularRciva( parametro, idEmpleado, id_mes, totalGanado, rcivaS
     const idUfvActual = parametro.id_ufv_act;
     const ufvAnt = parametro.ufv_ant;
     const idUfvAnt = parametro.id_ufv_ant;
-
+    console.log("No cumple con condición de rciva, rciva saldo Dependiente:", rcivaSaldoDependiente, "saldo certificado:",rcivaSaldoCertificado ," total ganado",totalGanado, "total ganado activo:", totalGanadoActivo, "id_empleado:", idEmpleado, "id_mes:", id_mes, "total gando:", totalGanado, "viaticos:", rcivaSaldoCertificado, "fila Descargos:", filaDescargo, "rcivaSando Dep:", rcivaSaldoDependiente, "total Ap N. sol:", totalAporteNacionalSolidario, "total Afp:", totalAFPS, "totla viaticos:",  viaticos, "escala rciva:", escalaRciva, "novedad:", novedad  );
     if(rcivaSaldoDependiente ||  (rcivaSaldoCertificado ) || (totalGanado >= totalGanadoActivo)){            
             // codificacion RCIVA
             //$idCodigoRCIVA = RcivaCodificacio::getIdCodificacionRCIVA($idEmpleado);
@@ -747,8 +748,9 @@ async function calcularRciva( parametro, idEmpleado, id_mes, totalGanado, rcivaS
                 codigoSaldo = rcivaSaldoCertificado.impuesto_numero;
                 montoSaldo = rcivaSaldoCertificado.impuesto_saldo;
                 fechaSaldo = rcivaSaldoCertificado.impuesto_fecha_saldo;
-                listaSaldoMantenimiento =   await actualizacionCertificadoRciva(id_mes, idEmpleado, ufvActual, montoSaldo, fechaSaldo );
+                
             }  
+            listaSaldoMantenimiento =   await actualizacionCertificadoRciva(id_mes, idEmpleado, ufvActual, montoSaldo, fechaSaldo );
 
             
             
@@ -765,7 +767,7 @@ async function calcularRciva( parametro, idEmpleado, id_mes, totalGanado, rcivaS
 
             
             
-            let existeObservacion = listaSaldoMantenimiento? listaSaldoMantenimiento.observado:true;                       
+            let existeObservacion = listaSaldoMantenimiento.observado;//? listaSaldoMantenimiento.observado:true;                       
             // saldo del periodo anterior del empleado  --- saldo, fecha_saldo, mantenimiento,actualizado
             let filaSaldoRCIVA = saldoRcIvaMesAnteriorConActualizacionOneItem( ufvActual, idUfvActual,idMesAnterior, rcivaSaldoDependiente, idUfvAnt, ufvAnt);
             let saldoPeriodoAnterior = filaSaldoRCIVA.saldo? parseFloat( filaSaldoRCIVA.saldo ):0;
@@ -782,9 +784,9 @@ async function calcularRciva( parametro, idEmpleado, id_mes, totalGanado, rcivaS
             let saldoUtilizado = saldoActualizado <= saldoFavorFisco ? saldoActualizado : saldoFavorFisco;
             let impuestoRCIVARetenido = saldoFavorFisco > saldoUtilizado ? (saldoFavorFisco - saldoUtilizado) : 0;
             let saldoCreditoFiscalDependiente = saldoFavorDependiente + saldoActualizado - saldoUtilizado;
-            // console.log("parametros:", parametro);
-            // console.log("descargo", filaDescargo);
-            // console.log("certificacion:", rcivaSaldoCertificado);
+             console.log(".........parametros:", parametro);
+             console.log(".........descargo", filaDescargo);
+             console.log("----------certificacion:", rcivaSaldoCertificado);
         return !existeObservacion? {
                 id_mes : id_mes,
                 id_minimo_nacional : idMinNacionalActivo,
@@ -802,7 +804,7 @@ async function calcularRciva( parametro, idEmpleado, id_mes, totalGanado, rcivaS
                 impuesto_neto : impuestoNetoRCIVA,
                 saldo_favor_fisco : saldoFavorFisco,
                 saldo_favor_dependiente : saldoFavorDependiente,
-                total_salado_mes_anterior : saldoPeriodoAnterior,
+                total_saldo_mes_anterior : saldoPeriodoAnterior,
                 monto_saldo_actualizacion : valorMantenimiento,
                 total_actualizacion : saldoActualizado,
                 saldo_utilizado : saldoUtilizado,
@@ -813,6 +815,8 @@ async function calcularRciva( parametro, idEmpleado, id_mes, totalGanado, rcivaS
                 id_rciva_descargo : idDescargoRCIVA,
             }:'';
             
+    }else{
+        console.log("No cumple con condición de rciva, rciva saldo Dependiente:", rcivaSaldoDependiente, "saldo certificado:",rcivaSaldoCertificado ," total ganado",totalGanado, "total ganado activo:", totalGanadoActivo );
     }
 }
 // saldo mes anterior RCIVA planilla

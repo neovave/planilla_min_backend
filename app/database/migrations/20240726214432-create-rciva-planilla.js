@@ -112,7 +112,7 @@ module.exports = {
       saldo_favor_dependiente: {
         type: Sequelize.DECIMAL(8,2)
       },
-      total_salado_mes_anterior: {
+      total_saldo_mes_anterior: {
         type: Sequelize.DECIMAL(8,2)
       },
       monto_saldo_actualizacion: {

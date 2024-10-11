@@ -10,10 +10,12 @@
     "con_beneficiario": true,
     "servicio": "RETJUD",
     "grupo_suma": 2,
+    "grupo_nombre":"",
+    "id_acreedor":null,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 72,
     "nombre": "AP. ASOC.FAB",
     "nombre_abreviado": "AP. ASOC.FAB",
     "grupo": "DESCUENTOS",
@@ -22,11 +24,13 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "APORTE",
-    "grupo_suma": null,
+    "grupo_suma": 14,
+    "grupo_nombre":"Otros Descuentos Obligatorios de Ley",
+    "id_acreedor":null,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 69,
     "nombre": "AP. C.O.A.",
     "nombre_abreviado": "AP. C.O.A.",
     "grupo": "DESCUENTOS",
@@ -35,11 +39,13 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "APORTE",
-    "grupo_suma": null,
+    "grupo_suma": 15,
+    "grupo_nombre": "Acreencias Asumidas por el Empleado",
+    "id_acreedor":3,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 80,
     "nombre": "AP. C.O.C.",
     "nombre_abreviado": "AP. C.O.C.",
     "grupo": "DESCUENTOS",
@@ -48,11 +54,13 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "APORTE",
-    "grupo_suma": null,
+    "grupo_suma": 11,
+    "grupo_nombre":"Otros Descuentos Obligatorios de Ley",
+    "id_acreedor":null,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 65,
     "nombre": "AP. C.O.I.",
     "nombre_abreviado": "AP. C.O.I.",
     "grupo": "DESCUENTOS",
@@ -61,11 +69,13 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "APORTE",
-    "grupo_suma": null,
+    "grupo_suma": 14,
+    "grupo_nombre":"Otros Descuentos Obligatorios de Ley",
+    "id_acreedor":4,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 70,
     "nombre": "AP. MUGEBUSCH",
     "nombre_abreviado": "AP. MUGEBUSCH",
     "grupo": "DESCUENTOS",
@@ -74,11 +84,13 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "APORTE",
-    "grupo_suma": null,
+    "grupo_suma": 14,
+    "grupo_nombre":"Otros Descuentos Obligatorios de Ley",
+    "id_acreedor":null,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 56,
     "nombre": "AP.ASINALSS",
     "nombre_abreviado": "AP.ASINALSS",
     "grupo": "DESCUENTOS",
@@ -87,11 +99,13 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "APORTE",
-    "grupo_suma": null,
+    "grupo_suma": 14,
+    "grupo_nombre":"Otros Descuentos Obligatorios de Ley",
+    "id_acreedor":5,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 175,
     "nombre": "APORTE-A.B.I.M.(EN BS.)",
     "nombre_abreviado": "AP.A.B.I.M.",
     "grupo": "DESCUENTOS",
@@ -100,11 +114,13 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "APORTE",
-    "grupo_suma": null,
+    "grupo_suma": 15,
+    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_acreedor":8,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 947,
     "nombre": "APORTE-C.O.N.(BS.-50)",
     "nombre_abreviado": "AP.C.O.N.",
     "grupo": "DESCUENTOS",
@@ -113,11 +129,13 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "APORTE",
-    "grupo_suma": null,
+    "grupo_suma": 15,
+    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_acreedor":2,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 989,
     "nombre": "APORTES-STELAMARIS",
     "nombre_abreviado": "AP-STELAMARIS",
     "grupo": "DESCUENTOS",
@@ -126,11 +144,13 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "APORTE",
-    "grupo_suma": null,
+    "grupo_suma": 15,
+    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_acreedor":12,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 151,
     "nombre": "ASIG.VOLUNTARIAS (F)",
     "nombre_abreviado": "ASIG.VOL(F)",
     "grupo": "DESCUENTOS",
@@ -139,11 +159,13 @@
     "unidad": "BS",
     "con_beneficiario": true,
     "servicio": "ASIGNACION",
-    "grupo_suma": null,
+    "grupo_suma": 11,
+    "grupo_nombre":"Retencion Judicial",
+    "id_acreedor":2,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 142,
     "nombre": "ASIG.VOLUNTARIAS (HB)",
     "nombre_abreviado": "ASIG.VOL(HB)",
     "grupo": "DESCUENTOS",
@@ -152,11 +174,13 @@
     "unidad": "BS",
     "con_beneficiario": true,
     "servicio": "ASIGNACION",
-    "grupo_suma": null,
+    "grupo_suma": 15,
+    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_acreedor":2,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 148,
     "nombre": "ASIG.VOLUNTARIAS (LP)",
     "nombre_abreviado": "ASIG.VOL(LP)",
     "grupo": "DESCUENTOS",
@@ -165,11 +189,13 @@
     "unidad": "BS",
     "con_beneficiario": true,
     "servicio": "ASIGNACION",
-    "grupo_suma": null,
+    "grupo_suma": 15,
+    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_acreedor":2,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 167,
     "nombre": "COE - APORTES",
     "nombre_abreviado": "COE-AP",
     "grupo": "DESCUENTOS",
@@ -178,11 +204,13 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "COE",
-    "grupo_suma": null,
+    "grupo_suma": 15,
+    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_acreedor":9,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 121,
     "nombre": "COSSMIL-AT.MEDICA",
     "nombre_abreviado": "COSSMIL-AT.MED",
     "grupo": "DESCUENTOS",
@@ -191,11 +219,13 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "COSSMIL",
-    "grupo_suma": null,
+    "grupo_suma": 15,
+    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_acreedor":7,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 118,
     "nombre": "COSSMIL-CARTERA",
     "nombre_abreviado": "COSSMIL-CAR.",
     "grupo": "DESCUENTOS",
@@ -204,11 +234,13 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "COSSMIL",
-    "grupo_suma": null,
+    "grupo_suma": 15,
+    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_acreedor":7,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 119,
     "nombre": "COSSMIL-VIVIENDA",
     "nombre_abreviado": "COSSMIL-VI.",
     "grupo": "DESCUENTOS",
@@ -217,11 +249,13 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "COSSMIL",
-    "grupo_suma": null,
+    "grupo_suma": 15,
+    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_acreedor":7,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 161,
     "nombre": "CTA. MTTO. VIVIENDA",
     "nombre_abreviado": "CTA. MTTO. V.",
     "grupo": "DESCUENTOS",
@@ -230,11 +264,13 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "CTA. MTTO. VIVIENDA",
-    "grupo_suma": null,
+    "grupo_suma": 15,
+    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_acreedor":2,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 294,
     "nombre": "D.CAR.CTA.MINDEFENSA",
     "nombre_abreviado": "D.CAR.CTA.MIN",
     "grupo": "DESCUENTOS",
@@ -243,11 +279,13 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "CTA. MTTO. VIVIENDA",
-    "grupo_suma": null,
+    "grupo_suma": 15,
+    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_acreedor":2,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 106,
     "nombre": "DESCTO.JUDICIAL (LP)",
     "nombre_abreviado": "D.JUD(LP)",
     "grupo": "DESCUENTOS",
@@ -256,11 +294,13 @@
     "unidad": "BS",
     "con_beneficiario": true,
     "servicio": "RETJUD",
-    "grupo_suma": null,
+    "grupo_suma": 11,
+    "grupo_nombre":"Retencion Judicial",
+    "id_acreedor":2,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 103,
     "nombre": "DESCTO.JUDICIAL (TG)",
     "nombre_abreviado": "D.JUD(TG)",
     "grupo": "DESCUENTOS",
@@ -269,11 +309,13 @@
     "unidad": "BS",
     "con_beneficiario": true,
     "servicio": "RETJUD",
-    "grupo_suma": null,
+    "grupo_suma": 11,
+    "grupo_nombre":"Retencion Judicial",
+    "id_acreedor":2,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 109,
     "nombre": "DESCTO.JUDICIALES (F)",
     "nombre_abreviado": "D.JUD(F)",
     "grupo": "DESCUENTOS",
@@ -282,7 +324,9 @@
     "unidad": "BS",
     "con_beneficiario": true,
     "servicio": "RETJUD",
-    "grupo_suma": null,
+    "grupo_suma": 11,
+    "grupo_nombre":"Retencion Judicial",
+    "id_acreedor":2,
     "activo": 1
   },
   {
@@ -296,6 +340,8 @@
     "con_beneficiario": true,
     "servicio": "RETJUD",
     "grupo_suma": null,
+    "grupo_nombre":"",
+    "id_acreedor":null,
     "activo": 1
   },
   {
@@ -309,10 +355,12 @@
     "con_beneficiario": true,
     "servicio": "RETJUD",
     "grupo_suma": null,
+    "grupo_nombre":"",
+    "id_acreedor":null,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 982,
     "nombre": "EDITORIAL AERONAUTICA",
     "nombre_abreviado": "E. AERONAUTICA",
     "grupo": "DESCUENTOS",
@@ -321,11 +369,13 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "EDITORIAL",
-    "grupo_suma": null,
+    "grupo_suma": 15,
+    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_acreedor":2,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 172,
     "nombre": "F.V.S.CASRL",
     "nombre_abreviado": "F.V.S.CASRL",
     "grupo": "DESCUENTOS",
@@ -334,11 +384,13 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "F.V.S.CASRL",
-    "grupo_suma": null,
+    "grupo_suma": 15,
+    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_acreedor":11,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 123,
     "nombre": "MANT.EDIF.COFADENA MINDEF",
     "nombre_abreviado": "M.E.C. MINDEF",
     "grupo": "DESCUENTOS",
@@ -347,11 +399,13 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "MANTENIMIENTO",
-    "grupo_suma": null,
+    "grupo_suma": 15,
+    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_acreedor":2,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 171,
     "nombre": "PREST.CAS.RL.",
     "nombre_abreviado": "PREST.CAS.RL.",
     "grupo": "DESCUENTOS",
@@ -360,11 +414,13 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "PRESTAMO",
-    "grupo_suma": null,
+    "grupo_suma": 15,
+    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_acreedor":11,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 176,
     "nombre": "PRESTAMOS-A.B.I.M.",
     "nombre_abreviado": "PREST.A.B.I.M.",
     "grupo": "DESCUENTOS",
@@ -373,11 +429,13 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "PRESTAMO",
-    "grupo_suma": null,
+    "grupo_suma": 15,
+    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_acreedor":8,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 124,
     "nombre": "PRESTAMOS-ASCINALSS",
     "nombre_abreviado": "PREST-ASCINALSS",
     "grupo": "DESCUENTOS",
@@ -386,11 +444,13 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "PRESTAMO",
-    "grupo_suma": null,
+    "grupo_suma": 15,
+    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_acreedor":5,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 180,
     "nombre": "PRESTAMOS-ASOCIACION FAB.",
     "nombre_abreviado": "P-A FAB.",
     "grupo": "DESCUENTOS",
@@ -399,11 +459,13 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "PRESTAMO",
-    "grupo_suma": null,
+    "grupo_suma": 15,
+    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_acreedor":10,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 173,
     "nombre": "PRESTAMOS-COA.",
     "nombre_abreviado": "PREST-COA.",
     "grupo": "DESCUENTOS",
@@ -412,11 +474,13 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "PRESTAMO",
-    "grupo_suma": null,
+    "grupo_suma": 15,
+    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_acreedor":3,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 168,
     "nombre": "PRESTAMOS-COI.",
     "nombre_abreviado": "PREST-COI.",
     "grupo": "DESCUENTOS",
@@ -425,11 +489,13 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "PRESTAMO",
-    "grupo_suma": null,
+    "grupo_suma": 15,
+    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_acreedor":4,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 181,
     "nombre": "PRESTAMOS-MUGEBUCH",
     "nombre_abreviado": "PREST-MUGEBUCH",
     "grupo": "DESCUENTOS",
@@ -438,11 +504,13 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "PRESTAMO",
-    "grupo_suma": null,
+    "grupo_suma": 15,
+    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_acreedor":6,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 385,
     "nombre": "PRESTAMOS-STELAMARIS",
     "nombre_abreviado": "PREST-STEL",
     "grupo": "DESCUENTOS",
@@ -451,11 +519,13 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "PRESTAMO",
-    "grupo_suma": null,
+    "grupo_suma": 15,
+    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_acreedor":12,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 407,
     "nombre": "RECUPER.PAGOS BONOS INDEBIDOS",
     "nombre_abreviado": "R.P.B.I.",
     "grupo": "DESCUENTOS",
@@ -464,11 +534,13 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "RECUPERACION",
-    "grupo_suma": null,
+    "grupo_suma": 15,
+    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_acreedor":2,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 67,
     "nombre": "REG.ESP.COSSMIL",
     "nombre_abreviado": "REG.ESP.COSSMIL",
     "grupo": "DESCUENTOS",
@@ -477,24 +549,28 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "COSSMIL",
-    "grupo_suma": null,
+    "grupo_suma": 14,
+    "grupo_nombre": "Otros Descuentos Obligatorios de Ley",
+    "id_acreedor":7,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 315,
     "nombre": "REVISTA-MILITAR",
-    "nombre_abreviado": "REVISTA-MILITAR",
+    "nombre_abreviado": "REV.MIL.EJTO",
     "grupo": "DESCUENTOS",
     "tipo": "REVISTA",
     "descripcion": "",
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "REVISTA",
-    "grupo_suma": null,
+    "grupo_suma": 15,
+    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_acreedor":2,
     "activo": 1
   },
   {
-    "codigo": null,
+    "codigo": 387,
     "nombre": "SEGURO COI_2",
     "nombre_abreviado": "SEGURO COI_2",
     "grupo": "DESCUENTOS",
@@ -503,7 +579,9 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "SEGURO",
-    "grupo_suma": null,
+    "grupo_suma": 15,
+    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_acreedor":4,
     "activo": 1
   },
   {
@@ -516,7 +594,9 @@
     "unidad": "BS",
     "con_beneficiario": true,
     "servicio": "SUBSIDIO",
-    "grupo_suma": null,
+    "grupo_suma": 9,
+    "grupo_nombre":"Asignaciones Familiares",
+    "id_acreedor":1,
     "activo": 1
   },
   {
@@ -530,6 +610,8 @@
     "con_beneficiario": true,
     "servicio": "SUBSIDIO",
     "grupo_suma": null,
+    "grupo_nombre":"",
+    "id_acreedor":null,
     "activo": 1
   },
   {
@@ -542,7 +624,9 @@
     "unidad": "BS",
     "con_beneficiario": true,
     "servicio": "SUBSIDIO",
-    "grupo_suma": null,
+    "grupo_suma": 9,
+    "grupo_nombre":"Asignaciones Familiares",
+    "id_acreedor":1,
     "activo": 1
   },
   {
@@ -556,6 +640,8 @@
     "con_beneficiario": true,
     "servicio": "SUBSIDIO",
     "grupo_suma": null,
+    "grupo_nombre":"",
+    "id_acreedor":null,
     "activo": 1
   },
   {
@@ -568,8 +654,10 @@
     "unidad": "BS",
     "con_beneficiario": true,
     "servicio": "SUBSIDIO",
-    "grupo_suma": null,
-    
+    "grupo_suma": 996,
+    "grupo_nombre":"ASIGNACIONES FAMILIARES",
+    "id_acreedor":null,
+
     "activo": 1
   },
   {
@@ -582,7 +670,9 @@
     "unidad": "BS",
     "con_beneficiario": true,
     "servicio": "SUBSIDIO",
-    "grupo_suma": null,
+    "grupo_suma": 996,
+    "grupo_nombre":"ASIGNACIONES FAMILIARES",
+    "id_acreedor":null,
     "activo": 1
   }  
 ]

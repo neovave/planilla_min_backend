@@ -1,8 +1,15 @@
 const { validatedResponse } = require('../validated-response');
 const { checkSchema } = require('express-validator');
-const {  nameExistTipoDescuento, nameCortoExistTipoDescuento, idExistTipoDescuento } = require('./database');
+const {  nameExistTipoDescuento, nameCortoExistTipoDescuento, idExistTipoDescuento, idExistBenefAcreedor } = require('./database');
 
 const validationSchema =  {
+    id_acreedor: {
+        optional: { options: { nullable: true } },
+        isEmpty: {
+            negated: true, errorMessage: "El campo grado academico es obligatorio",
+        },
+        custom: { options: idExistBenefAcreedor },
+    },
     nombre: {
         isEmpty: {
             negated: true, errorMessage: "El nombre es obligatorio",

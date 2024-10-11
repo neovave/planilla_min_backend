@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     impuesto_neto: DataTypes.DECIMAL(8,2),
     saldo_favor_fisco: DataTypes.DECIMAL(8,2),
     saldo_favor_dependiente: DataTypes.DECIMAL(8,2),
-    total_salado_mes_anterior: DataTypes.DECIMAL(8,2),
+    total_saldo_mes_anterior: DataTypes.DECIMAL(8,2),
     monto_saldo_actualizacion: DataTypes.DECIMAL(8,2),
     total_actualizacion: DataTypes.DECIMAL(8,2),
     saldo_utilizado: DataTypes.DECIMAL(8,2),

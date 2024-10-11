@@ -63,6 +63,9 @@ module.exports = {
       memo_detalle: {
         type: Sequelize.STRING(200)
       },
+      referencia: {
+        type: Sequelize.STRING(200)
+      },
       estado: {
         type: Sequelize.STRING(2)
       },

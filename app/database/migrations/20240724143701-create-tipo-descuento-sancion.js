@@ -9,6 +9,19 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      // id_acreedor: {
+      //   type: Sequelize.INTEGER,
+      //   references: {
+      //     model: {
+      //       tableName: 'beneficiario_acreedores',
+      //       schema: 'public'
+      //     },
+      //     key: "id",
+      //   },
+      // },
+      id_acreedor:{
+        type: Sequelize.INTEGER
+      },
       codigo:{
         type: Sequelize.INTEGER
       },

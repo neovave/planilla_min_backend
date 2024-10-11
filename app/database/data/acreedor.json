@@ -1,0 +1,110 @@
+[
+  {  
+    "codigo": 1,     
+    "ci_ruc": "1766888020",
+    "detalle_ruc": "SEDEM",
+    "tipo": "INSTITUCIONAL",
+    "descripcion": "asignacion familiar",
+    "nro_cuenta": "100000260117645",
+    "activo": 1
+  },
+  {
+    "codigo": 2,
+    "ci_ruc": "120307027",
+    "detalle_ruc": "MIN.DEFENSA",
+    "tipo": "INSTITUCIONAL",
+    "descripcion": "RETENCIONES JUDICIALES",
+    "nro_cuenta": "100000260117645",
+    "activo": 1
+  },
+  {
+    "codigo": 3,
+    "ci_ruc": "154498022",
+    "detalle_ruc": "C.O.A.",
+    "tipo": "INSTITUCIONAL",
+    "descripcion": "OTROS DESCUENTOS OBLIGATORIOS DE LEY",
+    "nro_cuenta": "10000013238452",
+    "activo": 1
+  },
+  {
+    "codigo": 4,
+    "ci_ruc": "386407029",
+    "detalle_ruc": "C.O.I.",
+    "tipo": "INSTITUCIONAL",
+    "descripcion": "OTROS DESCUENTOS OBLIGATORIOS DE LEY",
+    "nro_cuenta": "10000041385530",
+    "activo": 1
+  },
+  {
+    "codigo": 5,
+    "ci_ruc": "1002995029",
+    "detalle_ruc": "ASINALSS",
+    "tipo": "INSTITUCIONAL",
+    "descripcion": "OTROS DESCUENTOS OBLIGATORIOS DE LEY",
+    "nro_cuenta": "10000006015932",
+    "activo": 1
+  },
+  {
+    "codigo": 6,
+    "ci_ruc": "1005735026",
+    "detalle_ruc": "MUGEBUCH",
+    "tipo": "INTITUCIONAL",
+    "descripcion": "OTROS DESCUENTOS OBLIGATORIOS DE LEY",
+    "nro_cuenta": "10000003256688",
+    "activo": 1
+  },
+  {
+    "codigo": 7,
+    "ci_ruc": "1019635023",
+    "detalle_ruc": "COSSMIL",
+    "tipo": "INSTITUCIONAL",
+    "descripcion": "OTROS DESCUENTOS OBLIGATORIOS DE LEY",
+    "nro_cuenta": "10000004671017",
+    "activo": 1
+  },
+  {
+    "codigo": 8,
+    "ci_ruc": "148626022",
+    "detalle_ruc": "A.B.I.M.",
+    "tipo": "INSTITUCIONAL",
+    "descripcion": "OTROS DESCUENTOS OBLIGATORIOS DE LEY",
+    "nro_cuenta": "10000013746306",
+    "activo": 1
+  },
+  {
+    "codigo": 9,
+    "ci_ruc": "1005415028",
+    "detalle_ruc": "C.O.E.",
+    "tipo": "INSTITUCIONAL",
+    "descripcion": "Acreencias Asumidas por el Empleado",
+    "nro_cuenta": "10000013488156",
+    "activo": 1
+  },
+  {
+    "codigo": 10,
+    "ci_ruc": "272124020",
+    "detalle_ruc": "ASOC.FAB",
+    "tipo": "INSTITUCIONAL",
+    "descripcion": "OTROS DESCUENTOS OBLIGATORIOS DE LEY",
+    "nro_cuenta": "10000015472420",
+    "activo": 1
+  },
+  {
+    "codigo": 11,
+    "ci_ruc": "386407029",
+    "detalle_ruc": "C.O.C.",
+    "tipo": "INSTITUCIONAL",
+    "descripcion": "OTROS DESCUENTOS OBLIGATORIOS DE LEY",
+    "nro_cuenta": "10000032227543",
+    "activo": 1
+  },
+  {
+    "codigo": 12,
+    "ci_ruc": "313242026",
+    "detalle_ruc": "STELLAMARIS",
+    "tipo": "INSTITUCIONAL",
+    "descripcion": "Acreencias Asumidas por el Empleado",
+    "nro_cuenta": "10000021694406",
+    "activo": 1
+  }
+]

@@ -21,8 +21,8 @@ module.exports = {
     let usersData =  JSON.parse(fs.readFileSync(userDataPath));
     usersData.forEach(resp => {
         resp.createdAt = new Date(),
-        resp.updatedAt = new Date(),
-        resp.deletedAt = new Date()        
+        resp.updatedAt = new Date()
+        //resp.deletedAt = new Date()        
       });
     await queryInterface.bulkInsert('categoria_cargos', usersData);
   },
