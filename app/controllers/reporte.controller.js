@@ -1831,19 +1831,19 @@ const newRepDescAcreedor = async (req = request, res = response ) => {
     
     const empleadosTable = getTablaAcreedor();
     
-    // const listaEmpleados = await db.sequelize.query("SELECT mun.codigo as codigo_municipio, mun.nombre as nombre_municipio, emp.cod_empleado, emp.numero_documento, emp.nombre, emp.otro_nombre, emp.paterno, emp.materno,emp.sexo, asu.tipo_pago, (desc_json->>'monto')::DECIMAL as monto, ace.nro_item, ba.ci_ruc, ba.detalle_ruc, ba.nro_cuenta FROM municipios mun INNER JOIN reparticiones rep ON rep.id_municipio = mun.id INNER JOIN asignacion_cargo_empleados ace ON ace.id_reparticion = rep.id INNER JOIN salario_planillas sp ON sp.id_asig_cargo = ace.id JOIN LATERAL jsonb_array_elements(sp.subsidio) AS desc_json ON TRUE JOIN asignacion_subsidios asu ON (desc_json->>'id_asig_subsidio')::INTEGER = asu.id join empleados emp on emp.id = sp.id_empleado JOIN beneficiario_acreedores ba ON asu.id = ba.id_asig_subsidio WHERE rep.id_organismo = :idOrganismo AND sp.id_mes = :idMes and asu.id_tipo_descuento = :idTipoDescuento order by nombre_municipio, emp.nombre ", 
-    //     {   type: Sequelize.QueryTypes.SELECT, 
-    //         replacements: {idOrganismo: body.id_organismo, idMes: body.id_mes, idTipoDescuento: fila.id }
-    //     }
-    //   );
+    const listaEmpleados = await db.sequelize.query("SELECT mun.codigo as codigo_municipio, mun.nombre as nombre_municipio, emp.cod_empleado, emp.numero_documento, emp.nombre, emp.otro_nombre, emp.paterno, emp.materno,emp.sexo, asu.tipo_pago, (desc_json->>'monto')::DECIMAL as monto, ace.nro_item, ba.ci_ruc, ba.detalle_ruc, ba.nro_cuenta FROM municipios mun INNER JOIN reparticiones rep ON rep.id_municipio = mun.id INNER JOIN asignacion_cargo_empleados ace ON ace.id_reparticion = rep.id INNER JOIN salario_planillas sp ON sp.id_asig_cargo = ace.id JOIN LATERAL jsonb_array_elements(sp.subsidio) AS desc_json ON TRUE JOIN asignacion_subsidios asu ON (desc_json->>'id_asig_subsidio')::INTEGER = asu.id join empleados emp on emp.id = sp.id_empleado JOIN beneficiario_acreedores ba ON asu.id = ba.id_asig_subsidio WHERE rep.id_organismo = :idOrganismo AND sp.id_mes = :idMes and asu.id_tipo_descuento = :idTipoDescuento order by nombre_municipio, emp.nombre ", 
+        {   type: Sequelize.QueryTypes.SELECT, 
+            replacements: {idOrganismo: body.id_organismo, idMes: body.id_mes, idTipoDescuento: fila.id }
+        }
+      );
     
-    // if(listaEmpleados && listaEmpleados.length >0 ){
+    if(listaEmpleados && listaEmpleados.length >0 ){
 
-    //   empleadosTable.table.body.push(
-    //     [
-    //       { text: `Subsidio: ${fila.nombre_abreviado}`, fontSize:'9' ,colSpan: 15, alignment: 'left',border: [false, false, false, false],  },{},{},{},{},{},{},{},{},{},  {},{},{},{},{} 
-    //     ],        
-    //   );
+      empleadosTable.table.body.push(
+        [
+          { text: `Subsidio: ${fila.nombre_abreviado}`, fontSize:'9' ,colSpan: 15, alignment: 'left',border: [false, false, false, false],  },{},{},{},{},{},{},{},{},{},  {},{},{},{},{} 
+        ],        
+      );
 
       let nombre_actual= "";
       let nombre_anterior = "";
