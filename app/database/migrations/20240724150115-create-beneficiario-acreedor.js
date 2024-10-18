@@ -44,6 +44,9 @@ module.exports = {
       descripcion: {
         type: Sequelize.STRING(200)
       },
+      nro_cuenta: { 
+        type: Sequelize.STRING(30)
+      },
       id_user_create: {
         type: Sequelize.INTEGER
       },

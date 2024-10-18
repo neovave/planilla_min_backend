@@ -1,30 +1,31 @@
 
 const { response, request } = require('express');
 const { Op } = require("sequelize");
-const { Tipo_descuento_sancion } = require('../database/config');
+const { Grupo_descuento } = require('../database/config');
 const paginate = require('../helpers/paginate');
 
-const getTipoDescuentoPaginate = async (req = request, res = response) => {
+const getGrupoDescuentoPaginate = async (req = request, res = response) => {
     try {
-        const {query, page, limit, type, status, activo, id, tipo, grupo} = req.query;
+        const {query, page, limit, type, status, activo, id} = req.query;
         const optionsDb = {
             attributes: { exclude: ['createdAt'] },
             order: [['id', 'ASC']],
             where: { 
                 [Op.and]: [ 
-                    { activo}, id? {id} : {}, tipo? {tipo}:{}, grupo?{grupo}:{}          
+                    { activo}, id?{id}:{} 
                 ],
                 
             },
             include: [
-                { association: 'tipodescuentosancion_grupodescuento',  attributes: {exclude: ['createdAt']},}
+                //{ association: 'ufv_mes',  attributes: {exclude: ['createdAt']},},
                 
             ],
+            
         };
-        let tipoDescuento = await paginate(Tipo_descuento_sancion, page, limit, type, query, optionsDb); 
+        let grupoDescuentos = await paginate(Grupo_descuento, page, limit, type, query, optionsDb); 
         return res.status(200).json({
             ok: true,
-            tipoDescuento
+            grupoDescuentos
         });
     } catch (error) {
         console.log(error);
@@ -35,14 +36,14 @@ const getTipoDescuentoPaginate = async (req = request, res = response) => {
     }
 }
 
-const newTipoDescuento = async (req = request, res = response ) => {
+const newGrupoDescuento = async (req = request, res = response ) => {
     try {
         const body = req.body;
         body.activo = 1;
-        const tipoDescuentoNew = await Tipo_descuento_sancion.create(body);
+        const grupoDescuentoNew = await Grupo_descuento.create(body);
         return res.status(201).json({
             ok: true,
-            tipoDescuentoNew
+            grupoDescuentoNew
         });
     } catch (error) {
         console.log(error);
@@ -53,16 +54,16 @@ const newTipoDescuento = async (req = request, res = response ) => {
     }
 }
 
-const updateTipoDescuento = async (req = request, res = response) => {
+const updateGrupoDescuento = async (req = request, res = response) => {
     try {
         const { id } = req.params;
         const body = req.body;
         //const cursos = await Curso.findByPk( uuid);
-        const tipoDescuento = await Tipo_descuento_sancion.findOne({where: {id}} );
-        await tipoDescuento.update(body);
+        const grupoDescuento = await Grupo_descuento.findOne({where: {id}} );
+        await grupoDescuento.update(body);
         return res.status(201).json({
             ok: true,
-            msg: 'Tipo Descuento y sanciones  modificada exitosamente'
+            msg: 'Grupo descuento se ha modificada exitosamente'
         });   
     } catch (error) {
         console.log(error);
@@ -73,15 +74,15 @@ const updateTipoDescuento = async (req = request, res = response) => {
     }
 }
 
-const activeInactiveTipoDescuento = async (req = request, res = response) => {
+const activeInactiveGrupoDescuento = async (req = request, res = response) => {
     try {
         const { id } = req.params;
         const { activo } = req.body;
-        const tipoDescuento = await Tipo_descuento_sancion.findByPk(uuid);
-        await tipoDescuento.update({activo});
+        const grupoDesc = await Grupo_descuento.findByPk(id);
+        await grupoDesc.update({activo});
         res.status(201).json({
             ok: true,
-            msg: activo ? 'Tipo descuento y sanción activada exitosamente' : 'Tipo descuento y sanción inactiva exitosamente'
+            msg: activo ? 'Grupo descuento activada exitosamente' : 'Grupo descuento inactiva exitosamente'
         });   
     } catch (error) {
         console.log(error);
@@ -93,8 +94,8 @@ const activeInactiveTipoDescuento = async (req = request, res = response) => {
 }
 
 module.exports = {
-    getTipoDescuentoPaginate,
-    newTipoDescuento,
-    updateTipoDescuento,
-    activeInactiveTipoDescuento
+    getGrupoDescuentoPaginate,
+    newGrupoDescuento,
+    updateGrupoDescuento,
+    activeInactiveGrupoDescuento
 };

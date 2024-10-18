@@ -9,8 +9,7 @@
     "unidad": "BS",
     "con_beneficiario": true,
     "servicio": "RETJUD",
-    "grupo_suma": 2,
-    "grupo_nombre":"",
+    "id_grupodescuento": null,
     "id_acreedor":null,
     "activo": 1
   },
@@ -24,8 +23,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "APORTE",
-    "grupo_suma": 14,
-    "grupo_nombre":"Otros Descuentos Obligatorios de Ley",
+    "id_grupodescuento": 4,
     "id_acreedor":null,
     "activo": 1
   },
@@ -39,8 +37,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "APORTE",
-    "grupo_suma": 15,
-    "grupo_nombre": "Acreencias Asumidas por el Empleado",
+    "id_grupodescuento": 5,
     "id_acreedor":3,
     "activo": 1
   },
@@ -54,8 +51,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "APORTE",
-    "grupo_suma": 11,
-    "grupo_nombre":"Otros Descuentos Obligatorios de Ley",
+    "id_grupodescuento": 3,
     "id_acreedor":null,
     "activo": 1
   },
@@ -69,8 +65,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "APORTE",
-    "grupo_suma": 14,
-    "grupo_nombre":"Otros Descuentos Obligatorios de Ley",
+    "id_grupodescuento": 4,
     "id_acreedor":4,
     "activo": 1
   },
@@ -84,8 +79,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "APORTE",
-    "grupo_suma": 14,
-    "grupo_nombre":"Otros Descuentos Obligatorios de Ley",
+    "id_grupodescuento": 4,
     "id_acreedor":null,
     "activo": 1
   },
@@ -99,8 +93,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "APORTE",
-    "grupo_suma": 14,
-    "grupo_nombre":"Otros Descuentos Obligatorios de Ley",
+    "id_grupodescuento": 4,
     "id_acreedor":5,
     "activo": 1
   },
@@ -114,8 +107,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "APORTE",
-    "grupo_suma": 15,
-    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_grupodescuento": 5,
     "id_acreedor":8,
     "activo": 1
   },
@@ -129,8 +121,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "APORTE",
-    "grupo_suma": 15,
-    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_grupodescuento": 5,
     "id_acreedor":2,
     "activo": 1
   },
@@ -144,8 +135,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "APORTE",
-    "grupo_suma": 15,
-    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_grupodescuento": 5,
     "id_acreedor":12,
     "activo": 1
   },
@@ -159,8 +149,7 @@
     "unidad": "BS",
     "con_beneficiario": true,
     "servicio": "ASIGNACION",
-    "grupo_suma": 11,
-    "grupo_nombre":"Retencion Judicial",
+    "id_grupodescuento": 3,
     "id_acreedor":2,
     "activo": 1
   },
@@ -174,8 +163,7 @@
     "unidad": "BS",
     "con_beneficiario": true,
     "servicio": "ASIGNACION",
-    "grupo_suma": 15,
-    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_grupodescuento": 5,
     "id_acreedor":2,
     "activo": 1
   },
@@ -189,8 +177,7 @@
     "unidad": "BS",
     "con_beneficiario": true,
     "servicio": "ASIGNACION",
-    "grupo_suma": 15,
-    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_grupodescuento": 5,
     "id_acreedor":2,
     "activo": 1
   },
@@ -204,8 +191,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "COE",
-    "grupo_suma": 15,
-    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_grupodescuento": 5,
     "id_acreedor":9,
     "activo": 1
   },
@@ -219,8 +205,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "COSSMIL",
-    "grupo_suma": 15,
-    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_grupodescuento": 5,
     "id_acreedor":7,
     "activo": 1
   },
@@ -234,8 +219,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "COSSMIL",
-    "grupo_suma": 15,
-    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_grupodescuento": 5,
     "id_acreedor":7,
     "activo": 1
   },
@@ -249,8 +233,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "COSSMIL",
-    "grupo_suma": 15,
-    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_grupodescuento": 5,
     "id_acreedor":7,
     "activo": 1
   },
@@ -264,8 +247,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "CTA. MTTO. VIVIENDA",
-    "grupo_suma": 15,
-    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_grupodescuento": 5,
     "id_acreedor":2,
     "activo": 1
   },
@@ -279,8 +261,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "CTA. MTTO. VIVIENDA",
-    "grupo_suma": 15,
-    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_grupodescuento": 5,
     "id_acreedor":2,
     "activo": 1
   },
@@ -294,8 +275,7 @@
     "unidad": "BS",
     "con_beneficiario": true,
     "servicio": "RETJUD",
-    "grupo_suma": 11,
-    "grupo_nombre":"Retencion Judicial",
+    "id_grupodescuento": 3,
     "id_acreedor":2,
     "activo": 1
   },
@@ -309,8 +289,7 @@
     "unidad": "BS",
     "con_beneficiario": true,
     "servicio": "RETJUD",
-    "grupo_suma": 11,
-    "grupo_nombre":"Retencion Judicial",
+    "id_grupodescuento": 3,
     "id_acreedor":2,
     "activo": 1
   },
@@ -324,8 +303,7 @@
     "unidad": "BS",
     "con_beneficiario": true,
     "servicio": "RETJUD",
-    "grupo_suma": 11,
-    "grupo_nombre":"Retencion Judicial",
+    "id_grupodescuento": 3,
     "id_acreedor":2,
     "activo": 1
   },
@@ -339,8 +317,7 @@
     "unidad": "BS",
     "con_beneficiario": true,
     "servicio": "RETJUD",
-    "grupo_suma": null,
-    "grupo_nombre":"",
+    "id_grupodescuento": null,
     "id_acreedor":null,
     "activo": 1
   },
@@ -354,8 +331,7 @@
     "unidad": "BS",
     "con_beneficiario": true,
     "servicio": "RETJUD",
-    "grupo_suma": null,
-    "grupo_nombre":"",
+    "id_grupodescuento": null,
     "id_acreedor":null,
     "activo": 1
   },
@@ -369,8 +345,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "EDITORIAL",
-    "grupo_suma": 15,
-    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_grupodescuento": 5,
     "id_acreedor":2,
     "activo": 1
   },
@@ -384,8 +359,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "F.V.S.CASRL",
-    "grupo_suma": 15,
-    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_grupodescuento": 5,
     "id_acreedor":11,
     "activo": 1
   },
@@ -399,8 +373,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "MANTENIMIENTO",
-    "grupo_suma": 15,
-    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_grupodescuento": 5,
     "id_acreedor":2,
     "activo": 1
   },
@@ -414,8 +387,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "PRESTAMO",
-    "grupo_suma": 15,
-    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_grupodescuento": 5,
     "id_acreedor":11,
     "activo": 1
   },
@@ -429,8 +401,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "PRESTAMO",
-    "grupo_suma": 15,
-    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_grupodescuento": 5,
     "id_acreedor":8,
     "activo": 1
   },
@@ -444,8 +415,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "PRESTAMO",
-    "grupo_suma": 15,
-    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_grupodescuento": 5,
     "id_acreedor":5,
     "activo": 1
   },
@@ -459,8 +429,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "PRESTAMO",
-    "grupo_suma": 15,
-    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_grupodescuento": 5,
     "id_acreedor":10,
     "activo": 1
   },
@@ -474,8 +443,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "PRESTAMO",
-    "grupo_suma": 15,
-    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_grupodescuento": 5,
     "id_acreedor":3,
     "activo": 1
   },
@@ -489,8 +457,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "PRESTAMO",
-    "grupo_suma": 15,
-    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_grupodescuento": 5,
     "id_acreedor":4,
     "activo": 1
   },
@@ -504,8 +471,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "PRESTAMO",
-    "grupo_suma": 15,
-    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_grupodescuento": 5,
     "id_acreedor":6,
     "activo": 1
   },
@@ -519,8 +485,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "PRESTAMO",
-    "grupo_suma": 15,
-    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_grupodescuento": 5,
     "id_acreedor":12,
     "activo": 1
   },
@@ -534,8 +499,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "RECUPERACION",
-    "grupo_suma": 15,
-    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_grupodescuento": 5,
     "id_acreedor":2,
     "activo": 1
   },
@@ -549,8 +513,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "COSSMIL",
-    "grupo_suma": 14,
-    "grupo_nombre": "Otros Descuentos Obligatorios de Ley",
+    "id_grupodescuento": 4,
     "id_acreedor":7,
     "activo": 1
   },
@@ -564,8 +527,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "REVISTA",
-    "grupo_suma": 15,
-    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_grupodescuento": 5,
     "id_acreedor":2,
     "activo": 1
   },
@@ -579,8 +541,7 @@
     "unidad": "BS",
     "con_beneficiario": null,
     "servicio": "SEGURO",
-    "grupo_suma": 15,
-    "grupo_nombre":"Acreencias Asumidas por el Empleado",
+    "id_grupodescuento": 5,
     "id_acreedor":4,
     "activo": 1
   },
@@ -594,8 +555,7 @@
     "unidad": "BS",
     "con_beneficiario": true,
     "servicio": "SUBSIDIO",
-    "grupo_suma": 9,
-    "grupo_nombre":"Asignaciones Familiares",
+    "id_grupodescuento": 1,
     "id_acreedor":1,
     "activo": 1
   },
@@ -609,8 +569,7 @@
     "unidad": "BS",
     "con_beneficiario": true,
     "servicio": "SUBSIDIO",
-    "grupo_suma": null,
-    "grupo_nombre":"",
+    "id_grupodescuento": null,
     "id_acreedor":null,
     "activo": 1
   },
@@ -624,8 +583,7 @@
     "unidad": "BS",
     "con_beneficiario": true,
     "servicio": "SUBSIDIO",
-    "grupo_suma": 9,
-    "grupo_nombre":"Asignaciones Familiares",
+    "id_grupodescuento": 1,
     "id_acreedor":1,
     "activo": 1
   },
@@ -639,8 +597,7 @@
     "unidad": "BS",
     "con_beneficiario": true,
     "servicio": "SUBSIDIO",
-    "grupo_suma": null,
-    "grupo_nombre":"",
+    "id_grupodescuento": null,
     "id_acreedor":null,
     "activo": 1
   },
@@ -654,10 +611,8 @@
     "unidad": "BS",
     "con_beneficiario": true,
     "servicio": "SUBSIDIO",
-    "grupo_suma": 996,
-    "grupo_nombre":"ASIGNACIONES FAMILIARES",
+    "id_grupodescuento": 1,
     "id_acreedor":null,
-
     "activo": 1
   },
   {
@@ -670,8 +625,7 @@
     "unidad": "BS",
     "con_beneficiario": true,
     "servicio": "SUBSIDIO",
-    "grupo_suma": 996,
-    "grupo_nombre":"ASIGNACIONES FAMILIARES",
+    "id_grupodescuento": 1,
     "id_acreedor":null,
     "activo": 1
   }  

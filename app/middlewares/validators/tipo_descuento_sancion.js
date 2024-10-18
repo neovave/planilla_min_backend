@@ -3,6 +3,13 @@ const { checkSchema } = require('express-validator');
 const {  nameExistTipoDescuento, nameCortoExistTipoDescuento, idExistTipoDescuento, idExistBenefAcreedor } = require('./database');
 
 const validationSchema =  {
+    id_grupodescuento: {
+        optional: { options: { nullable: true } },
+        isEmpty: {
+            negated: true, errorMessage: "El campo grupo descuento es obligatorio",
+        },
+        custom: { options: idExistBenefAcreedor },
+    },
     id_acreedor: {
         optional: { options: { nullable: true } },
         isEmpty: {

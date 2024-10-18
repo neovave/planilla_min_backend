@@ -1,0 +1,28 @@
+
+[
+  {
+    "codigo": 9,
+    "nombre":"Asignaciones Familiares",
+    "activo": 1
+  },
+  {
+    "codigo": 10,
+    "nombre":"Servicios Prestados",
+    "activo": 1
+  },
+  {
+    "codigo": 11,
+    "nombre":" Retencion Judicial",
+    "activo": 1
+  },
+  {
+    "codigo": 14,
+    "nombre":"Otros Descuentos Obligatorios de Ley",
+    "activo": 1
+  },
+  {
+    "codigo": 15,
+    "nombre": "Acreencias Asumidas por el Empleado",
+    "activo": 1
+  } 
+]

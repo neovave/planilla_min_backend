@@ -19,6 +19,16 @@ module.exports = {
       //     key: "id",
       //   },
       // },
+      id_grupodescuento: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'grupo_descuentos',
+            schema: 'public'
+          },
+          key: "id",
+        },
+      },
       id_acreedor:{
         type: Sequelize.INTEGER
       },
@@ -49,9 +59,12 @@ module.exports = {
       servicio: {
         type: Sequelize.STRING(20)
       },
-      grupo_suma: {
-        type: Sequelize.INTEGER
-      },
+      // grupo_suma: {
+      //   type: Sequelize.INTEGER
+      // },
+      // grupo_nombre: {
+      //   type: Sequelize.STRING(200)
+      // },
       id_user_create: {
         type: Sequelize.INTEGER
       },

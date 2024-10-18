@@ -40,6 +40,7 @@ const {
     Viatico,
     Asingacion_subsidio,
     Municipio,
+    Grupo_descuento
     
   } = require("../../database/config");
   
@@ -623,6 +624,31 @@ const {
     }
   };
 
+  // =================================================================
+  // ========================= Asignacion Sub sidio =======================
+  const idExistGrupoDescuento = async (id = "") => {
+    const idExist = await Grupo_descuento.findByPk(id);
+    if (!idExist) {
+      throw new Error(`El id Grupo descuento con id: ${id}, no existe`);
+    }
+  };
+  const nombreExistGrupoDesc = async (nombre = "",{req}) => {
+    const { id } = req.params;
+    const nameExist = await Grupo_descuento.findOne({ where: { nombre } });
+    if(!nameExist) return;
+    if (nameExist.id != id) {
+      throw new Error(`El campo de nombre: ${nombre}, ya existe`);
+    }
+  };
+
+  const codigoExistGrupoDesc = async (codigo = "",{req}) => {
+    const { id } = req.params;
+    const nameExist = await Grupo_descuento.findOne({ where: { codigo } });
+    if(!nameExist) return;
+    if (nameExist.id != id) {
+      throw new Error(`El código grupo descuento con nombre: ${codigo}, ya existe`);
+    }
+  };
 
 
 
@@ -910,6 +936,9 @@ const {
     idExistViatico,
     idExistAsigSubsidio,
     idExistMunicipio,
+    idExistGrupoDescuento,
+    nombreExistGrupoDesc,
+    codigoExistGrupoDesc,
 
     idExistCriterioEva,
     nameExistCriterioEva,

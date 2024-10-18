@@ -1655,106 +1655,170 @@ function getTablaSubidio(){
   return empleadosTable;
 }
 
+function getTablaAcreedor(){
+  const empleadosTable = {
+    style: 'tableplanilla',
+    table: {
+      headerRows: 2,
+      widths: [20,25,120,25,15,70, 20,20,20],
+      //heights: [50],
+      //widths: [30, 25, 25, 120, 10  ], // Dos columnas de igual ancho
+      body: [
+        [
+          {  colSpan: 9, alignment: 'left',border: [false, false, false, false],
+            margin: [-5, 0, 0, 0],
+            style: 'tableHeader',
+            table: {
+              //headerRows: 2,
+              margin: [0, 0, 0, 0],
+              widths: [170, 170, 80, 80],
+              //heights: [20],
+              body: [
+                [{text:'Dirección Administrativa:',style:'titleheader',border: [false, false, false, false],},
+                {text:'Unidad Ejecutora:',style:'titleheader',border: [false, false, false, false],},
+                {text:'Coprobante:',style:'titleheader',border: [false, false, false, false],},
+                {text:'Devengado:',style:'titleheader',border: [false, false, false, false],}
+                ],
+                [{text:'Ministerio de defenza',style:'textheader'},
+                {text:'administracion central',style:'textheader'},
+                {text:'',style:'textheader'},
+                {text:'',style:'textheader'}
+                ],
+              ]
+            }
+          },{},{}, {},{},{}, {},{},{}
+        ],
+        [ {text:'Grupo', style:'subheaderT' ,border:[true,true,true,true]},
+          {text:'NIT', style:'subheaderT' ,border:[true,true,true,true]},
+          {text:'Nombre del Acreedor', style:'subheaderT' ,border:[true,true,true,true]},
+          {text:'Abreviación', style:'subheaderT' ,border:[true,true,true,true]},
+          {text:'Concepto', style:'subheaderT' ,border:[true,true,true,true]},
+          {text:'Cuenta Bancaria', style:'subheaderT' ,border:[true,true,true,true]},
+          {text:'Tot. Descto.', style:'subheaderT' ,border:[true,true,true,true]},
+          {text:'Depositado', style:'subheaderT' ,border:[true,true,true,true]},
+          {text:'Comisión', style:'subheaderT' ,border:[true,true,true,true]}
+        ],
+      ],
+    },
+    layout: {
+      defaultBorder: false,
+    }
+    
+  };
+  return empleadosTable;
+}
+
+function hojaYTitulo(titulo) {
+  const docDefinition = {
+    pageSize: 'LEGAL',
+    // {
+    //   width: 12.9 *72,
+    //   height: 8.5 * 72
+    // },//'legal',
+    pageMargins: [20, 30, 20, 20],
+    //pageOrientation: 'landscape', // Orientación horizontal
+    content: [],
+    styles: {
+      header: {
+          fontSize: 10,
+          bold: true,
+          //margin: [0, 15, 0, 15]
+      },
+      titleheader: {
+        fontSize: 7,
+        bold: true,
+        
+        alignment: 'center'
+        //margin: [0, 0, 0, 10]
+      },
+      totalPlanilla: {
+        fontSize: 5,
+        bold: true,
+        
+        alignment: 'right'
+        //margin: [0, 0, 0, 10]
+      },
+      textheader: {
+        fontSize: 7,
+        bold: true,
+        alignment: 'left'
+      },
+      subheaderT: {
+        fontSize: 6,
+        bold: true,
+        alignment: 'left'
+        
+      },
+      subheader: {
+        fontSize: 6,
+        bold: true,
+      },
+      tableExample: {
+        margin: [0, 5, 0, 15]
+      },
+      tableplanilla: {
+        fontSize: 5.5,
+        alignment: 'right'
+        //fillColor: 'blue',
+        //fillOpacity: 0.3
+      },
+      tableOpacityExample: {
+        margin: [0, 5, 0, 15],
+        fillColor: 'blue',
+        fillOpacity: 0.3
+      },
+      tableHeader: {
+        bold: true,
+        fontSize: 6,
+        //color: 'black'
+      }
+    },
+    defaultStyle: {
+      // alignment: 'justify'
+    },
+    // defaultStyle: {
+    //   font: 'Helvetica',
+    // },
+    
+    header: function (currentPage, pageCount) {
+      return [
+        {
+              text:  titulo.toUpperCase() ,
+              alignment: 'center',
+              fontSize: 10,
+              bold: true,
+              margin: [0, 10, 0, 0], // Márgenes [izquierda, arriba, derecha, abajo]   
+        },
+        {
+          text: '0020 MINISTERIO DE DEFENSA - 0020.01.001 Min.Defensa',
+              alignment: 'center',
+              fontSize: 6,
+              bold: true,
+              margin: [0, 0, 0, 0], // Márgenes [izquierda, arriba, derecha, abajo]
+        },
+
+      ];
+    },
+  
+  };
+  return docDefinition;
+}
+
 const newRepDescAcreedor = async (req = request, res = response ) => {
 
   try {
       const  body   = req.body;
       
-      const docDefinition = {
-          pageSize: 'LEGAL',
-          // {
-          //   width: 12.9 *72,
-          //   height: 8.5 * 72
-          // },//'legal',
-          pageMargins: [20, 30, 20, 20],
-          //pageOrientation: 'landscape', // Orientación horizontal
-          content: [],
-          styles: {
-            header: {
-                fontSize: 10,
-                bold: true,
-                //margin: [0, 15, 0, 15]
-            },
-            titleheader: {
-              fontSize: 7,
-              bold: true,
-              
-              alignment: 'center'
-              //margin: [0, 0, 0, 10]
-            },
-            totalPlanilla: {
-              fontSize: 5,
-              bold: true,
-              
-              alignment: 'right'
-              //margin: [0, 0, 0, 10]
-            },
-            textheader: {
-              fontSize: 7,
-              bold: true,
-              alignment: 'left'
-            },
-            subheaderT: {
-              fontSize: 6,
-              bold: true,
-              alignment: 'left'
-              
-            },
-            subheader: {
-              fontSize: 6,
-              bold: true,
-            },
-            tableExample: {
-              margin: [0, 5, 0, 15]
-            },
-            tableplanilla: {
-              fontSize: 5.5,
-              alignment: 'right'
-              //fillColor: 'blue',
-              //fillOpacity: 0.3
-            },
-            tableOpacityExample: {
-              margin: [0, 5, 0, 15],
-              fillColor: 'blue',
-              fillOpacity: 0.3
-            },
-            tableHeader: {
-              bold: true,
-              fontSize: 6,
-              //color: 'black'
-            }
-          },
-          defaultStyle: {
-            // alignment: 'justify'
-          },
-          // defaultStyle: {
-          //   font: 'Helvetica',
-          // },
-          
-          header: function (currentPage, pageCount) {
-            return [
-              {
-                    text: 'PLANILLA IMPOSITIVA',
-                    alignment: 'center',
-                    fontSize: 10,
-                    bold: true,
-                    margin: [0, 10, 0, 0], // Márgenes [izquierda, arriba, derecha, abajo]   
-              },
-              {
-                text: '0020 MINISTERIO DE DEFENSA - 0020.01.001 Min.Defensa',
-                    alignment: 'center',
-                    fontSize: 6,
-                    bold: true,
-                    margin: [0, 0, 0, 0], // Márgenes [izquierda, arriba, derecha, abajo]
-              },
-      
-            ];
-          },
-        
-        };
+      const docDefinition = hojaYTitulo("Planilla Descuentos")
       
       
-  const listaAcredores = await Tipo_descuento_sancion.findAll({where: { activo:1, tipo : 'SUBSIDIO' }} );
+  const listaAcredores = await Tipo_descuento_sancion.findAll(
+    {
+      attributes: ['grupo_suma', 'grupo_nombre'],
+    where: { activo:1 },
+    group:['grupo_suma', 'grupo_nombre']
+    });
+
   let total_general =0, i=0;  
 
   let total_prenatal = 0;
@@ -1763,23 +1827,23 @@ const newRepDescAcreedor = async (req = request, res = response ) => {
   let total_defuncion = 0;  
   let resumenTipoDesc = [];
 
-  for (const fila of listaDescuento){
+  for (const fila of listaAcredores){
     
-    const empleadosTable = getTablaSubidio();
+    const empleadosTable = getTablaAcreedor();
     
-    const listaEmpleados = await db.sequelize.query("SELECT mun.codigo as codigo_municipio, mun.nombre as nombre_municipio, emp.cod_empleado, emp.numero_documento, emp.nombre, emp.otro_nombre, emp.paterno, emp.materno,emp.sexo, asu.tipo_pago, (desc_json->>'monto')::DECIMAL as monto, ace.nro_item, ba.ci_ruc, ba.detalle_ruc, ba.nro_cuenta FROM municipios mun INNER JOIN reparticiones rep ON rep.id_municipio = mun.id INNER JOIN asignacion_cargo_empleados ace ON ace.id_reparticion = rep.id INNER JOIN salario_planillas sp ON sp.id_asig_cargo = ace.id JOIN LATERAL jsonb_array_elements(sp.subsidio) AS desc_json ON TRUE JOIN asignacion_subsidios asu ON (desc_json->>'id_asig_subsidio')::INTEGER = asu.id join empleados emp on emp.id = sp.id_empleado JOIN beneficiario_acreedores ba ON asu.id = ba.id_asig_subsidio WHERE rep.id_organismo = :idOrganismo AND sp.id_mes = :idMes and asu.id_tipo_descuento = :idTipoDescuento order by nombre_municipio, emp.nombre ", 
-        {   type: Sequelize.QueryTypes.SELECT, 
-            replacements: {idOrganismo: body.id_organismo, idMes: body.id_mes, idTipoDescuento: fila.id }
-        }
-      );
+    // const listaEmpleados = await db.sequelize.query("SELECT mun.codigo as codigo_municipio, mun.nombre as nombre_municipio, emp.cod_empleado, emp.numero_documento, emp.nombre, emp.otro_nombre, emp.paterno, emp.materno,emp.sexo, asu.tipo_pago, (desc_json->>'monto')::DECIMAL as monto, ace.nro_item, ba.ci_ruc, ba.detalle_ruc, ba.nro_cuenta FROM municipios mun INNER JOIN reparticiones rep ON rep.id_municipio = mun.id INNER JOIN asignacion_cargo_empleados ace ON ace.id_reparticion = rep.id INNER JOIN salario_planillas sp ON sp.id_asig_cargo = ace.id JOIN LATERAL jsonb_array_elements(sp.subsidio) AS desc_json ON TRUE JOIN asignacion_subsidios asu ON (desc_json->>'id_asig_subsidio')::INTEGER = asu.id join empleados emp on emp.id = sp.id_empleado JOIN beneficiario_acreedores ba ON asu.id = ba.id_asig_subsidio WHERE rep.id_organismo = :idOrganismo AND sp.id_mes = :idMes and asu.id_tipo_descuento = :idTipoDescuento order by nombre_municipio, emp.nombre ", 
+    //     {   type: Sequelize.QueryTypes.SELECT, 
+    //         replacements: {idOrganismo: body.id_organismo, idMes: body.id_mes, idTipoDescuento: fila.id }
+    //     }
+    //   );
     
-    if(listaEmpleados && listaEmpleados.length >0 ){
+    // if(listaEmpleados && listaEmpleados.length >0 ){
 
-      empleadosTable.table.body.push(
-        [
-          { text: `Subsidio: ${fila.nombre_abreviado}`, fontSize:'9' ,colSpan: 15, alignment: 'left',border: [false, false, false, false],  },{},{},{},{},{},{},{},{},{},  {},{},{},{},{} 
-        ],        
-      );
+    //   empleadosTable.table.body.push(
+    //     [
+    //       { text: `Subsidio: ${fila.nombre_abreviado}`, fontSize:'9' ,colSpan: 15, alignment: 'left',border: [false, false, false, false],  },{},{},{},{},{},{},{},{},{},  {},{},{},{},{} 
+    //     ],        
+    //   );
 
       let nombre_actual= "";
       let nombre_anterior = "";
@@ -1787,78 +1851,78 @@ const newRepDescAcreedor = async (req = request, res = response ) => {
       let total_general_tdesc =0;
       let cantidad = 0;
 
-      //lista empleado
-      listaEmpleados.forEach((row) => {
-        nombre_actual = row.nombre_municipio;
-        if(nombre_anterior != nombre_actual  ){
-          if(nombre_anterior != ""){
-            //total por reparticion
-            empleadosTable.table.body.push(
-              [
-                { text: `Total municipio  ${nombre_anterior}`, colSpan: 8, alignment: 'left',border: [false, true, false, false], bold: 'true',  },{},{},{},{},{},{},{}, { text: Number(total_municipio.toFixed(2)) , bold: 'true', border: [false, true, false, false] },{ text: '', bold: 'true', colSpan:6, border: [false, true, false, false]},{},{},{},{},{}
-              ],
-            );
-            //docDefinition.content.push({ text: '', pageBreak: 'after' });
-            total_general_tdesc += total_municipio;
-            total_general += total_municipio;
-            total_municipio =0;
-          }
+      // //lista empleado
+      // listaEmpleados.forEach((row) => {
+      //   nombre_actual = row.nombre_municipio;
+      //   if(nombre_anterior != nombre_actual  ){
+      //     if(nombre_anterior != ""){
+      //       //total por reparticion
+      //       empleadosTable.table.body.push(
+      //         [
+      //           { text: `Total municipio  ${nombre_anterior}`, colSpan: 8, alignment: 'left',border: [false, true, false, false], bold: 'true',  },{},{},{},{},{},{},{}, { text: Number(total_municipio.toFixed(2)) , bold: 'true', border: [false, true, false, false] },{ text: '', bold: 'true', colSpan:6, border: [false, true, false, false]},{},{},{},{},{}
+      //         ],
+      //       );
+      //       //docDefinition.content.push({ text: '', pageBreak: 'after' });
+      //       total_general_tdesc += total_municipio;
+      //       total_general += total_municipio;
+      //       total_municipio =0;
+      //     }
     
-          empleadosTable.table.body.push(
-            [
-              { text: `${row.nombre_municipio}`, colSpan: 15, alignment: 'left',border: [false, false, false, false],  },{},{},{},{}, {},{},{},{},{}, {},{},{},{},{}
-            ],
-          );
+      //     empleadosTable.table.body.push(
+      //       [
+      //         { text: `${row.nombre_municipio}`, colSpan: 15, alignment: 'left',border: [false, false, false, false],  },{},{},{},{}, {},{},{},{},{}, {},{},{},{},{}
+      //       ],
+      //     );
     
-          nombre_anterior = nombre_actual;      
-          cod_mun_anterior = row.codigo_municipio;
+      //     nombre_anterior = nombre_actual;      
+      //     cod_mun_anterior = row.codigo_municipio;
           
-        }
+      //   }
          
-        total_municipio += parseFloat(row.monto);
-        cantidad = cantidad + 1;
-        //total_tipo_sub += parseFloat(row.monto);
+      //   total_municipio += parseFloat(row.monto);
+      //   cantidad = cantidad + 1;
+      //   //total_tipo_sub += parseFloat(row.monto);
     
         
-        empleadosTable.table.body.push([ {},{},
-          //console.log(".............. asignacion:", asigempleado.asignacioncargoemp_empleado),
-          row.cod_empleado,
-          {text: row.paterno +' '+ row.materno +' '+ row.nombre +' '+ row.otro_nombre , alignment:'left'},
-          row.sexo,
-          {},
-          {},
-          row.ci_ruc,
-          row.detalle_ruc,
-          row.nro_cuenta,
-          {},
-          {},
-          {},
-          {},
-          {}
-        ]);
+      //   empleadosTable.table.body.push([ {},{},
+      //     //console.log(".............. asignacion:", asigempleado.asignacioncargoemp_empleado),
+      //     row.cod_empleado,
+      //     {text: row.paterno +' '+ row.materno +' '+ row.nombre +' '+ row.otro_nombre , alignment:'left'},
+      //     row.sexo,
+      //     {},
+      //     {},
+      //     row.ci_ruc,
+      //     row.detalle_ruc,
+      //     row.nro_cuenta,
+      //     {},
+      //     {},
+      //     {},
+      //     {},
+      //     {}
+      //   ]);
 
-       });
+      //  });
 
-      empleadosTable.table.body.push(
-        [
-          { text: `Total municipio  ${nombre_anterior}`, colSpan: 8, alignment: 'left',border: [false, true, false, false], bold: 'true',  },{},{},{},{},{},{},{}, { text: Number(total_municipio.toFixed(2)) , bold: 'true', border: [false, true, false, false] },{ text: '', bold: 'true', colSpan:6, border: [false, true, false, false]},{},{},{},{},{}
-        ],
-      );
-      total_general_tdesc += total_municipio;
-      total_general += total_municipio;
+      // empleadosTable.table.body.push(
+      //   [
+      //     { text: `Total municipio  ${nombre_anterior}`, colSpan: 8, alignment: 'left',border: [false, true, false, false], bold: 'true',  },{},{},{},{},{},{},{}, { text: Number(total_municipio.toFixed(2)) , bold: 'true', border: [false, true, false, false] },{ text: '', bold: 'true', colSpan:6, border: [false, true, false, false]},{},{},{},{},{}
+      //   ],
+      // );
+      // total_general_tdesc += total_municipio;
+      // total_general += total_municipio;
 
-      empleadosTable.table.body.push(
-        [
-        { text: 'TOTALES TIPO DESCUENTO', colSpan: 8, style: 'totalPlanilla' ,border: [false, true, false, false] },  {},{},{},{},{},{},{},
-        { text: Number(total_general_tdesc.toFixed(2)), style: 'totalPlanilla',border: [false, true, false, false] }, { text: "", style: 'totalPlanilla', colSpan:6, border: [false, true, false, false]},{},{},{},{},{}
-        ]
-      );
+      // empleadosTable.table.body.push(
+      //   [
+      //   { text: 'TOTALES TIPO DESCUENTO', colSpan: 8, style: 'totalPlanilla' ,border: [false, true, false, false] },  {},{},{},{},{},{},{},
+      //   { text: Number(total_general_tdesc.toFixed(2)), style: 'totalPlanilla',border: [false, true, false, false] }, { text: "", style: 'totalPlanilla', colSpan:6, border: [false, true, false, false]},{},{},{},{},{}
+      //   ]
+      // );
 
-      resumenTipoDesc.push({
-       tipo:fila.nombre_abreviado,
-       cantidad:cantidad,
-       total:total_general_tdesc 
-      });
+      // resumenTipoDesc.push({
+      //  tipo:fila.nombre_abreviado,
+      //  cantidad:cantidad,
+      //  total:total_general_tdesc 
+      // });
       
       docDefinition.content.push(empleadosTable);
       docDefinition.content.push({ text: '', pageBreak: 'before' });
@@ -1866,48 +1930,48 @@ const newRepDescAcreedor = async (req = request, res = response ) => {
 
     
     
-    i +=1;
-    if(i === listaDescuento.length -1 ){
-      empleadosTable.table.body.push(
-        [
-        { text: 'TOTAL GENERAL', colSpan: 8, style: 'totalPlanilla' ,border: [false, true, false, false] },  {},{},{},{},{},{},{},
-        { text: Number( total_general.toFixed(2)), style: 'totalPlanilla',border: [false, true, false, false] }, { text: "", style: 'totalPlanilla', colSpan:6, border: [false, true, false, false]},{},{},{},{},{}
-        ]
-      );
-      let total_subsidio = resumenTipoDesc[0].total + resumenTipoDesc[1].total + resumenTipoDesc[2].total + resumenTipoDesc[3].total;
-      let total_cantidad = resumenTipoDesc[0].cantidad + resumenTipoDesc[1].cantidad + resumenTipoDesc[2].cantidad + resumenTipoDesc[3].cantidad;
+    // i +=1;
+    // if(i === listaDescuento.length -1 ){
+    //   empleadosTable.table.body.push(
+    //     [
+    //     { text: 'TOTAL GENERAL', colSpan: 8, style: 'totalPlanilla' ,border: [false, true, false, false] },  {},{},{},{},{},{},{},
+    //     { text: Number( total_general.toFixed(2)), style: 'totalPlanilla',border: [false, true, false, false] }, { text: "", style: 'totalPlanilla', colSpan:6, border: [false, true, false, false]},{},{},{},{},{}
+    //     ]
+    //   );
+    //   let total_subsidio = resumenTipoDesc[0].total + resumenTipoDesc[1].total + resumenTipoDesc[2].total + resumenTipoDesc[3].total;
+    //   let total_cantidad = resumenTipoDesc[0].cantidad + resumenTipoDesc[1].cantidad + resumenTipoDesc[2].cantidad + resumenTipoDesc[3].cantidad;
 
-      empleadosTable.table.body.push(
-        [
-          {  colSpan: 15, alignment: 'left',border: [false, false, false, false],
-            margin: [-5, 0, 0, 0],
-            style: 'tableHeader',
-            table: {
-              widths: ['auto', 'auto', 'auto'],
-              headerRows: 2,
-              // keepWithHeaderRows: 1,
-              body: [
-                [{ text: 'RESUMEN', style: 'tableHeader', colSpan: 3, alignment: 'center' }, {}, {} ],
-                [{ text: 'Subsidio', style: 'tableHeader', alignment: 'center' }, { text: 'cantidad', style: 'tableHeader', alignment: 'center' }, { text: 'Monto por Subsidio', style: 'tableHeader', alignment: 'center' }],
-                [{ text: 'Prenatal', style: 'totalPlanilla',border: [true, false, false, false] }, { text: resumenTipoDesc[0].cantidad , style: 'totalPlanilla',border: [true, false, false, false] },{ text: Number(resumenTipoDesc[0].total.toFixed(2)), style: 'totalPlanilla',border: [true, false, true, false] }, ],
-                [{ text: 'Natalidad', style: 'totalPlanilla',border: [true, false, false, false] }, { text: resumenTipoDesc[1].cantidad , style: 'totalPlanilla',border: [true, false, false, false] },{ text: Number(resumenTipoDesc[1].total.toFixed(2)), style: 'totalPlanilla',border: [true, false, true, false] }, ],
-                [{ text: 'Lactancia', style: 'totalPlanilla',border: [true, false, false, false] }, { text: resumenTipoDesc[2].cantidad, style: 'totalPlanilla',border: [true, false, false, false] },{ text: Number(resumenTipoDesc[2].total.toFixed(2)), style: 'totalPlanilla',border: [true, false, true, false] }, ],
-                [{ text: 'Defuncion', style: 'totalPlanilla',border: [true, false, false, false] }, { text: resumenTipoDesc[3].cantidad , style: 'totalPlanilla',border: [true, false, false, false] },{ text: Number( resumenTipoDesc[3].total.toFixed(2)), style: 'totalPlanilla',border: [true, false, true,false] }, ],
-                [{ text: 'TOTAL', style: 'totalPlanilla' }, { text: total_cantidad, style: 'totalPlanilla', },{ text: Number(total_subsidio.toFixed(2)), style: 'totalPlanilla' }, ]
-              ]
-            }
+    //   empleadosTable.table.body.push(
+    //     [
+    //       {  colSpan: 15, alignment: 'left',border: [false, false, false, false],
+    //         margin: [-5, 0, 0, 0],
+    //         style: 'tableHeader',
+    //         table: {
+    //           widths: ['auto', 'auto', 'auto'],
+    //           headerRows: 2,
+    //           // keepWithHeaderRows: 1,
+    //           body: [
+    //             [{ text: 'RESUMEN', style: 'tableHeader', colSpan: 3, alignment: 'center' }, {}, {} ],
+    //             [{ text: 'Subsidio', style: 'tableHeader', alignment: 'center' }, { text: 'cantidad', style: 'tableHeader', alignment: 'center' }, { text: 'Monto por Subsidio', style: 'tableHeader', alignment: 'center' }],
+    //             [{ text: 'Prenatal', style: 'totalPlanilla',border: [true, false, false, false] }, { text: resumenTipoDesc[0].cantidad , style: 'totalPlanilla',border: [true, false, false, false] },{ text: Number(resumenTipoDesc[0].total.toFixed(2)), style: 'totalPlanilla',border: [true, false, true, false] }, ],
+    //             [{ text: 'Natalidad', style: 'totalPlanilla',border: [true, false, false, false] }, { text: resumenTipoDesc[1].cantidad , style: 'totalPlanilla',border: [true, false, false, false] },{ text: Number(resumenTipoDesc[1].total.toFixed(2)), style: 'totalPlanilla',border: [true, false, true, false] }, ],
+    //             [{ text: 'Lactancia', style: 'totalPlanilla',border: [true, false, false, false] }, { text: resumenTipoDesc[2].cantidad, style: 'totalPlanilla',border: [true, false, false, false] },{ text: Number(resumenTipoDesc[2].total.toFixed(2)), style: 'totalPlanilla',border: [true, false, true, false] }, ],
+    //             [{ text: 'Defuncion', style: 'totalPlanilla',border: [true, false, false, false] }, { text: resumenTipoDesc[3].cantidad , style: 'totalPlanilla',border: [true, false, false, false] },{ text: Number( resumenTipoDesc[3].total.toFixed(2)), style: 'totalPlanilla',border: [true, false, true,false] }, ],
+    //             [{ text: 'TOTAL', style: 'totalPlanilla' }, { text: total_cantidad, style: 'totalPlanilla', },{ text: Number(total_subsidio.toFixed(2)), style: 'totalPlanilla' }, ]
+    //           ]
+    //         }
 
-          },{},{},{},{}, {},{},{},{},{}, {},{},{},{},{}
-        ]
-      );
+    //       },{},{},{},{}, {},{},{},{},{}, {},{},{},{},{}
+    //     ]
+    //   );
 
       
-    }
-
-  }
+    // }
+  
+  
    
-  const pdfDoc = pdfMake.createPdf(docDefinition);
-      const nameFile = 'planilla_subsidio_dos.pdf';//`${uuidv4()}.pdf`;
+    const pdfDoc = pdfMake.createPdf(docDefinition);
+      const nameFile = 'planilla_acreedor.pdf';//`${uuidv4()}.pdf`;
       const outputFileName = 'public/upload/'+nameFile;
       const filePath = path.join(__dirname, '../../public/upload/', nameFile);  // Ruta al archivo PDF en el servidor
       
