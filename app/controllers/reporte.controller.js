@@ -1,7 +1,7 @@
 
 const { response, request } = require('express');
 const { Op, BOOLEAN,  } = require("sequelize");
-const { Salario_planilla, Municipio ,Organismo, Reparticion, Asignacion_cargo_empleado, Tipo_descuento_sancion, sequelize, Sequelize} = require('../database/config');
+const { Salario_planilla, Municipio ,Organismo, Reparticion, Asignacion_cargo_empleado, Tipo_descuento_sancion, Grupo_descuento, sequelize, Sequelize} = require('../database/config');
 const paginate = require('../helpers/paginate');
 const moment = require('moment');
 //const { PDFDocument, rgb, StandardFonts } = require('pdf-lib');
@@ -1660,14 +1660,14 @@ function getTablaAcreedor(){
     style: 'tableplanilla',
     table: {
       headerRows: 2,
-      widths: [20,25,120,25,15,70, 20,20,20],
+      widths: [20,40,110,80,20,60, 45,40,40],
       //heights: [50],
       //widths: [30, 25, 25, 120, 10  ], // Dos columnas de igual ancho
       body: [
         [
           {  colSpan: 9, alignment: 'left',border: [false, false, false, false],
             margin: [-5, 0, 0, 0],
-            style: 'tableHeader',
+            style: 'tableHeader3',
             table: {
               //headerRows: 2,
               margin: [0, 0, 0, 0],
@@ -1771,6 +1771,16 @@ function hojaYTitulo(titulo) {
         bold: true,
         fontSize: 6,
         //color: 'black'
+      },
+      tableHeader2: {
+        bold: true,
+        fontSize: 7,
+        //color: 'black'
+      },
+      tableHeader: {
+        bold: true,
+        fontSize: 8,
+        //color: 'black'
       }
     },
     defaultStyle: {
@@ -1812,11 +1822,11 @@ const newRepDescAcreedor = async (req = request, res = response ) => {
       const docDefinition = hojaYTitulo("Planilla Descuentos")
       
       
-  const listaAcredores = await Tipo_descuento_sancion.findAll(
+  const listaGrupoDesc = await Grupo_descuento.findAll(
     {
-      attributes: ['grupo_suma', 'grupo_nombre'],
-    where: { activo:1 },
-    group:['grupo_suma', 'grupo_nombre']
+      attributes: ['id','codigo', 'nombre'],
+      where: { activo:1 },
+    //group:['codigo', 'nombre']
     });
 
   let total_general =0, i=0;  
@@ -1827,108 +1837,97 @@ const newRepDescAcreedor = async (req = request, res = response ) => {
   let total_defuncion = 0;  
   let resumenTipoDesc = [];
 
-  for (const fila of listaAcredores){
+  const empleadosTable = getTablaAcreedor();
+
+  for (const fila of listaGrupoDesc){
     
-    const empleadosTable = getTablaAcreedor();
     
-    const listaEmpleados = await db.sequelize.query("SELECT mun.codigo as codigo_municipio, mun.nombre as nombre_municipio, emp.cod_empleado, emp.numero_documento, emp.nombre, emp.otro_nombre, emp.paterno, emp.materno,emp.sexo, asu.tipo_pago, (desc_json->>'monto')::DECIMAL as monto, ace.nro_item, ba.ci_ruc, ba.detalle_ruc, ba.nro_cuenta FROM municipios mun INNER JOIN reparticiones rep ON rep.id_municipio = mun.id INNER JOIN asignacion_cargo_empleados ace ON ace.id_reparticion = rep.id INNER JOIN salario_planillas sp ON sp.id_asig_cargo = ace.id JOIN LATERAL jsonb_array_elements(sp.subsidio) AS desc_json ON TRUE JOIN asignacion_subsidios asu ON (desc_json->>'id_asig_subsidio')::INTEGER = asu.id join empleados emp on emp.id = sp.id_empleado JOIN beneficiario_acreedores ba ON asu.id = ba.id_asig_subsidio WHERE rep.id_organismo = :idOrganismo AND sp.id_mes = :idMes and asu.id_tipo_descuento = :idTipoDescuento order by nombre_municipio, emp.nombre ", 
+    const listaDescuento = await db.sequelize.query("SELECT tds.codigo, ba.ci_ruc, ba.detalle_ruc, ba.nro_cuenta, tds.nombre_abreviado, sum((desc_json->>'monto')::DECIMAL ) as monto FROM salario_planillas sp  JOIN asignacion_cargo_empleados ace ON sp.id_asig_cargo = ace.id JOIN reparticiones rep ON ace.id_reparticion = rep.id  JOIN LATERAL jsonb_array_elements(sp.descuento_adm) AS desc_json ON TRUE JOIN tipo_descuento_sanciones tds ON (desc_json->>'id_tipo_descuento')::INTEGER = tds.id join beneficiario_acreedores ba ON tds.id_acreedor = ba.id WHERE tds.id_grupodescuento = :idgrupodesc AND sp.id_mes = :idMes AND rep.id_organismo = :idOrganismo group by tds.codigo, ba.ci_ruc, ba.detalle_ruc, ba.nro_cuenta, tds.nombre_abreviado order by ba.ci_ruc, ba.detalle_ruc ", 
         {   type: Sequelize.QueryTypes.SELECT, 
-            replacements: {idOrganismo: body.id_organismo, idMes: body.id_mes, idTipoDescuento: fila.id }
+
+            replacements: {idgrupodesc: fila.id, idMes: body.id_mes, idOrganismo: body.id_organismo }
         }
       );
     
-    if(listaEmpleados && listaEmpleados.length >0 ){
+    if(listaDescuento && listaDescuento.length >0 ){
 
       empleadosTable.table.body.push(
         [
-          { text: `Subsidio: ${fila.nombre_abreviado}`, fontSize:'9' ,colSpan: 15, alignment: 'left',border: [false, false, false, false],  },{},{},{},{},{},{},{},{},{},  {},{},{},{},{} 
+          { text: `${fila.codigo} ${fila.nombre}`, fontSize:'9' ,colSpan: 9, alignment: 'left',border: [false, false, false, false] },{},{},{},{},{},{},{},{} 
         ],        
       );
 
       let nombre_actual= "";
       let nombre_anterior = "";
-      let total_municipio =0;
+      let sub_total =0;
       let total_general_tdesc =0;
       let cantidad = 0;
 
       // //lista empleado
-      // listaEmpleados.forEach((row) => {
-      //   nombre_actual = row.nombre_municipio;
-      //   if(nombre_anterior != nombre_actual  ){
-      //     if(nombre_anterior != ""){
-      //       //total por reparticion
-      //       empleadosTable.table.body.push(
-      //         [
-      //           { text: `Total municipio  ${nombre_anterior}`, colSpan: 8, alignment: 'left',border: [false, true, false, false], bold: 'true',  },{},{},{},{},{},{},{}, { text: Number(total_municipio.toFixed(2)) , bold: 'true', border: [false, true, false, false] },{ text: '', bold: 'true', colSpan:6, border: [false, true, false, false]},{},{},{},{},{}
-      //         ],
-      //       );
-      //       //docDefinition.content.push({ text: '', pageBreak: 'after' });
-      //       total_general_tdesc += total_municipio;
-      //       total_general += total_municipio;
-      //       total_municipio =0;
-      //     }
+      listaDescuento.forEach((row) => {
+        nombre_actual = row.detalle_ruc;
+        if(nombre_anterior != nombre_actual  ){
+          if(nombre_anterior != "" ){
+            //total por reparticion
+            empleadosTable.table.body.push(
+              [
+                {},{},{},{},{ text: `${nombre_anterior}`, colSpan: 3, alignment: 'left',border: [false, true, false, false], bold: 'true'},  {},{}, { text: Number( sub_total.toFixed(2)) , bold: 'true', alignment: 'right', border: [false, true, false, false] },{ text: '', bold: 'true', border: [false, true, false, false] }
+              ],
+            );
+            //docDefinition.content.push({ text: '', pageBreak: 'after' });
+            //total_general_tdesc += total_municipio;
+            //total_general += sub_total;
+            sub_total = 0;
+            cantidad = 0;
+          }
     
-      //     empleadosTable.table.body.push(
-      //       [
-      //         { text: `${row.nombre_municipio}`, colSpan: 15, alignment: 'left',border: [false, false, false, false],  },{},{},{},{}, {},{},{},{},{}, {},{},{},{},{}
-      //       ],
-      //     );
+          empleadosTable.table.body.push(
+            [
+              {},{ text: `${row.ci_ruc}`, alignment: 'left',border: [false, false, false, false],  },{ text: `${row.detalle_ruc}`, alignment: 'left',border: [false, false, false, false],  },{ text: `${row.nombre_abreviado }`, alignment: 'left',border: [false, false, false, false] }, { text: `${row.codigo }`, alignment: 'right',border: [false, false, false, false] },{ text: `${row.nro_cuenta }`, alignment: 'right',border: [false, false, false, false] },{ text: `${row.monto }`, alignment: 'right',border: [false, false, false, false] }, {},{}
+            ],
+          );
     
-      //     nombre_anterior = nombre_actual;      
-      //     cod_mun_anterior = row.codigo_municipio;
+          nombre_anterior = nombre_actual;     
+          sub_total += parseFloat(row.monto); 
+          cantidad = cantidad + 1;
+          //cod_mun_anterior = row.codigo_municipio;
           
-      //   }
+        } else {
+
          
-      //   total_municipio += parseFloat(row.monto);
-      //   cantidad = cantidad + 1;
-      //   //total_tipo_sub += parseFloat(row.monto);
+          sub_total += parseFloat(row.monto);
+          cantidad = cantidad + 1;
+             //total_tipo_sub += parseFloat(row.monto);
     
         
-      //   empleadosTable.table.body.push([ {},{},
-      //     //console.log(".............. asignacion:", asigempleado.asignacioncargoemp_empleado),
-      //     row.cod_empleado,
-      //     {text: row.paterno +' '+ row.materno +' '+ row.nombre +' '+ row.otro_nombre , alignment:'left'},
-      //     row.sexo,
-      //     {},
-      //     {},
-      //     row.ci_ruc,
-      //     row.detalle_ruc,
-      //     row.nro_cuenta,
-      //     {},
-      //     {},
-      //     {},
-      //     {},
-      //     {}
-      //   ]);
+          empleadosTable.table.body.push(
+              [
+                {},{ text: ``, alignment: 'left',border: [false, false, false, false],  },{ text: ``, alignment: 'left',border: [false, false, false, false],  },{ text: `${row.nombre_abreviado }`, alignment: 'left',border: [false, false, false, false] }, { text: `${row.codigo }`, alignment: 'right',border: [false, false, false, false] },{ text: `${row.nro_cuenta }`, alignment: 'right',border: [false, false, false, false] },{ text: `${row.monto }`, alignment: 'right',border: [false, false, false, false] }, {},{}
+              ],
+            );
 
-      //  });
+        }
 
-      // empleadosTable.table.body.push(
-      //   [
-      //     { text: `Total municipio  ${nombre_anterior}`, colSpan: 8, alignment: 'left',border: [false, true, false, false], bold: 'true',  },{},{},{},{},{},{},{}, { text: Number(total_municipio.toFixed(2)) , bold: 'true', border: [false, true, false, false] },{ text: '', bold: 'true', colSpan:6, border: [false, true, false, false]},{},{},{},{},{}
-      //   ],
-      // );
-      // total_general_tdesc += total_municipio;
-      // total_general += total_municipio;
+        });
 
-      // empleadosTable.table.body.push(
-      //   [
-      //   { text: 'TOTALES TIPO DESCUENTO', colSpan: 8, style: 'totalPlanilla' ,border: [false, true, false, false] },  {},{},{},{},{},{},{},
-      //   { text: Number(total_general_tdesc.toFixed(2)), style: 'totalPlanilla',border: [false, true, false, false] }, { text: "", style: 'totalPlanilla', colSpan:6, border: [false, true, false, false]},{},{},{},{},{}
-      //   ]
-      // );
-
-      // resumenTipoDesc.push({
-      //  tipo:fila.nombre_abreviado,
-      //  cantidad:cantidad,
-      //  total:total_general_tdesc 
-      // });
+        //if( cantidad > 1 ){
+          //total por reparticion
+          empleadosTable.table.body.push(
+            [
+              {},{},{},{},{ text: `${nombre_anterior}`, alignment: 'left', colSpan: 3, border: [false, true, false, false], bold: 'true'},  {},{}, { text: Number( sub_total.toFixed(2)), alignment: 'right', bold: 'true', border: [false, true, false, false] },{ text: '', bold: 'true', border: [false, true, false, false] }
+            ],
+          );
+          //docDefinition.content.push({ text: '', pageBreak: 'after' });
+          //total_general_tdesc += total_municipio;
+          //total_general += sub_total;
+          sub_total = 0;
+          cantidad = 0;
+        //}
       
-      docDefinition.content.push(empleadosTable);
-      docDefinition.content.push({ text: '', pageBreak: 'before' });
     }
-
     
+
+  
     
     // i +=1;
     // if(i === listaDescuento.length -1 ){
@@ -1966,8 +1965,8 @@ const newRepDescAcreedor = async (req = request, res = response ) => {
     //   );
 
       
-    // }
-  
+    }
+    docDefinition.content.push(empleadosTable);
   
    
     const pdfDoc = pdfMake.createPdf(docDefinition);

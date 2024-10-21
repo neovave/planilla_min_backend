@@ -1,7 +1,7 @@
 
 const { response, request } = require('express');
 const { Op } = require('sequelize');
-const {Asignacion_descuento, sequelize, Tipo_descuento_sancion, Beneficiario_acreedor } = require('../database/config');
+const {Asignacion_descuento, sequelize, Tipo_descuento_sancion, Beneficiario_acreedor, Empleado } = require('../database/config');
 const paginate = require('../helpers/paginate');
 
 const getAsigDescuentoPaginate = async (req = request, res = response) => {
@@ -186,9 +186,167 @@ const activeInactiveAsigDescuento = async (req = request, res = response) => {
     }
 }
 
+
+const importarDescuento = async (req = request, res = response ) => {
+    //const t = await sequelize.transaction();
+    try {
+        let {id_mes }= req.query;
+        const excelBuffer = req.files['file'][0].buffer;
+        await processExcel(excelBuffer, 1, id_mes);
+
+        // body.activo = 1;
+        // const empleadoNew = await Empleado.create(body);
+        //wait t.commit();
+        res.status(201).json({
+            ok: true,
+            //empleadoNew            
+        });
+        
+    } catch (error) {
+        console.log(error);
+        //await t.rollback();
+        return res.status(500).json({
+            ok: false,
+            errors: [{
+                msg: `Ocurrió un imprevisto interno | hable con soporte`
+            }],
+        });
+    }
+}
+function processExcel(excelBuffer, t, id_mes) {
+
+    const workbook = xlsx.read(excelBuffer, { type: 'buffer' });
+    const sheetName = workbook.SheetNames[0];
+    const worksheet = workbook.Sheets[sheetName];
+    const options = {
+        header: 1,
+        // raw: false, 
+        // dateNF: 'yyyy-mm-dd', // Specify the date format string here
+        
+      };
+    const excelData = xlsx.utils.sheet_to_json(worksheet, options );
+  
+    insertExcelIntoDatabase(excelData,  id_mes);
+}
+
+async function insertExcelIntoDatabase(data, id_mes) {
+    try{
+            
+        for (let i = 1; i < data.length; i++) {
+            const row = data[i];
+            //datos
+            let id_empleado = 0;
+            let existeEmpleado = false;
+            if( row[0] ){
+                
+                let ci_emp = parseFloat(row[1]);
+                const existEmpleado = await Empleado.findOne( { where: { cod_empleado:  ci_emp  } } );
+                
+                    
+            
+
+                //verificar y registrar empleado
+                const empleado = {
+                    cod_empleado: existEmpleado,
+                    monto: DataTypes.DECIMAL(8,2),
+                    unidad: DataTypes.STRING(2),
+                    institucion: DataTypes.STRING(8),
+                    fecha_inicio: DataTypes.DATE,
+                    fecha_limite: DataTypes.DATE,
+                    memo_nro: DataTypes.STRING(10),
+                    memo_detalle: DataTypes.STRING(200),
+                    referencia: DataTypes.STRING(200),
+                    estado: DataTypes.STRING(2),
+                    id_user_create: DataTypes.INTEGER,
+                    id_user_mod: DataTypes.INTEGER,
+                    id_user_delete: DataTypes.INTEGER,
+                    activo: DataTypes.BIGINT
+
+
+                    cod_empleado: Number( row[3] ),
+                    numero_documento: Number( row[5] ),
+                    complemento: null,
+                    nombre: nombre,
+                    otro_nombre: otro_nombre,
+                    paterno: apellidoPaterno,
+                    materno: apellidoMaterno,
+                    ap_esposo: null,
+                    fecha_nacimiento: fechaNac, 
+                    nacionalidad: 'BOLIVIANA',
+                    sexo: null,
+                    nua: Number( row[8]),
+                    cuenta_bancaria: Number(row[9]),
+                    tipo_documento: 'ci',
+                    cod_rciva: null,//DataTypes.STRING(20),
+                    cod_rentista: null,
+                    correo: null,
+                    telefono: null,
+                    celular: null,
+                    id_expedido: extension?extension.id:null,
+                    id_grado_academico:null,
+                    id_tipo_movimiento:1,
+                    id_user_create: 0,
+                    activo:1
+                };
+                const existEmp = await Empleado.findOne({where: { numero_documento: String( row[5] ) } } );
+                
+                if(!existEmp){
+                    const empleadoNew = await Empleado.create(empleado );
+                    id_empleado = empleadoNew.id;
+                    console.log("No existe empleado.................:", existEmp);
+                    
+                }else{
+                    console.log("existe empleado.................:", existEmp.id);
+                    id_empleado = existEmp.id;
+                    existeEmpleado = true;
+                }
+                
+                //asisgnacion de cargo empleado
+                const cargo = await Cargo.findOne({where: { abreviatura: formatearTexto( row[17] ) } } );
+                const meses = await Mes.findOne({where: { id:id_mes }} );
+                const reparticion = await Reparticion.findOne({where: { nombre: formatearTexto( row[1] ) }} );
+                const destino = await Destino.findOne({where: { nombre: formatearTexto( row[2] ) }} );
+                const esBaja = row[16]? true:false;
+                const partFecha = row[15].split('/');
+                const fechaFormated = `${partFecha[2]}-${partFecha[1]}-${partFecha[0]}`;
+                const fechaIng = moment(fechaFormated, 'YY-MM-DD');
+                console.log("fecha de ingreso.......................:,",fechaIng);
+                const dataAsignacion = {
+                    id_gestion:meses.id_gestion,
+                    id_empleado:id_empleado,
+                    id_cargo:cargo.id,
+                    id_tipo_movimiento: 1,
+                    id_reparticion: reparticion.id,
+                    id_destino: destino.id,
+                    ci_empleado: empleado.numero_documento,
+                    fecha_inicio: fechaIng.format('YYYY-MM-DD'),
+                    fecha_limite: esBaja? Date(row[16]):null,
+                    motivo: esBaja? 'Baja':null,
+                    nro_item: Number(row[4]),
+                    ingreso: true,
+                    retiro: esBaja?true:null,
+                    activo: 1,
+                    id_user_create: 0,
+                    estado: 'AC',
+                };
+                
+                
+                
+            }
+        
+        }
+        
+    } catch (error) {
+        console.log("Error", error);
+        //await t.rollback();
+    }
+}
+
+
 module.exports = {
     getAsigDescuentoPaginate,
     newAsigDescuento,
     updateAsigDescuento,
-    activeInactiveAsigDescuento
+    activeInactiveAsigDescuento,
+    importarDescuento
 };
