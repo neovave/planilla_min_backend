@@ -3,6 +3,7 @@ const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
 const { sequelize } = require('../database/config');
+const fileUpload = require('express-fileupload');
 
 class Server {
     static _instance;
@@ -11,14 +12,21 @@ class Server {
         this.port = process.env.PORT || 3000;
         this.middlewares();
         this.routes();
+        
     }
     static get instance() {
         return this._instance || (this._instance = new Server());
     }
     middlewares() {
-        this.app.use(cors());
+        this.app.use(cors({
+            exposedHeaders: ['Content-Disposition']  // Asegúrate de exponer el encabezado
+          }));
         this.app.use(express.json());
         this.app.use(express.static('public'));
+        this.app.use( fileUpload() );
+        // this.app.use(fileUpload({
+        //     limits: { fileSize: 50 * 1024 * 1024 }, // Límite de 50 MB
+        //   }));
     }
 
     routes() {

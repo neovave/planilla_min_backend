@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const generarJWT = require('../helpers/jwt');
 const { response, request } = require('express');
-const { Empleado, Sequelize,sequelize, Lugar_expedido, Cargo, Reparticion, Destino, Aporte_empleado, Seguro, Seguro_empleado, Bono, Asignacion_bono, Tipo_descuento_sancion, Asignacion_descuento, Mes, Asignacion_cargo_empleado, Beneficiario_acreedor, Asignacion_subsidio } = require('../database/config');
+const { Empleado, Sequelize,sequelize, Lugar_expedido, Cargo, Organismo, Reparticion, Destino, Aporte_empleado, Seguro, Seguro_empleado, Bono, Asignacion_bono, Tipo_descuento_sancion, Asignacion_descuento, Mes, Asignacion_cargo_empleado, Beneficiario_acreedor, Asignacion_subsidio } = require('../database/config');
 const paginate = require('../helpers/paginate');
 const { Op } = require("sequelize");
 const axios = require('axios');
@@ -402,7 +402,7 @@ async function insertExcelIntoDatabase(data, id_mes) {
                 //const fechaNac = new Date(row[7]);
                 const fechaBase = moment('1900-01-01');
                 const fechaNac = fechaBase.add(row[7] - 2, 'days');
-                console.log("fecha de naciomiento:-------------,",fechaNac);
+                //console.log("fecha de naciomiento:-------------,",fechaNac);
                 const empleado = {
                     cod_empleado: Number( row[3] ),
                     numero_documento: Number( row[5] ),
@@ -434,10 +434,10 @@ async function insertExcelIntoDatabase(data, id_mes) {
                 if(!existEmp){
                     const empleadoNew = await Empleado.create(empleado );
                     id_empleado = empleadoNew.id;
-                    console.log("No existe empleado.................:", existEmp);
+                    //console.log("No existe empleado.................:", existEmp);
                     
                 }else{
-                    console.log("existe empleado.................:", existEmp.id);
+                    //console.log("existe empleado.................:", existEmp.id);
                     id_empleado = existEmp.id;
                     existeEmpleado = true;
                 }
@@ -445,18 +445,20 @@ async function insertExcelIntoDatabase(data, id_mes) {
                 //asisgnacion de cargo empleado
                 const cargo = await Cargo.findOne({where: { abreviatura: formatearTexto( row[17] ) } } );
                 const meses = await Mes.findOne({where: { id:id_mes }} );
-                const reparticion = await Reparticion.findOne({where: { nombre: formatearTexto( row[1] ) }} );
-                const destino = await Destino.findOne({where: { nombre: formatearTexto( row[2] ) }} );
+                const organismo = await Organismo.findOne({where: { nombre: formatearTexto( row[0] ) }} );
+                const reparticion = await Reparticion.findOne({where: { nombre_abreviado: formatearTexto( row[1] ) }} );
+                const destino = await Destino.findOne({where: { nombre_abreviado: formatearTexto( row[2] ) }} );
                 const esBaja = row[16]? true:false;
                 const partFecha = row[15].split('/');
                 const fechaFormated = `${partFecha[2]}-${partFecha[1]}-${partFecha[0]}`;
                 const fechaIng = moment(fechaFormated, 'YY-MM-DD');
-                console.log("fecha de ingreso.......................:,",fechaIng);
+                //console.log("fecha de ingreso.......................:,",fechaIng);
                 const dataAsignacion = {
                     id_gestion:meses.id_gestion,
                     id_empleado:id_empleado,
                     id_cargo:cargo.id,
                     id_tipo_movimiento: 1,
+                    id_organismo: organismo.id,
                     id_reparticion: reparticion.id,
                     id_destino: destino.id,
                     ci_empleado: empleado.numero_documento,
@@ -484,7 +486,7 @@ async function insertExcelIntoDatabase(data, id_mes) {
                 };
                 if(!existeEmpleado){
                     const aporteEmpleadosNew = await Aporte_empleado.create(aporteEmpleados );
-                    console.log("se registro aporte afp...............:", aporteEmpleadosNew);
+                    //console.log("se registro aporte afp...............:", aporteEmpleadosNew);
                 }
                 //registro de seguro empleado 
                 if( row[14]!== '' || row[14] !== null ){
@@ -498,14 +500,14 @@ async function insertExcelIntoDatabase(data, id_mes) {
                     };
                     if(!existeEmpleado){
                         const seguroEmpleadosNew = await Seguro_empleado.create(seguroEmpleado );
-                        console.log("se registro seguro emp----------------:", seguroEmpleadosNew);
+                        //console.log("se registro seguro emp----------------:", seguroEmpleadosNew);
                     }
                 }
                 //registro de bonos
                 
                 if( typeof row[22] !== 'undefined' ){
 
-                    console.log("variable BONO: ",row[22])
+                    //console.log("variable BONO: ",row[22])
                     const bono = await Bono.findOne({where: { nombre_abreviado: row[22].trim() }} );
                     if(bono){
                         const asigBonoEmpleado = {
@@ -518,7 +520,7 @@ async function insertExcelIntoDatabase(data, id_mes) {
                             activo: 1
                         };
                         const asigBonoEmpNew = await Asignacion_bono.create(asigBonoEmpleado );
-                        console.log("se registro el bono***********************:",asigBonoEmpNew);
+                        //console.log("se registro el bono***********************:",asigBonoEmpNew);
                     }
                 }
                 // descuentos asistencia familiar
@@ -546,7 +548,7 @@ async function insertExcelIntoDatabase(data, id_mes) {
                 }
                 if( typeof row[31] !== 'undefined' ){
                     let nombre = String(row[31]); 
-                    console.log("nombre descuento +++++++++++++++++++++++++:",nombre );
+                    //console.log("nombre descuento +++++++++++++++++++++++++:",nombre );
 
                     const descuentos2 = await Tipo_descuento_sancion.findOne({where: { nombre: nombre.trim() }} );
                     if(descuentos2 && descuentos2.grupo === 'SUBSIDIO' )
@@ -566,7 +568,7 @@ async function insertExcelIntoDatabase(data, id_mes) {
                             activo: 1
                         };
                         const asigDescuentoEmpNew2 = await Asignacion_subsidio.create(asigDescuentoEmpleado2 );
-                        console.log("se registro subsidio sanciones//////////////////////:", asigDescuentoEmpNew2);
+                        //console.log("se registro subsidio sanciones//////////////////////:", asigDescuentoEmpNew2);
                         if( typeof row[33] !== 'undefined' ){
                             const asigDescuentoEmpleado2 = {
                                 id_asig_subsidio: asigDescuentoEmpNew2.id,
@@ -578,7 +580,7 @@ async function insertExcelIntoDatabase(data, id_mes) {
                                 activo: 1
                             };
                             const beneficiarioNew = await Beneficiario_acreedor.create(asigDescuentoEmpleado2 );
-                            console.log("se registro beneficiario subsidio----------------------------:", beneficiarioNew);  
+                           // console.log("se registro beneficiario subsidio----------------------------:", beneficiarioNew);  
                         }
                     }else if(descuentos2 && descuentos2.grupo !== 'SUBSIDIO'){
                         const asigDescuentoEmpleado2 = {
@@ -597,7 +599,7 @@ async function insertExcelIntoDatabase(data, id_mes) {
                             activo: 1
                         };
                         const asigDescuentoEmpNew2 = await Asignacion_descuento.create(asigDescuentoEmpleado2 );
-                        console.log("se registro descuentos sanciones//////////////////////:", asigDescuentoEmpNew2);
+                        //console.log("se registro descuentos sanciones//////////////////////:", asigDescuentoEmpNew2);
                         if( typeof row[33] !== 'undefined' ){
                             const asigDescuentoEmpleado2 = {
                                 id_asig_descuento: asigDescuentoEmpNew2.id,
@@ -609,7 +611,7 @@ async function insertExcelIntoDatabase(data, id_mes) {
                                 activo: 1
                             };
                             const beneficiarioNew = await Beneficiario_acreedor.create(asigDescuentoEmpleado2 );
-                            console.log("se registro beneficiario ----------------------------:", beneficiarioNew);  
+                            //console.log("se registro beneficiario ----------------------------:", beneficiarioNew);  
                         }
                     }
                 }

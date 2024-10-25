@@ -38,8 +38,8 @@ router.put('/destroyAndActive/:id', [
 
 router.post('/importar_descuento', [
     validarJWT,
-    upload.fields([{ name: 'file', maxCount: 1 }, { name: 'file2', maxCount: 1 }]),
-    validarIsAdmin,
+    upload.fields([{ name: 'file', maxCount: 1 }]),
+    //validarIsAdmin,
     //toUpperCaseConvert,
     //getValidateCreate
 ],importarDescuento );

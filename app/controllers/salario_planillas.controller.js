@@ -436,7 +436,7 @@ const generarSalarioPlanillaAll = async (req = request, res = response ) => {
                         dias_trabajados: totalDiasTrabajados,
                         dias_sancionados: totalDiasSancionados,
                         activo:1,
-                        id_user_create: Users.id
+                        id_user_create: user.id
                     });
                     console.log( "planilla salarios****************", salariosPlanillasDatas );
                     rcivaPlanillasDatas.push( calculo_rciva );
@@ -784,9 +784,9 @@ async function calcularRciva( parametro, idEmpleado, id_mes, totalGanado, rcivaS
             let saldoUtilizado = saldoActualizado <= saldoFavorFisco ? saldoActualizado : saldoFavorFisco;
             let impuestoRCIVARetenido = saldoFavorFisco > saldoUtilizado ? (saldoFavorFisco - saldoUtilizado) : 0;
             let saldoCreditoFiscalDependiente = saldoFavorDependiente + saldoActualizado - saldoUtilizado;
-             console.log(".........parametros:", parametro);
-             console.log(".........descargo", filaDescargo);
-             console.log("----------certificacion:", rcivaSaldoCertificado);
+             //console.log(".........parametros:", parametro);
+             //console.log(".........descargo", filaDescargo);
+             //console.log("----------certificacion:", rcivaSaldoCertificado);
         return !existeObservacion? {
                 id_mes : id_mes,
                 id_minimo_nacional : idMinNacionalActivo,

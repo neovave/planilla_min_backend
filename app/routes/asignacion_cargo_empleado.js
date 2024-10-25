@@ -2,8 +2,11 @@ const { Router } = require('express');
 const { validarJWT } = require('../middlewares/validators/validar-jwt');
 const { validarIsAdmin } = require('../middlewares/validators/validar-is-admin');
 const toUpperCaseConvert = require('../middlewares/touppercase-convert');
-const { getAsigCargoEmpPaginate, newAsigCargoEmp, updateAsigCargoEmp, activeInactiveAsigCargoEmp, updateRetiroAsigCargoEmp } = require('../controllers/asignacion_cargo_empleado.controller');
+const { getAsigCargoEmpPaginate, newAsigCargoEmp, updateAsigCargoEmp, activeInactiveAsigCargoEmp, updateRetiroAsigCargoEmp, importarAsigCargoDestino } = require('../controllers/asignacion_cargo_empleado.controller');
 const { validateDelete, getValidateUpdate, getValidateCreate } = require('../middlewares/validators/asignacion_cargo_empleado');
+const multer = require('multer');
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 const router = Router();
 
@@ -39,6 +42,14 @@ router.put('/destroyAndActive/:id', [
     validarIsAdmin,
     validateDelete
 ],activeInactiveAsigCargoEmp );
+
+router.post('/importar_destino', [
+    validarJWT,
+    upload.fields([{ name: 'file', maxCount: 1 }, { name: 'file2', maxCount: 1 }]),
+    validarIsAdmin,
+    //toUpperCaseConvert,
+    //getValidateCreate
+],importarAsigCargoDestino );
 
 
 module.exports = router;

@@ -1,7 +1,7 @@
 
 const { response, request } = require('express');
 const { Op } = require('sequelize');
-const {Rciva_planilla, Empleado, Planilla_fecha ,sequelize} = require('../database/config');
+const {Rciva_planilla, Empleado, Planilla_fecha, Mes ,sequelize} = require('../database/config');
 const paginate = require('../helpers/paginate');
 const xlsx = require('xlsx');
 
@@ -145,6 +145,7 @@ async function insertExcelIntoDatabase(data, id_mes) {
     //const columns = data[0];
     //const t = await sequelize.transaction();
     try{
+        
             
         for (let i = 1; i < data.length; i++) {
             const row = data[i];

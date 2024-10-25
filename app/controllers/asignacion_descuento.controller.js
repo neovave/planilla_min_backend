@@ -1,8 +1,12 @@
 
 const { response, request } = require('express');
 const { Op } = require('sequelize');
-const {Asignacion_descuento, sequelize, Tipo_descuento_sancion, Beneficiario_acreedor, Empleado } = require('../database/config');
+const {Asignacion_descuento, sequelize, Tipo_descuento_sancion, Beneficiario_acreedor, Mes, Empleado, Users } = require('../database/config');
 const paginate = require('../helpers/paginate');
+const moment = require('moment');
+const xlsx = require('xlsx');
+const path = require('path');
+const fs = require('fs');
 
 const getAsigDescuentoPaginate = async (req = request, res = response) => {
     try {
@@ -190,17 +194,72 @@ const activeInactiveAsigDescuento = async (req = request, res = response) => {
 const importarDescuento = async (req = request, res = response ) => {
     //const t = await sequelize.transaction();
     try {
-        let {id_mes }= req.query;
+        //let {id_mes }= req.query;
+        const  body  = req.body;
+        const user = await Users.findByPk(req.userAuth.id)
         const excelBuffer = req.files['file'][0].buffer;
-        await processExcel(excelBuffer, 1, id_mes);
+        const observacion = await processExcel(excelBuffer, 1, body.id_mes, user);
 
+        if( observacion.length > 1){
+            // Crear un nuevo libro de trabajo
+            const workbook = xlsx.utils.book_new();
+
+            // Crear una hoja a partir de los datos
+            const worksheet = xlsx.utils.aoa_to_sheet(observacion);
+
+            // Agregar la hoja al libro de trabajo
+            xlsx.utils.book_append_sheet(workbook, worksheet, 'Hoja1');
+
+            // Guardar el archivo Excel temporalmente
+            const nameFile = 'observaciones.xlsx';//`${uuidv4()}.pdf`;
+            const outputFileName = 'public/upload/'+nameFile;
+            const filePath = path.join(__dirname, '../../public/upload/', nameFile);  // Ruta al archivo PDF en el servidor
+
+            //const excelPath = path.join(__dirname, 'observaciones.xlsx');
+            xlsx.writeFile(workbook, filePath);
+
+            // Escribir el archivo Excel en un buffer
+            //const buffer = xlsx.write(workbook, { bookType: 'xlsx', type: 'buffer' });
+
+            // Configurar las cabeceras para la descarga
+            // res.setHeader('Content-Disposition', 'attachment; filename="observaciones.xlsx"');
+            // res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+
+            // console.log("enviar archivo...........");
+            // // Enviar el buffer como respuesta para que el cliente descargue el archivo
+            // //res.send(buffer);
+            // res.sendFile(filePath, (err) => {
+            //     if (err) {
+            //       console.error('Error enviando archivo:', err);
+            //     }
+            //     // Eliminar el archivo temporal después de enviarlo
+            //     fs.unlinkSync(filePath);
+            //   });
+            res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+            res.setHeader('Content-Disposition', 'attachment; filename="observaciones.xlsx"');
+            
+            // Enviar el archivo
+            res.sendFile(filePath, (err) => {
+            if (err) {
+                console.log('Error al enviar el archivo:', err);
+                res.status(500).send('Error al descargar el archivo.');
+            }else{
+                console.log("se envio");
+            }
+            });
+            console.log("respuesta:",res.header);
+        
+        }else{
         // body.activo = 1;
         // const empleadoNew = await Empleado.create(body);
         //wait t.commit();
-        res.status(201).json({
-            ok: true,
-            //empleadoNew            
-        });
+            res.json({ message: 'Archivo procesado con éxito, sin observaciones.' });
+            // res.status(201).json({
+            //     ok: true,
+            //     message: 'Archivo procesado con éxito, sin observaciones.'
+            //     //empleadoNew            
+            // });
+        }
         
     } catch (error) {
         console.log(error);
@@ -213,7 +272,7 @@ const importarDescuento = async (req = request, res = response ) => {
         });
     }
 }
-function processExcel(excelBuffer, t, id_mes) {
+function processExcel(excelBuffer, t, id_mes, user) {
 
     const workbook = xlsx.read(excelBuffer, { type: 'buffer' });
     const sheetName = workbook.SheetNames[0];
@@ -226,115 +285,74 @@ function processExcel(excelBuffer, t, id_mes) {
       };
     const excelData = xlsx.utils.sheet_to_json(worksheet, options );
   
-    insertExcelIntoDatabase(excelData,  id_mes);
+    return insertExcelIntoDatabase(excelData,  id_mes, user);
+
 }
 
-async function insertExcelIntoDatabase(data, id_mes) {
+async function insertExcelIntoDatabase(data, id_mes, user) {
+        
     try{
-            
+        
+        const meses = await Mes.findOne({where: { id: id_mes }} );
+        const periodoIni = moment(meses.fecha_inicio);
+        const periodoLimit = moment(meses.fecha_limite);
+        let observados = [['codigo_empleado', 'concepto', 'monto','unidad', 'periodo','observación']];
         for (let i = 1; i < data.length; i++) {
             const row = data[i];
+            console.log("fila excel:", row );
             //datos
-            let id_empleado = 0;
-            let existeEmpleado = false;
             if( row[0] ){
                 
-                let ci_emp = parseFloat(row[1]);
-                const existEmpleado = await Empleado.findOne( { where: { cod_empleado:  ci_emp  } } );
+                let codigo = parseFloat(row[1]);
+                let codDesc = parseInt(row[2]);
+                let monto = parseFloat(row[6]);
+                const existEmpleado = await Empleado.findOne( { where: { cod_empleado:  codigo } } );
+                const existDescuento = await Tipo_descuento_sancion.findOne( { where: { codigo:  codDesc } } );
+
+                if(existEmpleado && existDescuento){
+                    //verificar y registrar empleado
+                    const asignacionDescuento = {
+                        id_tipo_descuento: existDescuento.id,
+                        id_empleado: existEmpleado.id,
+                        cod_empleado: codigo,
+                        monto: monto,
+                        unidad: row[5]=='B'? 'BS': (row[5]=='$'? '$':'%'),
+                        //institucion: null,
+                        fecha_inicio: periodoIni,
+                        fecha_limite: periodoLimit,
+                        memo_nro: 0,
+                        memo_detalle: 'importacion masiva',
+                        referencia: null,
+                        estado: 'AC',
+                        id_user_create: user.id,
+                        activo: 1
+                        //createdAt: new Date()
+                        
+                    };
+                    const existAsignacion = await Asignacion_descuento.findOne( { where: { id_tipo_descuento:existDescuento.id, id_empleado: existEmpleado.id, fecha_inicio: periodoIni, fecha_limite: periodoLimit, monto: row[6] } } );
                 
-                    
-            
-
-                //verificar y registrar empleado
-                const empleado = {
-                    cod_empleado: existEmpleado,
-                    monto: DataTypes.DECIMAL(8,2),
-                    unidad: DataTypes.STRING(2),
-                    institucion: DataTypes.STRING(8),
-                    fecha_inicio: DataTypes.DATE,
-                    fecha_limite: DataTypes.DATE,
-                    memo_nro: DataTypes.STRING(10),
-                    memo_detalle: DataTypes.STRING(200),
-                    referencia: DataTypes.STRING(200),
-                    estado: DataTypes.STRING(2),
-                    id_user_create: DataTypes.INTEGER,
-                    id_user_mod: DataTypes.INTEGER,
-                    id_user_delete: DataTypes.INTEGER,
-                    activo: DataTypes.BIGINT
-
-
-                    cod_empleado: Number( row[3] ),
-                    numero_documento: Number( row[5] ),
-                    complemento: null,
-                    nombre: nombre,
-                    otro_nombre: otro_nombre,
-                    paterno: apellidoPaterno,
-                    materno: apellidoMaterno,
-                    ap_esposo: null,
-                    fecha_nacimiento: fechaNac, 
-                    nacionalidad: 'BOLIVIANA',
-                    sexo: null,
-                    nua: Number( row[8]),
-                    cuenta_bancaria: Number(row[9]),
-                    tipo_documento: 'ci',
-                    cod_rciva: null,//DataTypes.STRING(20),
-                    cod_rentista: null,
-                    correo: null,
-                    telefono: null,
-                    celular: null,
-                    id_expedido: extension?extension.id:null,
-                    id_grado_academico:null,
-                    id_tipo_movimiento:1,
-                    id_user_create: 0,
-                    activo:1
-                };
-                const existEmp = await Empleado.findOne({where: { numero_documento: String( row[5] ) } } );
-                
-                if(!existEmp){
-                    const empleadoNew = await Empleado.create(empleado );
-                    id_empleado = empleadoNew.id;
-                    console.log("No existe empleado.................:", existEmp);
-                    
+                    if(!existAsignacion){
+                        const asignacionDescNew = await Asignacion_descuento.create( asignacionDescuento );
+                        //console.log("No existe empleado.................:", existEmp);
+                        
+                    }else{
+                        //console.log("existe empleado.................:", existEmp.id);
+                        observados.push(
+                            [codigo,codDesc,monto,row[5],periodoIni,'Existe registro en la base de datos']
+                        );
+    
+                        
+                    }
                 }else{
-                    console.log("existe empleado.................:", existEmp.id);
-                    id_empleado = existEmp.id;
-                    existeEmpleado = true;
-                }
-                
-                //asisgnacion de cargo empleado
-                const cargo = await Cargo.findOne({where: { abreviatura: formatearTexto( row[17] ) } } );
-                const meses = await Mes.findOne({where: { id:id_mes }} );
-                const reparticion = await Reparticion.findOne({where: { nombre: formatearTexto( row[1] ) }} );
-                const destino = await Destino.findOne({where: { nombre: formatearTexto( row[2] ) }} );
-                const esBaja = row[16]? true:false;
-                const partFecha = row[15].split('/');
-                const fechaFormated = `${partFecha[2]}-${partFecha[1]}-${partFecha[0]}`;
-                const fechaIng = moment(fechaFormated, 'YY-MM-DD');
-                console.log("fecha de ingreso.......................:,",fechaIng);
-                const dataAsignacion = {
-                    id_gestion:meses.id_gestion,
-                    id_empleado:id_empleado,
-                    id_cargo:cargo.id,
-                    id_tipo_movimiento: 1,
-                    id_reparticion: reparticion.id,
-                    id_destino: destino.id,
-                    ci_empleado: empleado.numero_documento,
-                    fecha_inicio: fechaIng.format('YYYY-MM-DD'),
-                    fecha_limite: esBaja? Date(row[16]):null,
-                    motivo: esBaja? 'Baja':null,
-                    nro_item: Number(row[4]),
-                    ingreso: true,
-                    retiro: esBaja?true:null,
-                    activo: 1,
-                    id_user_create: 0,
-                    estado: 'AC',
-                };
-                
-                
-                
+                    observados.push(
+                        [codigo,codDesc,monto,row[5],periodoIni, existEmpleado?'No existe el tipo descuento':'No existe el empleado']
+                    );
+                }               
             }
-        
+            
         }
+        
+        return observados;
         
     } catch (error) {
         console.log("Error", error);

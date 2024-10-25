@@ -9,21 +9,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id_organismo: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: {
-            tableName: 'organismos',
-            schema: 'public'
-          },
-          key: "id",
-        },
-      },
       codigo: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(10)
       },
       nombre: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(100)
+      },
+      nombre_abreviado: {
+        type: Sequelize.STRING(50)
       },
       activo: {
         type: Sequelize.BIGINT

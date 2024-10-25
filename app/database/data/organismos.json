@@ -1,22 +1,47 @@
 [
     {
-      "codigo": "001",
+      "codigo": "1",
+      "nombre": "MIN.DEFENSA",
+      "activo": 1
+    },
+    {
+      "codigo": "2",
       "nombre": "COMANDO EN JEFE",
       "activo": 1
     },
     {
-      "codigo": "002",
+      "codigo": "3",
       "nombre": "EJERCITO",
       "activo": 1
     },
     {
-      "codigo": "003",
+      "codigo": "4",
       "nombre": "FUERZA AEREA",
       "activo": 1
     },
     {
-      "codigo": "004",
+      "codigo": "5",
       "nombre": "ARMADA BOLIVIANA",
+      "activo": 1
+    },
+    {
+      "codigo": "6",
+      "nombre": "MIN.DEFENSA.(E.M.)",
+      "activo": 1
+    },
+    {
+      "codigo": "7",
+      "nombre": "VIDECI.",
+      "activo": 1
+    },
+    {
+      "codigo": "8",
+      "nombre": "CONTR.MINDEF.",
+      "activo": 1
+    },
+    {
+      "codigo": "9",
+      "nombre": "BECARIOS EXT.(CDTE.ALUM.)",
       "activo": 1
     }
     

@@ -1,1459 +1,2498 @@
 [
   {
-    "id_organismo":1,
-    "id_municipio":1,
-    "codigo": "1",
-    "nombre": "CMDO.EN JEFE FA",
+    "id_municipio": "1",
+    "codigo": "000005",
+    "sigla": "PRES.",
+    "nombre": "PRESIDENCIA DE LA REPUBLICA",
+    "nombre_abreviado": "PRESIDEN.REPUB.",
     "activo": 1
   },
   {
-    "id_organismo":1,
-    "id_municipio":1,
-    "codigo": "2",
-    "nombre": "LETRA \"A\"",
+    "id_municipio": "1",
+    "codigo": "000010",
+    "sigla": "CMSE.",
+    "nombre": "CASA MILITAR S.E.",
+    "nombre_abreviado": "CASA MIL.S/E",
     "activo": 1
   },
   {
-    "id_organismo":1,
-    "id_municipio":1,
-    "codigo": "3",
-    "nombre": "E.A.E.N. LP.",
-    "activo": 1
-  },    
-  {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "4",
-    "nombre": "CASA MIL.S/E",
+    "id_municipio": "1",
+    "codigo": "000050",
+    "sigla": "V.PRE",
+    "nombre": "VICE-PRESIDENCIA",
+    "nombre_abreviado": "VICE-PRESIDEN.",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "5",
-    "nombre": "MINDEFENSA",
+    "id_municipio": "1",
+    "codigo": "000080",
+    "sigla": "PSMIN",
+    "nombre": "PERSONAL SUPERIOR MINDEF.",
+    "nombre_abreviado": "PERS.SUP.MINDE",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "6",
-    "nombre": "RESERVA ACTIVA",
+    "id_municipio": "1",
+    "codigo": "000100",
+    "sigla": "MINDE",
+    "nombre": "MINISTERIO DEFENSA",
+    "nombre_abreviado": "MINDEFENSA",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "7",
-    "nombre": "TRIB.SUP.JUS.M",
+    "id_municipio": "1",
+    "codigo": "000101",
+    "sigla": "VIDEC",
+    "nombre": "VIDECICODI.",
+    "nombre_abreviado": "VIDECICODI.",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "8",
-    "nombre": "TRIB.PER.JUS.M",
+    "id_municipio": "1",
+    "codigo": "000102",
+    "sigla": "EDMUL",
+    "nombre": "MINDEFENSA (FUENTE 11)",
+    "nombre_abreviado": "MINDEF.FTE.11",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "9",
-    "nombre": "REG.MIL.#1 LP",
+    "id_municipio": "2",
+    "codigo": "000103",
+    "sigla": "CORGE",
+    "nombre": "CORGEPAI.",
+    "nombre_abreviado": "CORGEPAI-VIDEC",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "10",
-    "nombre": "REG.MIL.#2 OR",
+    "id_municipio": "1",
+    "codigo": "000104",
+    "sigla": "DIRVI",
+    "nombre": "DIRECTORES GRALES.VIDECICODI.",
+    "nombre_abreviado": "DIR.GRAL.VIDEC",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "11",
-    "nombre": "REG.MIL.#3 TJ",
+    "id_municipio": "1",
+    "codigo": "000105",
+    "sigla": "VIDEC",
+    "nombre": "VIDECICODI-INTERIOR",
+    "nombre_abreviado": "VIDECICODI-INT",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "12",
-    "nombre": "REG.MIL.#4 SU",
+    "id_municipio": "1",
+    "codigo": "000110",
+    "sigla": "ASMIN",
+    "nombre": "CONTRAT. MINDEFENSA",
+    "nombre_abreviado": "CONTR. MINDEF.",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "13",
-    "nombre": "REG.MIL.#6 TR",
+    "id_municipio": "1",
+    "codigo": "000111",
+    "sigla": "DIRMI",
+    "nombre": "DIR.GRALES.MINDEF.(PERS.CIVIL)",
+    "nombre_abreviado": "DIR.GRAL.MIN.D",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "14",
-    "nombre": "REG.MIL#8 SC",
+    "id_municipio": "1",
+    "codigo": "000112",
+    "sigla": "DMINE",
+    "nombre": "DIR.GRALES.MINDEF.(P.MIL.EJTO.)",
+    "nombre_abreviado": "DIR.GRAL.MIN.E",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "15",
-    "nombre": "REG.MIL.#10 PT",
+    "id_municipio": "1",
+    "codigo": "000113",
+    "sigla": "DMINA",
+    "nombre": "DIR.GRALES.MINDEF.(P.MIL.AEREA)",
+    "nombre_abreviado": "DIR.GRAL.MIN.A",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "16",
-    "nombre": "COSSMIL. LPZ",
+    "id_municipio": "1",
+    "codigo": "000114",
+    "sigla": "DMINN",
+    "nombre": "DIR.GRALES.MINDEF.(P.MIL.ARMADA)",
+    "nombre_abreviado": "DIR.GRAL.MIN.N",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "17",
-    "nombre": "ART.114 LOFA.",
+    "id_municipio": "1",
+    "codigo": "000115",
+    "sigla": "MDVER",
+    "nombre": "MINDEF.- JUBILADOS AFP.",
+    "nombre_abreviado": "MINDEF.-JUBIL.",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "18",
-    "nombre": "COFADENA LP",
+    "id_municipio": "1",
+    "codigo": "000116",
+    "sigla": "FALLE",
+    "nombre": "MINDEF.- FALLECIDOS (BAJ)",
+    "nombre_abreviado": "MIND.FALLEC.BAJ",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "19",
-    "nombre": "LET E D.JUS.MI",
+    "id_municipio": "1",
+    "codigo": "000117",
+    "sigla": "BAJDE",
+    "nombre": "MINDEF.- BAJAS",
+    "nombre_abreviado": "MINDEF.BAJAS",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "20",
-    "nombre": "CMDTE.EN JEFE",
+    "id_municipio": "1",
+    "codigo": "000120",
+    "sigla": "RECPR",
+    "nombre": "PERS.EVENT.REC.PROP.",
+    "nombre_abreviado": "P.EVENT.REC.PR",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "21",
-    "nombre": "CMDO.EN JEFE FA",
+    "id_municipio": "1",
+    "codigo": "000150",
+    "sigla": "SSEJT",
+    "nombre": "SUB-STRIA.EJERCITO",
+    "nombre_abreviado": "SUB.STRIA.EJTO",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "22",
-    "nombre": "LETRA \"A\"",
+    "id_municipio": "1",
+    "codigo": "000200",
+    "sigla": "SSAER",
+    "nombre": "SUB-STRIA.AEREONAU",
+    "nombre_abreviado": "SUB.STRIA.AER.",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "23",
-    "nombre": "LET E D.JUS.OR",
+    "id_municipio": "1",
+    "codigo": "000250",
+    "sigla": "SSNAV",
+    "nombre": "SUB-STRIA.NAVAL",
+    "nombre_abreviado": "SUB.STRIA.NAV.",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "24",
-    "nombre": "E.M.I. LA PAZ",
+    "id_municipio": "1",
+    "codigo": "000300",
+    "sigla": "COSDE",
+    "nombre": "COSDENA.",
+    "nombre_abreviado": "COSDENA.",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "25",
-    "nombre": "COMANEJTO. LP.",
+    "id_municipio": "1",
+    "codigo": "000350",
+    "sigla": "ENABO",
+    "nombre": "ENABOL.",
+    "nombre_abreviado": "ENABOL.",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "26",
-    "nombre": "LETRA \"B\"",
+    "id_municipio": "1",
+    "codigo": "000360",
+    "sigla": "RIBB",
+    "nombre": "R.I.B.B.",
+    "nombre_abreviado": "REG.INT.BOL.BU",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "27",
-    "nombre": "LET C CO.S.GOB",
+    "id_municipio": "1",
+    "codigo": "000400",
+    "sigla": "DEFCI",
+    "nombre": "DEFENSA CIVIL",
+    "nombre_abreviado": "DEFENSA CIVIL",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "28",
-    "nombre": "LET D TRAT.MED",
+    "id_municipio": "1",
+    "codigo": "000450",
+    "sigla": "MREXT",
+    "nombre": "MIN.RELAC.EXTRERIOR",
+    "nombre_abreviado": "MIN.REL.EXTER.",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "29",
-    "nombre": "(+) ART.87",
+    "id_municipio": "1",
+    "codigo": "000500",
+    "sigla": "TSJM.",
+    "nombre": "TRIB.SUP.JUST.MIL.",
+    "nombre_abreviado": "TRIB.SUP.JUS.M",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "30",
-    "nombre": "P.P.E.  LA PAZ",
+    "id_municipio": "1",
+    "codigo": "000510",
+    "sigla": "TPJM.",
+    "nombre": "TRIB.PERM.JUST.MIL.",
+    "nombre_abreviado": "TRIB.PER.JUS.M",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "31",
-    "nombre": "CTRO.G.-MANTTO",
+    "id_municipio": "3",
+    "codigo": "000550",
+    "sigla": "A-CEN",
+    "nombre": "ARSENAL CENTRAL",
+    "nombre_abreviado": "ARSENAL CTRAL.",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "32",
-    "nombre": "I.G.M.  LA PAZ",
+    "id_municipio": "1",
+    "codigo": "000600",
+    "sigla": "I-CEN",
+    "nombre": "INTENDENCIA CENTRAL",
+    "nombre_abreviado": "INTEND.CTRAL.",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "33",
-    "nombre": "ESC.MIL.TOP.EJ",
+    "id_municipio": "1",
+    "codigo": "000650",
+    "sigla": "I-MIL",
+    "nombre": "INVALIDOS MILITARES",
+    "nombre_abreviado": "CABOS VITAL.",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "34",
+    "id_municipio": "1",
+    "codigo": "000700",
+    "sigla": "REMIL",
+    "nombre": "REGION MIL. #1 LP",
+    "nombre_abreviado": "REG.MIL.#1 LP",
+    "activo": 1
+  },
+  {
+    "id_municipio": "4",
+    "codigo": "000750",
+    "sigla": "RMIL.",
+    "nombre": "REGION MIL. #2 OR",
+    "nombre_abreviado": "REG.MIL.#2 OR",
+    "activo": 1
+  },
+  {
+    "id_municipio": "5",
+    "codigo": "000800",
+    "sigla": "RM-3",
+    "nombre": "REGION MIL. #3 TJ",
+    "nombre_abreviado": "REG.MIL.#3 TJ",
+    "activo": 1
+  },
+  {
+    "id_municipio": "6",
+    "codigo": "000850",
+    "sigla": "RM-4",
+    "nombre": "REGION MIL. #4 SU",
+    "nombre_abreviado": "REG.MIL.#4 SU",
+    "activo": 1
+  },
+  {
+    "id_municipio": "6",
+    "codigo": "000900",
+    "sigla": "RMIL5",
+    "nombre": "REGION MIL. #5 ..",
+    "nombre_abreviado": "REG.MIL.#5",
+    "activo": 1
+  },
+  {
+    "id_municipio": "7",
+    "codigo": "000950",
+    "sigla": "REGMI",
+    "nombre": "REGION MIL. #6 TRINIDAD",
+    "nombre_abreviado": "REG.MIL.#6 TR",
+    "activo": 1
+  },
+  {
+    "id_municipio": "2",
+    "codigo": "001050",
+    "sigla": "REGMI",
+    "nombre": "REGION MIL. #8 STA.CRUZ",
+    "nombre_abreviado": "REG.MIL#8 SC",
+    "activo": 1
+  },
+  {
+    "id_municipio": "8",
+    "codigo": "001100",
+    "sigla": "REMIL",
+    "nombre": "REGION MIL. #10 POTOSI",
+    "nombre_abreviado": "REG.MIL.#10 PT",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "001150",
+    "sigla": "COSSM",
+    "nombre": "COSSMIL LP",
+    "nombre_abreviado": "COSSMIL. LPZ",
+    "activo": 1
+  },
+  {
+    "id_municipio": "3",
+    "codigo": "001200",
+    "sigla": "COSMI",
+    "nombre": "COSSMIL CBBA.",
+    "nombre_abreviado": "COSSMIL.CBBA",
+    "activo": 1
+  },
+  {
+    "id_municipio": "2",
+    "codigo": "001250",
+    "sigla": "COSMI",
+    "nombre": "COSSMIL STA.CRUZ",
+    "nombre_abreviado": "COSSMIL.S.CRUZ",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "001300",
+    "sigla": "HP-LP",
+    "nombre": "HOSPITAL MILITAR CENTRAL",
+    "nombre_abreviado": "HOSP.MIL.CTRAL",
+    "activo": 1
+  },
+  {
+    "id_municipio": "9",
+    "codigo": "001350",
+    "sigla": "HM-1",
+    "nombre": "HOSPITAL MIL. #1 CB",
+    "nombre_abreviado": "HO.MIL.#1 CBBA",
+    "activo": 1
+  },
+  {
+    "id_municipio": "10",
+    "codigo": "001400",
+    "sigla": "HM-2",
+    "nombre": "HOSPITAL MIL. #2 S.CRUZ",
+    "nombre_abreviado": "HO.MIL.#2 SC",
+    "activo": 1
+  },
+  {
+    "id_municipio": "11",
+    "codigo": "001450",
+    "sigla": "HMILI",
+    "nombre": "HOSP.MIL. #3 CAMIRI",
+    "nombre_abreviado": "HOS.MIL#3 CAMI",
+    "activo": 1
+  },
+  {
+    "id_municipio": "12",
+    "codigo": "001500",
+    "sigla": "HM-4",
+    "nombre": "HOSP.MIL.#4 RIBERALTA",
+    "nombre_abreviado": "HOS.MIL#4 RIBE",
+    "activo": 1
+  },
+  {
+    "id_municipio": "7",
+    "codigo": "001550",
+    "sigla": "HMILI",
+    "nombre": "HOSP.MIL.#6 TRINIDAD",
+    "nombre_abreviado": "HOS.MIL#6 TRIN",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "001600",
+    "sigla": "COFAD",
+    "nombre": "COFADENA LZ",
+    "nombre_abreviado": "COFADENA LP",
+    "activo": 1
+  },
+  {
+    "id_municipio": "9",
+    "codigo": "001650",
+    "sigla": "CFADE",
+    "nombre": "COFADENA CBBA.",
+    "nombre_abreviado": "COFADENA CBBA.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "10",
+    "codigo": "001700",
+    "sigla": "COFSC",
+    "nombre": "COFADENA S.CRUZ",
+    "nombre_abreviado": "COFADENA SCZ",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "001730",
+    "sigla": "COMJE",
+    "nombre": "COMANDANTE EN JEFE FF.AA.",
+    "nombre_abreviado": "CMDTE.EN JEFE",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "001750",
+    "sigla": "CJEFE",
+    "nombre": "COMANDO EN JEFE DE LAS FF.AA.",
+    "nombre_abreviado": "CMDO.EN JEFE FA",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "001800",
+    "sigla": "INSPE",
+    "nombre": "INSPECTORIA FF.AA.",
+    "nombre_abreviado": "INSPEC. FF.AA.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "001850",
+    "sigla": "JEM.",
+    "nombre": "JEFATURA DE EST.MY",
+    "nombre_abreviado": "JEFAT.EST.MY.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "001900",
+    "sigla": "ACCIV",
+    "nombre": "ACCION CIVICA FF.AA",
+    "nombre_abreviado": "ACC.CIV.FF.AA.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "001950",
+    "sigla": "GCG.",
+    "nombre": "GRAN CUARTEL GRAL.",
+    "nombre_abreviado": "GRAN.CTEL.GRAL",
+    "activo": 1
+  },
+  {
+    "id_municipio": "3",
+    "codigo": "002000",
+    "sigla": "EAEN.",
+    "nombre": "ESC.ALTOS ESTUD.CB.",
+    "nombre_abreviado": "E.A.E.N. CBBA.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "2",
+    "codigo": "002040",
+    "sigla": "EAENC",
+    "nombre": "ESC.ALTOS ESTUD.CZ.",
+    "nombre_abreviado": "E.A.E.N S.CRUZ",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "002050",
+    "sigla": "EAEN.",
+    "nombre": "ESC.ALTOS ESTUD.NAC.",
+    "nombre_abreviado": "E.A.E.N. LP.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "002100",
+    "sigla": "EMI.",
+    "nombre": "ESC.MIL.INGENIERIA",
+    "nombre_abreviado": "E.M.I. LA PAZ",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "002150",
+    "sigla": "TINFO",
+    "nombre": "TECNOLOGICO INFORMAT",
+    "nombre_abreviado": "TECNOL.INFORM.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "002200",
+    "sigla": "AHMIL",
+    "nombre": "ACADEMIA HIST.MIL.",
+    "nombre_abreviado": "ACAD.HIST.MIL.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "002250",
+    "sigla": "CGEJT",
+    "nombre": "COMANDO GRAL.EJTO.",
+    "nombre_abreviado": "COMANEJTO. LP.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "002300",
+    "sigla": "IGEJT",
+    "nombre": "INSPECTORIA EJTO.",
+    "nombre_abreviado": "INSP.GRAL.EJTO",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "002350",
+    "sigla": "JEM.",
+    "nombre": "JEFATURA.EST.MAYOR",
+    "nombre_abreviado": "JEFAT.EST.MY.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "002400",
+    "sigla": "DAF.",
+    "nombre": "DIR.ADM.FINANCIERA",
+    "nombre_abreviado": "DIR.ADM.FINAN.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "002450",
+    "sigla": "DIGBI",
+    "nombre": "DIREC.GRAL.BIENES",
+    "nombre_abreviado": "DIR.GRAL.BIEN.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "002500",
+    "sigla": "DIGPR",
+    "nombre": "DIREC.GRAL.PRODUCC",
+    "nombre_abreviado": "DIR.GRAL.PROD.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "002550",
+    "sigla": "CMDOI",
+    "nombre": "COMANDO INSTITUTOS",
+    "nombre_abreviado": "CMDO.INST.MIL.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "002600",
+    "sigla": "ESCID",
+    "nombre": "ESCUELA DE IDIOMAS",
+    "nombre_abreviado": "ESC.DE IDIOMAS",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "002650",
+    "sigla": "C-ING",
+    "nombre": "INGENIERIA DE CONSTRUCCIONES",
+    "nombre_abreviado": "INGEN.CONSTRUC.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "13",
+    "codigo": "002655",
+    "sigla": "BTARE",
+    "nombre": "BATALLON DE TAREA # 1",
+    "nombre_abreviado": "BAT-TAREA 1",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "002700",
+    "sigla": "EPSSI",
+    "nombre": "EPSS.CURSO AVAN-ING",
+    "nombre_abreviado": "EPSS. C.A.ING.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "002750",
+    "sigla": "EPSSI",
+    "nombre": "EPSS.CURSO BAS-ING",
+    "nombre_abreviado": "EPSS. C.B.ING.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "002800",
+    "sigla": "COCOM",
+    "nombre": "CMDO. DE COMUNIC.",
+    "nombre_abreviado": "CMDO.COMUNIC.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "002850",
+    "sigla": "EPSS.",
+    "nombre": "EPSS.CURSO AVAN-COM",
+    "nombre_abreviado": "EPSS. C.A.COM.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "002900",
+    "sigla": "EPSS.",
+    "nombre": "EPSS.CURSO BAS-COM",
+    "nombre_abreviado": "EPSS. C.B.COM.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "002950",
+    "sigla": "COART",
+    "nombre": "CMDO.DE ARTILLERIA",
+    "nombre_abreviado": "CMDO.DE ARTILL",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "003050",
+    "sigla": "PPE.",
+    "nombre": "PROM.PROF.EJTO.   PPE",
+    "nombre_abreviado": "P.P.E.  LA PAZ",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "003100",
+    "sigla": "CGMAN",
+    "nombre": "CENT.GRAL.MANTENIM.",
+    "nombre_abreviado": "CTRO.G.-MANTTO",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "003150",
+    "sigla": "CMING",
+    "nombre": "C.MANTTO.ING.NO.1 GUARACHI",
+    "nombre_abreviado": "C.MANTTO.ING.1",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "003200",
+    "sigla": "I.G.M",
+    "nombre": "INST.GEOGRAF.MIL.",
+    "nombre_abreviado": "I.G.M.  LA PAZ",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "003205",
+    "sigla": "EMTE.",
+    "nombre": "ESC.MIL.TOPOGRAFIA EJTO.",
+    "nombre_abreviado": "ESC.MIL.TOP.EJ",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "003210",
+    "sigla": "EP-CA",
+    "nombre": "EPSS.CURSO AVAN-TOP",
+    "nombre_abreviado": "EPSS. C.A.TOP.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "003220",
+    "sigla": "EP-CB",
+    "nombre": "EPSS.CURSO BAS-TOP",
+    "nombre_abreviado": "EPSS. C.B.TOP.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "003230",
+    "sigla": "DCAT1",
+    "nombre": "DISTRITO CATASTRAL 1",
+    "nombre_abreviado": "DIST.CATAST.#1",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "003235",
+    "sigla": "DCAT2",
+    "nombre": "DISTRITO CATASTRAL 2",
+    "nombre_abreviado": "DIST.CATAST.#2",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "003240",
+    "sigla": "DCAT3",
+    "nombre": "DISTRITO CATASTRAL 3",
+    "nombre_abreviado": "DIST.CATAST.#3",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "003245",
+    "sigla": "DCAT4",
+    "nombre": "DISTRITO CATASTRAL 4",
+    "nombre_abreviado": "DIST.CATAST.#4",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "003250",
+    "sigla": "DISCA",
+    "nombre": "DISTRITO CATASTRAL 5",
+    "nombre_abreviado": "DIST.CATAS-1",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "003300",
+    "sigla": "RI-1",
     "nombre": "RI-1 COLORADOS",
+    "nombre_abreviado": "RI-1 COLORADOS",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "35",
+    "id_municipio": "1",
+    "codigo": "003350",
+    "sigla": "RCB-4",
     "nombre": "RCB-4 \"INGAVI\"",
+    "nombre_abreviado": "RCB-4 \"INGAVI\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "36",
-    "nombre": "ART.118 LOFA",
+    "id_municipio": "1",
+    "codigo": "003400",
+    "sigla": "BPMB1",
+    "nombre": "BPM.B-I \"SAAVEDRA\"",
+    "nombre_abreviado": "BPM.B-1 SAAVEDR",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "37",
-    "nombre": "BPM.B-1 SAAVEDR",
+    "id_municipio": "1",
+    "codigo": "003450",
+    "sigla": "BC251",
+    "nombre": "BAT.Y ESC.COM.1 \"VIDAURRE\"",
+    "nombre_abreviado": "BAT.C-1 VIDAURR",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "38",
-    "nombre": "BAT.C-1 VIDAURR",
-    "activo": 1
-  },
-  {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "39",
+    "id_municipio": "14",
+    "codigo": "003500",
+    "sigla": "RCB-2",
     "nombre": "RCB-2 \"TARAPACA\"",
+    "nombre_abreviado": "RCB-2 \"TARAPACA\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "40",
+    "id_municipio": "15",
+    "codigo": "003550",
+    "sigla": "RCB-1",
     "nombre": "RCB-1 \"CALAMA\"",
+    "nombre_abreviado": "RCB-1 \"CALAMA\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "41",
-    "nombre": "RAA-6 B.RIOJA",
+    "id_municipio": "16",
+    "codigo": "003600",
+    "sigla": "RAA-6",
+    "nombre": "RAA-6 \"BILBAO RIOJA\"",
+    "nombre_abreviado": "RAA-6 B.RIOJA",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "42",
-    "nombre": "COMP.AV.EJTO.1",
+    "id_municipio": "1",
+    "codigo": "003650",
+    "sigla": "CAEJT",
+    "nombre": "COMP.AVIACION.EJTO.1 \"LOPEZ\"",
+    "nombre_abreviado": "COMP.AV.EJTO.1",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "43",
-    "nombre": "CMDO.1RA.DIV.BL",
+    "id_municipio": "17",
+    "codigo": "003700",
+    "sigla": "DIV-1",
+    "nombre": "CMDO.1RA.DIV.BLINDADA",
+    "nombre_abreviado": "CMDO.1RA.DIV.BL",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "44",
-    "nombre": "1RA.BRIG.MECAN",
+    "id_municipio": "16",
+    "codigo": "003710",
+    "sigla": "1BMEC",
+    "nombre": "PRIMERA BRIGADA MECANIZADA",
+    "nombre_abreviado": "1RA.BRIG.MECAN",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "45",
-    "nombre": "RIB-8\"AYACUCHO\"",
+    "id_municipio": "18",
+    "codigo": "003750",
+    "sigla": "RIB-8",
+    "nombre": "RIB-8 \"AYACUCHO\"",
+    "nombre_abreviado": "RIB-8\"AYACUCHO\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "46",
-    "nombre": "RIB-23 M.TOLEDO",
+    "id_municipio": "16",
+    "codigo": "003800",
+    "sigla": "RIB23",
+    "nombre": "RIB-23 \"MAX TOLEDO\"",
+    "nombre_abreviado": "RIB-23 M.TOLEDO",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "47",
+    "id_municipio": "19",
+    "codigo": "003850",
+    "sigla": "RCB-5",
     "nombre": "RCB-5 \"LANZA\"",
+    "nombre_abreviado": "RCB-5 \"LANZA\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "48",
+    "id_municipio": "16",
+    "codigo": "003900",
+    "sigla": "RA-2",
     "nombre": "RA-2 \"BOLIVAR\"",
+    "nombre_abreviado": "RA-2 \"BOLIVAR\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "49",
-    "nombre": "B.ING-II ROMAN",
+    "id_municipio": "20",
+    "codigo": "003950",
+    "sigla": "BI-II",
+    "nombre": "BAT.ING.II \"ROMAN\"",
+    "nombre_abreviado": "B.ING-II ROMAN",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "50",
-    "nombre": "CMDO.2DA.DIV.",
+    "id_municipio": "4",
+    "codigo": "004000",
+    "sigla": "DIV-2",
+    "nombre": "CMDO.2DA.DIVI.",
+    "nombre_abreviado": "CMDO.2DA.DIV.",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "51",
-    "nombre": "RAD.BAT.TOPAT.",
+    "id_municipio": "4",
+    "codigo": "004050",
+    "sigla": "RADTO",
+    "nombre": "RADIO BAT.TOPATER",
+    "nombre_abreviado": "RAD.BAT.TOPAT.",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "52",
-    "nombre": "RI-21 ILLIMANI",
+    "id_municipio": "21",
+    "codigo": "004100",
+    "sigla": "RI-21",
+    "nombre": "RI-21 \"ILLIMANI\"",
+    "nombre_abreviado": "RI-21 ILLIMANI",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "53",
-    "nombre": "RI-22 MEJILLONE",
+    "id_municipio": "22",
+    "codigo": "004150",
+    "sigla": "RI-22",
+    "nombre": "RI-22 \"MEJILLONES\"",
+    "nombre_abreviado": "RI-22 MEJILLONE",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "54",
-    "nombre": "REG.E.24 M.ARCO",
+    "id_municipio": "23",
+    "codigo": "004200",
+    "sigla": "RE-24",
+    "nombre": "REG.FF.EE. 24 MENDEZ ARCOS",
+    "nombre_abreviado": "REG.E.24 M.ARCO",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "55",
-    "nombre": "REG.25 TOCOPILL",
+    "id_municipio": "24",
+    "codigo": "004250",
+    "sigla": "RE-25",
+    "nombre": "REG.Y ESC.AND.25 \"TOCOPILLA\"",
+    "nombre_abreviado": "REG.25 TOCOPILL",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "56",
+    "id_municipio": "4",
+    "codigo": "004300",
+    "sigla": "RC-8",
     "nombre": "RC-8 \"BRAUN\"",
+    "nombre_abreviado": "RC-8 \"BRAUN\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "57",
+    "id_municipio": "4",
+    "codigo": "004350",
+    "sigla": "RA-1",
     "nombre": "RA-1 \"CAMACHO\"",
+    "nombre_abreviado": "RA-1 \"CAMACHO\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "58",
-    "nombre": "BI-VII SAJAMA",
+    "id_municipio": "25",
+    "codigo": "004400",
+    "sigla": "BING7",
+    "nombre": "BAT.ING.VII \"SAJAMA\"",
+    "nombre_abreviado": "BI-VII SAJAMA",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "59",
+    "id_municipio": "26",
+    "codigo": "004450",
+    "sigla": "DIV-3",
     "nombre": "CMDO.3RA.DIV.",
+    "nombre_abreviado": "CMDO.3RA.DIV.",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "60",
+    "id_municipio": "27",
+    "codigo": "004500",
+    "sigla": "RI-5",
     "nombre": "RI-5 \"CAMPERO\"",
+    "nombre_abreviado": "RI-5 \"CAMPERO\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "61",
+    "id_municipio": "5",
+    "codigo": "004550",
+    "sigla": "RI-20",
     "nombre": "RI-20 \"PADILLA\"",
+    "nombre_abreviado": "RI-20 \"PADILLA\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "62",
+    "id_municipio": "28",
+    "codigo": "004600",
+    "sigla": "RC-3",
     "nombre": "RC-3 \"AROMA\"",
+    "nombre_abreviado": "RC-3 \"AROMA\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "63",
+    "id_municipio": "26",
+    "codigo": "004650",
+    "sigla": "RA-3",
     "nombre": "RA-3 \"PISAGUA\"",
+    "nombre_abreviado": "RA-3 \"PISAGUA\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "64",
-    "nombre": "BAT.ING.-I CHO",
+    "id_municipio": "5",
+    "codigo": "004700",
+    "sigla": "BTING",
+    "nombre": "BAT.ING.-I CHOROLQUE",
+    "nombre_abreviado": "BAT.ING.-I CHO",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "65",
+    "id_municipio": "11",
+    "codigo": "004750",
+    "sigla": "DIV-4",
     "nombre": "CMDO.4TA.DIV.",
+    "nombre_abreviado": "CMDO.4TA.DIV.",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "66",
+    "id_municipio": "29",
+    "codigo": "004800",
+    "sigla": "RI-6",
     "nombre": "RI-6 \"CAMPOS\"",
+    "nombre_abreviado": "RI-6 \"CAMPOS\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "67",
-    "nombre": "RI-11 BOQUERON",
+    "id_municipio": "30",
+    "codigo": "004850",
+    "sigla": "RI-11",
+    "nombre": "RI-11 \"BOQUERON\"",
+    "nombre_abreviado": "RI-11 BOQUERON",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "68",
+    "id_municipio": "31",
+    "codigo": "004900",
+    "sigla": "RC-1",
     "nombre": "RC-1 \"AVAROA\"",
+    "nombre_abreviado": "RC-1 \"AVAROA\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "69",
+    "id_municipio": "32",
+    "codigo": "004950",
+    "sigla": "RA-4",
     "nombre": "RA-4 \"BULLAIN\"",
+    "nombre_abreviado": "RA-4 \"BULLAIN\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "70",
+    "id_municipio": "33",
+    "codigo": "005000",
+    "sigla": "DIV-5",
     "nombre": "CMDO.5TA.DIV.",
+    "nombre_abreviado": "CMDO.5TA.DIV.",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "71",
-    "nombre": "RI-13 I.MONTES",
+    "id_municipio": "34",
+    "codigo": "005050",
+    "sigla": "RI-13",
+    "nombre": "RI-13 \"ISMAEL MONTES\"",
+    "nombre_abreviado": "RI-13 I.MONTES",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "72",
+    "id_municipio": "35",
+    "codigo": "005100",
+    "sigla": "RI-14",
     "nombre": "RI-14 \"FLORIDA\"",
+    "nombre_abreviado": "RI-14 \"FLORIDA\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "73",
+    "id_municipio": "33",
+    "codigo": "005150",
+    "sigla": "RI-15",
     "nombre": "RI-15 \"JUNIN\"",
+    "nombre_abreviado": "RI-15 \"JUNIN\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "74",
-    "nombre": "RC-6 \"CASTRILO\"",
+    "id_municipio": "36",
+    "codigo": "005200",
+    "sigla": "RC-6",
+    "nombre": "RC-6 \"CASTRILLO\"",
+    "nombre_abreviado": "RC-6 \"CASTRILO\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "75",
+    "id_municipio": "37",
+    "codigo": "005250",
+    "sigla": "RA-5",
     "nombre": "RA-5 \"VERGARA\"",
+    "nombre_abreviado": "RA-5 \"VERGARA\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "76",
+    "id_municipio": "7",
+    "codigo": "005300",
+    "sigla": "DIV-6",
     "nombre": "CMDO.6TA.DIV.",
+    "nombre_abreviado": "CMDO.6TA.DIV.",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "77",
-    "nombre": "RI-29 L.ECHEVER",
+    "id_municipio": "7",
+    "codigo": "005350",
+    "sigla": "RI-29",
+    "nombre": "RI-29 \"CAP.LINO ECHEVERRIA\"",
+    "nombre_abreviado": "RI-29 L.ECHEVER",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "78",
-    "nombre": "RI-35 B.RACUA",
+    "id_municipio": "7",
+    "codigo": "005400",
+    "sigla": "BLOG.",
+    "nombre": "BAT.LOGISTICO #283",
+    "nombre_abreviado": "BAT.LOG. #283",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "79",
-    "nombre": "REG.E.16 JORDAN",
+    "id_municipio": "38",
+    "codigo": "005420",
+    "sigla": "RI-35",
+    "nombre": "RI-35 \"BRUNO RACUA\"",
+    "nombre_abreviado": "RI-35 B.RACUA",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "80",
-    "nombre": "RI-17 INDEPEND.",
+    "id_municipio": "12",
+    "codigo": "005450",
+    "sigla": "RE-16",
+    "nombre": "REG.Y ESC.SELVA FF.EE. 16 JORDAN",
+    "nombre_abreviado": "REG.E.16 JORDAN",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "81",
+    "id_municipio": "39",
+    "codigo": "005500",
+    "sigla": "RI-17",
+    "nombre": "RI-17 \"INDEPENDENCIA\"",
+    "nombre_abreviado": "RI-17 INDEPEND.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "40",
+    "codigo": "005550",
+    "sigla": "RC-2",
     "nombre": "RC-2 \"BALLIVIAN\"",
+    "nombre_abreviado": "RC-2 \"BALLIVIAN\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "82",
+    "id_municipio": "9",
+    "codigo": "005600",
+    "sigla": "DIV-7",
     "nombre": "CMDO.7MA.DIV.",
+    "nombre_abreviado": "CMDO.7MA.DIV.",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "83",
-    "nombre": "BAT.TRANSP.III",
+    "id_municipio": "3",
+    "codigo": "005650",
+    "sigla": "ACHMI",
+    "nombre": "ACADEMIA HIST.MIL.CB.",
+    "nombre_abreviado": "AC.HIST.MIL.CB",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "84",
-    "nombre": "BAT.PM-3 E.ARCE",
+    "id_municipio": "9",
+    "codigo": "005750",
+    "sigla": "BTIII",
+    "nombre": "BAT.DE TRANSPORTES III",
+    "nombre_abreviado": "BAT.TRANSP.III",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "85",
+    "id_municipio": "41",
+    "codigo": "005800",
+    "sigla": "PM-3",
+    "nombre": "BAT.PM-III \"ESTEBAN ARCE\"",
+    "nombre_abreviado": "BAT.PM-3 E.ARCE",
+    "activo": 1
+  },
+  {
+    "id_municipio": "6",
+    "codigo": "005850",
+    "sigla": "RI-2",
     "nombre": "RI-2 \"SUCRE\"",
+    "nombre_abreviado": "RI-2 \"SUCRE\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "86",
-    "nombre": "REG.18 VICTORIA",
+    "id_municipio": "9",
+    "codigo": "005900",
+    "sigla": "RP-18",
+    "nombre": "REG.INF.AEROTRANS-18 \"VICTORIA\"",
+    "nombre_abreviado": "REG.18 VICTORIA",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "87",
-    "nombre": "RI-26 BARRIENTO",
+    "id_municipio": "42",
+    "codigo": "005950",
+    "sigla": "RI-19",
+    "nombre": "RI-19 \"V.USTARIZ\"",
+    "nombre_abreviado": "RI-19 \"USTARIZ\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "88",
-    "nombre": "RI-31 CNL.RIOS",
+    "id_municipio": "43",
+    "codigo": "006000",
+    "sigla": "RI-26",
+    "nombre": "RI-26 \"GRAL.BARRIENTOS\"",
+    "nombre_abreviado": "RI-26 BARRIENTO",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "89",
+    "id_municipio": "44",
+    "codigo": "006050",
+    "sigla": "RI-31",
+    "nombre": "RI-31 \"CNL.EPIFANIO RIOS\"",
+    "nombre_abreviado": "RI-31 CNL.RIOS",
+    "activo": 1
+  },
+  {
+    "id_municipio": "41",
+    "codigo": "006100",
+    "sigla": "RA-7",
     "nombre": "RA-7 \"TUMUSLA\"",
+    "nombre_abreviado": "RA-7 \"TUMUSLA\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "90",
-    "nombre": "B.ING.V OVANDO",
+    "id_municipio": "3",
+    "codigo": "006150",
+    "sigla": "EPSS.",
+    "nombre": "EPSS.CURSO AVAN-ARM",
+    "nombre_abreviado": "EPSS. C.A.ARM.",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "91",
-    "nombre": "FZA.TAREA CONJ.",
+    "id_municipio": "3",
+    "codigo": "006200",
+    "sigla": "EPSS.",
+    "nombre": "EPSS.CURSO BAS-ARM",
+    "nombre_abreviado": "EPSS. C.B.ARM.",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "92",
-    "nombre": "GCA-I GRAL.A.S",
+    "id_municipio": "3",
+    "codigo": "006250",
+    "sigla": "RMBEL",
+    "nombre": "RECUP.MAT.BEL.",
+    "nombre_abreviado": "REC.MAT.BELICO",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "93",
-    "nombre": "CMDO.9NA.DIV.",
+    "id_municipio": "6",
+    "codigo": "006300",
+    "sigla": "BING5",
+    "nombre": "BAT.ING.-V OVANDO",
+    "nombre_abreviado": "B.ING.V OVANDO",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "94",
-    "nombre": "RI-32 I.MURGUI",
+    "id_municipio": "41",
+    "codigo": "006350",
+    "sigla": "ARCEN",
+    "nombre": "ARSENAL CENTRAL",
+    "nombre_abreviado": "ARCENAL CTRAL.",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "95",
-    "nombre": "RI-33 L.CABRER",
+    "id_municipio": "45",
+    "codigo": "006352",
+    "sigla": "FTC",
+    "nombre": "FUERZA DE TAREA CONJUNTA",
+    "nombre_abreviado": "FZA.TAREA CONJ.",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "96",
+    "id_municipio": "46",
+    "codigo": "006353",
+    "sigla": "GCA-I",
+    "nombre": "GRUPO CABALL.AER.\"GRAL.A.SANTIAGO\"",
+    "nombre_abreviado": "GCA-I GRAL.A.S",
+    "activo": 1
+  },
+  {
+    "id_municipio": "47",
+    "codigo": "006354",
+    "sigla": "COMPE",
+    "nombre": "CTRO.OPER.MANTTO.DE PAZ EJTO.BOLIVI",
+    "nombre_abreviado": "COMPEBOL.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "45",
+    "codigo": "006356",
+    "sigla": "DIV_9",
+    "nombre": "CMDO.9NA.DIVISION",
+    "nombre_abreviado": "CMDO.9NA.DIV.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "45",
+    "codigo": "006358",
+    "sigla": "RI-32",
+    "nombre": "RI-32 \"IDELFONSO MURGUIA\" IBUELO",
+    "nombre_abreviado": "RI-32 I.MURGUI",
+    "activo": 1
+  },
+  {
+    "id_municipio": "45",
+    "codigo": "006360",
+    "sigla": "RI-33",
+    "nombre": "RI-33 \"LADISLAO CABRERA\"",
+    "nombre_abreviado": "RI-33 L.CABRER",
+    "activo": 1
+  },
+  {
+    "id_municipio": "10",
+    "codigo": "006400",
+    "sigla": "DIV-8",
     "nombre": "CMDO.8VA.DIV.",
+    "nombre_abreviado": "CMDO.8VA.DIV.",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "97",
-    "nombre": "BAT.TRANSP.II",
+    "id_municipio": "45",
+    "codigo": "006500",
+    "sigla": "BTII",
+    "nombre": "BAT.DE TRANSPORTES II",
+    "nombre_abreviado": "BAT.TRANSP.II",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "98",
-    "nombre": "BAT.PM-2 AMEZAG",
+    "id_municipio": "10",
+    "codigo": "006550",
+    "sigla": "PM-2",
+    "nombre": "BAT.PM-II \"AMEZAGA\"",
+    "nombre_abreviado": "BAT.PM-2 AMEZAG",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "99",
+    "id_municipio": "48",
+    "codigo": "006600",
+    "sigla": "RI-7",
     "nombre": "RI-7 \"MARZANA\"",
+    "nombre_abreviado": "RI-7 \"MARZANA\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "100",
+    "id_municipio": "49",
+    "codigo": "006650",
+    "sigla": "COMES",
+    "nombre": "COMP.ESPECIALISTAS - CORGEPAI",
+    "nombre_abreviado": "COMP.ESPECIAL.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "49",
+    "codigo": "006700",
+    "sigla": "CORGE",
+    "nombre": "CIA.ESPEC.CORQUEPAI",
+    "nombre_abreviado": "CIA.E.CORGEPAI",
+    "activo": 1
+  },
+  {
+    "id_municipio": "50",
+    "codigo": "006750",
+    "sigla": "RI-10",
     "nombre": "RI-10 \"WARNES\"",
+    "nombre_abreviado": "RI-10 \"WARNES\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "101",
-    "nombre": "REG.12 MANCHEGO",
+    "id_municipio": "51",
+    "codigo": "006800",
+    "sigla": "RFE12",
+    "nombre": "REG.FF.EE. 12 MANCHEGO",
+    "nombre_abreviado": "REG.12 MANCHEGO",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "102",
-    "nombre": "BAT.ING-III PN",
+    "id_municipio": "33",
+    "codigo": "006850",
+    "sigla": "BING3",
+    "nombre": "BAT.ING.-III PANDO",
+    "nombre_abreviado": "BAT.ING-III PN",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "103",
-    "nombre": "B.PROD.ECOL.III",
+    "id_municipio": "51",
+    "codigo": "006900",
+    "sigla": "BEIII",
+    "nombre": "BAT.PROD.Y ECOLOGICO III",
+    "nombre_abreviado": "B.PROD.ECOL.III",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "104",
-    "nombre": "RA.8 \"STA.CRUZ\"",
+    "id_municipio": "10",
+    "codigo": "006910",
+    "sigla": "RA-8",
+    "nombre": "RA. 8 \"SANTA CRUZ\" STA.ROSA POQUIO",
+    "nombre_abreviado": "RA.8 \"STA.CRUZ\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "105",
-    "nombre": "RC.10 J.MERCADO",
+    "id_municipio": "10",
+    "codigo": "006920",
+    "sigla": "RC.10",
+    "nombre": "RC. 10 \"CNL.JOSE MANUEL MERCADO\"",
+    "nombre_abreviado": "RC.10 J.MERCADO",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "106",
-    "nombre": "B.PROD.ECOLO.II",
+    "id_municipio": "52",
+    "codigo": "006950",
+    "sigla": "BPEII",
+    "nombre": "BAT.PROD.Y ECOLOGICO II",
+    "nombre_abreviado": "B.PROD.ECOLO.II",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "107",
+    "id_municipio": "53",
+    "codigo": "007000",
+    "sigla": "RI-30",
     "nombre": "RI-30 \"MURILLO\"",
+    "nombre_abreviado": "RI-30 \"MURILLO\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "108",
-    "nombre": "B.ING.VI RIOSI",
+    "id_municipio": "17",
+    "codigo": "007050",
+    "sigla": "BING6",
+    "nombre": "BAT.ING.-VI RIOSINHO",
+    "nombre_abreviado": "B.ING.VI RIOSI",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "109",
-    "nombre": "BAT.POL.MIL-IV",
+    "id_municipio": "17",
+    "codigo": "007060",
+    "sigla": "BPM4",
+    "nombre": "BAT.POL.MIL.IV \"SLDO RODOLFO SILES\"",
+    "nombre_abreviado": "BAT.POL.MIL-IV",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "110",
+    "id_municipio": "54",
+    "codigo": "007100",
+    "sigla": "DIV10",
     "nombre": "CMDO.10MA.DIV.",
+    "nombre_abreviado": "CMDO.10MA.DIV.",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "111",
+    "id_municipio": "8",
+    "codigo": "007150",
+    "sigla": "RI-3",
     "nombre": "RI-3 \"PEREZ\"",
+    "nombre_abreviado": "RI-3 \"PEREZ\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "112",
+    "id_municipio": "55",
+    "codigo": "007200",
+    "sigla": "RI-4",
     "nombre": "RI-4 \"LOA\"",
+    "nombre_abreviado": "RI-4 \"LOA\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "113",
-    "nombre": "RI-27 ANTOFAGAS",
+    "id_municipio": "56",
+    "codigo": "007250",
+    "sigla": "RI-27",
+    "nombre": "RI-27 \"ANTOFAGASTA\"",
+    "nombre_abreviado": "RI-27 ANTOFAGAS",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "114",
+    "id_municipio": "54",
+    "codigo": "007300",
+    "sigla": "RC-7",
     "nombre": "RC-7 \"CHICHAS\"",
+    "nombre_abreviado": "RC-7 \"CHICHAS\"",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "115",
-    "nombre": "ECEM.MCAL.S.C.",
+    "id_municipio": "9",
+    "codigo": "007350",
+    "sigla": "ECEM.",
+    "nombre": "E.C.E.M. MCAL.S.CRUZ",
+    "nombre_abreviado": "ECEM.MCAL.S.C.",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "116",
-    "nombre": "ESC.APLIC.ARMAS",
+    "id_municipio": "9",
+    "codigo": "007400",
+    "sigla": "E.A.A",
+    "nombre": "ESC.DE APLICACION DE ARMAS",
+    "nombre_abreviado": "ESC.APLIC.ARMAS",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "117",
-    "nombre": "E.A.A. C.A.CBB",
+    "id_municipio": "3",
+    "codigo": "007450",
+    "sigla": "EAACA",
+    "nombre": "ESC.PERF.OF.AVANZADO",
+    "nombre_abreviado": "E.A.A. C.A.CBB",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "118",
-    "nombre": "ESC.MIL.INTEL.",
+    "id_municipio": "3",
+    "codigo": "007500",
+    "sigla": "EAACB",
+    "nombre": "ESC.PERF.OF.BASICO",
+    "nombre_abreviado": "E.A.A. C.B.CBB",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "119",
-    "nombre": "COL.MIL.EJTO.",
+    "id_municipio": "1",
+    "codigo": "007550",
+    "sigla": "EMIE",
+    "nombre": "ESC.MIL.INTELIGENCIA",
+    "nombre_abreviado": "ESC.MIL.INTEL.",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "120",
-    "nombre": "EMSE. M.PAREDE",
+    "id_municipio": "1",
+    "codigo": "007600",
+    "sigla": "COMIL",
+    "nombre": "COLEG.MILITAR EJTO.",
+    "nombre_abreviado": "COL.MIL.EJTO.",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "121",
-    "nombre": "ESCONBOL.",
+    "id_municipio": "9",
+    "codigo": "007650",
+    "sigla": "EMSE.",
+    "nombre": "EMSE.MAX PAREDES",
+    "nombre_abreviado": "EMSE. M.PAREDE",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "122",
-    "nombre": "LICEO MILITAR",
+    "id_municipio": "9",
+    "codigo": "007700",
+    "sigla": "EPSS.",
+    "nombre": "ESC.PERFEC.SOFS.",
+    "nombre_abreviado": "ESC.PERF.SOF",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "123",
-    "nombre": "ESC.MIL.MUSICA",
+    "id_municipio": "57",
+    "codigo": "007750",
+    "sigla": "ESCON",
+    "nombre": "ESC.CONDORES BOL.",
+    "nombre_abreviado": "ESCONBOL.",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "124",
-    "nombre": "ESC.ESP.PRO.AE",
+    "id_municipio": "6",
+    "codigo": "007800",
+    "sigla": "LIMIL",
+    "nombre": "LICEO MIL. ANDRADE",
+    "nombre_abreviado": "LICEO MILITAR",
     "activo": 1
   },
   {
-    "id_organismo": 2,
-    "id_municipio":1,
-    "codigo": "125",
-    "nombre": "ESC.CON.BOL.",
-    "activo": 1
-  },
-
-  {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "126",
-    "nombre": "TRIB.SUP.JUS.M",
+    "id_municipio": "16",
+    "codigo": "007850",
+    "sigla": "ESMUS",
+    "nombre": "ESC.MIL.MUSICA \"TCNL. PATIÑO\"",
+    "nombre_abreviado": "ESC.MIL.MUSICA",
     "activo": 1
   },
   {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "127",
-    "nombre": "TRIB.PER.JUS.M",
+    "id_municipio": "1",
+    "codigo": "009000",
+    "sigla": "SSAER",
+    "nombre": "SUB-STRIA.AERONAUTICA MILITAR",
+    "nombre_abreviado": "SUB.STRIA.AER.",
     "activo": 1
   },
   {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "128",
-    "nombre": "CMDO.EN JEFE FA",
+    "id_municipio": "1",
+    "codigo": "009010",
+    "sigla": "DGBSO",
+    "nombre": "DIRECC.GRAL.DES.Y BIENESTAR SOCIAL",
+    "nombre_abreviado": "DIR.GRAL.B.SOC",
     "activo": 1
   },
   {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "129",
-    "nombre": "SUB.STRIA.AER.",
+    "id_municipio": "20",
+    "codigo": "009020",
+    "sigla": "CAGR1",
+    "nombre": "CENTRO AGROP.#1 \"CARANAVI\"",
+    "nombre_abreviado": "CTRO.AGROP.#1",
     "activo": 1
   },
   {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "130",
-    "nombre": "LETRA \"A\"",
+    "id_municipio": "1",
+    "codigo": "009030",
+    "sigla": "CGFAB",
+    "nombre": "COMANDO GENERAL DE LA FUERZA AEREA",
+    "nombre_abreviado": "CMDO.GRAL.FAB.",
     "activo": 1
   },
   {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "131",
-    "nombre": "LETRA \"B\"",
+    "id_municipio": "1",
+    "codigo": "009040",
+    "sigla": "EGARB",
+    "nombre": "ESC.GUERRA AEREA GRAL.BARRIENTOS",
+    "nombre_abreviado": "E.GUER.AE.BARRI",
     "activo": 1
   },
   {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "132",
-    "nombre": "LET E D.JUS.OR",
+    "id_municipio": "1",
+    "codigo": "009060",
+    "sigla": "SNAFG",
+    "nombre": "SERVICIO NACIONAL DE AEROFOT.",
+    "nombre_abreviado": "SERV.NAL.AEROFO",
     "activo": 1
   },
   {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "133",
-    "nombre": "E.M.I. LA PAZ",
+    "id_municipio": "1",
+    "codigo": "009120",
+    "sigla": "I-BA",
+    "nombre": "I-BRIGADA AEREA",
+    "nombre_abreviado": "I-BRIG.AEREA",
     "activo": 1
   },
   {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "134",
-    "nombre": "ESC.MIL.INTEL.",
+    "id_municipio": "1",
+    "codigo": "009140",
+    "sigla": "BM100",
+    "nombre": "BANDA DE MUSICA 100",
+    "nombre_abreviado": "BAND.MUS. 100",
     "activo": 1
   },
   {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "135",
-    "nombre": "G.A.EXP.REC.83",
+    "id_municipio": "1",
+    "codigo": "009160",
+    "sigla": "EEPA",
+    "nombre": "ESC.ESP.PROF.AERONAUTICA",
+    "nombre_abreviado": "ESC.ESP.PRO.AE",
     "activo": 1
   },
   {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "136",
-    "nombre": "LET E D.JUS.MI",
+    "id_municipio": "1",
+    "codigo": "009180",
+    "sigla": "DGCE",
+    "nombre": "DIR.GRAL.INGENIERIA APLICADA",
+    "nombre_abreviado": "DIR.GRAL.ING.A",
     "activo": 1
   },
   {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "137",
-    "nombre": "DIR.GRAL.B.SOC",
+    "id_municipio": "1",
+    "codigo": "009200",
+    "sigla": "GAC31",
+    "nombre": "GRUPO AEREO DE CAZA 31",
+    "nombre_abreviado": "G.A. CAZA 31",
     "activo": 1
   },
   {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "138",
-    "nombre": "III-BRIG.AEREA",
+    "id_municipio": "1",
+    "codigo": "009220",
+    "sigla": "GAT71",
+    "nombre": "GRUPO AEREO DE TRANSPORTE 71",
+    "nombre_abreviado": "G.A.TRANS. 71",
     "activo": 1
   },
   {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "139",
-    "nombre": "CTRO.AGROP.#1",
+    "id_municipio": "1",
+    "codigo": "009240",
+    "sigla": "ATTL",
+    "nombre": "AGEN.TAM-TAB LOCALES",
+    "nombre_abreviado": "AG.TAM.TAB.LOC",
     "activo": 1
   },
   {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "140",
-    "nombre": "CMDO.GRAL.FAB.",
+    "id_municipio": "1",
+    "codigo": "009260",
+    "sigla": "ATTF",
+    "nombre": "AGEN.TAM-TAB FRONTERA",
+    "nombre_abreviado": "AG.TAM.TAB.FRO",
     "activo": 1
   },
   {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "141",
-    "nombre": "I-BRIG.AEREA",
+    "id_municipio": "1",
+    "codigo": "009280",
+    "sigla": "GS91",
+    "nombre": "GRUPO DE ART.DEF.ANTIAEREA 91",
+    "nombre_abreviado": "G.ART.DEF.A.91",
     "activo": 1
   },
   {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "142",
-    "nombre": "G.ART.DEF.A.91",
+    "id_municipio": "1",
+    "codigo": "009300",
+    "sigla": "SMA-1",
+    "nombre": "SERVICIO DE MANTTO. AEREO NO.1",
+    "nombre_abreviado": "S.M.AEREO 1",
     "activo": 1
   },
   {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "143",
-    "nombre": "DPTO.III SAN.AE",
+    "id_municipio": "1",
+    "codigo": "009320",
+    "sigla": "SAA11",
+    "nombre": "SERV.DE ABASTECIMIENTO AEREO 11",
+    "nombre_abreviado": "S.A.AEREO 11",
     "activo": 1
   },
   {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "144",
-    "nombre": "II-BRIG.AEREA",
+    "id_municipio": "1",
+    "codigo": "009340",
+    "sigla": "SIA",
+    "nombre": "SERV.DE INFRAESTRUCTURA AERENAUTICA",
+    "nombre_abreviado": "SERV.INFR.AER.",
     "activo": 1
   },
   {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "145",
+    "id_municipio": "1",
+    "codigo": "009360",
+    "sigla": "D3-SA",
+    "nombre": "DPTO.III DIV.SANIDAD OPERATIVA",
+    "nombre_abreviado": "DPTO.III SAN.AE",
+    "activo": 1
+  },
+  {
+    "id_municipio": "10",
+    "codigo": "009380",
+    "sigla": "IIIBA",
+    "nombre": "III-BRIGADA AEREA",
+    "nombre_abreviado": "III-BRIG.AEREA",
+    "activo": 1
+  },
+  {
+    "id_municipio": "10",
+    "codigo": "009400",
+    "sigla": "GAE21",
+    "nombre": "GRUPO.AEREO DE ENTRENAMIENTO 21",
+    "nombre_abreviado": "G.A.ENTR. 21",
+    "activo": 1
+  },
+  {
+    "id_municipio": "10",
+    "codigo": "009420",
+    "sigla": "GAC32",
+    "nombre": "GRUPO AEREO DE CAZA 32",
+    "nombre_abreviado": "G.A. CAZA 32",
+    "activo": 1
+  },
+  {
+    "id_municipio": "58",
+    "codigo": "009440",
+    "sigla": "RSSCZ",
+    "nombre": "REGIONAL S.I.A.M. SANTA CRUZ",
+    "nombre_abreviado": "REG.SIAM.S.CRZ",
+    "activo": 1
+  },
+  {
+    "id_municipio": "10",
+    "codigo": "009460",
+    "sigla": "GS-93",
+    "nombre": "GRUPO DE ARTILL.Y DEF.ANTIAEREA 93",
+    "nombre_abreviado": "G.ART.DEF.A.93",
+    "activo": 1
+  },
+  {
+    "id_municipio": "58",
+    "codigo": "009480",
+    "sigla": "FZATA",
+    "nombre": "FUERZA DE TAREA",
+    "nombre_abreviado": "FZA. DE TAREA",
+    "activo": 1
+  },
+  {
+    "id_municipio": "58",
+    "codigo": "009500",
+    "sigla": "SMA-3",
+    "nombre": "SERVICIO DE MANTTO. AEREO NO.3",
+    "nombre_abreviado": "S.M.AEREO NO.3",
+    "activo": 1
+  },
+  {
+    "id_municipio": "10",
+    "codigo": "009520",
+    "sigla": "FTAR",
+    "nombre": "FUERZA DE TAREA",
+    "nombre_abreviado": "FZA.DE TAREA",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "007600",
+    "sigla": "",
+    "nombre": "COLEGIO MILITAR DEL EJERCITO",
+    "nombre_abreviado": "",
+    "activo": 1
+  },
+  {
+    "id_municipio": "10",
+    "codigo": "009540",
+    "sigla": "CMAGB",
+    "nombre": "COLEGIO MILITAR DE AVIACION",
+    "nombre_abreviado": "COL.MIL.AV.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "10",
+    "codigo": "009560",
+    "sigla": "BM301",
+    "nombre": "BANDA DE MUSICA 301",
+    "nombre_abreviado": "BANDA MUS. 301",
+    "activo": 1
+  },
+  {
+    "id_municipio": "9",
+    "codigo": "009580",
+    "sigla": "II-BA",
+    "nombre": "II-BRIGADA AEREA",
+    "nombre_abreviado": "II-BRIG.AEREA",
+    "activo": 1
+  },
+  {
+    "id_municipio": "9",
+    "codigo": "009600",
+    "sigla": "GAF92",
+    "nombre": "GRUPO DE ART.Y DEF.ANTIAEREA 92",
+    "nombre_abreviado": "G.ART.DEF.A.92",
+    "activo": 1
+  },
+  {
+    "id_municipio": "59",
+    "codigo": "009620",
+    "sigla": "RSCBB",
+    "nombre": "REGIONAL S.I.A.M. COCHABAMBA",
+    "nombre_abreviado": "REG.SIAM.CBBA",
+    "activo": 1
+  },
+  {
+    "id_municipio": "9",
+    "codigo": "009640",
+    "sigla": "GAC34",
+    "nombre": "GRUPO AEREO DE CAZA 34",
+    "nombre_abreviado": "G.A. CAZA 34",
+    "activo": 1
+  },
+  {
+    "id_municipio": "9",
+    "codigo": "009660",
+    "sigla": "GAB51",
+    "nombre": "GRUPO AEREO BUSQ.Y SALVAMENTO 51",
+    "nombre_abreviado": "G.A.B.SALV. 51",
+    "activo": 1
+  },
+  {
+    "id_municipio": "59",
+    "codigo": "009680",
+    "sigla": "CCITE",
+    "nombre": "COMISION EJERCITO C.I.T.E.",
+    "nombre_abreviado": "COM.EJTO.CITE",
+    "activo": 1
+  },
+  {
+    "id_municipio": "9",
+    "codigo": "009690",
+    "sigla": "SMACB",
+    "nombre": "SERVICIO MANTTO. AEREO CBBA.",
+    "nombre_abreviado": "S.M.AEREO CBBA",
+    "activo": 1
+  },
+  {
+    "id_municipio": "9",
+    "codigo": "009700",
+    "sigla": "PMASA",
+    "nombre": "POLITECNICO MILITAR DE AERONAUTICA",
+    "nombre_abreviado": "POL.MIL.AER.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "9",
+    "codigo": "009720",
+    "sigla": "BM201",
+    "nombre": "BANDA DE MUSICA 201",
+    "nombre_abreviado": "BAND.MUS. 201",
+    "activo": 1
+  },
+  {
+    "id_municipio": "5",
+    "codigo": "009740",
+    "sigla": "IV-BA",
+    "nombre": "IV-BRIGADA AEREA",
+    "nombre_abreviado": "IV-BRIG.AEREA",
+    "activo": 1
+  },
+  {
+    "id_municipio": "5",
+    "codigo": "009760",
+    "sigla": "BM400",
+    "nombre": "BANDA DE MUSICA 400",
+    "nombre_abreviado": "BAND.MUS. 400",
+    "activo": 1
+  },
+  {
+    "id_municipio": "5",
+    "codigo": "009780",
+    "sigla": "GAD94",
+    "nombre": "GRUPO DE ART.Y DEF. ANTIAEREA 94",
+    "nombre_abreviado": "G.ART.DEF.A.94",
+    "activo": 1
+  },
+  {
+    "id_municipio": "5",
+    "codigo": "009800",
+    "sigla": "GAE82",
+    "nombre": "GRUPO AEREO DE EXPLOR.Y RECON. 82",
+    "nombre_abreviado": "G.A.EXP.REC.82",
+    "activo": 1
+  },
+  {
+    "id_municipio": "5",
+    "codigo": "009820",
+    "sigla": "BM104",
+    "nombre": "BANDA DE MUSICA 104",
+    "nombre_abreviado": "BAND.MUS. 104",
+    "activo": 1
+  },
+  {
+    "id_municipio": "5",
+    "codigo": "009840",
+    "sigla": "ECB",
+    "nombre": "ESCUELA DE CONDORES DE BOLIVIA",
+    "nombre_abreviado": "ESC.CON.BOL.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "36",
+    "codigo": "009860",
+    "sigla": "GAR83",
+    "nombre": "GRUPO AEREO DE EXPLOR.Y RECON. 83",
+    "nombre_abreviado": "G.A.EXP.REC.83",
+    "activo": 1
+  },
+  {
+    "id_municipio": "36",
+    "codigo": "009880",
+    "sigla": "BM383",
+    "nombre": "BANDA DE MUSICA 383",
+    "nombre_abreviado": "BAND.MUS. 383",
+    "activo": 1
+  },
+  {
+    "id_municipio": "26",
+    "codigo": "009900",
+    "sigla": "GAT63",
+    "nombre": "GRUPO AEREO TACTICO 63",
+    "nombre_abreviado": "G.A.TACTICO 63",
+    "activo": 1
+  },
+  {
+    "id_municipio": "26",
+    "codigo": "009920",
+    "sigla": "BM463",
+    "nombre": "BANDA DE MUSICA 463",
+    "nombre_abreviado": "BAND. MUS. 463",
+    "activo": 1
+  },
+  {
+    "id_municipio": "33",
+    "codigo": "009940",
+    "sigla": "GAT61",
+    "nombre": "GRUPO AEREO TACTICO 61",
+    "nombre_abreviado": "G.A.TACTICO 61",
+    "activo": 1
+  },
+  {
+    "id_municipio": "33",
+    "codigo": "009960",
+    "sigla": "BM361",
+    "nombre": "BANDA DE MUSICA 361",
+    "nombre_abreviado": "BANDA MUS. 361",
+    "activo": 1
+  },
+  {
+    "id_municipio": "7",
+    "codigo": "010000",
+    "sigla": "GAT72",
+    "nombre": "GRUPO AEREO DE TRANSPORTE 72",
+    "nombre_abreviado": "G.A. TRANS. 72",
+    "activo": 1
+  },
+  {
+    "id_municipio": "7",
+    "codigo": "010040",
+    "sigla": "BM572",
+    "nombre": "BANDA DE MUSICA 572",
+    "nombre_abreviado": "BANDA MUS. 572",
+    "activo": 1
+  },
+  {
+    "id_municipio": "12",
+    "codigo": "010060",
+    "sigla": "GAT62",
+    "nombre": "GRUPO AEREO TACTICO 62",
+    "nombre_abreviado": "G.A.TACTICO 62",
+    "activo": 1
+  },
+  {
+    "id_municipio": "12",
+    "codigo": "010080",
+    "sigla": "BM562",
+    "nombre": "BANDA DE MUSICA 562",
+    "nombre_abreviado": "BAND. MUS. 562",
+    "activo": 1
+  },
+  {
+    "id_municipio": "12",
+    "codigo": "010100",
+    "sigla": "CA-2",
+    "nombre": "CENTRO AGROPECUARIO NO.2 RIBERALTA",
+    "nombre_abreviado": "CENTR.AGR.NO.2",
+    "activo": 1
+  },
+  {
+    "id_municipio": "17",
+    "codigo": "010120",
+    "sigla": "GAT64",
+    "nombre": "GRUPO AEREO TACTICO 64",
+    "nombre_abreviado": "G.A.TACTICO 64",
+    "activo": 1
+  },
+  {
+    "id_municipio": "17",
+    "codigo": "010140",
+    "sigla": "BM564",
+    "nombre": "BANDA DE MUSICA 564",
+    "nombre_abreviado": "BANDA MUS. 564",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "010160",
+    "sigla": "DGAF",
+    "nombre": "DIR.GRAL.ADM.FINANCIERA",
+    "nombre_abreviado": "DIR.GRAL.ADM.FI",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "010180",
+    "sigla": "DVFIN",
+    "nombre": "DPTO.V-FINANZAS",
+    "nombre_abreviado": "DPTO.V-FINANZ.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "020000",
+    "sigla": "CMDON",
+    "nombre": "CMDO.GRAL.FZA.NAVAL",
+    "nombre_abreviado": "CMDO.FZA.NAV",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "020020",
+    "sigla": "IGFZN",
+    "nombre": "INSPECTORIA NAVAL",
+    "nombre_abreviado": "INSP.GRAL.NAV.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "020040",
+    "sigla": "JEMN.",
+    "nombre": "JEFATURA.EST.MAYOR",
+    "nombre_abreviado": "JEF.EST.MY.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "020060",
+    "sigla": "DAFN.",
+    "nombre": "DIR.ADM.FINANCIERA",
+    "nombre_abreviado": "DIR.ADM.FINAN.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "020080",
+    "sigla": "DCPTO",
+    "nombre": "DIR.CAP.DE PUERTO",
+    "nombre_abreviado": "DIR.CAP.PTO.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "020100",
+    "sigla": "DDEBI",
+    "nombre": "DIR.DES.Y BIENESTAR",
+    "nombre_abreviado": "DIR.DESA.BIEN.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "020120",
+    "sigla": "DGINF",
+    "nombre": "DIR.GRAL.INFORMATICA",
+    "nombre_abreviado": "DIR.GRAL.INFOR",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "020140",
+    "sigla": "DGIPL",
+    "nombre": "DIR.GRAL.ING.PLANIF.",
+    "nombre_abreviado": "DIR.G.ING.PLAN",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "020160",
+    "sigla": "DSHNA",
+    "nombre": "DIR.SERV.HIDRO.NAV.",
+    "nombre_abreviado": "DIR.SERV.H.NAV",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "020180",
+    "sigla": "DEIIN",
+    "nombre": "DIR.ENSENANZA II.NAV",
+    "nombre_abreviado": "DIR.ENS.II.NAV",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "020200",
+    "sigla": "DRRPP",
+    "nombre": "DIR.RELACIONES PUB.",
+    "nombre_abreviado": "DIREC.RR.PP.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "020220",
+    "sigla": "HINAV",
+    "nombre": "HIDROGRAFIA NAVAL",
+    "nombre_abreviado": "HIDROG.NAVAL",
+    "activo": 1
+  },
+  {
+    "id_municipio": "12",
+    "codigo": "020240",
+    "sigla": "DIS-1",
+    "nombre": "I-DIST. NAVAL BENI",
+    "nombre_abreviado": "I-DIST.BENI",
+    "activo": 1
+  },
+  {
+    "id_municipio": "12",
+    "codigo": "020260",
+    "sigla": "BNARI",
+    "nombre": "BASE NAVAL RIVERALTA",
+    "nombre_abreviado": "BASE NAV.RIBE.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "12",
+    "codigo": "020280",
+    "sigla": "BIM-I",
+    "nombre": "BIM-I BAGUE",
+    "nombre_abreviado": "BIM-I BAGUE",
+    "activo": 1
+  },
+  {
+    "id_municipio": "52",
+    "codigo": "020300",
+    "sigla": "BNBAL",
+    "nombre": "BASE NAVAL \"BALLIVIAN\"",
+    "nombre_abreviado": "BASE NAV.BALL.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "7",
+    "codigo": "020320",
+    "sigla": "DIS-2",
+    "nombre": "II-DIST.NAVAL MAMORE",
+    "nombre_abreviado": "II-DIST.MAMORE",
+    "activo": 1
+  },
+  {
+    "id_municipio": "7",
+    "codigo": "020340",
+    "sigla": "BNSAN",
+    "nombre": "BASE NAVAL STA.ANA",
+    "nombre_abreviado": "BASE NAV.S.ANA",
+    "activo": 1
+  },
+  {
+    "id_municipio": "7",
+    "codigo": "020360",
+    "sigla": "BIM-2",
+    "nombre": "BIM-II TOCOPILLA",
+    "nombre_abreviado": "BIM-II TOCOPIL",
+    "activo": 1
+  },
+  {
+    "id_municipio": "60",
+    "codigo": "020380",
+    "sigla": "PTO.V",
+    "nombre": "B.N.PTO.VILLARROEL",
+    "nombre_abreviado": "BN.PTO.VILLARR",
+    "activo": 1
+  },
+  {
+    "id_municipio": "9",
+    "codigo": "020382",
+    "sigla": "AN-1",
+    "nombre": "AREA NAVAL # 1 \"COCHABAMBA\"",
+    "nombre_abreviado": "AREA NAV.1 CBB",
+    "activo": 1
+  },
+  {
+    "id_municipio": "10",
+    "codigo": "020383",
+    "sigla": "AN-2",
+    "nombre": "AREA NAVAL # 2 \"SANTA CRUZ\"",
+    "nombre_abreviado": "AREA NAV.2 S.C",
+    "activo": 1
+  },
+  {
+    "id_municipio": "61",
+    "codigo": "020385",
+    "sigla": "ESCON",
+    "nombre": "ESC.CONDORES BOL.",
+    "nombre_abreviado": "ESC.COND.BOL.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "62",
+    "codigo": "020390",
+    "sigla": "AN-3",
+    "nombre": "AREA NAVAL # 3 \"BERMEJO\"",
+    "nombre_abreviado": "AREA NAV.3 BER",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "020400",
+    "sigla": "FTESP",
+    "nombre": "FZA.TAREA ESPECIAL",
+    "nombre_abreviado": "FZA.TAR.ESP.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "39",
+    "codigo": "020420",
+    "sigla": "DIS-3",
+    "nombre": "III-DIST.NAV.MADERA",
+    "nombre_abreviado": "III-DIST.MADER",
+    "activo": 1
+  },
+  {
+    "id_municipio": "63",
+    "codigo": "020440",
+    "sigla": "BNABU",
+    "nombre": "BASE NAVAL ABUNA",
+    "nombre_abreviado": "BASE NAV.ABUNA",
+    "activo": 1
+  },
+  {
+    "id_municipio": "7",
+    "codigo": "020460",
+    "sigla": "BNITE",
+    "nombre": "BASE NAVAL ITENEZ",
+    "nombre_abreviado": "BASE NAV.ITENE",
+    "activo": 1
+  },
+  {
+    "id_municipio": "39",
+    "codigo": "020480",
+    "sigla": "BNDGU",
+    "nombre": "BASE NAVAL D.GUTIERR",
+    "nombre_abreviado": "B.NAV.D.GUTIER",
+    "activo": 1
+  },
+  {
+    "id_municipio": "39",
+    "codigo": "020500",
+    "sigla": "BIM-3",
+    "nombre": "BIM-III MEJILLONES",
+    "nombre_abreviado": "BIM-III MEJILL",
+    "activo": 1
+  },
+  {
+    "id_municipio": "37",
+    "codigo": "020520",
+    "sigla": "DIS-4",
+    "nombre": "IV-DIST.NAV.TITICACA",
+    "nombre_abreviado": "IV-DIST.TITICA",
+    "activo": 1
+  },
+  {
+    "id_municipio": "65",
+    "codigo": "020540",
+    "sigla": "BIM-4",
+    "nombre": "BIM-IV ALIANZA",
+    "nombre_abreviado": "BIM-IV ALIANZA",
+    "activo": 1
+  },
+  {
+    "id_municipio": "66",
+    "codigo": "020560",
+    "sigla": "BIM-6",
+    "nombre": "BIM-VI INDEPENDENCIA",
+    "nombre_abreviado": "BIM-VI INDEPEN",
+    "activo": 1
+  },
+  {
+    "id_municipio": "5",
+    "codigo": "020580",
+    "sigla": "BNNPG",
+    "nombre": "BASE NAVAL N.PAZ G.",
+    "nombre_abreviado": "BASE NAV.N.PAZ",
+    "activo": 1
+  },
+  {
+    "id_municipio": "2",
+    "codigo": "020600",
+    "sigla": "DIS-5",
+    "nombre": "V-DIST.NAV.DEL PLATA",
+    "nombre_abreviado": "V-DIS.NAV.PLAT",
+    "activo": 1
+  },
+  {
+    "id_municipio": "36",
+    "codigo": "020620",
+    "sigla": "BNATA",
+    "nombre": "BASE NAVAL TAMARINO",
+    "nombre_abreviado": "BASE NAV.TAMAR",
+    "activo": 1
+  },
+  {
+    "id_municipio": "36",
+    "codigo": "020640",
+    "sigla": "BIM-5",
+    "nombre": "BIM-V CALAMA",
+    "nombre_abreviado": "BIM-V CALAMA",
+    "activo": 1
+  },
+  {
+    "id_municipio": "17",
+    "codigo": "020660",
+    "sigla": "DIS-6",
+    "nombre": "VI-DIST.NAV.DEL ACRE",
+    "nombre_abreviado": "VI-DIS.NAV.ACR",
+    "activo": 1
+  },
+  {
+    "id_municipio": "63",
+    "codigo": "020680",
+    "sigla": "BIM-7",
+    "nombre": "BIM-VII COL.PORVENIR",
+    "nombre_abreviado": "BIM-VII C.PORV",
+    "activo": 1
+  },
+  {
+    "id_municipio": "63",
+    "codigo": "020700",
+    "sigla": "BNPRI",
+    "nombre": "BASE NAVAL PTO.RICO",
+    "nombre_abreviado": "BASE NAV.P.RIC",
+    "activo": 1
+  },
+  {
+    "id_municipio": "60",
+    "codigo": "020720",
+    "sigla": "USTNA",
+    "nombre": "U.SERV.TRANS.NAVAL",
+    "nombre_abreviado": "U.SE.TRANS.NAV",
+    "activo": 1
+  },
+  {
+    "id_municipio": "3",
+    "codigo": "020740",
+    "sigla": "OECA1",
+    "nombre": "OF.ENLACE CBBA.AMA-I",
+    "nombre_abreviado": "OF.ENL.AMA-I",
+    "activo": 1
+  },
+  {
+    "id_municipio": "2",
+    "codigo": "020760",
+    "sigla": "OEAM2",
+    "nombre": "OF.ENLACE SC.AMA-II",
+    "nombre_abreviado": "OF.ENL.AMA-2",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "020780",
+    "sigla": "EGNAV",
+    "nombre": "ESC.GUERRA NAVAL",
+    "nombre_abreviado": "ESC.GUER.NAV.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "020800",
+    "sigla": "ENMIL",
+    "nombre": "ESCUELA NAVAL MIL.",
+    "nombre_abreviado": "ESC.NAV.MIL.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "7",
+    "codigo": "020820",
+    "sigla": "ZEBAL",
+    "nombre": "ESC. SGTO.ZEBALLOS",
+    "nombre_abreviado": "ESC.SGTO.ZEBAL",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "030000",
+    "sigla": "SDIPL",
+    "nombre": "SERVICIO DIPLOMATICO",
+    "nombre_abreviado": "SERV.DIPLOMAT.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "030020",
+    "sigla": "CSEXT",
+    "nombre": "COMIS.ESTUD.EXTERIOR",
+    "nombre_abreviado": "MIS.ESTUD.EXT.",
+    "activo": 1
+  },
+  {
+    "id_municipio": "1",
+    "codigo": "999900",
+    "sigla": "RE-AC",
     "nombre": "RESERVA ACTIVA",
+    "nombre_abreviado": "RESERVA ACTIVA",
     "activo": 1
   },
   {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "146",
-    "nombre": "ART.114 LOFA.",
-    "activo": 1
-  },
-  {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "147",
-    "nombre": "ART.118 LOFA",
-    "activo": 1
-  },
-  {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "148",
-    "nombre": "(+) ART.87",
-    "activo": 1
-  },
-  {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "149",
-    "nombre": "E.GUER.AE.BARRI",
-    "activo": 1
-  },
-  {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "150",
-    "nombre": "SERV.NAL.AEROFO",
-    "activo": 1
-  },
-  {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "151",
-    "nombre": "S.A.AEREO 11",
-    "activo": 1
-  },
-  {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "152",
-    "nombre": "ESC.ESP.PRO.AE",
-    "activo": 1
-  },
-  {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "153",
-    "nombre": "G.A. CAZA 31",
-    "activo": 1
-  },
-  {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "154",
-    "nombre": "G.A.TRANS. 71",
-    "activo": 1
-  },
-  {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "155",
-    "nombre": "AG.TAM.TAB.LOC",
-    "activo": 1
-  },
-  {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "156",
-    "nombre": "AG.TAM.TAB.FRO",
-    "activo": 1
-  },
-  {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "157",
-    "nombre": "SERV.INFR.AER.",
-    "activo": 1
-  },
-  {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "158",
-    "nombre": "LET D TRAT.MED",
-    "activo": 1
-  },
-  {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "159",
-    "nombre": "G.A.ENTR. 21",
-    "activo": 1
-  },
-  {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "160",
-    "nombre": "G.ART.DEF.A.93",
-    "activo": 1
-  },
-  {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "161",
-    "nombre": "FZA.DE TAREA",
-    "activo": 1
-  },
-  {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "162",
-    "nombre": "COL.MIL.AV.",
-    "activo": 1
-  },
-  {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "163",
-    "nombre": "G.ART.DEF.A.92",
-    "activo": 1
-  },
-  {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "164",
-    "nombre": "G.A. CAZA 34",
-    "activo": 1
-  },
-  {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "165",
-    "nombre": "G.A.B.SALV. 51",
-    "activo": 1
-  },
-  {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "166",
-    "nombre": "S.M.AEREO CBBA",
-    "activo": 1
-  },
-  {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "167",
-    "nombre": "POL.MIL.AER.",
-    "activo": 1
-  },
-  {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "168",
-    "nombre": "IV-BRIG.AEREA",
-    "activo": 1
-  },
-  {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "169",
-    "nombre": "G.ART.DEF.A.94",
-    "activo": 1
-  },
-  {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "170",
-    "nombre": "G.A.TACTICO 63",
-    "activo": 1
-  },
-  {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "171",
-    "nombre": "G.A.TACTICO 61",
-    "activo": 1
-  },
-  {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "172",
-    "nombre": "G.A. TRANS. 72",
-    "activo": 1
-  },
-  {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "173",
-    "nombre": "G.A.TACTICO 62",
-    "activo": 1
-  },
-  {
-    "id_organismo": 3,
-    "id_municipio":1,
-    "codigo": "174",
-    "nombre": "G.A.TACTICO 64",
-    "activo": 1
-  },
-  {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "175",
-    "nombre": "MINDEFENSA",
-    "activo": 1
-  },
-  {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "176",
-    "nombre": "LETRA \"B\"",
-    "activo": 1
-  },
-  {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "177",
-    "nombre": "LET E D.JUS.MI",
-    "activo": 1
-  },
-  {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "178",
-    "nombre": "LET E D.JUS.OR",
-    "activo": 1
-  },
-  {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "179",
-    "nombre": "TRIB.SUP.JUS.M",
-    "activo": 1
-  },
-  {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "180",
+    "id_municipio": "1",
+    "codigo": "999910",
+    "sigla": "LET-A",
     "nombre": "LETRA \"A\"",
+    "nombre_abreviado": "LETRA \"A\"",
     "activo": 1
   },
   {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "181",
-    "nombre": "TRIB.PER.JUS.M",
+    "id_municipio": "1",
+    "codigo": "999911",
+    "sigla": "LET.B",
+    "nombre": "LETRA \"B\"",
+    "nombre_abreviado": "LETRA \"B\"",
     "activo": 1
   },
   {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "182",
-    "nombre": "CMDO.EN JEFE FA",
+    "id_municipio": "1",
+    "codigo": "999912",
+    "sigla": "LET-C",
+    "nombre": "LETRA \"C\" COMIS.SUP.GOB.",
+    "nombre_abreviado": "LET C CO.S.GOB",
     "activo": 1
   },
   {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "183",
-    "nombre": "RESERVA ACTIVA",
+    "id_municipio": "1",
+    "codigo": "999914",
+    "sigla": "LET D",
+    "nombre": "LETRA \"D\" TRATAMIENTO MEDICO",
+    "nombre_abreviado": "LET D TRAT.MED",
     "activo": 1
   },
   {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "184",
-    "nombre": "E.M.I. LA PAZ",
+    "id_municipio": "1",
+    "codigo": "999916",
+    "sigla": "LET E",
+    "nombre": "LETRA \"E\" DISP.JUST.MIL.",
+    "nombre_abreviado": "LET E D.JUS.MI",
     "activo": 1
   },
   {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "185",
-    "nombre": "ESC.MIL.INTEL.",
+    "id_municipio": "1",
+    "codigo": "999918",
+    "sigla": "LET E",
+    "nombre": "LETRA \"E\" DISP.JUST.ORDINARIA",
+    "nombre_abreviado": "LET E D.JUS.OR",
     "activo": 1
   },
   {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "186",
-    "nombre": "CMDO.ARM.BOL",
+    "id_municipio": "1",
+    "codigo": "999919",
+    "sigla": "A.114",
+    "nombre": "ART.114 LOFA. ENFERMEDAD-ACCIDENTE",
+    "nombre_abreviado": "ART.114 LOFA.",
     "activo": 1
   },
   {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "187",
-    "nombre": "LET C CO.S.GOB",
-    "activo": 1
-  },
-  {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "188",
-    "nombre": "LET D TRAT.MED",
-    "activo": 1
-  },
-  {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "189",
-    "nombre": "ART.114 LOFA.",
-    "activo": 1
-  },
-  {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "190",
+    "id_municipio": "1",
+    "codigo": "999920",
+    "sigla": "ADS",
     "nombre": "ADSCRITO",
+    "nombre_abreviado": "ADSCRITO",
     "activo": 1
   },
   {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "191",
+    "id_municipio": "1",
+    "codigo": "999921",
+    "sigla": "A.118",
     "nombre": "ART.118 LOFA",
+    "nombre_abreviado": "ART.118 LOFA",
     "activo": 1
   },
   {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "192",
-    "nombre": "(+) ART.87",
-    "activo": 1
-  },
-  {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "193",
-    "nombre": "HIDROG.NAVAL",
-    "activo": 1
-  },
-  {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "194",
-    "nombre": "I-DIST.BENI",
-    "activo": 1
-  },
-  {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "195",
-    "nombre": "BASE NAV.BALL.",
-    "activo": 1
-  },
-  {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "196",
-    "nombre": "II-DIST.MAMORE",
-    "activo": 1
-  },
-  {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "197",
-    "nombre": "BN.PTO.VILLARR",
-    "activo": 1
-  },
-  {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "198",
-    "nombre": "AREA NAV.1 CBB",
-    "activo": 1
-  },
-  {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "199",
-    "nombre": "AREA NAV.2 S.C",
-    "activo": 1
-  },
-  {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "200",
-    "nombre": "B.NAV.D.GUTIER",
-    "activo": 1
-  },
-  {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "201",
-    "nombre": "AREA NAV.3 BER",
-    "activo": 1
-  },
-  {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "202",
-    "nombre": "III-DIST.MADER",
-    "activo": 1
-  },
-  {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "203",
-    "nombre": "IV-DIST.TITICA",
-    "activo": 1
-  },
-  {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "204",
-    "nombre": "V-DIS.NAV.PLAT",
-    "activo": 1
-  },
-  {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "205",
-    "nombre": "VI-DIS.NAV.ACR",
-    "activo": 1
-  },
-  {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "206",
-    "nombre": "ESC.GUER.NAV.",
-    "activo": 1
-  },
-  {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "207",
-    "nombre": "ESC.NAV.MIL.",
-    "activo": 1
-  },
-  {
-    "id_organismo": 4,
-    "id_municipio":1,
-    "codigo": "208",
-    "nombre": "ESC.SGTO.ZEBAL",
+    "id_municipio": "1",
+    "codigo": "999922",
+    "sigla": "(+)87",
+    "nombre": "FALLECIDOS ART.87",
+    "nombre_abreviado": "(+) ART.87",
     "activo": 1
   }
 ]

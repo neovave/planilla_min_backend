@@ -11,14 +11,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Reparticion.belongsTo(models.Organismo,{as:'reparticion_organismo', foreignKey:'id_organismo'});
+      //Reparticion.belongsTo(models.Organismo,{as:'reparticion_organismo', foreignKey:'id_organismo'});
       Reparticion.belongsTo(models.Municipio,{as:'reparticion_municipio', foreignKey:'id_municipio'});
       Reparticion.hasMany(models.Asignacion_cargo_empleado,{as:'reparticion_asigCarEmp', foreignKey:'id_reparticion'});
     }
   }
   Reparticion.init({
     codigo: DataTypes.STRING(10),
-    nombre: DataTypes.STRING(100),
+    sigla: DataTypes.STRING(20),
+    nombre: DataTypes.STRING(200),
+    nombre_abreviado: DataTypes.STRING(100),
     activo: DataTypes.BIGINT
   }, {
     sequelize,

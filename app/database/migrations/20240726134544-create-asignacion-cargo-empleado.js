@@ -49,6 +49,16 @@ module.exports = {
           key: "id",
         },
       },
+      id_organismo: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'organismos',
+            schema: 'public'
+          },
+          key: "id",
+        },
+      },
       id_reparticion: {
         type: Sequelize.INTEGER,
         references: {
@@ -59,7 +69,6 @@ module.exports = {
           key: "id",
         },
       },
-      
       id_destino: {
         type: Sequelize.INTEGER,
         references: {
@@ -81,6 +90,12 @@ module.exports = {
       },
       motivo: {
         type: Sequelize.STRING(300)
+      },
+      referencia: {
+        type: Sequelize.STRING(300)
+      },
+      nombre_file: {
+        type: Sequelize.STRING(200)
       },
       nro_item: {
         type: Sequelize.INTEGER

@@ -4,12 +4,12 @@ const { idExistDestino, nameExistDestino, codigoExistDestino, idExistOrganismo} 
 const { options } = require('../../routes/auth');
 
 const validationSchema =  {
-    id_organismo: {
-        isEmpty: {
-            negated: true, errorMessage: "Id organismo es obligatorio",
-        },
-        custom: { options: idExistOrganismo}, //verificamos si existe uuid
-    },
+    // id_organismo: {
+    //     isEmpty: {
+    //         negated: true, errorMessage: "Id organismo es obligatorio",
+    //     },
+    //     custom: { options: idExistOrganismo}, //verificamos si existe uuid
+    // },
     codigo: {
         isEmpty: {
             negated: true, errorMessage: "Código es obligatorio",
@@ -25,10 +25,20 @@ const validationSchema =  {
             negated: true, errorMessage: "La nombre es obligatorio",
         },
         isLength: {
-            errorMessage: 'La nombre debe tener mínimo a 1 caracteres y máximo 50 caracteres',
-            options: { min: 1, max: 50},
+            errorMessage: 'La nombre debe tener mínimo a 1 caracteres y máximo 100 caracteres',
+            options: { min: 1, max: 100},
         },
         custom: {options: nameExistDestino },
+    },
+    nombre_abreviado: {
+        isEmpty: {
+            negated: true, errorMessage: "La nombre abreviado es obligatorio",
+        },
+        isLength: {
+            errorMessage: 'La nombre abreviado debe tener mínimo a 1 caracteres y máximo 50 caracteres',
+            options: { min: 1, max: 50},
+        },
+        
     }
     /*activo: {
         isBoolean: {

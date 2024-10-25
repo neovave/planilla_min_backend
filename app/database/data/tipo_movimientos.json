@@ -13,5 +13,10 @@
     "nombre": "MOVIMIENTO",
     "tipo": "",
     "activo": 1
+  },
+  {
+    "nombre": "DESTINO",
+    "tipo": "",
+    "activo": 1
   }
 ]

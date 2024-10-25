@@ -11,13 +11,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Destino.belongsTo(models.Organismo,{as:'destino_organismo', foreignKey:'id_organismo'});
+      //Destino.belongsTo(models.Organismo,{as:'destino_organismo', foreignKey:'id_organismo'});
       Destino.hasMany(models.Asignacion_cargo_empleado,{as:'destino_asigCarEmp', foreignKey:'id_destino'});
     }
   }
   Destino.init({
     codigo: DataTypes.STRING(10),
     nombre: DataTypes.STRING(100),
+    nombre_abreviado: DataTypes.STRING(50),
     activo: DataTypes.BIGINT
   }, {
     sequelize,
