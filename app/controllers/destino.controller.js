@@ -16,10 +16,10 @@ const getDestinoPaginate = async (req = request, res = response) => {
                 ],
                 
             },
-            include: [
-                { association: 'destino_organismo',  attributes: {exclude: ['createdAt']},},
+            // include: [
+            //     { association: 'destino_organismo',  attributes: {exclude: ['createdAt']},},
                 
-            ],
+            // ],
             
         };
         let destinos = await paginate(Destino, page, limit, type, query, optionsDb); 

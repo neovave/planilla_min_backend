@@ -555,6 +555,7 @@ const {
       throw new Error(`El código Destino con nombre: ${codigo}, ya existe`);
     }
   };
+  
   // =================================================================
   // ===================== INCREMENTO ============================
   const idExistSalarioPlanilla = async (id = "") => {
@@ -616,13 +617,33 @@ const {
     }
   };
   // =================================================================
-  // ========================= Asignacion Sub sidio =======================
+  // ========================= Municipio =======================
   const idExistMunicipio = async (id = "") => {
     const idExist = await Municipio.findByPk(id);
     if (!idExist) {
       throw new Error(`El id del Municipio con id: ${id}, no existe`);
     }
   };
+
+  const codigoExistMunicipio = async (codigo = "",{req}) => {
+    const { id } = req.params;
+    const nameExist = await Municipio.findOne({ where: { codigo } });
+    if(!nameExist) return;
+    if (nameExist.id != id) {
+      throw new Error(`El código Municipio con nombre: ${codigo}, ya existe`);
+    }
+  };
+
+  const nameExistMunicipio = async (nombre = "",{req}) => {
+    const { id } = req.params;
+    const nameExist = await Municipio.findOne({ where: { nombre } });
+    if(!nameExist) return;
+    if (nameExist.id != id) {
+      throw new Error(`El nombre de municipio de nombre: ${nombre}, ya existe`);
+    }
+  };
+
+  
 
   // =================================================================
   // ========================= Asignacion Sub sidio =======================
@@ -936,6 +957,8 @@ const {
     idExistViatico,
     idExistAsigSubsidio,
     idExistMunicipio,
+    codigoExistMunicipio,
+    nameExistMunicipio,
     idExistGrupoDescuento,
     nombreExistGrupoDesc,
     codigoExistGrupoDesc,

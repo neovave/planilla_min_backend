@@ -29,6 +29,16 @@ module.exports = {
           key: "id",
         },
       },
+      id_municipio: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'municipios',
+            schema: 'public'
+          },
+          key: "id",
+        },
+      },
       monto: {
         type: Sequelize.DECIMAL(8,2)
       },
@@ -49,6 +59,12 @@ module.exports = {
       },
       memo_detalle: {
         type: Sequelize.STRING(200)
+      },
+      numero_cuota: {
+        type: Sequelize.INTEGER
+      },
+      nombre_archivo: {
+        type: Sequelize.STRING(50)
       },
       estado: {
         type: Sequelize.STRING(2)

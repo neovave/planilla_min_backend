@@ -26,6 +26,8 @@ class Server {
         this.app.use( fileUpload() );
         // this.app.use(fileUpload({
         //     limits: { fileSize: 50 * 1024 * 1024 }, // Límite de 50 MB
+        //     abortOnLimit: true,
+        //     responseOnLimit: 'El archivo es demasiado grande.',
         //   }));
     }
 

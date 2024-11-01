@@ -66,6 +66,12 @@ module.exports = {
       referencia: {
         type: Sequelize.STRING(200)
       },
+      numero_cuota: {
+        type: Sequelize.INTEGER
+      },
+      nombre_archivo: {
+        type: Sequelize.STRING(300)
+      },
       estado: {
         type: Sequelize.STRING(2)
       },
@@ -87,6 +93,9 @@ module.exports = {
       },
       updatedAt: {
         allowNull: false,
+        type: Sequelize.DATE
+      },
+      deletedAt: {
         type: Sequelize.DATE
       }
     });

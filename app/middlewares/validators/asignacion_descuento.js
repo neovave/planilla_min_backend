@@ -1,6 +1,6 @@
 const { validatedResponse } = require('../validated-response');
 const { checkSchema } = require('express-validator');
-const { idExistAsigDescuento, idExistTipoDescuento, idExistEmpleado, idExistMunicipio } = require('./database');
+const { idExistAsigDescuento, idExistTipoDescuento, idExistEmpleado, idExistMunicipio, idExistMes } = require('./database');
 
 const validationSchema =  {
     id_tipo_descuento: {
@@ -15,7 +15,13 @@ const validationSchema =  {
         },
         custom: { options: idExistEmpleado}, //verificamos si existe uuid
     },
-    
+    id_municipio: {
+        isEmpty: {
+            negated: true, errorMessage: "Id municipio es obligatorio",
+        },
+        custom: { options: idExistMunicipio}, //verificamos si existe uuid
+        
+    },
     cod_empleado: {
         optional: { options: { checkFalsy: true } },
         isLength: {
@@ -61,6 +67,20 @@ const validationSchema =  {
         optional: { options: { nullable: true } },
         isDate: {
             negated: true, errorMessage: "La fecha inicio es obligatorio",
+        },
+    },
+    numero_cuota: {
+        optional: { options: { nullable: true } },
+        isInt: {
+            errorMessage: "Número de cuota es obligatorio",
+        },
+        toInt: true,
+    },
+    nombre_archivo: {
+        optional: { options: { nullable: true } },
+        isLength: {
+            errorMessage: 'El valor debe tener mínimo a 1 caracteres y máximo 50 caracteres',
+            options: { min: 1, max: 50},
         },
     },
 
@@ -139,18 +159,24 @@ const validationSchema =  {
         },
         
     },
-    id_municipio: {
-        optional: { options: { checkFalsy: true } },
-        custom: { options:  (value, { req }) => {
-            // Validar solo si el beneficio es verdadero
-            if (req.body.con_beneficiario && !value) {
-                throw new Error('Debe proporcionar municipio si el tipo descuento es con beneficiario.');
+    nro_cuenta:{
+        optional: { options: { nullable: true } },
+        isLength: {
+            errorMessage: 'La descripción debe tener mínimo a 1 caracteres y máximo 30 caracteres',
+            options: { min: 1, max: 30},
+        },
+        custom: {
+            options: (value, { req }) => {
+                // Validar solo si el beneficio es verdadero
+                if (req.body.con_beneficiario && !value) {
+                    throw new Error('Debe proporcionar descripción del beneficiario si el tipo descuento es con beneficiario.');
+                }
+                return true;
             }
-            return true;
-        }
-        }, //verificamos si existe uuid
+        },
     },
-
+    
+    
     activo: {
         isBoolean: {
             errorMessage: "El estado debe ser de tipo bigint [0,1]",
@@ -171,6 +197,7 @@ const validationSchema =  {
 const getValidateCreate = [
     checkSchema(validationSchema),
     validatedResponse
+    
 ];
 
 const getValidateUpdate= [
@@ -203,12 +230,27 @@ const validateDelete = [
         // }
     }),
     validatedResponse
-]
+];
+
+const getValidateImportacion= [
+    checkSchema({
+        
+        id_mes: {
+            isEmpty: {
+                negated: true, errorMessage: "Id mes es obligatorio",
+            },
+            custom: { options: idExistMes}, //verificamos si existe uuid
+        },
+        //...validationSchema
+    }),
+    validatedResponse
+];
 
 
 module.exports = {
     getValidateCreate,
     getValidateUpdate,
-    validateDelete
+    validateDelete,
+    getValidateImportacion
 }
 

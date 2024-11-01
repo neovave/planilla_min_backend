@@ -16,10 +16,10 @@ const getReparticionPaginate = async (req = request, res = response) => {
                 ],
                 
             },
-            include: [
-                { association: 'reparticion_organismo',  attributes: {exclude: ['createdAt']},},
+            // include: [
+            //     { association: 'reparticion_organismo',  attributes: {exclude: ['createdAt']},},
                 
-            ],
+            // ],
             
         };
         let reparticiones = await paginate(Reparticion, page, limit, type, query, optionsDb); 

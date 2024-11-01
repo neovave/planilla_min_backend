@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Asignacion_subsidio.belongsTo(models.Tipo_descuento_sancion,{as:'asigancionsubsidio_tipodes',foreignKey:'id_tipo_descuento'} );
       Asignacion_subsidio.belongsTo(models.Empleado,{as:'asignacionsubsidio_empleado',foreignKey:'id_empleado'});
+      Asignacion_subsidio.belongsTo(models.Municipio,{as:'asignacionsubsidio_municipio',foreignKey:'id_municipio'});
       Asignacion_subsidio.hasMany(models.Beneficiario_acreedor,{as:'asignacionsubsidio_beneficiario', foreignKey:'id_asig_subsidio'});
     }
   }
@@ -24,7 +25,12 @@ module.exports = (sequelize, DataTypes) => {
     fecha_limite: DataTypes.DATE,
     memo_nro: DataTypes.STRING(10),
     memo_detalle: DataTypes.STRING(300),
+    numero_cuota: DataTypes.INTEGER,
+    nombre_archivo: DataTypes.STRING(50),
     estado: DataTypes.STRING(2),
+    id_user_create: DataTypes.INTEGER,
+    id_user_mod: DataTypes.INTEGER,
+    id_user_delete: DataTypes.INTEGER,
     activo: DataTypes.BIGINT,
   },{
     sequelize,

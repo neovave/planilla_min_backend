@@ -7,6 +7,7 @@ const moment = require('moment');
 const xlsx = require('xlsx');
 const path = require('path');
 const fs = require('fs');
+const { fileMoveAndRemoveOld } = require('../helpers/file-upload');
 
 const getAsigDescuentoPaginate = async (req = request, res = response) => {
     try {
@@ -14,29 +15,61 @@ const getAsigDescuentoPaginate = async (req = request, res = response) => {
         const optionsDb = {
             attributes: { exclude: ['createdAt'] },
             order: [['id', 'ASC']],
-            
             include: [
-                { association: 'asiganciondescuento_tipodes',  attributes: {exclude: ['createdAt']},  
-                    // where: type == 'capacitacion_curso.nombre' ? {
-                    //     nombre: {[Op.iLike]: `%${filter}%`}
-                    // }:type =='capacitacion_curso.tipo' ? {
-                    //     tipo:{[Op.iLike]: `%${filter}%`}
-                    // }:{},
-                    // where: {
-                    //     [Op.and]:[
-                    //         tipo? tipo:{},
-                    //         //{tipo:{[Op.iLike]: `%${filter}%`}}
-                    //     ]
-                    // }
-                }, 
-                { association: 'asignaciondescuento_empleado',  attributes: {exclude: ['createdAt','status','updatedAt']},}, 
-                // { association: 'asignaciondescuento_beneficiario',  attributes: {exclude: ['createdAt','status','updatedAt']},}, 
-                
+                {
+                    model: Empleado,
+                    as: 'asignaciondescuento_empleado', // Alias de relación si fue definido en el modelo
+                    required: false // LEFT OUTER JOIN
+                  },
+                  {
+                    model: Tipo_descuento_sancion,
+                    as: 'asiganciondescuento_tipodes', // Alias de relación si fue definido en el modelo
+                    required: false, // LEFT OUTER JOIN
+                    where: {
+                        [Op.and]: [ { activo }, grupo? {grupo}:{}]
+                    }
+                  },
+                  {
+                    model: Beneficiario_acreedor,
+                    as: 'asignaciondescuento_beneficiario', // Alias de relación si fue definido en el modelo
+                    required: false // LEFT OUTER JOIN
+                  }
             ],
+            // include: [
+            //     { association: 'asignaciondescuento_beneficiario',  attributes: {exclude: ['createdAt','status','updatedAt']},},
+            //     { association: 'asignaciondescuento_empleado',  attributes: {exclude: ['createdAt','status','updatedAt']},},
+                
+            //     { association: 'asiganciondescuento_tipodes',  attributes: {exclude: ['createdAt'],
+            //         where:{
+            //             [Op.and]: [ { activo },
+            //                 grupo? {grupo}:{}
+            //                 /*type =='capacitacion_curso.codigo' ? {
+            //                     codigo:{[Op.iLike]: `%${filter}%`}
+            //                 }:{},                    */
+            //             ]
+            //         }
+            //     },  
+            //         // where: type == 'capacitacion_curso.nombre' ? {
+            //         //     nombre: {[Op.iLike]: `%${filter}%`}
+            //         // }:type =='capacitacion_curso.tipo' ? {
+            //         //     tipo:{[Op.iLike]: `%${filter}%`}
+            //         // }:{},
+            //         // where: {
+            //         //     [Op.and]:[
+            //         //         tipo? tipo:{},
+            //         //         //{tipo:{[Op.iLike]: `%${filter}%`}}
+            //         //     ]
+            //         // }
+            //     }, 
+                
+                 
+                 
+                
+            // ],
             where: { 
                 [Op.and]: [
                     { activo }, id_tipo_descuento? {id_tipo_descuento} : {}, id? {id} : {}, id_empleado? {id_empleado}:{}, 
-                    grupo? { '$asiganciondescuento_tipodes.grupo$': { [Op.eq]: grupo } }:{}
+                    //grupo? { '$asiganciondescuento_tipodes.grupo$': { [Op.eq]: grupo } }:{}
                     /*type =='capacitacion_curso.codigo' ? {
                         codigo:{[Op.iLike]: `%${filter}%`}
                     }:{},                    */
@@ -64,6 +97,11 @@ const getAsigDescuentoPaginate = async (req = request, res = response) => {
 const newAsigDescuento = async (req = request, res = response ) => {
     const t = await sequelize.transaction();
     try {
+        const user = await Users.findByPk(req.userAuth.id);
+        const file = req.files.file; //req.files['file'][0];
+        //console.log("archivo descuentos ------------------:", file);
+        const nombreFile = await fileMoveAndRemoveOld(file,'','desc','descuentos');
+
         const  body  = req.body;
         let asig_desc = { 
             id_tipo_descuento: body.id_tipo_descuento, 
@@ -77,8 +115,12 @@ const newAsigDescuento = async (req = request, res = response ) => {
             memo_nro:       body.memo_nro, 
             memo_detalle:   body.memo_detalle,
             id_municipio:   body.id_municipio,
+            numero_cuota:   body.numero_cuota,
+            nombre_archivo: nombreFile?.filePath,
             estado:         body.estado, 
-            activo:         body.activo };
+            activo:         body.activo,
+            id_user_create: user.id 
+        };
         let id = body.id_tipo_descuento;
         const asigDescuentoNew = await Asignacion_descuento.create(asig_desc, { transaction : t});
         const tdesc = await Tipo_descuento_sancion.findOne({ where: { id } });
@@ -89,8 +131,10 @@ const newAsigDescuento = async (req = request, res = response ) => {
                 detalle_ruc:    body.detalle_ruc, 
                 ci_ruc:         body.ci_ruc, 
                 tipo:           body.tipo, 
-                descripcion:    body.descripcion, 
-                activo:         body.activo };
+                descripcion:    body.descripcion,
+                nro_cuenta:     body.nro_cuenta,
+                activo:         body.activo,
+                id_user_create: user.id };
 
             const benefAcreedorNew = await Beneficiario_acreedor.create(benef_acre, { transaction : t});
         }
@@ -116,6 +160,9 @@ const updateAsigDescuento = async (req = request, res = response) => {
     try {
         const { id, id_beneficiario  } = req.params;
         const body = req.body;
+        const user = await Users.findByPk(req.userAuth.id);
+        const fileExcel = req.files['file'][0];
+        const nombreFile = await saveFile(fileExcel,'../uploads/descuentos');
 
         let asig_desc = { 
             id_tipo_descuento: body.id_tipo_descuento, 
@@ -129,8 +176,11 @@ const updateAsigDescuento = async (req = request, res = response) => {
             memo_nro:       body.memo_nro, 
             memo_detalle:   body.memo_detalle,
             id_municipio:   body.id_municipio,
+            numero_cuota:   body.numero_cuota,
+            nombre_archivo: nombreFile?.filePath,
             estado:         body.estado, 
-            activo:         body.activo };
+            activo:         body.activo,
+            id_user_mod:    user.id };
         //let id = body.id_tipo_descuento;
         const tdesc = await Tipo_descuento_sancion.findOne({ where: { id:body.id_tipo_descuento } });
 
@@ -144,10 +194,10 @@ const updateAsigDescuento = async (req = request, res = response) => {
                 detalle_ruc:    body.detalle_ruc, 
                 ci_ruc:         body.ci_ruc, 
                 tipo:           body.tipo, 
-                descripcion:    body.descripcion, 
-                activo:         body.activo };
-
-                console.log("beneficiario:", body );
+                descripcion:    body.descripcion,
+                nro_cuenta:     body.nro_cuenta,
+                activo:         body.activo,
+                id_user_mod:    user.id };
 
                 const asigBeneficiario = await Beneficiario_acreedor.findOne({where: {id: id_beneficiario}} );
                 await asigBeneficiario.update(benef_acre,  { transaction : t});    
@@ -175,8 +225,9 @@ const activeInactiveAsigDescuento = async (req = request, res = response) => {
     try {
         const { id } = req.params;
         const { estado } = req.body;
+        const user = await Users.findByPk(req.userAuth.id);
         const asigDescuento = await Asignacion_descuento.findByPk(id);
-        await asigDescuento.update({estado});
+        await asigDescuento.update({estado,id_user_delete:user.id});
         res.status(201).json({
             ok: true,
             msg: estado ==="AC"? 'Asignación descuento se activado exitosamente' : 'Asignación descuento se inactivo exitosamente'
@@ -197,9 +248,12 @@ const importarDescuento = async (req = request, res = response ) => {
         //let {id_mes }= req.query;
         const  body  = req.body;
         const user = await Users.findByPk(req.userAuth.id)
-        const excelBuffer = req.files['file'][0].buffer;
+        //const excelBuffer = req.files['file'][0].buffer;
+        const excelBuffer = req.files.file.data;
+        const fileImagen = req.files.file2;
         const observacion = await processExcel(excelBuffer, 1, body.id_mes, user);
-
+        const nombreFile = await fileMoveAndRemoveOld(fileImagen,'','desc','descuentos');
+        console.log("nombre archivo:",nombreFile);
         if( observacion.length > 1){
             // Crear un nuevo libro de trabajo
             const workbook = xlsx.utils.book_new();
@@ -212,8 +266,8 @@ const importarDescuento = async (req = request, res = response ) => {
 
             // Guardar el archivo Excel temporalmente
             const nameFile = 'observaciones.xlsx';//`${uuidv4()}.pdf`;
-            const outputFileName = 'public/upload/'+nameFile;
-            const filePath = path.join(__dirname, '../../public/upload/', nameFile);  // Ruta al archivo PDF en el servidor
+            const outputFileName = '../uploads/tmp/'+nameFile;
+            const filePath = path.join(__dirname, outputFileName);  // Ruta al archivo PDF en el servidor
 
             //const excelPath = path.join(__dirname, 'observaciones.xlsx');
             xlsx.writeFile(workbook, filePath);
@@ -299,7 +353,7 @@ async function insertExcelIntoDatabase(data, id_mes, user) {
         let observados = [['codigo_empleado', 'concepto', 'monto','unidad', 'periodo','observación']];
         for (let i = 1; i < data.length; i++) {
             const row = data[i];
-            console.log("fila excel:", row );
+            //console.log("fila excel:", row );
             //datos
             if( row[0] ){
                 

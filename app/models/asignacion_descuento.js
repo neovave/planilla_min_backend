@@ -27,6 +27,8 @@ module.exports = (sequelize, DataTypes) => {
     memo_nro: DataTypes.STRING(10),
     memo_detalle: DataTypes.STRING(200),
     referencia: DataTypes.STRING(200),
+    numero_cuota: DataTypes.INTEGER,
+    nombre_archivo: DataTypes.STRING(200),
     estado: DataTypes.STRING(2),
     id_user_create: DataTypes.INTEGER,
     id_user_mod: DataTypes.INTEGER,

@@ -71,7 +71,19 @@ const validationSchema =  {
             negated: true, errorMessage: "La fecha inicio es obligatorio",
         },
     },
-
+    numero_cuota: {
+        optional: { options: { nullable: true } },
+        isInt: {
+            negated: true, errorMessage: "La número de cuota es obligatorio",
+        },
+    },
+    nombre_archivo: {
+        optional: { options: { nullable: true } },
+        isLength: {
+            errorMessage: 'El valor debe tener mínimo a 1 caracteres y máximo 50 caracteres',
+            options: { min: 1, max: 50},
+        },
+    },
     activo: {
         isBoolean: {
             errorMessage: "El estado debe ser de tipo bigint [0,1]",

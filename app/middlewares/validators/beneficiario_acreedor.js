@@ -15,7 +15,7 @@ const validationSchema =  {
         },
         isLength: {
             errorMessage: 'El nombre debe tener mínimo a 1 caracteres y máximo 100 caracteres',
-            options: { min: 1, max: 100},
+            options: { min: 1, max: 100 },
         },
         //custom: { options: codigoExistCapacitacion },
     },
@@ -47,7 +47,14 @@ const validationSchema =  {
         },
         isLength: {
             errorMessage: 'El valor debe tener mínimo a 1 caracteres y máximo 200 caracteres',
-            options: { min: 1, max: 200},
+            options: { min: 1, max: 200 },
+        },
+    },
+    nro_cuenta: {
+        optional: { options: { nullable: true } },
+        isLength: {
+            errorMessage: 'El valor debe tener mínimo a 1 caracteres y máximo 30 caracteres',
+            options: { min: 1, max: 30 },
         },
     },
     activo: {

@@ -1,10 +1,12 @@
 
 const { response, request } = require('express');
 const { Op } = require('sequelize');
-const {Asignacion_cargo_empleado, Empleado, Tipo_movimiento, Reparticion,Destino, Users, sequelize} = require('../database/config');
+const {Asignacion_cargo_empleado, Empleado, Tipo_movimiento, Reparticion,Destino, Users, sequelize, Mes} = require('../database/config');
+const xlsx = require('xlsx');
 const paginate = require('../helpers/paginate');
 const { fileMoveAndRemoveOld } = require('../helpers/file-upload');
 const moment = require('moment');
+const path = require('path');
 
 const getAsigCargoEmpPaginate = async (req = request, res = response) => {
     try {
@@ -192,16 +194,21 @@ const importarAsigCargoDestino = async (req = request, res = response ) => {
     try {
         //let {id_mes }= req.query;
         const  body  = req.body;
-        console.log("solicitudu.............:",req);
+        //console.log("solicitudu.............:",req);
         const user = await Users.findByPk(req.userAuth.id)
-        const excelBuffer = req.files['file'][0].buffer;
-        const fileImage = req.files['file2'][0];
+        const fileExcel = req.files.file.data; //req.files['file'][0];
+        const fileImage = req.files.file2;//req.files['file2'][0];
         
          
-        console.log("archivo guardado 1",excelBuffer, "archivo guardado 2:", fileImage);
-        const nombreFile2 = await fileMoveAndRemoveOld(fileImage,'','destino','destino');
-        const observacion = await processExcel(excelBuffer, 1, body.id_mes, user, nombreFile2);
-
+        //console.log("archivo guardado 1",fileExcel, "archivo guardado 2:", fileImage);
+        // Llamar al helper para guardar el archivo
+        //const nombreFile2 = await saveFile(fileImage);
+        //const nombreFile2 = await fileMoveAndRemoveOld(fileImage,'','destino','destino');
+        //const nombreFile2 = await fileMoveAndRemoveOld(fileImage,'','destino','destino');
+        const nombreFile2 = await fileMoveAndRemoveOld(fileImage,'','asig_dest','asigDestinos');
+        const observacion = await processExcel(fileExcel, 1, body.id_mes, user, nombreFile2);
+        
+        //console.log("...............observaciones:", observacion);
         if( observacion.length > 1){
             // Crear un nuevo libro de trabajo
             const workbook = xlsx.utils.book_new();
@@ -277,6 +284,8 @@ const importarAsigCargoDestino = async (req = request, res = response ) => {
 function processExcel(excelBuffer, t, id_mes, user, nombreFile) {
 
     const workbook = xlsx.read(excelBuffer, { type: 'buffer' });
+    // Cargar el archivo Excel desde la ubicación temporal
+    //const workbook = xlsx.readFile(file.path);
     const sheetName = workbook.SheetNames[0];
     const worksheet = workbook.Sheets[sheetName];
     const options = {
@@ -286,25 +295,24 @@ function processExcel(excelBuffer, t, id_mes, user, nombreFile) {
         
       };
     const excelData = xlsx.utils.sheet_to_json(worksheet, options );
-  
+    
     return insertExcelIntoDatabase(excelData,  id_mes, user, nombreFile);
 
 }
 
 async function insertExcelIntoDatabase(data, id_mes, user, nombre_file) {
-        
+    
     try{
         
         const meses = await Mes.findOne({where: { id: id_mes }} );
         const periodoIni = moment(meses.fecha_inicio);
         const periodoLimit = moment(meses.fecha_limite);
 
-        
-        
-        let observados = [['codigo empleado','codigo reparticion', 'destino','codigo destino', 'kardex_1','kardex_2','ci','empleado']];
+        let observados = [['codigo empleado','codigo reparticion', 'destino','codigo destino', 'kardex_1','kardex_2','ci','empleado', 'Observación']];
+        let obs = "";
         for (let i = 1; i < data.length; i++) {
             const row = data[i];
-            console.log("fila excel:", row );
+            //console.log("fila excel:", row );
             //datos
             if( row[0] ){
                 let codigo = parseInt(row[1]);
@@ -316,29 +324,30 @@ async function insertExcelIntoDatabase(data, id_mes, user, nombre_file) {
                 
                 
                 const fechaBase = moment('1900-01-01');
-                const fechaDesde = fechaBase.add(row[7] - 2, 'days');
-                const periodoLimitAntAsig = fechaDesde.subtract(1, 'days');;
                 
+                const fechaDesde = fechaBase.add(row[7] - 2, 'days');
+                let dateIni = fechaDesde;//fechaDesde.subtract(1, 'days');;
+                const periodoLimitAntAsig = fechaDesde.clone().subtract(1, 'days');
                 const existEmpleado = await Empleado.findOne( { where: { cod_empleado:  codigo }, include: [{ association: 'empleado_asignacioncargoemp',  attributes: {exclude: ['createdAt'] }, order: [['id', 'DESC']], where:{ activo:1, estado:'AC' } },] } );
                 const existReparticion = await Reparticion.findOne( { where: { codigo:  codReparticion } } );
                 const existDestino = await Destino.findOne( { where: { codigo:  codDestino },  } );
-
+                
                 if(existEmpleado && existReparticion && existDestino){
                     //verificar y registrar empleado
                     const asignacionCargo = {
                         id_gestion: meses.id_gestion,
                         id_empleado: existEmpleado.id,
-                        id_cargo: existEmpleado.empleado_asignacioncargoemp.id_cargo,
+                        id_cargo: existEmpleado.empleado_asignacioncargoemp[0].id_cargo,
                         id_tipo_movimiento: 4, //destino id 4
-                        id_organismo: existEmpleado.empleado_asignacioncargoemp.id_organismo,
+                        id_organismo: existEmpleado.empleado_asignacioncargoemp[0].id_organismo,
                         id_reparticion: existReparticion.id ,
                         id_destino: existDestino.id,
                         ci_empleado: existEmpleado.numero_documento,
                         fecha_inicio:fechaDesde,
                         motivo: kardex1,
                         referencia: kardex2,
-                        nombre_file: '',
-                        nro_item: existEmpleado.empleado_asignacioncargoemp.nro_item,
+                        nombre_file: nombre_file.newFileName,
+                        nro_item: existEmpleado.empleado_asignacioncargoemp[0].nro_item,
                         estado: 'AC',
                         activo: 1,
                         id_user_create: user.id                        
@@ -346,29 +355,35 @@ async function insertExcelIntoDatabase(data, id_mes, user, nombre_file) {
 
                     const existAsignacionCargo = await Asignacion_cargo_empleado.findOne( { where: { 
                         id_gestion: meses.id_gestion, id_empleado: existEmpleado.id,
-                        id_cargo: existEmpleado.empleado_asignacioncargoemp.id_cargo,
-                        id_tipo_movimiento: 4, id_organismo: existEmpleado.empleado_asignacioncargoemp.id_organismo, id_reparticion: existReparticion.id ,
+                        id_cargo: existEmpleado.empleado_asignacioncargoemp[0].id_cargo,
+                        id_tipo_movimiento: 4, id_organismo: existEmpleado.empleado_asignacioncargoemp[0].id_organismo, id_reparticion: existReparticion.id ,
                         id_destino: existDestino.id, ci_empleado: existEmpleado.numero_documento,
-                        fecha_inicio:periodoIni
+                        fecha_inicio:periodoIni, activo:1
                      } } );
                 
                     if(!existAsignacionCargo){
-                        //const asignacionCargoNew = await Asignacion_cargo_empleado.create( asignacionCargo );
-                        //const asigCargoEmp = await Asignacion_cargo_empleado.findByPk( existEmpleado.empleado_asignacioncargoemp.id );
-                        //await asigCargoEmp.update({estado:'CE', fecha_limite:periodoLimitAntAsig });
+                        const asignacionCargoNew = await Asignacion_cargo_empleado.create( asignacionCargo );
+                        const asigCargoEmp = await Asignacion_cargo_empleado.findByPk( existEmpleado.empleado_asignacioncargoemp[0].id );
+                        await asigCargoEmp.update({ estado:'CE', fecha_limite:periodoLimitAntAsig });
+
+                        
 
                     }else{
+                        obs = "Existe registro";
                         observados.push(
-                            [codigo, codReparticion, nombreDestino, codDestino, kardex1, kardex2, existEmpleado.numero_documento, existEmpleado.nombre+' '+existEmpleado.paterno]
-                        );                        
+                            [codigo, codReparticion, nombreDestino, codDestino, kardex1, kardex2, existEmpleado.numero_documento, existEmpleado.nombre+' '+existEmpleado.paterno, obs]
+                        );                    
+                          
                     }
                 }else{
+                    obs = existEmpleado?( existReparticion ? "No existe destino": "No existe reparticion" ) :"No existe el empleado/ No existe una asignación de cargo" ;  
+
                     observados.push(
-                        [codigo, codReparticion, nombreDestino, codDestino, kardex1, kardex2, existEmpleado.numero_documento, existEmpleado.nombre+' '+existEmpleado.paterno]
+                        [codigo, codReparticion, nombreDestino, codDestino, kardex1, kardex2, existEmpleado?.numero_documento, existEmpleado?.nombre+' '+existEmpleado?.paterno, obs]
                     );
-                }               
+                }      
             }
-            
+            obs = ""; 
         }
         
         return observados;

@@ -83,6 +83,22 @@ const getMenuFrontend = (role = 'OPERADOR') => {
       {
         items: [          
           {
+            label: 'Subsidio', icon: 'pi pi-fw pi-credit-card',
+            items: [
+              {
+                label: 'Subsidio Emp.', icon: 'pi pi-fw pi-user',routerLink: ['/salarios/asignacion_subsidio/tipo/subsidio'],routerLinkActiveOptions:{ exact: false },routerLinkActive:"active"
+              },
+              {
+                label: 'Tipo San.', icon: 'pi pi-fw pi-calendar',routerLink: ['/salarios/subsidio/tipo/subsidio'] //TIPO = AFPS-EDAD
+              },
+              
+          ]
+          },            
+        ]
+      },
+      {
+        items: [          
+          {
             label: 'Antiguedad Y bono', icon: 'pi pi-fw pi-ticket',
             items: [
               {

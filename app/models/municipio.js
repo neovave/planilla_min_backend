@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Municipio.hasMany(models.Reparticion ,{as:'municipio_reparticion', foreignKey:'id_municipio'});
       Municipio.hasMany(models.Asignacion_descuento ,{as:'municipio_asigdescuento', foreignKey:'id_municipio'});
+      Municipio.hasMany(models.Asignacion_subsidio ,{as:'municipio_asigsubsidio', foreignKey:'id_municipio'});
     }
   }
   Municipio.init({
