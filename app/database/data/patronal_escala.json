@@ -3,56 +3,56 @@
       "nombre": "Prima por Riesgo Profesional",
       "porcentaje": "1.71",
       "descripcion": "R.Prof",
+      "fecha_inicio":"2000-01-01",
+      "fecha_limite":null,
       "aplica_certificacion_afp":null,
       "aplica_edad_limite":true,
       "apat_codigo": "{\"G\": \"13120\", \"I\": \"13120\", \"P\": \"13120\"}",
-      "fecha_inicio":"2000-01-01",
-      "fecha_limite":null,
       "activo": 1
     },
     {
         "nombre": "Aporte Patronal Solidario",
         "porcentaje": "3",
         "descripcion": "A.SOLID",
+        "fecha_inicio":"2000-01-01",
+        "fecha_limite":"2024-10-31",
         "aplica_certificacion_afp":null,
         "aplica_edad_limite":null,
         "apat_codigo": "{\"G\": \"13131\", \"I\": \"13131\", \"P\": \"13131\"}",
-        "fecha_inicio":"2000-01-01",
-        "fecha_limite":"2024-10-31",
         "activo": 1
     },
     {
         "nombre": "Aporte Patronal para Vivienda",
         "porcentaje": "2",
         "descripcion": "VIVIENDA",
+        "fecha_inicio":"2000-01-01",
+        "fecha_limite":null,
         "aplica_certificacion_afp":null,
         "aplica_edad_limite":null,
         "apat_codigo": "{\"G\": \"132\", \"I\": \"132\", \"P\": \"132\"}",
-        "fecha_inicio":"2000-01-01",
-        "fecha_limite":null,
         "activo": 1
     },
     {
         "nombre": "Aporte de salud a corto plazo",
         "porcentaje": "10",
         "descripcion": "SALUD",
+        "fecha_inicio":"2000-01-01",
+        "fecha_limite":null,
         "aplica_certificacion_afp":null,
         "aplica_edad_limite":null,
         "apat_codigo": "{\"CNS\": \"13110\"}",
-        "fecha_inicio":"2000-01-01",
-        "fecha_limite":null,
         "activo": 1
     },
     {
         "nombre": "Aporte Patronal Solidario",
         "porcentaje": "3.5",
         "descripcion": "A.SOLID",
+        "fecha_inicio":"2024-11-01",
+        "fecha_limite":null,
         "aplica_certificacion_afp":null,
         "aplica_edad_limite":null,
         "apat_codigo": "{\"G\": \"13131\", \"I\": \"13131\", \"P\": \"13131\"}",
-        "fecha_inicio":"2024-11-01",
-        "fecha_limite":null,
         "activo": 1
-    },   
+    }  
 
 ]
