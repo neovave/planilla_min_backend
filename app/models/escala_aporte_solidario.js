@@ -17,6 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     total_ganado: DataTypes.DECIMAL(8,2),
     porcentaje: DataTypes.DECIMAL(8,2),
     descripcion: DataTypes.STRING(200),
+    fecha_inicio: DataTypes.DATE,
+    fecha_limite: DataTypes.DATE,
     estado: DataTypes.STRING(2),
     id_user_create: DataTypes.INTEGER,
     id_user_mod: DataTypes.INTEGER,

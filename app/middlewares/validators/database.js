@@ -38,7 +38,7 @@ const {
     Asignacion_bono,
     Empleado_no_aportante,
     Viatico,
-    Asingacion_subsidio,
+    Asignacion_subsidio,
     Municipio,
     Grupo_descuento
     
@@ -611,7 +611,7 @@ const {
   // =================================================================
   // ========================= Asignacion Sub sidio =======================
   const idExistAsigSubsidio = async (id = "") => {
-    const idExist = await Asingacion_subsidio.findByPk(id);
+    const idExist = await Asignacion_subsidio.findByPk(id);
     if (!idExist) {
       throw new Error(`El id del Subsidio con id: ${id}, no existe`);
     }

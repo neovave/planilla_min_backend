@@ -1,7 +1,7 @@
 
 const { response, request } = require('express');
 const { Op } = require('sequelize');
-const {Asignacion_descuento, sequelize, Tipo_descuento_sancion, Beneficiario_acreedor, Mes, Empleado, Users } = require('../database/config');
+const {Asignacion_descuento, sequelize, Tipo_descuento_sancion, Beneficiario_acreedor, Mes, Empleado, Users, Municipio } = require('../database/config');
 const paginate = require('../helpers/paginate');
 const moment = require('moment');
 const xlsx = require('xlsx');
@@ -32,6 +32,11 @@ const getAsigDescuentoPaginate = async (req = request, res = response) => {
                   {
                     model: Beneficiario_acreedor,
                     as: 'asignaciondescuento_beneficiario', // Alias de relación si fue definido en el modelo
+                    required: false // LEFT OUTER JOIN
+                  },
+                  {
+                    model: Municipio,
+                    as: 'asignaciondescuento_municipio', // Alias de relación si fue definido en el modelo
                     required: false // LEFT OUTER JOIN
                   }
             ],
@@ -109,11 +114,13 @@ const newAsigDescuento = async (req = request, res = response ) => {
             cod_empleado:   body.cod_empleado, 
             monto:          body.monto, 
             unidad:         body.unidad, 
+            tipo_pago:      body.tipo_pago,
             institucion:    body.institucion, 
             fecha_inicio:   body.fecha_inicio, 
             fecha_limite:   body.fecha_limite, 
             memo_nro:       body.memo_nro, 
             memo_detalle:   body.memo_detalle,
+            referencia:     body.referencia,
             id_municipio:   body.id_municipio,
             numero_cuota:   body.numero_cuota,
             nombre_archivo: nombreFile?.filePath,
@@ -130,7 +137,7 @@ const newAsigDescuento = async (req = request, res = response ) => {
                 id_asig_descuento: asigDescuentoNew.id, 
                 detalle_ruc:    body.detalle_ruc, 
                 ci_ruc:         body.ci_ruc, 
-                tipo:           body.tipo, 
+                //tipo:           body.tipo, 
                 descripcion:    body.descripcion,
                 nro_cuenta:     body.nro_cuenta,
                 activo:         body.activo,
@@ -161,20 +168,21 @@ const updateAsigDescuento = async (req = request, res = response) => {
         const { id, id_beneficiario  } = req.params;
         const body = req.body;
         const user = await Users.findByPk(req.userAuth.id);
-        const fileExcel = req.files['file'][0];
-        const nombreFile = await saveFile(fileExcel,'../uploads/descuentos');
-
+        const file = req.files.file;
+        const nombreFile = await fileMoveAndRemoveOld(file,'','desc','descuentos');
         let asig_desc = { 
             id_tipo_descuento: body.id_tipo_descuento, 
             id_empleado:    body.id_empleado, 
             cod_empleado:   body.cod_empleado, 
             monto:          body.monto, 
             unidad:         body.unidad, 
+            tipo_pago:      body.tipo_pago,
             institucion:    body.institucion, 
             fecha_inicio:   body.fecha_inicio, 
             fecha_limite:   body.fecha_limite, 
             memo_nro:       body.memo_nro, 
             memo_detalle:   body.memo_detalle,
+            referencia:     body.referencia,
             id_municipio:   body.id_municipio,
             numero_cuota:   body.numero_cuota,
             nombre_archivo: nombreFile?.filePath,
@@ -193,7 +201,7 @@ const updateAsigDescuento = async (req = request, res = response) => {
                 id_asig_descuento: id, 
                 detalle_ruc:    body.detalle_ruc, 
                 ci_ruc:         body.ci_ruc, 
-                tipo:           body.tipo, 
+                //tipo:           body.tipo, 
                 descripcion:    body.descripcion,
                 nro_cuenta:     body.nro_cuenta,
                 activo:         body.activo,

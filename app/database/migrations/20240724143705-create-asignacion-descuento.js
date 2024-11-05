@@ -48,6 +48,9 @@ module.exports = {
       unidad: {
         type: Sequelize.STRING(2)
       },
+      tipo_pago:{
+        type: Sequelize.STRING(20)
+      },
       institucion: {
         type: Sequelize.STRING(8)
       },

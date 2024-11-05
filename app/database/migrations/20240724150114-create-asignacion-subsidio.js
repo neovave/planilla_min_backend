@@ -54,10 +54,19 @@ module.exports = {
       fecha_limite: {
         type: Sequelize.DATE
       },
+      fecha_control: {
+        type: Sequelize.DATE
+      },
+      fecha_presentacion: {
+        type: Sequelize.DATE
+      },
       memo_nro: {
         type: Sequelize.STRING(10)
       },
       memo_detalle: {
+        type: Sequelize.STRING(200)
+      },
+      referencia: {
         type: Sequelize.STRING(200)
       },
       numero_cuota: {

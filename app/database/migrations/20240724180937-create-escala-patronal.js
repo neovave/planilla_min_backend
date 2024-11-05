@@ -18,6 +18,12 @@ module.exports = {
       descripcion: {
         type: Sequelize.STRING(20)
       },
+      fecha_inicio: {
+        type: Sequelize.DATE
+      },
+      fecha_limite: {
+        type: Sequelize.DATE
+      },
       apat_codigo: {
         type: Sequelize.JSONB
       },

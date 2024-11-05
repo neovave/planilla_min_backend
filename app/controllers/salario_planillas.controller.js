@@ -46,7 +46,7 @@ const getSalarioPlanillaPaginate = async (req = request, res = response) => {
             salariosPlanillas
         });
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         return res.status(500).json({
             ok: false,
             errors: [{ msg: `Ocurrió un imprevisto interno | hable con soporte`}],
@@ -65,7 +65,7 @@ const newSalarioPlanilla = async (req = request, res = response ) => {
             salariosPlanillas
         });
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         return res.status(500).json({
           ok: false,
           errors: [{ msg: `Ocurrió un imprevisto interno | hable con soporte`}],
@@ -102,7 +102,7 @@ const generarSalarioPlanillaAll = async (req = request, res = response ) => {
             type: QueryTypes.SELECT  // Esto especifica que esperas un resultado tipo SELECT
         });
         const parametro = parametros[0];
-        console.log("--------------------------------------------------------------------parametro iniciales:",parametro);
+        ////console.log("--------------------------------------------------------------------parametro iniciales:",parametro);
         //lista asistencia general
         const asistenciaEmpleado = await Asistencia.findAll(
             {   attributes: ['id_empleado', 'id_mes',
@@ -128,7 +128,10 @@ const generarSalarioPlanillaAll = async (req = request, res = response ) => {
                 raw: true
             });
             
-        const escalaApSol = await Escala_aporte_solidario.findAll( {where: { estado:'AC', activo: 1 }} );
+        const escalaApSol = await Escala_aporte_solidario.findAll( {where: { estado:'AC', activo: 1, [Op.and]: [
+            literal(`DATE_TRUNC('month', '`+periodo+`'::DATE ) BETWEEN DATE_TRUNC('month', fecha_inicio) AND COALESCE(DATE_TRUNC('month', fecha_limite), DATE_TRUNC('month', '`+periodo+`'::DATE))` )
+        ] 
+        }} );
         const listaAfpVigente = await sequelize.query(`
                 SELECT cod_config_afp, nombre_afp, abreviatura_afp, porcentaje, aplica_certificacion, aplica_edad_limite, codigo_afp from aporte_afps_vigentes();
               `,{
@@ -145,7 +148,11 @@ const generarSalarioPlanillaAll = async (req = request, res = response ) => {
                     'aplica_edad_limite', 
                     'apat_codigo'
                 ],
-                where: { activo: 1 }
+                where: { activo: 1,
+                    [Op.and]: [
+                        literal(`DATE_TRUNC('month', '`+periodo+`'::DATE ) BETWEEN DATE_TRUNC('month', fecha_inicio) AND COALESCE(DATE_TRUNC('month', fecha_limite), DATE_TRUNC('month', '`+periodo+`'::DATE))` )
+                    ]
+                 }
                 } );
             
 
@@ -173,7 +180,7 @@ const generarSalarioPlanillaAll = async (req = request, res = response ) => {
                         where: { activo:1, ingreso:true, id_empleado:fila.id_empleado
                         },
                     });
-                //console.log("asignacio cargo empleado-------------------------------------:", asigCargoEmpleado);
+                ////console.log("asignacio cargo empleado-------------------------------------:", asigCargoEmpleado);
                 const empleadoNoAportantes = await Empleado_no_aportante.findOne(
                     {   //attributes:['fecha_inicio', 'fecha_limite'],
                         order: [['id', 'DESC']],
@@ -198,7 +205,7 @@ const generarSalarioPlanillaAll = async (req = request, res = response ) => {
                             ],
                             
                         });
-                    //console.log("asignacion cargo:", asignacionCargo);
+                    ////console.log("asignacion cargo:", asignacionCargo);
                     idAsigCargo = idAsigCargo? idAsigCargo: asignacionCargo.id;
                     //optener el haber basico sea el correcto segun el periodo - El monto_incremnto es para planilla retroactivo
                     const incrementoModel = await Incremento.findOne( {where: { id_gestion:meses.id_gestion, id_cargo: asignacionCargo.asignacioncargoemp_cargo.id }} );
@@ -233,7 +240,7 @@ const generarSalarioPlanillaAll = async (req = request, res = response ) => {
                     //edad del empleado
                     edadEmpleado = edadEmpleado? edadEmpleado: calcularEdadEmpleado(asignacionCargo.asignacioncargoemp_empleado.fecha_nacimiento, parametro.fecha_corte_edad);
 
-                    //console.log("edad del empleado????????????????:", edadEmpleado);
+                    ////console.log("edad del empleado????????????????:", edadEmpleado);
                     
                     //verificar tipo novedad para rciva
                     novedad = asignacionCargo.asignacioncargoemp_empleado.ingreso? "I": (asignacionCargo.asignacioncargoemp_empleado.retiro? "D": "V" ) ;
@@ -253,8 +260,8 @@ const generarSalarioPlanillaAll = async (req = request, res = response ) => {
                         total_bono: total_bonos,
                         bonos: lista_json_bono,
                     });
-                    //console.log("asistencia json:",asistenciaJson);
-                    console.log("total ganado");
+                    ////console.log("asistencia json:",asistenciaJson);
+                    //console.log("total ganado");
                     totalGanado = totalGanado +  total_ganado;
                     totalHaberBasico = totalHaberBasico + total_haber_basico;
                     totalBono = totalBono + total_bonos;
@@ -262,7 +269,7 @@ const generarSalarioPlanillaAll = async (req = request, res = response ) => {
                     montoTotalDiasSancionados = montoTotalDiasSancionados + monto_total_dias_sancionados;
                     totalDiasTrabajados = totalDiasTrabajados + row.dias_trabajados;
                     totalDiasSancionados =totalDiasSancionados + row.dias_sancionados;
-                    //console.log("asis:", asistenciaJson);
+                    ////console.log("asis:", asistenciaJson);
                 }
                 
                 
@@ -273,7 +280,7 @@ const generarSalarioPlanillaAll = async (req = request, res = response ) => {
                 //calculo de afps
                 
                 const {total_aporte_afp , aporte_afp_json} = calcularAporteAfp( totalGanado, listaAfpVigente, parametro.cod_edad_afp, parametro.edad_afp, parametro.cod_fecha_afp_edad, edadEmpleado, empleadoNoAportantes );
-                //console.log("total aporte afp:", total_aporte_afp);
+                ////console.log("total aporte afp:", total_aporte_afp);
                 
                 //calculo de rciva
                 const rcivaSaldoCertificado = await Rciva_certificacion.findOne( {where: { activo: 1, id_empleado:fila.id_empleado, id_mes:body.id_mes }} );
@@ -303,7 +310,7 @@ const generarSalarioPlanillaAll = async (req = request, res = response ) => {
                 const escalaRciva = await Escala_rciva_salario.findOne( {where: { activo: 1 }, order: [['id', 'DESC']], } );
                 
                 const calculo_rciva = await calcularRciva( parametro, fila.id_empleado, body.id_mes, totalGanado, rcivaSaldoCertificado, filaDescargo, rciva_saldo_dependiente, total_aporte_solidario, total_aporte_afp, viaticos, escalaRciva, novedad );
-                console.log("calculo rciva:,,,,,,,,,,,,,,,,,:", calculo_rciva );
+                ////console.log("calculo rciva:,,,,,,,,,,,,,,,,,:", calculo_rciva );
                 //agregar parametros posteriores
                 //calculo_rciva.novedad = novedad;
                 //calculo_rciva.id_salario_planilla= 
@@ -332,7 +339,7 @@ const generarSalarioPlanillaAll = async (req = request, res = response ) => {
                             }
                         } );
 
-                //console.log("lista descuentos:", listDescuento );
+                ////console.log("lista descuentos:", listDescuento );
                 const calculo_descuentos = calculoDescuento(listDescuento, totalDiasTrabajados, totalGanado);
 
                 
@@ -361,19 +368,19 @@ const generarSalarioPlanillaAll = async (req = request, res = response ) => {
                             }
                         } );
 
-                //console.log("lista sanciones:", listSanciones );
+                ////console.log("lista sanciones:", listSanciones );
                 const calculo_sanciones = calculoDescuento(listSanciones, totalDiasTrabajados, totalGanado);
-                //console.log("calculo descuentos:", calculo_sanciones);
+                ////console.log("calculo descuentos:", calculo_sanciones);
                 //calculo aporte patronal
                 //calculo de afps
 
                 
-                //console.log("total aporte patronal:", total_aporte_patronal,"total gando:",totalGanado, "json......:", aporte_patronal_json);
+                ////console.log("total aporte patronal:", total_aporte_patronal,"total gando:",totalGanado, "json......:", aporte_patronal_json);
 
                 //calculo de liquido pagable
                 
                 let liquidoPagable =0;
-                console.log("total ganado-----------------:", totalGanado, "edad empleado ---------------:", edadEmpleado);
+                //console.log("total ganado-----------------:", totalGanado, "edad empleado ---------------:", edadEmpleado);
                 if (totalGanado > 0 && edadEmpleado > 0) {
 
                     // calculo de subsidio
@@ -406,7 +413,7 @@ const generarSalarioPlanillaAll = async (req = request, res = response ) => {
                     let totalAuxiliar = rcIva + afps + afp_solid_nacional + totalDescuentos + totalSanciones + totalSubsidio;
                     let liquidoPagableAux = totalGanado - totalAuxiliar;
                     liquidoPagable = liquidoPagableAux >= 0 ? liquidoPagableAux : 0;
-                    console.log("-----rciva:",rcIva," afps:",afps, " afp_solidario nacional:",afp_solid_nacional, " total descuentos:",totalDescuentos, " total sanciones:", totalSanciones, " total auxiliar:", totalAuxiliar, " liquido pagable Aux:", liquidoPagableAux, " liquido pagable:", liquidoPagable );
+                    //console.log("-----rciva:",rcIva," afps:",afps, " afp_solidario nacional:",afp_solid_nacional, " total descuentos:",totalDescuentos, " total sanciones:", totalSanciones, " total auxiliar:", totalAuxiliar, " liquido pagable Aux:", liquidoPagableAux, " liquido pagable:", liquidoPagable );
                     salariosPlanillasDatas.push({
                         id_mes: body.id_mes, //moment({ month: mes }).format('MMMM'),
                         id_empleado: fila.id_empleado,
@@ -438,12 +445,12 @@ const generarSalarioPlanillaAll = async (req = request, res = response ) => {
                         activo:1,
                         id_user_create: user.id
                     });
-                    console.log( "planilla salarios****************", salariosPlanillasDatas );
+                    //console.log( "planilla salarios****************", salariosPlanillasDatas );
                     rcivaPlanillasDatas.push( calculo_rciva );
 
                 } else {
 
-                    // console.log( "Asistencias del empleado .............:", fila, "nombre completo:", fila.numdocumento_completo, "total dias trabajados:", fila.total_dias_trabajados, "id_mes:", fila.id_mes );
+                    // //console.log( "Asistencias del empleado .............:", fila, "nombre completo:", fila.numdocumento_completo, "total dias trabajados:", fila.total_dias_trabajados, "id_mes:", fila.id_mes );
                     
                     listaSinRegistro.push({
                         id_empleado:fila.id_empleado,
@@ -457,7 +464,7 @@ const generarSalarioPlanillaAll = async (req = request, res = response ) => {
             // Consulta para verificar si el id existe en la otra tabla
             //const existingRecord = await Salario_planilla.findOne({ where: { id_mes:body.id_mes, id_empleado:row.id_empleado, id_asig_cargo : row.id , activo:1 } });
         
-            //console.log("json.............:", JSON.stringify(salariosPlanillasDatas));    
+            ////console.log("json.............:", JSON.stringify(salariosPlanillasDatas));    
         }
         
         const salarioNew = await Salario_planilla.bulkCreate(salariosPlanillasDatas, { transaction: t });
@@ -471,7 +478,7 @@ const generarSalarioPlanillaAll = async (req = request, res = response ) => {
             listaSinRegistro
         });
     } catch (error) {
-        console.log( error );
+        //console.log( error );
         await t.rollback();
         return res.status(500).json({
           ok: false,
@@ -507,7 +514,7 @@ function calcularHaberBasico(diasTrabajados, diasSancionados, haberBasico ) {
         totalHaberBasico = totalDiasTrabajados * haberBasicoDia;
     }
     montoTotalDiasSancionados = haberBasicoDia * diasSancionados;
-    //console.log("dias trabajados---------------------------------------:", diasTrabajados, "dias sancionados:", diasSancionados, "haber basico:", haberBasico, "total haber basico", totalHaberBasico, "monto total dias sancionados:", montoTotalDiasSancionados );
+    ////console.log("dias trabajados---------------------------------------:", diasTrabajados, "dias sancionados:", diasSancionados, "haber basico:", haberBasico, "total haber basico", totalHaberBasico, "monto total dias sancionados:", montoTotalDiasSancionados );
     return {total_haber_basico:totalHaberBasico, monto_total_dias_sancionados:montoTotalDiasSancionados};
   }
 function calcularAnioAntiguedad(fechaIngreso, fechaCorte, haberBasico, parametroAntigueda ) {
@@ -522,7 +529,7 @@ function calcularAnioAntiguedad(fechaIngreso, fechaCorte, haberBasico, parametro
     }else{
         totalMontoAntiguedad = haberBasico * ( anioTrabajado / LimiteAntiguedad );
     }
-    console.log("Fecha ingreso:",fechaIngresoMoment, "fecha_actual:", fechaActual,"años trabajados", anioTrabajado, " limite antiguedad:",LimiteAntiguedad, "total monto antiguedad:", totalMontoAntiguedad);
+    //console.log("Fecha ingreso:",fechaIngresoMoment, "fecha_actual:", fechaActual,"años trabajados", anioTrabajado, " limite antiguedad:",LimiteAntiguedad, "total monto antiguedad:", totalMontoAntiguedad);
     return totalMontoAntiguedad;
 }
 function totalGandoBs(totalHaberBasico, totalAntiguedad, totalBono) {
@@ -531,7 +538,7 @@ function totalGandoBs(totalHaberBasico, totalAntiguedad, totalBono) {
         totalGanado = parseFloat(totalHaberBasico) + parseFloat(totalAntiguedad) + parseFloat(totalBono); //por tema de decimales o redondeo
         
     }
-    console.log("total haber basico..............................:", totalHaberBasico, "total antiguedad:", totalAntiguedad, "total bono:", totalBono,  "total ganado:", totalGanado);
+    //console.log("total haber basico..............................:", totalHaberBasico, "total antiguedad:", totalAntiguedad, "total bono:", totalBono,  "total ganado:", totalGanado);
     
     return totalGanado;
   }
@@ -549,9 +556,9 @@ function calcularAporteSolidario(totalGanado, escalaApSol) {
     let totalAporteSolidario = 0;
     const escalaCumpleFiltrados = escalaApSol.filter(escala => escala.total_ganado < totalGanado);
     let aporteSolidario = [];
-    //console.log("escala cumplido",escalaCumpleFiltrados);
+    ////console.log("escala cumplido",escalaCumpleFiltrados);
     for(const row of escalaCumpleFiltrados){
-        //console.log("fila escala cumplidos:", row );
+        ////console.log("fila escala cumplidos:", row );
         const resultado = calculoMontoAporteNalSolidario(row.total_ganado, row.porcentaje, totalGanado);
         aporteSolidario.push({
             id_escala: row.id, //moment({ month: mes }).format('MMMM'),
@@ -576,9 +583,9 @@ function calculoMontoAporteNalSolidario(monto_escala, porcentaje_escala, totalGa
 function calcularBono( haberBasico, antiguedad, listaAsigBonos, id_cargo ) {
     let totalBono = 0;
     let bonosPerYEve = [];
-    //console.log("lista bonos:", listaBonos);
+    ////console.log("lista bonos:", listaBonos);
     for(const row of listaAsigBonos){
-        //console.log("fila escala cumplidos:", row );
+        ////console.log("fila escala cumplidos:", row );
         const {resultado, porcentaje} = montoPorcentajeBono(haberBasico, antiguedad, row.asignacionbono_bono, id_cargo);
         bonosPerYEve.push({
             id_asig_bono: row.id,
@@ -590,10 +597,10 @@ function calcularBono( haberBasico, antiguedad, listaAsigBonos, id_cargo ) {
             //nombre: row.asignacionbono_bono,nombre_abreviado
 
         });
-        console.log("Total bonos:", bonosPerYEve);
+        //console.log("Total bonos:", bonosPerYEve);
         totalBono = parseFloat(totalBono) + parseFloat(resultado);
     }
-    console.log("---------haber basico:",haberBasico, "antiguedad:", antiguedad,"Total bono antiguedad:",totalBono, "lista bonos:",listaAsigBonos );
+    //console.log("---------haber basico:",haberBasico, "antiguedad:", antiguedad,"Total bono antiguedad:",totalBono, "lista bonos:",listaAsigBonos );
     return {total_bonos: totalBono, lista_json_bono:bonosPerYEve};
 }
 function montoPorcentajeBono(haberBasico, antiguedad, listaBono, id_cargo) {
@@ -609,11 +616,11 @@ function montoPorcentajeBono(haberBasico, antiguedad, listaBono, id_cargo) {
     }else{
         porcentaje_escala = listaBono.porcentaje;
     }
-    //console.log("cal bono, haber basico:", haberBasico, "antiguedad:",antiguedad, "porcentaje:",porcentaje_escala);
+    ////console.log("cal bono, haber basico:", haberBasico, "antiguedad:",antiguedad, "porcentaje:",porcentaje_escala);
     if (haberBasico > 0 && porcentaje_escala >= 0 && antiguedad >= 0) {
         suma_bs = parseFloat( haberBasico)  + parseFloat(antiguedad );
         resultado = (suma_bs >= 0) ? suma_bs * (porcentaje_escala / 100) : 0;
-        //console.log("resultado cal bono:", resultado, "suma:", suma_bs);
+        ////console.log("resultado cal bono:", resultado, "suma:", suma_bs);
     }
     
     return {resultado:resultado, porcentaje:porcentaje_escala };
@@ -621,18 +628,18 @@ function montoPorcentajeBono(haberBasico, antiguedad, listaBono, id_cargo) {
 function calcularSubsidio( listaAsigSubsidio ) {
     let totalSubsidio = 0;
     let subsudios = [];
-    //console.log("lista bonos:", listaBonos);
+    ////console.log("lista bonos:", listaBonos);
     for(const row of listaAsigSubsidio){
-        //console.log("fila escala cumplidos:", row );
+        ////console.log("fila escala cumplidos:", row );
         subsudios.push({
             id_asig_subsidio: row.id,
             monto: row.monto,
             nombre_subsidio: row.asigancionsubsidio_tipodes.nombre
         });
-        console.log("Total subsidio:", subsudios );
+        //console.log("Total subsidio:", subsudios );
         totalSubsidio = totalSubsidio + parseFloat(row.monto);
     }
-    console.log("total subsidio:",totalSubsidio, "lista subsidios:",subsudios );
+    //console.log("total subsidio:",totalSubsidio, "lista subsidios:",subsudios );
     return { total_subsidio: totalSubsidio, lista_json_subsidio:subsudios };
 }
 function calcularAporteAfp( totalGanado, listaAfpVigente, cod_edad_afp, edadLimiteAfp, idFechaPlanillaAfpActiva, edad_empleado, empleadoNoAportantes){
@@ -666,7 +673,7 @@ function calculoMontoAporteAFP(totalGanado, porcentaje, certificado, aplicaEdadA
     let resultado = 0;
     //$periodoAplicacion = EmpleadoNoaportante::periodoAplicacionCertificacionCesacionSIP($id_empleado); // 05/2019        
     let id_noaporta;
-    //console.log("total ganado:", totalGanado, "porcentaje:", porcentaje, "certificado:", certificado, "aplica Edad Afp:", aplicaEdadAFP, "edad Limite afp:", edadLimiteAfp, "edad empleado:", edadEmpleado, "empleados no aportantes:", empleadoNoAportantes);
+    ////console.log("total ganado:", totalGanado, "porcentaje:", porcentaje, "certificado:", certificado, "aplica Edad Afp:", aplicaEdadAFP, "edad Limite afp:", edadLimiteAfp, "edad empleado:", edadEmpleado, "empleados no aportantes:", empleadoNoAportantes);
     // 1.- cesacion de aportes cuando este true solo la certificacion
     if (certificado && !aplicaEdadAFP) {
         if (empleadoNoAportantes ) {
@@ -712,7 +719,7 @@ async function calcularRciva( parametro, idEmpleado, id_mes, totalGanado, rcivaS
     const idUfvActual = parametro.id_ufv_act;
     const ufvAnt = parametro.ufv_ant;
     const idUfvAnt = parametro.id_ufv_ant;
-    console.log("No cumple con condición de rciva, rciva saldo Dependiente:", rcivaSaldoDependiente, "saldo certificado:",rcivaSaldoCertificado ," total ganado",totalGanado, "total ganado activo:", totalGanadoActivo, "id_empleado:", idEmpleado, "id_mes:", id_mes, "total gando:", totalGanado, "viaticos:", rcivaSaldoCertificado, "fila Descargos:", filaDescargo, "rcivaSando Dep:", rcivaSaldoDependiente, "total Ap N. sol:", totalAporteNacionalSolidario, "total Afp:", totalAFPS, "totla viaticos:",  viaticos, "escala rciva:", escalaRciva, "novedad:", novedad  );
+    //console.log("No cumple con condición de rciva, rciva saldo Dependiente:", rcivaSaldoDependiente, "saldo certificado:",rcivaSaldoCertificado ," total ganado",totalGanado, "total ganado activo:", totalGanadoActivo, "id_empleado:", idEmpleado, "id_mes:", id_mes, "total gando:", totalGanado, "viaticos:", rcivaSaldoCertificado, "fila Descargos:", filaDescargo, "rcivaSando Dep:", rcivaSaldoDependiente, "total Ap N. sol:", totalAporteNacionalSolidario, "total Afp:", totalAFPS, "totla viaticos:",  viaticos, "escala rciva:", escalaRciva, "novedad:", novedad  );
     if(rcivaSaldoDependiente ||  (rcivaSaldoCertificado ) || (totalGanado >= totalGanadoActivo)){            
             // codificacion RCIVA
             //$idCodigoRCIVA = RcivaCodificacio::getIdCodificacionRCIVA($idEmpleado);
@@ -759,7 +766,7 @@ async function calcularRciva( parametro, idEmpleado, id_mes, totalGanado, rcivaS
             // .then(resultado => {
             //     ufvActual = resultado.dataValues.valor;
             //     idUfvActual = resultado.dataValues.id;
-            //     //console.log('Resultado del cálculo RC-IVA:', resultado);
+            //     ////console.log('Resultado del cálculo RC-IVA:', resultado);
             // })
             // .catch(error => {
             //     console.error('Error en el proceso:', error);
@@ -784,9 +791,9 @@ async function calcularRciva( parametro, idEmpleado, id_mes, totalGanado, rcivaS
             let saldoUtilizado = saldoActualizado <= saldoFavorFisco ? saldoActualizado : saldoFavorFisco;
             let impuestoRCIVARetenido = saldoFavorFisco > saldoUtilizado ? (saldoFavorFisco - saldoUtilizado) : 0;
             let saldoCreditoFiscalDependiente = saldoFavorDependiente + saldoActualizado - saldoUtilizado;
-             //console.log(".........parametros:", parametro);
-             //console.log(".........descargo", filaDescargo);
-             //console.log("----------certificacion:", rcivaSaldoCertificado);
+             ////console.log(".........parametros:", parametro);
+             ////console.log(".........descargo", filaDescargo);
+             ////console.log("----------certificacion:", rcivaSaldoCertificado);
         return !existeObservacion? {
                 id_mes : id_mes,
                 id_minimo_nacional : idMinNacionalActivo,
@@ -816,7 +823,7 @@ async function calcularRciva( parametro, idEmpleado, id_mes, totalGanado, rcivaS
             }:'';
             
     }else{
-        console.log("No cumple con condición de rciva, rciva saldo Dependiente:", rcivaSaldoDependiente, "saldo certificado:",rcivaSaldoCertificado ," total ganado",totalGanado, "total ganado activo:", totalGanadoActivo );
+        //console.log("No cumple con condición de rciva, rciva saldo Dependiente:", rcivaSaldoDependiente, "saldo certificado:",rcivaSaldoCertificado ," total ganado",totalGanado, "total ganado activo:", totalGanadoActivo );
     }
 }
 // saldo mes anterior RCIVA planilla
@@ -846,7 +853,7 @@ function saldoRcIvaMesAnteriorConActualizacionOneItem(  ufvActual, idUfvActual, 
             // .then(resultado => {
             //     ufvAnterior = resultado.dataValues.valor;
             //     idUfvAnterior = resultado.dataValues.id;
-            //     //console.log('Resultado del cálculo RC-IVA:', resultado);
+            //     ////console.log('Resultado del cálculo RC-IVA:', resultado);
             // })
             // .catch(error => {
             //     console.error('Error en el proceso:', error);
@@ -856,7 +863,7 @@ function saldoRcIvaMesAnteriorConActualizacionOneItem(  ufvActual, idUfvActual, 
             saldoActualizado = saldoRciva + valorMantenimiento;
         }
     }
-    //console.log("?????????? fila Saldo anterior:",filaSaldoAnterior.rcivaplanilla_planillafecha.dataValues.fecha_limite,"fecha saldo anterior:",fechaSaldoRciva, " id mes anterior:", idMesAnterior,"ufv anterior:", ufvAnterior, "id ufv anterior:",idUfvAnterior, "ufv acutal:",ufvActual, "id ufv actual:",idUfvActual, "saldo actualizado:",saldoActualizado,"mantenimiento:", valorMantenimiento  );
+    ////console.log("?????????? fila Saldo anterior:",filaSaldoAnterior.rcivaplanilla_planillafecha.dataValues.fecha_limite,"fecha saldo anterior:",fechaSaldoRciva, " id mes anterior:", idMesAnterior,"ufv anterior:", ufvAnterior, "id ufv anterior:",idUfvAnterior, "ufv acutal:",ufvActual, "id ufv actual:",idUfvActual, "saldo actualizado:",saldoActualizado,"mantenimiento:", valorMantenimiento  );
     
 
     let lista = {
@@ -881,7 +888,7 @@ async function actualizacionCertificadoRciva(idMes, idEmpleado, ufvActual, monto
         valorUfv(fechaSaldo)
             .then(resultado => {
                 ufvSaldo = resultado
-                //console.log('Resultado del cálculo RC-IVA:', resultado);
+                ////console.log('Resultado del cálculo RC-IVA:', resultado);
             })
             .catch(error => {
                 console.error('Error en el proceso:', error);
@@ -912,7 +919,7 @@ async function valorUfv(fechaCalculo) {
       const ufvData = await Ufv.findOne({
         where: { fecha: fechaCalculo }
       });
-      console.log("############################### ufv:",ufvData);
+      //console.log("############################### ufv:",ufvData);
       if (!ufvData) {
         throw new Error('No se encontró el valor UFV para la fecha especificada.');
       }
@@ -950,8 +957,8 @@ function calculoDescuento( listDescuento, totalDiasTrabajados, totalGanado){
             monto_descuento = parseFloat(row.monto);
         }
         let monto = totalDiasTrabajados === 0 ? 0: monto_descuento;
-        // console.log("dias trabajados:", totalDiasTrabajados, "descuentos:", monto_descuento, "monto:", monto);
-        // console.log("row:",row.monto);
+        // //console.log("dias trabajados:", totalDiasTrabajados, "descuentos:", monto_descuento, "monto:", monto);
+        // //console.log("row:",row.monto);
         monto = Math.round((monto + Number.EPSILON) * 100) / 100; //redondeo a dos decimales
         totalMontoDescuento = totalMontoDescuento + monto;
 
@@ -961,7 +968,7 @@ function calculoDescuento( listDescuento, totalDiasTrabajados, totalGanado){
             monto: monto,            
         });
     }
-    console.log("--------- Lista descuento:", totalMontoDescuento, "calculo descuento:", descuento_json);
+    //console.log("--------- Lista descuento:", totalMontoDescuento, "calculo descuento:", descuento_json);
     return { descuento_json: descuento_json, total_monto_descuento: totalMontoDescuento }
     
         
@@ -1015,8 +1022,8 @@ function calculoMontoAportePatronal(totalGanado, porcentaje, aplicaEdadAFP, edad
 //             monto_sancion = parseFloat(row.monto);
 //         }
 //         let monto = totalDiasTrabajados === 0 ? 0: monto_sancion;
-//         // console.log("dias trabajados:", totalDiasTrabajados, "descuentos:", monto_descuento, "monto:", monto);
-//         // console.log("row:",row.monto);
+//         // //console.log("dias trabajados:", totalDiasTrabajados, "descuentos:", monto_descuento, "monto:", monto);
+//         // //console.log("row:",row.monto);
 //         monto = Math.round((monto + Number.EPSILON) * 100) / 100; //redondeo a dos decimales
 //         totalMontoSancion = totalMontoSancion + monto;
 
@@ -1047,7 +1054,7 @@ const updateSalarioPlanilla = async (req = request, res = response) => {
             msg: 'Asistencia modificada exitosamente'
         });   
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         return res.status(500).json({
           ok: false,
           errors: [{ msg: `Ocurrió un imprevisto interno | hable con soporte`}],
@@ -1066,7 +1073,7 @@ const activeInactiveSalarioPlanilla = async (req = request, res = response) => {
             msg: activo ? 'Asistencia se activado exitosamente' : 'Asistencia se inactivo exitosamente'
         });   
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         return res.status(500).json({
           ok: false,
           errors: [{ msg: `Ocurrió un imprevisto interno | hable con soporte`}],

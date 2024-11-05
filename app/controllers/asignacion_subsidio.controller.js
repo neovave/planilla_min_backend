@@ -1,7 +1,7 @@
 
 const { response, request } = require('express');
 const { Op } = require('sequelize');
-const {Asignacion_subsidio, sequelize, Tipo_descuento_sancion, Beneficiario_acreedor, Users } = require('../database/config');
+const {Asignacion_subsidio, sequelize, Tipo_descuento_sancion, Beneficiario_acreedor, Users, Municipio, Empleado } = require('../database/config');
 const paginate = require('../helpers/paginate');
 const { fileMoveAndRemoveOld } = require('../helpers/file-upload');
 
@@ -11,18 +11,35 @@ const getAsigSubsidioPaginate = async (req = request, res = response) => {
         const optionsDb = {
             attributes: { exclude: ['createdAt'] },
             order: [['id', 'ASC']],
-            
             include: [
-                { association: 'asigancionsubsidio_tipodes',  attributes: {exclude: ['createdAt']},  
-                }, 
-                { association: 'asignacionsubsidio_empleado',  attributes: {exclude: ['createdAt','status','updatedAt']},}, 
-                { association: 'asignacionsubsidio_beneficiario',  attributes: {exclude: ['createdAt','status','updatedAt']},}, 
-                
+                {
+                    model: Empleado,
+                    as: 'asignacionsubsidio_empleado', // Alias de relación si fue definido en el modelo
+                    required: false // LEFT OUTER JOIN
+                  },
+                  {
+                    model: Tipo_descuento_sancion,
+                    as: 'asigancionsubsidio_tipodes', // Alias de relación si fue definido en el modelo
+                    required: false, // LEFT OUTER JOIN
+                    where: {
+                        [Op.and]: [ { activo }, grupo? {grupo}:{}]
+                    }
+                  },
+                  {
+                    model: Beneficiario_acreedor,
+                    as: 'asignacionsubsidio_beneficiario', // Alias de relación si fue definido en el modelo
+                    required: false // LEFT OUTER JOIN
+                  },
+                  {
+                    model: Municipio,
+                    as: 'asignacionsubsidio_municipio', // Alias de relación si fue definido en el modelo
+                    required: false // LEFT OUTER JOIN
+                  }
             ],
             where: { 
                 [Op.and]: [
                     { activo }, id_tipo_descuento? {id_tipo_descuento} : {}, id? {id} : {}, id_empleado? {id_empleado}:{}, 
-                    grupo? { '$asigancionsubsidio_tipodes.grupo$': { [Op.eq]: grupo } }:{}
+                    //grupo? { '$asigancionsubsidio_tipodes.grupo$': { [Op.eq]: grupo } }:{}
                     /*type =='capacitacion_curso.codigo' ? {
                         codigo:{[Op.iLike]: `%${filter}%`}
                     }:{},                    */
@@ -33,10 +50,10 @@ const getAsigSubsidioPaginate = async (req = request, res = response) => {
         if(type?.includes('.')){
             type = null;
         }
-        let asigDesc = await paginate(Asignacion_subsidio, page, limit, type, query, optionsDb); 
+        let asigSubsidio = await paginate(Asignacion_subsidio, page, limit, type, query, optionsDb); 
         return res.status(200).json({
             ok: true,
-            asigDesc
+            asigSubsidio
         });
     } catch (error) {
         console.log(error);
@@ -51,7 +68,8 @@ const newAsigSubsidio = async (req = request, res = response ) => {
     const t = await sequelize.transaction();
     try {
         const user = await Users.findByPk(req.userAuth.id);
-        const fileExcel = req.files.file;
+        const file = req.files.file;
+        //console.log("prueba de subisdio:",file);
         const nombreFile = await fileMoveAndRemoveOld(file,'','sub','subsidio');
         //const nombreFile = await saveFile(fileExcel,'../uploads/subsidio');
 
@@ -68,7 +86,10 @@ const newAsigSubsidio = async (req = request, res = response ) => {
             memo_detalle:   body.memo_detalle,
             id_municipio:   body.id_municipio,
             numero_cuota:   body.numero_cuota,
+            referencia:     body.referencia,
             nombre_archivo: nombreFile?.filePath,
+            fecha_control:   body.fecha_control, 
+            fecha_presentacion:   body.fecha_presentacion, 
             estado:         body.estado, 
             activo:         body.activo,
             id_user_create: user.id
@@ -82,7 +103,7 @@ const newAsigSubsidio = async (req = request, res = response ) => {
                 id_asig_subsidio: asigSubsidioNew.id, 
                 detalle_ruc:    body.detalle_ruc, 
                 ci_ruc:         body.ci_ruc, 
-                tipo:           body.tipo, 
+                //tipo:           body.tipo, 
                 descripcion:    body.descripcion, 
                 nro_cuenta:     body.nro_cuenta,
                 activo:         body.activo,
@@ -112,9 +133,11 @@ const updateAsigSubsidio = async (req = request, res = response) => {
     const t = await sequelize.transaction();
     try {
         const { id, id_beneficiario  } = req.params;
+        console.log("id asignacion:", id, "id beneficiario:",id_beneficiario);
         const body = req.body;
         const user = await Users.findByPk(req.userAuth.id);
         const file = req.files.file;
+        console.log("prueba de sistemas:", file);
         const nombreFile = await fileMoveAndRemoveOld(file,'','sub','subsidio');
 
         let asig_subsidio = { 
@@ -129,8 +152,11 @@ const updateAsigSubsidio = async (req = request, res = response) => {
             memo_nro:       body.memo_nro, 
             memo_detalle:   body.memo_detalle,
             id_municipio:   body.id_municipio,
+            referencia:     body.referencia,
             numero_cuota:   body.numero_cuota,
             nombre_archivo: nombreFile?.filePath,
+            fecha_control:   body.fecha_control, 
+            fecha_presentacion:   body.fecha_presentacion, 
             estado:         body.estado, 
             activo:         body.activo ,
             id_user_mod:    user.id
@@ -147,7 +173,7 @@ const updateAsigSubsidio = async (req = request, res = response) => {
                 id_asig_subsidio: id, 
                 detalle_ruc:    body.detalle_ruc, 
                 ci_ruc:         body.ci_ruc, 
-                tipo:           body.tipo, 
+                //tipo:           body.tipo, 
                 descripcion:    body.descripcion,
                 nro_cuenta:     body.nro_cuenta,
                 activo:         body.activo,

@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     cod_empleado: DataTypes.STRING(15),
     monto: DataTypes.DECIMAL(8,2),
     unidad: DataTypes.STRING(2),
+    tipo_pago: DataTypes.STRING(20),
     institucion: DataTypes.STRING(8),
     fecha_inicio: DataTypes.DATE,
     fecha_limite: DataTypes.DATE,

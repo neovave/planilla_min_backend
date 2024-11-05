@@ -1,6 +1,6 @@
 const { validatedResponse } = require('../validated-response');
 const { checkSchema } = require('express-validator');
-const { idExistAsigSubsidio, idExistTipoDescuento, idExistEmpleado } = require('./database');
+const { idExistAsigSubsidio, idExistTipoDescuento, idExistEmpleado, idExistMes } = require('./database');
 
 const validationSchema =  {
     id_tipo_descuento: {
@@ -47,8 +47,8 @@ const validationSchema =  {
             negated: true, errorMessage: "El campo tipo de pago es obligatorio",
         },
         isLength: {
-            errorMessage: 'El valor debe tener mínimo a 1 caracteres y máximo 2 caracteres',
-            options: { min: 1, max: 2},
+            errorMessage: 'El valor debe tener mínimo a 1 caracteres y máximo 20 caracteres',
+            options: { min: 1, max: 20},
         },
     },
     /*id_user_charge: {
@@ -74,8 +74,9 @@ const validationSchema =  {
     numero_cuota: {
         optional: { options: { nullable: true } },
         isInt: {
-            negated: true, errorMessage: "La número de cuota es obligatorio",
+            errorMessage: "La número de cuota es obligatorio",
         },
+        toInt: true,
     },
     nombre_archivo: {
         optional: { options: { nullable: true } },
@@ -138,10 +139,24 @@ const validateDelete = [
     validatedResponse
 ]
 
+const getValidateImportacion= [
+    checkSchema({
+        
+        id_mes: {
+            isEmpty: {
+                negated: true, errorMessage: "Id mes es obligatorio",
+            },
+            custom: { options: idExistMes}, //verificamos si existe uuid
+        },
+        //...validationSchema
+    }),
+    validatedResponse
+];
 
 module.exports = {
     getValidateCreate,
     getValidateUpdate,
-    validateDelete
+    validateDelete,
+    getValidateImportacion
 }
 

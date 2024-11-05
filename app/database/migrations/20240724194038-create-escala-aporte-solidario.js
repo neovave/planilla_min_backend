@@ -18,6 +18,12 @@ module.exports = {
       descripcion: {
         type: Sequelize.STRING(200)
       },
+      fecha_inicio: {
+        type: Sequelize.DATE
+      },
+      fecha_limite: {
+        type: Sequelize.DATE
+      },
       estado: {
         type: Sequelize.STRING(2)
       },

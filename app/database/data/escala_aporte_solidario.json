@@ -3,20 +3,53 @@
       "total_ganado": "13000",
       "porcentaje": "1",
       "descripcion": "El uno por ciento (1%) de la diferencia entre su Total Solidario menos Bs.13.000 (trece mil 00/100 bolivianos), cuando la diferencia sea positiva.",
-      "estado": "AC",
+      "fecha_inicio":"2000-01-01",
+      "fecha_limite": "2024-10-31",
+      "estado": "CE",
       "activo": 1
     },
     {
       "total_ganado": "25000",
       "porcentaje": "5",
       "descripcion": "El cinco por ciento (5%) de la diferencia entre su Total Solidario menos Bs. 25.000 (veinticinco mil 00/100 bolivianos), cuando la diferencia sea positiva",
-      "estado": "AC",
+      "fecha_inicio":"2000-01-01",
+      "fecha_limite": "2024-10-31",
+      "estado": "CE",
       "activo": 1
     },
     {
       "total_ganado": "35000",
       "porcentaje": "10",
       "descripcion": " El diez por ciento (10%) de la diferencia entre su Total Solidario menos Bs. 35.000 (treinta y cinco mil 00/100 bolivianos),cuando la diferencia sea positiva",
+      "fecha_inicio":"2000-01-01",
+      "fecha_limite": "2024-10-31",
+      "estado": "CE",
+      "activo": 1
+    },
+    {
+      "total_ganado": "13000",
+      "porcentaje": "1.15",
+      "descripcion": "El uno por ciento (1%) de la diferencia entre su Total Solidario menos Bs.13.000 (trece mil 00/100 bolivianos), cuando la diferencia sea positiva.",
+      "fecha_inicio":"2024-11-01",
+      "fecha_limite": null,
+      "estado": "AC",
+      "activo": 1
+    },
+    {
+      "total_ganado": "25000",
+      "porcentaje": "5.74",
+      "descripcion": "El cinco por ciento (5%) de la diferencia entre su Total Solidario menos Bs. 25.000 (veinticinco mil 00/100 bolivianos), cuando la diferencia sea positiva",
+      "fecha_inicio":"2024-11-01",
+      "fecha_limite": null,
+      "estado": "AC",
+      "activo": 1
+    },
+    {
+      "total_ganado": "35000",
+      "porcentaje": "11.48",
+      "descripcion": " El diez por ciento (10%) de la diferencia entre su Total Solidario menos Bs. 35.000 (treinta y cinco mil 00/100 bolivianos),cuando la diferencia sea positiva",
+      "fecha_inicio":"2024-11-01",
+      "fecha_limite": null,
       "estado": "AC",
       "activo": 1
     }       

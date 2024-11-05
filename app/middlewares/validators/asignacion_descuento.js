@@ -91,6 +91,15 @@ const validationSchema =  {
         },
         toBoolean: true
     },
+    tipo_pago: {
+        isEmpty: {
+            negated: true, errorMessage: "El campo tipo de pago es obligatorio",
+        },
+        isLength: {
+            errorMessage: 'El valor debe tener mínimo a 1 caracteres y máximo 20 caracteres',
+            options: { min: 1, max: 20},
+        },
+    },
     ci_ruc:{
         optional: { options: { nullable: true } },
         isLength: {
@@ -125,23 +134,23 @@ const validationSchema =  {
         },
         
     },
-    tipo:{
-        optional: { options: { nullable: true } },
-        isLength: {
-            errorMessage: 'El tipo debe tener mínimo a 1 caracteres y máximo 20 caracteres',
-            options: { min: 1, max: 30},
-        },
-        custom: {
-            options: (value, { req }) => {
-                // Validar solo si el beneficio es verdadero
-                if (req.body.con_beneficiario && !value) {
-                    throw new Error('Debe proporcionar tipo de beneficiario si el tipo descuento es con beneficiario.');
-                }
-                return true;
-            }
-        },
+    // tipo:{
+    //     optional: { options: { nullable: true } },
+    //     isLength: {
+    //         errorMessage: 'El tipo debe tener mínimo a 1 caracteres y máximo 20 caracteres',
+    //         options: { min: 1, max: 30},
+    //     },
+    //     custom: {
+    //         options: (value, { req }) => {
+    //             // Validar solo si el beneficio es verdadero
+    //             if (req.body.con_beneficiario && !value) {
+    //                 throw new Error('Debe proporcionar tipo de beneficiario si el tipo descuento es con beneficiario.');
+    //             }
+    //             return true;
+    //         }
+    //     },
         
-    },
+    // },
     descripcion:{
         optional: { options: { nullable: true } },
         isLength: {

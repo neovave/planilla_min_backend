@@ -18,6 +18,8 @@ module.exports = (sequelize, DataTypes) => {
     porcentaje: DataTypes.DECIMAL(8,2),
     descripcion: DataTypes.STRING(20),
     apat_codigo: DataTypes.JSONB,
+    fecha_inicio: DataTypes.DATE,
+    fecha_limite: DataTypes.DATE,
     aplica_certificacion_afp: DataTypes.BOOLEAN,
     aplica_edad_limite: DataTypes.BOOLEAN,
     id_user_create: DataTypes.INTEGER,
