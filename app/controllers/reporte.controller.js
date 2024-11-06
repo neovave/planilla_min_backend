@@ -272,33 +272,50 @@ const newRepPlanilla = async (req = request, res = response ) => {
           include: [
             {
               model: Reparticion,
-              as: 'municipio_reparticion', // Alias para la relación
-              where: {
-                id_organismo: body.id_organismo, //nombre:'CMDO.5TA.DIV.'
-              },              
-              include: [
-                { association: 'reparticion_organismo' },
-                {
-                  model: Asignacion_cargo_empleado,
-                  as: 'reparticion_asigCarEmp', // Alias para la relación
-                  include: [
-                    { association: 'asignacioncargoemp_empleado' },
-                    { association: 'asignacioncargoemp_cargo' },
-                    {
-                      model: Salario_planilla,
-                      as: 'asignacioncargoemp_salarioplanilla', // Alias para la relación
-                      where: {
-                        id_mes: body.id_mes
-                      },
-                      //limit:100
-                    }
-
-                  ],
-                  limit:100
-                }
-
-              ],
+              as: 'municipio_reparticion',
               
+              // Alias para la relación
+              // where: {
+              //   id_organismo: body.id_organismo, //nombre:'CMDO.5TA.DIV.'
+              // },              
+              // include: [
+              //   {
+              //     model: Asignacion_cargo_empleado,
+              //     as: 'reparticion_asigCarEmp', // Alias para la relación
+              //     // include: [
+              //     //   // {
+              //     //   //   model: Salario_planilla,
+              //     //   //   as: 'asignacioncargoemp_salarioplanilla', // Alias para la relación
+              //     //   //   where: {
+              //     //   //     id_mes: body.id_mes,
+
+              //     //   //   },
+              //     //   //   required: true,
+              //     //   //   //limit:100
+              //     //   // },
+
+              //     //     {
+              //     //       model: Organismo,
+              //     //       as: 'asignacioncargoemp_organismo', // Alias para la relación
+              //     //       where: {
+              //     //         id: body.id_organismo, //nombre:'CMDO.5TA.DIV.'
+              //     //       },
+              //     //       required: true,
+              //     //       //limit:100
+              //     //     },
+              //     //    //{ association: 'asignacioncargoemp_organismo' },
+              //     //   //{ association: 'asignacioncargoemp_empleado' },
+              //     //   // { association: 'asignacioncargoemp_cargo' },
+                    
+
+              //     // ],
+                  
+              //     required: true,
+              //     //limit:100
+              //   }
+
+              // ],
+              required: true,
             },
             
           ]
@@ -309,12 +326,15 @@ const newRepPlanilla = async (req = request, res = response ) => {
 
     let mostrarCabecera=false;
           // Recorrer las regiones
+          
     listaEmpleados.forEach((municipio) => {
-    
+      //console.log(municipio.municipio_reparticion);
       mostrarCabecera = true;
 
     // Recorrer los reparticion
     municipio.municipio_reparticion.forEach((reparticion) => {
+
+      //console.log(municipio.municipio_reparticion[0].reparticion_asigCarEmp);
       // Agregar título de departamento
       // docDefinition.content.push({
       //   text: `${reparticion.nombre}`,
@@ -402,7 +422,7 @@ const newRepPlanilla = async (req = request, res = response ) => {
               {text:'Liq. Pag Acum',style:'subheaderT', border:[true,true,true,true]},
             ],
             [
-              { text: `${municipio.municipio_reparticion[0].reparticion_organismo.nombre}`, colSpan: 24, alignment: 'left',border: [false, false, false, false],  },{},{},{},{},{},{},{},{},{},  {},{},{},{},{},{},{},{},{},{},  {},{},{},{}
+              { text: `nombre`, colSpan: 24, alignment: 'left',border: [false, false, false, false],  },{},{},{},{},{},{},{},{},{},  {},{},{},{},{},{},{},{},{},{},  {},{},{},{}
             ],
             [
               { text: `${municipio.nombre}`, colSpan: 24, alignment: 'left',border: [false, false, false, false], margin: [10, -5, 0, 0] },{},{},{},{},{},{},{},{},{},  {},{},{},{},{},{},{},{},{},{},  {},{},{},{}
@@ -761,7 +781,7 @@ const newRepPlanillaImpositiva = async (req = request, res = response ) => {
         
         };
       
-      const listaEmpleados = await db.sequelize.query("SELECT org.codigo as codigo_organismo, org.nombre as nombre_organismo, rep.codigo as codigo_reparticion, rep.nombre as nombre_reparticion, car.descripcion, car.abreviatura ,emp.cod_empleado, emp.numero_documento, emp.nombre, emp.otro_nombre, emp.paterno, emp.materno, rp.total_saldo_mes_anterior , rp.saldo_rciva_dependiente, rp.total_actualizacion, rp.rciva_retenido, rp.importe_sujeto_impuesto ,rp.ingreso_neto_bs FROM organismos org INNER JOIN reparticiones rep ON rep.id_organismo = org.id INNER JOIN asignacion_cargo_empleados ace ON ace.id_reparticion = rep.id INNER JOIN cargos car ON car.id = ace.id_cargo INNER JOIN empleados emp ON emp.id = ace.id_empleado INNER JOIN rciva_planillas rp ON rp.id_empleado = emp.id WHERE rep.id_organismo = :idOrganismo AND rp.id_mes = :idMes; ", 
+      const listaEmpleados = await db.sequelize.query("SELECT org.codigo as codigo_organismo, org.nombre as nombre_organismo, rep.codigo as codigo_reparticion, rep.nombre as nombre_reparticion, car.descripcion, car.abreviatura ,emp.cod_empleado, emp.numero_documento, emp.nombre, emp.otro_nombre, emp.paterno, emp.materno, rp.total_saldo_mes_anterior , rp.saldo_rciva_dependiente, rp.total_actualizacion, rp.rciva_retenido, rp.importe_sujeto_impuesto ,rp.ingreso_neto_bs FROM organismos org INNER JOIN asignacion_cargo_empleados ace ON ace.id_organismo = org.id INNER JOIN cargos car ON car.id = ace.id_cargo INNER JOIN empleados emp ON emp.id = ace.id_empleado INNER JOIN rciva_planillas rp ON rp.id_empleado = emp.id INNER JOIN reparticiones rep ON ace.id_reparticion = rep.id WHERE ace.id_organismo = :idOrganismo AND rp.id_mes = :idMes; ", 
         {   type: Sequelize.QueryTypes.SELECT, 
             replacements: {idOrganismo: body.id_organismo, idMes: body.id_mes }
         }
@@ -1085,7 +1105,7 @@ const newRepPlanillaSubsidio = async (req = request, res = response ) => {
         
         };
       
-      const listaEmpleados = await db.sequelize.query("SELECT mun.codigo as codigo_municipio, mun.nombre as nombre_municipio, td.nombre_abreviado as nombre_tipo_desc, emp.cod_empleado, emp.numero_documento, emp.nombre, emp.otro_nombre, emp.paterno, emp.materno, asu.tipo_pago, sum((desc_json->>'monto')::DECIMAL) as monto, ace.nro_item, count(*) as cantidad FROM municipios mun INNER JOIN reparticiones rep ON rep.id_municipio = mun.id INNER JOIN asignacion_cargo_empleados ace ON ace.id_reparticion = rep.id INNER JOIN salario_planillas sp ON sp.id_asig_cargo = ace.id JOIN LATERAL jsonb_array_elements(sp.subsidio) AS desc_json ON TRUE JOIN asignacion_subsidios asu ON (desc_json->>'id_asig_subsidio')::INTEGER = asu.id JOIN tipo_descuento_sanciones td ON td.id = asu.id_tipo_descuento join empleados emp on emp.id = sp.id_empleado WHERE td.tipo = 'SUBSIDIO' and rep.id_organismo = :idOrganismo AND sp.id_mes = :idMes group by codigo_municipio, nombre_municipio, nombre_tipo_desc, emp.cod_empleado, emp.numero_documento, emp.nombre, emp.otro_nombre, emp.paterno, emp.materno, asu.tipo_pago,  ace.nro_item order by nombre_municipio, emp.nombre ", 
+      const listaEmpleados = await db.sequelize.query("SELECT mun.codigo as codigo_municipio, mun.nombre as nombre_municipio, td.nombre_abreviado as nombre_tipo_desc, emp.cod_empleado, emp.numero_documento, emp.nombre, emp.otro_nombre, emp.paterno, emp.materno, asu.tipo_pago, sum((desc_json->>'monto')::DECIMAL) as monto, ace.nro_item, count(*) as cantidad FROM municipios mun INNER JOIN reparticiones rep ON rep.id_municipio = mun.id INNER JOIN asignacion_cargo_empleados ace ON ace.id_reparticion = rep.id INNER JOIN salario_planillas sp ON sp.id_asig_cargo = ace.id JOIN LATERAL jsonb_array_elements(sp.subsidio) AS desc_json ON TRUE JOIN asignacion_subsidios asu ON (desc_json->>'id_asig_subsidio')::INTEGER = asu.id JOIN tipo_descuento_sanciones td ON td.id = asu.id_tipo_descuento join empleados emp on emp.id = sp.id_empleado WHERE td.tipo = 'SUBSIDIO' and ace.id_organismo = :idOrganismo AND sp.id_mes = :idMes group by codigo_municipio, nombre_municipio, nombre_tipo_desc, emp.cod_empleado, emp.numero_documento, emp.nombre, emp.otro_nombre, emp.paterno, emp.materno, asu.tipo_pago,  ace.nro_item order by nombre_municipio, emp.nombre ", 
         {   type: Sequelize.QueryTypes.SELECT, 
             replacements: {idOrganismo: body.id_organismo, idMes: body.id_mes }
         }
@@ -1419,7 +1439,7 @@ const newRepPlanillaSubsidioNew = async (req = request, res = response ) => {
     
     const empleadosTable = getTablaSubidio();
     
-    const listaEmpleados = await db.sequelize.query("SELECT mun.codigo as codigo_municipio, mun.nombre as nombre_municipio, emp.cod_empleado, emp.numero_documento, emp.nombre, emp.otro_nombre, emp.paterno, emp.materno,emp.sexo, asu.tipo_pago, (desc_json->>'monto')::DECIMAL as monto, ace.nro_item, ba.ci_ruc, ba.detalle_ruc, ba.nro_cuenta FROM municipios mun INNER JOIN reparticiones rep ON rep.id_municipio = mun.id INNER JOIN asignacion_cargo_empleados ace ON ace.id_reparticion = rep.id INNER JOIN salario_planillas sp ON sp.id_asig_cargo = ace.id JOIN LATERAL jsonb_array_elements(sp.subsidio) AS desc_json ON TRUE JOIN asignacion_subsidios asu ON (desc_json->>'id_asig_subsidio')::INTEGER = asu.id join empleados emp on emp.id = sp.id_empleado JOIN beneficiario_acreedores ba ON asu.id = ba.id_asig_subsidio WHERE rep.id_organismo = :idOrganismo AND sp.id_mes = :idMes and asu.id_tipo_descuento = :idTipoDescuento order by nombre_municipio, emp.nombre ", 
+    const listaEmpleados = await db.sequelize.query("SELECT mun.codigo as codigo_municipio, mun.nombre as nombre_municipio, emp.cod_empleado, emp.numero_documento, emp.nombre, emp.otro_nombre, emp.paterno, emp.materno,emp.sexo, asu.tipo_pago, (desc_json->>'monto')::DECIMAL as monto, ace.nro_item, ba.ci_ruc, ba.detalle_ruc, ba.nro_cuenta FROM municipios mun INNER JOIN reparticiones rep ON rep.id_municipio = mun.id INNER JOIN asignacion_cargo_empleados ace ON ace.id_reparticion = rep.id INNER JOIN salario_planillas sp ON sp.id_asig_cargo = ace.id JOIN LATERAL jsonb_array_elements(sp.subsidio) AS desc_json ON TRUE JOIN asignacion_subsidios asu ON (desc_json->>'id_asig_subsidio')::INTEGER = asu.id join empleados emp on emp.id = sp.id_empleado JOIN beneficiario_acreedores ba ON asu.id = ba.id_asig_subsidio WHERE ace.id_organismo = :idOrganismo AND sp.id_mes = :idMes and asu.id_tipo_descuento = :idTipoDescuento order by nombre_municipio, emp.nombre ", 
         {   type: Sequelize.QueryTypes.SELECT, 
             replacements: {idOrganismo: body.id_organismo, idMes: body.id_mes, idTipoDescuento: fila.id }
         }
@@ -1842,7 +1862,7 @@ const newRepDescAcreedor = async (req = request, res = response ) => {
   for (const fila of listaGrupoDesc){
     
     
-    const listaDescuento = await db.sequelize.query("SELECT tds.codigo, ba.ci_ruc, ba.detalle_ruc, ba.nro_cuenta, tds.nombre_abreviado, sum((desc_json->>'monto')::DECIMAL ) as monto FROM salario_planillas sp  JOIN asignacion_cargo_empleados ace ON sp.id_asig_cargo = ace.id JOIN reparticiones rep ON ace.id_reparticion = rep.id  JOIN LATERAL jsonb_array_elements(sp.descuento_adm) AS desc_json ON TRUE JOIN tipo_descuento_sanciones tds ON (desc_json->>'id_tipo_descuento')::INTEGER = tds.id join beneficiario_acreedores ba ON tds.id_acreedor = ba.id WHERE tds.id_grupodescuento = :idgrupodesc AND sp.id_mes = :idMes AND rep.id_organismo = :idOrganismo group by tds.codigo, ba.ci_ruc, ba.detalle_ruc, ba.nro_cuenta, tds.nombre_abreviado order by ba.ci_ruc, ba.detalle_ruc ", 
+    const listaDescuento = await db.sequelize.query("SELECT tds.codigo, ba.ci_ruc, ba.detalle_ruc, ba.nro_cuenta, tds.nombre_abreviado, sum((desc_json->>'monto')::DECIMAL ) as monto FROM salario_planillas sp  JOIN asignacion_cargo_empleados ace ON sp.id_asig_cargo = ace.id JOIN reparticiones rep ON ace.id_reparticion = rep.id  JOIN LATERAL jsonb_array_elements(sp.descuento_adm) AS desc_json ON TRUE JOIN tipo_descuento_sanciones tds ON (desc_json->>'id_tipo_descuento')::INTEGER = tds.id join beneficiario_acreedores ba ON tds.id_acreedor = ba.id WHERE tds.id_grupodescuento = :idgrupodesc AND sp.id_mes = :idMes AND ace.id_organismo = :idOrganismo group by tds.codigo, ba.ci_ruc, ba.detalle_ruc, ba.nro_cuenta, tds.nombre_abreviado order by ba.ci_ruc, ba.detalle_ruc ", 
         {   type: Sequelize.QueryTypes.SELECT, 
 
             replacements: {idgrupodesc: fila.id, idMes: body.id_mes, idOrganismo: body.id_organismo }

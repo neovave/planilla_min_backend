@@ -101,7 +101,7 @@ const generarAsistenciaAll = async (req = request, res = response ) => {
                     id_empleado: row.id_empleado,
                     id_asig_cargo: row.id,
                     id_cargo: row.id_cargo,
-                    dias_trabajados: 0,
+                    dias_trabajados: 30,
                     dias_sancionados: 0,
                     cant_cargo: row.num_registros_empleado,
                     activo:1,
