@@ -1,5 +1,5 @@
 # /app /usr
-FROM node:18.20-alpine3.20
+FROM node:18.20-alpine
 #cd app
 WORKDIR /app
 
