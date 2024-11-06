@@ -3,11 +3,8 @@ const { validarJWT } = require('../middlewares/validators/validar-jwt');
 const { validarIsAdmin } = require('../middlewares/validators/validar-is-admin');
 const toUpperCaseConvert = require('../middlewares/touppercase-convert');
 const { getEmpleadoPaginate, getEmpleado, newEmpleado, updateEmpleado, getEmpNoAportantePaginate , migrarEmpleado/*activeInactiveEmpleado*/ } = require('../controllers/empleado.controller');
-const { getValidateCreate, getValidateUpdate, validateDelete } = require('../middlewares/validators/empledo');
-const multer = require('multer');
-const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
-
+const { getValidateCreate, getValidateUpdate, validateDelete, getValidateImport } = require('../middlewares/validators/empledo');
+const { filesExist } = require('../middlewares/validators/validar-files');
 const router = Router();
 
 
@@ -35,10 +32,11 @@ router.post('/', [
 
 router.post('/migrar', [
     validarJWT,
-    upload.fields([{ name: 'file', maxCount: 1 }, { name: 'file2', maxCount: 1 }]),
+    //upload.fields([{ name: 'file', maxCount: 1 }, { name: 'file2', maxCount: 1 }]),
     validarIsAdmin,
-    //toUpperCaseConvert,
-    //getValidateCreate
+    toUpperCaseConvert,
+    filesExist,
+    getValidateImport
 ],migrarEmpleado );
 
 router.put('/:id', [

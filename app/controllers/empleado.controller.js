@@ -9,6 +9,7 @@ const db = require('../database/config');
 const moment = require('moment');
 const xlsx = require('xlsx');
 
+
 const infoEmpledo = async ( ciemp ) => {
     // Equivalent to `axios.get('https://httpbin.org/get?answer=42')`
     const promise = await axios.get('http://localhost:8000/index.php?r=webservices/v1/info-empleado', { params: { ci: ciemp } });
@@ -332,9 +333,9 @@ const updateEmpleado = async (req = request, res = response) => {
 const migrarEmpleado = async (req = request, res = response ) => {
     //const t = await sequelize.transaction();
     try {
-        let {id_mes }= req.query;
-        const excelBuffer = req.files['file'][0].buffer;
-        await processExcel(excelBuffer, 1, id_mes);
+        const  body  = req.body;
+        const fileExcel = req.files.file.data;
+        await processExcel(fileExcel, 1, body.id_mes);
 
         // body.activo = 1;
         // const empleadoNew = await Empleado.create(body);
@@ -355,9 +356,8 @@ const migrarEmpleado = async (req = request, res = response ) => {
         });
     }
 }
-function processExcel(excelBuffer, t, id_mes) {
-
-    const workbook = xlsx.read(excelBuffer, { type: 'buffer' });
+function processExcel(fileExcel, t, id_mes) {
+    const workbook = xlsx.read(fileExcel, { type: 'buffer' });
     const sheetName = workbook.SheetNames[0];
     const worksheet = workbook.Sheets[sheetName];
     const options = {
@@ -636,4 +636,10 @@ function formatearTexto(texto) {
   }
 
 
-module.exports = { infoEmpledo, migrarEmpleado, getEmpleadoPaginate, getEmpleado, newEmpleado, updateEmpleado, getEmpNoAportantePaginate };
+module.exports = { infoEmpledo, 
+    migrarEmpleado, 
+    getEmpleadoPaginate, 
+    getEmpleado, 
+    newEmpleado, 
+    updateEmpleado, 
+    getEmpNoAportantePaginate };

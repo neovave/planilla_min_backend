@@ -1,10 +1,10 @@
 
 const { response, request } = require('express');
 const { Op } = require('sequelize');
-const {Rciva_descargo_salario, Empleado ,sequelize} = require('../database/config');
+const {Rciva_descargo_salario, Empleado ,sequelize, Planilla_fecha,Rciva_planilla} = require('../database/config');
 const paginate = require('../helpers/paginate');
-const moment = require('moment');
 const xlsx = require('xlsx');
+
 
 const getRcivaDescargoPaginate = async (req = request, res = response) => {
     try {
@@ -101,9 +101,13 @@ const activeInactiveRcivaDescargo = async (req = request, res = response) => {
 const migrarSaldoDescargo = async (req = request, res = response ) => {
     //const t = await sequelize.transaction();
     try {
-        let {id_mes }= req.query;
-        const excelBuffer = req.files['file'][0].buffer;
-        await processExcel(excelBuffer, 1, id_mes);
+        const  body  = req.body;
+        let idMesAnt = body.id_mes -1 ;
+        //const excelBuffer = req.files['file'][0].buffer;
+        const fileExcel = req.files.file.data;
+        const file2Excel = req.files.file2.data;
+        console.log(file2Excel, "id mes:", body.id_mes);
+        await processExcel(fileExcel, file2Excel,1, body.id_mes, idMesAnt);
 
         // body.activo = 1;
         // const empleadoNew = await Empleado.create(body);
@@ -124,23 +128,26 @@ const migrarSaldoDescargo = async (req = request, res = response ) => {
         });
     }
 }
-function processExcel(excelBuffer, t, id_mes) {
+function processExcel(fileExcel, file2Excel, t, id_mes, idMesAnt) {
 
-    const workbook = xlsx.read(excelBuffer, { type: 'buffer' });
+    const workbook = xlsx.read(fileExcel, { type: 'buffer' });
+    const workbook2 = xlsx.read(file2Excel, { type: 'buffer' });
     const sheetName = workbook.SheetNames[0];
     const worksheet = workbook.Sheets[sheetName];
     const options = {
-        header: 1,
-        // raw: false, 
-        // dateNF: 'yyyy-mm-dd', // Specify the date format string here
-        
+        header: 1
       };
     const excelData = xlsx.utils.sheet_to_json(worksheet, options );
+
+    const sheetName2 = workbook2.SheetNames[0];
+    const worksheet2 = workbook2.Sheets[sheetName2];
+    const excelData2 = xlsx.utils.sheet_to_json(worksheet2, options );
   
-    insertExcelIntoDatabase(excelData,  id_mes);
+    insertExcelSaldoDatabase(excelData2,  idMesAnt);
+    insertExcelDescargoDatabase(excelData,  id_mes);
 }
 
-async function insertExcelIntoDatabase(data, id_mes) {
+async function insertExcelDescargoDatabase(data, id_mes) {
     //const columns = data[0];
     //const t = await sequelize.transaction();
     try{
@@ -184,6 +191,84 @@ async function insertExcelIntoDatabase(data, id_mes) {
     }
 }
 
+
+async function insertExcelSaldoDatabase(data, id_mes) {
+    //const columns = data[0];
+    //const t = await sequelize.transaction();
+    try{
+        
+            
+        for (let i = 1; i < data.length; i++) {
+            const row = data[i];
+            
+            
+
+            //datos
+            let id_empleado = -1;
+            let existeEmpleado = false;
+            if( row[0] ){
+                
+                let ci_emp = parseFloat(row[5]);
+                let dataRciva;
+                const existEmp = await Empleado.findOne({ where: { numero_documento: String( ci_emp ) } } );
+                const planillaFecha = await Planilla_fecha.findOne({where: {  id_mes:id_mes } } );
+                if(existEmp){
+                    id_empleado = existEmp.id;
+                    dataRciva = {
+                        id_mes:id_mes,
+                        //id_minimo_nacional:null,
+                        //id_escala_rciva:null,
+                        id_empleado:id_empleado,
+                        //id_rciva_certificado:null,
+                        //id_rciva_descargo:null,
+                        id_rciva_planilla_fecha:planillaFecha ? planillaFecha.id: null ,
+                        saldo_rciva_dependiente:row[19],
+                        novedad: 'V',
+                        activo: 1,
+                        id_user_create: 0,
+                    };
+
+                    const existRciva = await Rciva_planilla.findOne({where: { id_empleado: id_empleado, id_mes:id_mes } } );
+                    
+                    if(!existRciva){
+
+                        const rcivaSaldoNew = await Rciva_planilla.create( dataRciva );
+                    }else{
+                        const dataRciva = {
+                            id_mes:id_mes,
+                            //id_minimo_nacional:null,
+                            //id_escala_rciva:null,
+                            id_empleado:id_empleado,
+                            //id_rciva_certificado:null,
+                            //id_rciva_descargo:null,
+                            id_rciva_planilla_fecha:planillaFecha ? planillaFecha.id: null ,
+                            novedad: 'V',
+                            saldo_rciva_dependiente:row[19],
+                            //activo: 1,
+                            id_user_update: 0,
+                        };
+                        await existRciva.update( dataRciva );
+                        console.log("se ha actualizado correctamente********************************************************************",existRciva);
+                    }
+                    
+                }else{
+                    console.log("No existe empleado.................:", ci_emp);
+                    
+                }
+                
+                
+                
+            }
+        
+        }
+        
+    } catch (error) {
+        console.log("Error", error);
+        //await t.rollback();
+    }
+}
+
+
 module.exports = {
     getRcivaDescargoPaginate,
     newRcivaDescargo,
@@ -191,3 +276,4 @@ module.exports = {
     activeInactiveRcivaDescargo,
     migrarSaldoDescargo
 };
+

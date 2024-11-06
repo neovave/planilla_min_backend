@@ -6,9 +6,6 @@ const { getRcivaPlanillaPaginate, newRcivaPlanilla, updateRcivaPlanilla, activeI
 const { validateDelete, getValidateUpdate, getValidateCreate } = require('../middlewares/validators/rciva_planilla');
 
 const router = Router();
-const multer = require('multer');
-const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
 
 router.get('/',[
     validarJWT,
@@ -35,12 +32,5 @@ router.put('/destroyAndActive/:id', [
     validateDelete
 ],activeInactiveRcivaPlanilla );
 
-router.post('/migrar', [
-    validarJWT,
-    upload.fields([{ name: 'file', maxCount: 1 }, { name: 'file2', maxCount: 1 }]),
-    validarIsAdmin,
-    //toUpperCaseConvert,
-    //getValidateCreate
-],migrarSaldoRciva );
 
 module.exports = router;

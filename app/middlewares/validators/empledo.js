@@ -1,6 +1,6 @@
 const { validatedResponse } = require('../validated-response');
 const { checkSchema } = require('express-validator');
-const { idExistLugarExpedido, idExistGradoAcademico, ciExistEmpleado, idExistEmpleado, codigoExistEmpleado } = require('./database');
+const { idExistLugarExpedido, idExistGradoAcademico, ciExistEmpleado, idExistEmpleado, codigoExistEmpleado, idExistMes } = require('./database');
 
 const validationSchema =  {
     id_expedido: {
@@ -181,6 +181,19 @@ const getValidateUpdate= [
     }),
     validatedResponse
 ];
+const getValidateImport= [
+    checkSchema({
+        
+        id_mes: {
+            isEmpty: {
+                negated: true, errorMessage: "Id mes es obligatorio",
+            },
+            custom: { options: idExistMes}, //verificamos si existe uuid
+        },
+        //...validationSchema
+    }),
+    validatedResponse
+];
 
 const validateDelete = [
     checkSchema({
@@ -198,6 +211,8 @@ const validateDelete = [
 module.exports = {
     getValidateCreate,
     getValidateUpdate,
-    validateDelete
+    validateDelete,
+    getValidateImport,
+    getValidateImport
 }
 

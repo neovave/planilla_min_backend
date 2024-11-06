@@ -16,7 +16,8 @@ const filesExist = (req, res = response, next) => {
 const filesValidateSize = (req, res = response, next) => {
   let file = Object.values(req.files)[0];
   /* This is a validation to check if the size of the image is greater than 8MB. */
-  if(file.size > 8033987){
+  //if(file.size > 8033987){
+  if(file.size > 20971520 ){ //20mb
     return res.status(422).json({
       ok: false,
       errors: [{ msg: `El peso de la imagen no puede ser mayor a 8MB`}],
